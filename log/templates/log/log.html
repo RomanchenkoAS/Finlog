@@ -1,0 +1,115 @@
+{% extends "accounts/layout.html" %}
+
+{% block title %}Log{% endblock title %}
+
+{% block link %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'log/log_display.css' %}">
+{% endblock link %}
+
+{% block style %}
+
+{% endblock style %}
+
+{% block body %}
+
+<h1 class="header">MainPage || Log of: {{user}}</h1>
+<hr>
+<h2 class="header">Latest events:</h2>
+<div style="height: 200px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
+    <table id="logTable">
+        <!-- <thead>
+            <th>Value</th>
+            <th>Category</th>
+            <th>Datetime</th>
+            <th>...</th>
+        </thead> -->
+        <tbody>
+            {% for entry in entries %}
+            <tr class="{{entry.category|lower}}">
+                <td>{{entry.value}}{{entry.currency}}</td>
+                <td>{{entry.category}}</td>
+                <td>{{entry.datetime}}</td>
+
+                <!-- Show comment if there is one / ellipsis otherwise -->
+                {% if 'comment' in entry %}
+                <td>{{entry.comment}}</td>
+                {% else %}
+                <td>...</td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+<form id="add-entry" style="display:inline-block;">
+        <!-- Value field -->
+        <input name="value" id="input-value" placeholder="Value:">
+        <!-- Category field -->
+        <select name="category" id="input-category" class="form-select">
+            {% for category in categories %}
+                {% if forloop.counter == 1 %}
+                <option selected value="{{ category }}">{{category}}</option>
+                {% else %}
+                <option value="{{ category }}">{{category}}</option>
+                {% endif %}
+            {% endfor %}
+<!-- Yeah it's hogwarts time today so.. -->
+        </select>
+        <!-- Comment field -->
+        <input name="comment" id="input-comment" placeholder="Comment:">
+        <!-- Add button -->
+        <button class="btn" type="submit">+</button>
+</form>
+
+{% endblock body %}
+
+{% block script %}
+<script>
+
+    //const add_entry = document.querySelector('#add-entry');
+
+    $('#add-entry').on("submit", function(event) {
+        event.preventDefault();
+
+        // Get form fields values into vars
+        let value = document.querySelector('#input-value').value;
+        let category = document.querySelector('#input-category').value;
+        let comment = document.querySelector('#input-comment').value;
+
+        console.log($(this).serialize());
+
+
+        // get the form data and send an AJAX request to the server
+        $.ajax({
+            url: 'add',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(data) {
+                // update the list on the page with the new data
+                console.log(data);
+
+                table = document.getElementById('logTable');
+                console.dir(table.innerHtml);
+
+            },
+            error: function() {
+                alert('Error adding entry.');
+            }
+        });
+
+    });
+
+
+    // Scroll table to bottom on page load
+    window.onload = function() {
+        var tableContainer = document.getElementById("logTableContainer");
+        tableContainer.style.display = "block";
+        tableContainer.scrollTop = tableContainer.scrollHeight;
+    }
+
+</script>
+{% endblock script %}

@@ -1,0 +1,85 @@
+/* li a {
+    color: green;
+    font-weight: bold;
+} */
+
+body {
+    background: white url("images/background.jpg") no-repeat;
+    background-size: cover;
+}
+
+.header {
+    font-weight: bold;
+}
+
+label {
+    width: 10rem;
+    color: inherit;
+    text-align: right;
+    margin-right: 1rem;
+}
+
+button {
+}
+
+/* Errors during registration */
+.errorlist {
+    color: red;
+    text-align: center;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+/* For <a> tag without decoration */
+.a-empty {
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.auth-form,
+.register-form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Forms submit button */
+.submit {
+    width: 100px;
+    text-decoration: underline;
+}
+
+
+/* Message tags */
+
+.success {
+    color:green;
+}
+
+.warning {
+    color:orange;
+}
+
+.info {
+    color:blue;
+}
+
+.debug {
+    color:black;
+}
+
+.error {
+    color:red;
+}
+
+.alert {
+    position: relative;
+  }
+
+.close {
+position: absolute;
+right: 10px;
+top: 50%;
+transform: translateY(-50%);
+}

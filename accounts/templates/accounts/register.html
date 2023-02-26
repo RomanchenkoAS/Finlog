@@ -1,0 +1,26 @@
+{% extends "accounts/layout.html" %}
+
+{% block title %}Register{% endblock title %}
+
+
+{% block link %}{% endblock link %}
+
+{% block body %}
+
+<h1>Registration</h1>
+
+<hr>
+<form action="/register" method="post" name="register" novalidate class="register-form">
+    {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group my-2">
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+    <button class="btn btn-primary mt-2 submit" type="submit" id="submit">Register</button>
+</form>
+
+
+{% endblock body %}
