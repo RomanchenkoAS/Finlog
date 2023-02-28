@@ -12,10 +12,6 @@ from django.utils.timezone import now
 # Helper functions
 from .helpers import collect_entries, collect_categories
 
-# Some more fake commits
-# And here
-# Yoooooo
-
 
 @login_required
 def log(request):
