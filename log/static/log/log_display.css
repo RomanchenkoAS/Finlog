@@ -11,13 +11,13 @@ table td {
     line-height: 1.5;
     color: #212529;
     background-color: #fff;
-    background-image: url(<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>);
+    /* background-image: url(<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>); */
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 12px;
     /* border: 1px solid #ced4da; */
     border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
 }
 
@@ -29,7 +29,7 @@ table td {
 
 #logTableContainer::-webkit-scrollbar {
     display: none;
-  }
+}
 
 
 /* CATEGORIES */
@@ -38,17 +38,25 @@ table td {
 .other {
     background-color: white;
 }
+
 .groceries {
     /* light green */
     background-color: #7ae37a;
 }
+
 .pharmacy {
     background-color: blue;
 }
+
 .rent {
     background-color: orange;
 }
+
 .clothes {
     /* brown */
     background-color: #964B00;
+}
+
+.gas {
+    background-color: rgba(79, 79, 185, 0.842);
 }
