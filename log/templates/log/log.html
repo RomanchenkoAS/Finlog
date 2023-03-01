@@ -79,7 +79,7 @@
         let category = document.querySelector('#input-category').value;
         let comment = document.querySelector('#input-comment').value;
 
-        console.log('Submitted data:');
+        console.log('Submitted data serialized:');
         console.log($(this).serialize());
 
 
@@ -90,10 +90,22 @@
             data: $(this).serialize(),
             success: function(data) {
                 // update the list on the page with the new data
+                console.log('Data object:')
                 console.log(data);
+                console.log(data.length);
+                console.log('Last item:')
+                console.log('Last item:')
 
-                table = document.getElementById('logTable');
-                console.dir(table.innerHtml);
+
+                var table   = document.getElementById('logTable');
+                var newrow  = table.insertRow();
+
+                var cellValue       = newrow.insertCell(0);
+                var cellCategory    = newrow.insertCell(1);
+                var cellTime        = newrow.insertCell(2);
+                var cellComment     = newrow.insertCell(3);
+
+                
 
             },
             error: function() {
