@@ -90,12 +90,7 @@
             data: $(this).serialize(),
             success: function(data) {
                 // update the list on the page with the new data
-                console.log('Data object:')
-                console.log(data);
-                console.log(data.entries.length);
-                console.log('Last item:')
-                console.log(data.entries[data.entries.length - 1])
-
+                var lastItem = data.entries[data.entries.length - 1];
 
                 var table   = document.getElementById('logTable');
                 var newrow  = table.insertRow();
@@ -105,7 +100,11 @@
                 var cellTime        = newrow.insertCell(2);
                 var cellComment     = newrow.insertCell(3);
 
-                
+                cellValue.innerHTML = 1;
+                cellCategory.innerHTML = 1;
+                cellTime.innerHTML = 1;
+                cellComment.innerHTML = 1;
+
 
             },
             error: function() {
