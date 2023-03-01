@@ -114,12 +114,15 @@
 
     });
 
-
-    // Scroll table to bottom on page load
-    window.onload = function() {
+    function ScrollDown() {
         var tableContainer = document.getElementById("logTableContainer");
         tableContainer.style.display = "block";
         tableContainer.scrollTop = tableContainer.scrollHeight;
+    }
+
+    // Scroll table to bottom on page load
+    window.onload = function() {
+        ScrollDown();
     }
 
 </script>
