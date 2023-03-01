@@ -68,9 +68,14 @@
 
 {% block script %}
 <script>
-
+    
+    function ScrollDown() {
+        var tableContainer = document.getElementById("logTableContainer");
+        tableContainer.style.display = "block";
+        tableContainer.scrollTop = tableContainer.scrollHeight;
+    }
     //const add_entry = document.querySelector('#add-entry');
-
+    
     $('#add-entry').on("submit", function(event) {
         event.preventDefault();
 
@@ -117,11 +122,6 @@
 
     });
 
-    function ScrollDown() {
-        var tableContainer = document.getElementById("logTableContainer");
-        tableContainer.style.display = "block";
-        tableContainer.scrollTop = tableContainer.scrollHeight;
-    }
 
     // Scroll table to bottom on page load
     window.onload = function() {
