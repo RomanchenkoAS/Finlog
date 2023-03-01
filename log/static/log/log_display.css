@@ -21,6 +21,14 @@ table td {
 
 }
 
+#input-value {
+    width: 7rem;
+}
+
+#input-comment {
+    width: 12rem;
+}
+
 #add-entry {
     display: inline-block;
     vertical-align: middle;
