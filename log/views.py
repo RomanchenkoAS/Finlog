@@ -45,3 +45,13 @@ def add_entry(request):
 
     # Send back JSON
     return JsonResponse(entries_dict)
+
+@csrf_exempt
+@login_required
+def remove_entry(request):
+    # From the page request the position of an item that must be deleted
+    position = request.POST.get('')
+    
+    # Calculate the id from given position in the list
+    # Killswitch mwahahaha
+    # That's all folks
