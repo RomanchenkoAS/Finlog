@@ -34,15 +34,6 @@ def add_entry(request):
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
 
-    # Not needed
-    data = {
-        'value': value,
-        'category': category,
-        'comment': comment,
-    }
-
-    print(data)
-
     category = Category.objects.get(name=category)
     # user = User.objects.get
 

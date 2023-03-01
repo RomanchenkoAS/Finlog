@@ -103,14 +103,14 @@
                 // Cells variables
                 var cellValue       = newrow.insertCell(0);
                 var cellCategory    = newrow.insertCell(1);
-                var cellTime        = newrow.insertCell(2);
+                var cellDate        = newrow.insertCell(2);
                 var cellComment     = newrow.insertCell(3);
 
                 // Populate the cells
-                cellValue.innerHTML = 1;
-                cellCategory.innerHTML = 1;
-                cellTime.innerHTML = 1;
-                cellComment.innerHTML = 1;
+                cellValue.innerHTML = lastItem.value;
+                cellCategory.innerHTML = lastItem.category;
+                cellDate.innerHTML = lastItem.date;
+                cellComment.innerHTML = lastItem.comment;
 
                 // Manual scroll down
                 ScrollDown();
