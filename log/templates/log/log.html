@@ -95,17 +95,20 @@
                 var table   = document.getElementById('logTable');
                 var newrow  = table.insertRow();
 
+                // Cells variables
                 var cellValue       = newrow.insertCell(0);
                 var cellCategory    = newrow.insertCell(1);
                 var cellTime        = newrow.insertCell(2);
                 var cellComment     = newrow.insertCell(3);
 
+                // Populate the cells
                 cellValue.innerHTML = 1;
                 cellCategory.innerHTML = 1;
                 cellTime.innerHTML = 1;
                 cellComment.innerHTML = 1;
 
-
+                // Manual scroll down
+                ScrollDown();
             },
             error: function() {
                 alert('Error adding entry.');
