@@ -11,8 +11,6 @@ import json
 
 from django.utils.timezone import now
 
-# Testing auto-commit
-
 # Helper functions
 from .helpers import collect_entries, collect_categories
 
