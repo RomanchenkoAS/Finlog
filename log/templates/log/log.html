@@ -99,10 +99,13 @@
             // Reset the id of the row
             element.id = index;
 
-            button = element.cells[4];
+            var button = document.getElementById(`${index}-remove`);
             console.log('Corresponding button:')
             console.dir(button)
 
+            button.id = index;
+            console.log('ID updated:')
+            console.dir(button)
         });
     };
 
