@@ -88,6 +88,22 @@
     // Script to delete an entry with given entry.position
     function deleteEntry(pos) {
         console.log(`I am to delete an entry #${pos}`);
+
+        fetch(`/remove?q=${pos}`, {
+            method = 'DELETE',
+            headers = {
+                'Content-Type' : 'application/JSON'
+            },
+            body: JSON.stringify({
+                position: pos 
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Not ok response');
+            }
+            // Now actually remove from the page
+        })
     }
 
     // Adding a new entry
