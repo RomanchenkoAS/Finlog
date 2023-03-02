@@ -35,6 +35,7 @@ def log(request):
 
 @login_required
 def load_content(request):
+    ''''''
     current_user = request.user
     entries = collect_entries(current_user)
     pass    
