@@ -39,7 +39,7 @@
                 {% endif %}
 
                 <td>
-                    <button type="button" class="btn delete" id="{{entry.position}}-remove">
+                    <button type="button" class="btn delete" id="{{entry.position}}-remove" onclick="deleteEntry({{entry.position}})">
                         <span>
                             &times;
                         </span>
@@ -78,13 +78,18 @@
 {% block script %}
 <script>
     
+    // Manually (first - showing and then) scrolling down the table
     function ScrollDown() {
         var tableContainer = document.getElementById("logTableContainer");
         tableContainer.style.display = "block";
         tableContainer.scrollTop = tableContainer.scrollHeight;
     }
-    //const add_entry = document.querySelector('#add-entry');
-    
+
+    // Script to delete an entry with given entry.position
+    function deleteEntry(pos) {
+        console.log(`I am to delete an entry #${pos}`);
+    }
+
     // Adding a new entry
     $('#add-entry').on("submit", function(event) {
         event.preventDefault();
