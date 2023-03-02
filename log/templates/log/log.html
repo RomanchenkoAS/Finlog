@@ -104,7 +104,10 @@
             }
             // Now actually remove from the page
         })
-    }
+        .catch(error => {
+            console.error('Issue with fetch operation: ', error);
+        });
+    };
 
     // Adding a new entry
     $('#add-entry').on("submit", function(event) {
