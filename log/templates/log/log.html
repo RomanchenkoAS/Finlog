@@ -20,7 +20,8 @@
 </h2>
 <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
     <table id="logTable">
-        <div>
+        <!-- Container for storing portfolio | it is passed as JSON object -->
+        <div id="portfolio-container" data-portfolio='{{ portfolio | tojson }}'></div>
         <tbody>
             {% for entry in entries %}
             <tr class="{{entry.category|lower}}" id="{{entry.position}}">
