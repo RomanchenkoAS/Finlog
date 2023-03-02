@@ -21,9 +21,9 @@
 <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
     <table id="logTable">
         <!-- Container for storing portfolio | it is passed as JSON object -->
-        <div id="portfolio-container" data-portfolio='{{ portfolio | tojson }}'></div>
+        <div id="entries-container" data-entries='{{ entries | tojson }}'></div>
         <tbody>
-            {% for entry in entries %}
+            {% comment %} {% for entry in entries %}
             <tr class="{{entry.category|lower}}" id="{{entry.position}}">
                 <td>{{entry.value}}{{entry.currency}}</td>
                 <td>{{entry.category}}</td>
@@ -45,7 +45,7 @@
                 </td>
 
             </tr>
-            {% endfor %}
+            {% endfor %} {% endcomment %}
 
         </tbody>
     </table>
@@ -76,6 +76,9 @@
 {% block script %}
 <script>
     
+    // Take entries data from container
+    let entries = JSON.parse(document.getElementById("entries-container").dataset.entries);
+
     // Manually (first - showing and then) scrolling down the table
     function ScrollDown() {
         var tableContainer = document.getElementById("logTableContainer");
@@ -190,6 +193,7 @@
 
     // Scroll table to bottom on page load
     window.onload = function() {
+        console.log(entries)
         ScrollDown();
     }
 
