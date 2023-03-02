@@ -85,6 +85,7 @@
     }
     //const add_entry = document.querySelector('#add-entry');
     
+    // Adding a new entry
     $('#add-entry').on("submit", function(event) {
         event.preventDefault();
 
@@ -93,8 +94,8 @@
         let category = document.querySelector('#input-category').value;
         let comment = document.querySelector('#input-comment').value;
 
-        console.log('Submitted data serialized:');
-        console.log($(this).serialize());
+        //console.log('Submitted data serialized:');
+        //console.log($(this).serialize());
 
 
         // get the form data and send an AJAX request to the server
