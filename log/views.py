@@ -60,13 +60,14 @@ def remove(request, p):
     
     print(f'deleting entry id #{id}')
     
-    
-    
     # Killswitch mwahahaha
+    entry_to_delete = Entry.objects.get(id=id)
+    entry_to_delete.delete()
+    
     # That's all folks
     pass
 
-    # Get the list of entries -> transform it to the dictionary for jsonifying
+    # Reload updated list of entries -> transform it to the dictionary for jsonifying
     entries_dict = {'entries': collect_entries(request.user)}
 
     # Send back JSON
