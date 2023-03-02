@@ -48,7 +48,7 @@ def add_entry(request):
 
 @csrf_exempt
 @login_required
-def remove_entry(request):
+def remove(request):
     # From the page request the position of an item that must be deleted
     position = request.POST.get('')
     
