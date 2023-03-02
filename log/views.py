@@ -19,7 +19,6 @@ from .helpers import collect_entries, collect_categories
 def log(request):
     '''Show on the page the list of entries with category classes'''
     current_user = request.user
-    current_user = request.user
 
     categories = collect_categories(current_user)
 
@@ -36,6 +35,7 @@ def log(request):
 
 @login_required
 def load_content(request):
+    current_user = request.user
     entries = collect_entries(current_user)
     pass    
 
