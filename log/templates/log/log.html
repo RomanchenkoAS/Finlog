@@ -15,7 +15,9 @@
 
 <h1 class="header">MainPage || Log of: {{user}}</h1>
 <hr>
-<h2 class="header">Latest events:</h2>
+<h2 class="header">Latest events: 
+    <button type="button" class="btn" onclick="recount()">recount</button>
+</h2>
 <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
     <table id="logTable">
         <!-- <thead>
@@ -83,6 +85,12 @@
         var tableContainer = document.getElementById("logTableContainer");
         tableContainer.style.display = "block";
         tableContainer.scrollTop = tableContainer.scrollHeight;
+    }
+
+    // Reassign IDs to the buttons and rows on delete/adding an entry
+    function recount() {
+        var rows = document.querySelectorAll('tr');
+        console.dir(rows);
     }
 
     // Script to delete an entry with given entry.position
