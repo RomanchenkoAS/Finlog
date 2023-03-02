@@ -26,7 +26,13 @@ def log(request):
         'entries'       : entries,
         'categories'    : categories,
     }
-    return render(request, 'log/log.html', context)
+    
+    json_data = json.dumps(context)
+    # if it doesnt work just load a page with only user context
+    # and make a request from another view to load all else
+    # and also write this another view like
+    # def load_content(request):
+    return render(request, 'log/log.html', json_data)
 
 @csrf_exempt
 @login_required
