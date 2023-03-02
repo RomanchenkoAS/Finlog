@@ -58,3 +58,9 @@ def remove(request, p):
     # Killswitch mwahahaha
     # That's all folks
     pass
+
+    # Reload list of entries -> transform it to the dictionary for jsonifying
+    entries_dict = {'entries': collect_entries(request.user)}
+
+    # Send back JSON
+    return JsonResponse(entries_dict)

@@ -89,7 +89,7 @@
     function deleteEntry(pos) {
         console.log(`I am to delete an entry #${pos}`);
 
-        fetch(`/remove?q=${pos}`, {
+        fetch(`/remove?p=${pos}`, {
             method : 'DELETE',
             headers : {
                 'Content-Type' : 'application/JSON'
