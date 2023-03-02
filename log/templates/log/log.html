@@ -186,23 +186,19 @@
     });
 
     function load_content() {
-        fetch(`/load_content/`, {
-            method : 'GET',
-            headers : {
-                'Content-Type' : 'application/JSON'
-            }
-        })
+        fetch(`/load_content/`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Not ok response');
             }
-
-            console.log(response);
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
         })
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
         });
-
     }
 
     window.onload = function() {
