@@ -25,8 +25,8 @@ def log(request):
 
     context = {
         'user'          : current_user.username,
+        'categories'    : categories,
         #'entries'       : entries,
-        #'categories'    : categories,
     }
     
     # if it doesnt work just load a page with only user context
