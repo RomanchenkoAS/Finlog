@@ -50,12 +50,17 @@ def add(request):
 @login_required
 def remove(request, p):
     # Remove entry #p (stands for position)
-    print(f'I am deleting entry #{p}')
+    print(f'I am deleting entry with position #{p}')
     
     # Calculate the id from given position in the list
     entries_list = collect_entries(request.user)
-    print('this one:')
-    print(entries_list[p])
+    
+    entry = entries_list[p]
+    id = entry['id']
+    
+    print(f'deleting entry id #{id}')
+    
+    
     
     # Killswitch mwahahaha
     # That's all folks
