@@ -17,6 +17,7 @@
 <hr>
 <h2 class="header">Latest events: 
     <button type="button" class="btn" onclick="recount()">recount</button>
+    <button type="button" class="btn" onclick="load_content()">load</button>
 </h2>
 <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
     <table id="logTable">
@@ -184,34 +185,34 @@
         recount();
     });
 
-    
-    window.onload = function() {
-        //var entriesData = JSON.parse(document.getElementById('entries-data'));
-        //console.log(entriesData);
-
+    function load_content() {
         fetch(`/load_content/`, {
-            method : 'DELETE',
+            method : 'GET',
             headers : {
                 'Content-Type' : 'application/JSON'
-            },
-            body: JSON.stringify({
-                position: pos 
-            })
+            }
         })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Not ok response');
             }
-            // Now actually remove from the page
-            var row = document.getElementById(`${pos}`)
-            
-            row.style['display'] = 'none'
+
+            console.log(response);
         })
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
         });
 
     }
+
+    window.onload = function() {
+        //var entriesData = JSON.parse(document.getElementById('entries-data'));
+        //console.log(entriesData);
+
+        
+    }
+
+
     
 </script>
 {% endblock script %}

@@ -7,4 +7,5 @@ urlpatterns = [
     # AJAX request path
     path('add', views.add, name='add'),
     path('remove/<int:p>/', views.remove, name='remove'),
+    path('load_content')
 ]
