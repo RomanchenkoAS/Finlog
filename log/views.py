@@ -38,7 +38,8 @@ def load_content(request):
     '''Load entries for log page and pass it as JSON'''
     current_user = request.user
     entries = collect_entries(current_user)
-    pass    
+
+
 
 
 @csrf_exempt
