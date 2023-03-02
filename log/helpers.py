@@ -17,7 +17,7 @@ def collect_entries(user):
             'category': item.category.name,
             'datetime': item.date.strftime("%Y-%m-%d %H:%M:%S %Z"),
             'comment' : item.comment,
-            'position': i + 1,
+            'position': i,
             'id'      : item.id,
         }
         # print(f'Adding an item #{i}: {item.value} / {item.category} / {item.date} || id:{item.id}')
