@@ -85,13 +85,21 @@
         var tableContainer = document.getElementById("logTableContainer");
         tableContainer.style.display = "block";
         tableContainer.scrollTop = tableContainer.scrollHeight;
-    }
+    };
 
     // Reassign IDs to the buttons and rows on delete/adding an entry
     function recount() {
         var rows = document.querySelectorAll('tr');
         console.dir(rows);
-    }
+
+        rows.forEach((element, index) =>{
+            console.log(`Element #${index}`);
+            console.dir(element);
+
+            
+
+        });
+    };
 
     // Script to delete an entry with given entry.position
     function deleteEntry(pos) {
