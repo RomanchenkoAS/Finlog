@@ -55,3 +55,4 @@ def remove(request, p):
     # Calculate the id from given position in the list
     # Killswitch mwahahaha
     # That's all folks
+    pass
