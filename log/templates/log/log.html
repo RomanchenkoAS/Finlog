@@ -90,8 +90,8 @@
         console.log(`I am to delete an entry #${pos}`);
 
         fetch(`/remove?q=${pos}`, {
-            method = 'DELETE',
-            headers = {
+            method : 'DELETE',
+            headers : {
                 'Content-Type' : 'application/JSON'
             },
             body: JSON.stringify({
