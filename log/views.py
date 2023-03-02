@@ -29,7 +29,7 @@ def log(request):
 
 @csrf_exempt
 @login_required
-def add_entry(request):
+def add(request):
     value = request.POST.get('value', '')
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
@@ -48,9 +48,9 @@ def add_entry(request):
 
 @csrf_exempt
 @login_required
-def remove(request):
+def remove(request, p):
     # From the page request the position of an item that must be deleted
-    position = request.POST.get('')
+    # P stands for position
     
     # Calculate the id from given position in the list
     # Killswitch mwahahaha

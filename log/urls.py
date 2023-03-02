@@ -5,6 +5,6 @@ appname = 'log'
 urlpatterns = [
     path('', views.log, name='log'),
     # AJAX request path
-    path('add', views.add_entry, name='add'),
-
+    path('add', views.add, name='add'),
+    path('remove', views.remove, name='remove'),
 ]
