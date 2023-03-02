@@ -96,7 +96,12 @@
             console.log(`Element #${index}`);
             console.dir(element);
 
-            
+            // Reset the id of the row
+            element.id = index;
+
+            button = element.cells[4];
+            console.log('Corresponding button:')
+            console.dir(button)
 
         });
     };
