@@ -36,7 +36,7 @@ def log(request):
 @login_required
 def load_content(request):
     '''Load entries for log page and pass it as JSON'''
-        # Get the list of entries -> transform it to the dictionary for jsonifying
+    # Get the list of entries -> transform it to the dictionary for jsonifying
     entries_dict = {'entries': collect_entries(request.user)}
 
     # Send back JSON
