@@ -32,10 +32,10 @@ def log(request):
     # if it doesnt work just load a page with only user context
     # and make a request from another view to load all else
     # and also write this another view like
-    # def load_content(request):
     return render(request, 'log/log.html', context)
 
 @login_required
+def load_content(request):
 
 
 @csrf_exempt
