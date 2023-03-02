@@ -20,12 +20,7 @@
 </h2>
 <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
     <table id="logTable">
-        <!-- <thead>
-            <th>Value</th>
-            <th>Category</th>
-            <th>Datetime</th>
-            <th>...</th>
-        </thead> -->
+        <div>
         <tbody>
             {% for entry in entries %}
             <tr class="{{entry.category|lower}}" id="{{entry.position}}">
@@ -89,6 +84,7 @@
 
     // Reassign IDs to the buttons and rows on delete/adding an entry
     function recount() {
+        // Yeah this is really dumb, gonna make it right while i can
         var rows = document.querySelectorAll('tr');
         console.dir(rows);
 
