@@ -49,8 +49,7 @@ def add(request):
 @csrf_exempt
 @login_required
 def remove(request, p):
-    # From the page request the position of an item that must be deleted
-    # P stands for position
+    # Remove entry #p (stands for position)
     print(f'I am deleting entry #{p}')
     
     
