@@ -15,6 +15,7 @@ from .helpers import collect_entries, collect_categories
 
 @login_required
 def log(request):
+    '''Show on the page the list of entries with category classes'''
     current_user = request.user
 
     entries = collect_entries(current_user)
@@ -30,6 +31,7 @@ def log(request):
 @csrf_exempt
 @login_required
 def add(request):
+    '''Create a new entry from the form in POST'''
     value = request.POST.get('value', '')
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
@@ -49,9 +51,7 @@ def add(request):
 @csrf_exempt
 @login_required
 def remove(request, p):
-    # Remove entry #p (stands for position)
-    print(f'I am deleting entry with position #{p}')
-    
+    ''' Remove entry #p (p stands for position)'''
     # Calculate the id from given position in the list
     entries_list = collect_entries(request.user)
     
