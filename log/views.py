@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Entry, Category
 
+import json
+
 from django.utils.timezone import now
 
 # Helper functions
@@ -27,12 +29,11 @@ def log(request):
         'categories'    : categories,
     }
     
-    json_data = json.dumps(context)
     # if it doesnt work just load a page with only user context
     # and make a request from another view to load all else
     # and also write this another view like
     # def load_content(request):
-    return render(request, 'log/log.html', json_data)
+    return render(request, 'log/log.html', context)
 
 @csrf_exempt
 @login_required
