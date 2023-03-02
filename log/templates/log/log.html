@@ -103,6 +103,8 @@
                 throw new Error('Not ok response');
             }
             // Now actually remove from the page
+            var row = document.getElementById(`#${pos}`)
+            console.log(row)
         })
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
