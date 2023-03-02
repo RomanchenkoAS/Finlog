@@ -35,6 +35,7 @@ def log(request):
     # def load_content(request):
     return render(request, 'log/log.html', context)
 
+@login_required
 
 
 @csrf_exempt
