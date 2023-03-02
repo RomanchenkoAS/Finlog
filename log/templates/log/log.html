@@ -134,6 +134,8 @@
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
         });
+
+        recount();
     };
 
     // Adding a new entry
@@ -185,6 +187,7 @@
             }
         });
 
+        recount();
     });
 
 
