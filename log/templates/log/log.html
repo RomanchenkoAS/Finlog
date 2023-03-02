@@ -114,13 +114,14 @@
                 var cellCategory    = newrow.insertCell(1);
                 var cellDate        = newrow.insertCell(2);
                 var cellComment     = newrow.insertCell(3);
+                var cellDelButton   = newrow.insertCell(4);
 
                 // Populate the cells
                 cellValue.innerHTML = lastItem.value;
                 cellCategory.innerHTML = lastItem.category;
                 cellDate.innerHTML = lastItem.date;
                 cellComment.innerHTML = lastItem.comment;
-                cellDelButton.innerHTML = 'X';
+                cellDelButton.innerHTML = '&times;';
                 // Making it of the right class 
                 newrow.classList.add(lastItem.category.toLowerCase());
 
