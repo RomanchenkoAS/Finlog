@@ -51,6 +51,8 @@ def add(request):
 def remove(request, p):
     # From the page request the position of an item that must be deleted
     # P stands for position
+    print(f'I am deleting entry #{p}')
+    
     
     # Calculate the id from given position in the list
     # Killswitch mwahahaha
