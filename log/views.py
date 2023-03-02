@@ -36,7 +36,7 @@ def log(request):
 
 @login_required
 def load_content(request):
-    
+    pass    
 
 
 @csrf_exempt
