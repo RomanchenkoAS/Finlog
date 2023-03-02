@@ -29,6 +29,11 @@ table td {
     width: 12rem;
 }
 
+.delete:focus {
+    outline: none;
+    box-shadow: none!important;
+}
+
 #add-entry {
     display: inline-block;
     vertical-align: middle;
