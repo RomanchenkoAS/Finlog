@@ -145,10 +145,6 @@
         let category = document.querySelector('#input-category').value;
         let comment = document.querySelector('#input-comment').value;
 
-        //console.log('Submitted data serialized:');
-        //console.log($(this).serialize());
-
-
         // get the form data and send an AJAX request to the server
         $.ajax({
             url: 'add',
@@ -190,8 +186,31 @@
 
     
     window.onload = function() {
-        var entriesData = JSON.parse(document.getElementById('entries-data'));
-        console.log(entriesData);
+        //var entriesData = JSON.parse(document.getElementById('entries-data'));
+        //console.log(entriesData);
+
+        fetch(`/remove/${pos}/`, {
+            method : 'DELETE',
+            headers : {
+                'Content-Type' : 'application/JSON'
+            },
+            body: JSON.stringify({
+                position: pos 
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Not ok response');
+            }
+            // Now actually remove from the page
+            var row = document.getElementById(`${pos}`)
+            
+            row.style['display'] = 'none'
+        })
+        .catch(error => {
+            console.error('Issue with fetch operation: ', error);
+        });
+
     }
     
 </script>
