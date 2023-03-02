@@ -26,7 +26,7 @@
         </thead> -->
         <tbody>
             {% for entry in entries %}
-            <tr class="{{entry.category|lower}}">
+            <tr class="{{entry.category|lower}}" id="{{entry.position}}">
                 <td>{{entry.value}}{{entry.currency}}</td>
                 <td>{{entry.category}}</td>
                 <td>{{entry.datetime}}</td>
