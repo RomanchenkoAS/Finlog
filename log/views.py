@@ -53,15 +53,16 @@ def remove(request, p):
     print(f'I am deleting entry #{p}')
     
     # Calculate the id from given position in the list
-    entries_dict = {'entries': collect_entries(request.user)}
+    entries_list = collect_entries(request.user)
     print('this one:')
-    print(entries_dict[p])
+    print(entries_list[p])
     
     # Killswitch mwahahaha
     # That's all folks
     pass
 
-    # Reload list of entries -> transform it to the dictionary for jsonifying
+    # Get the list of entries -> transform it to the dictionary for jsonifying
+    entries_dict = {'entries': collect_entries(request.user)}
 
     # Send back JSON
     return JsonResponse(entries_dict)
