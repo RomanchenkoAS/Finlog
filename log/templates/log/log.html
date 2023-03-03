@@ -91,15 +91,19 @@
         } else {
             // Render this one
             //console.dir(lastItem)
-            add_row(lastItem);
+            add_row(lastItem, 'top');
             // Go deeper 'v'
             recusrive_render(arr);
         }
     }
 
     // Rendering just one row in the table (at the top of it)
-    function add_row(lastItem) {
-        var newrow  = table.insertRow(0);
+    function add_row(lastItem, position) {
+        if (position == 'top') {
+            var newrow  = table.insertRow(0);
+        } else {
+            var newrow  = table.insertRow();
+        }
 
         // Cells variables
         var cellValue       = newrow.insertCell(0);
@@ -185,11 +189,10 @@
             type: 'POST',
             data: $(this).serialize(),
             success: function(data) {
-
-                recusrive_render(data.entries);
-                /*
                 // update the list on the page with the new data
                 var lastItem = data.entries[data.entries.length - 1];
+                add_row(lastItem);
+                /*
 
                 var table   = document.getElementById('logTable');
                 var newrow  = table.insertRow();
