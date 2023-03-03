@@ -21,24 +21,21 @@
     <h2 class="header">Latest events: 
         
         <button type="button" class="btn" onclick="load_content()">load</button>
-        <button type="button" class="btn" onclick="render_rows(entries)">render</button>
+        <button type="button" class="btn" onclick="recusrive_render(entries)">render</button>
     </h2>
 
 </header>
 
 <main>
-    <table>
-
-        {% comment %} <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
-        </div> {% endcomment %}
-        <table id="logTable">
-            <tbody>
-
-
-            </tbody>
-    </table>
+        <div style="height: 100px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
+            <table id="logTable">
+                <tbody>
+                    
+                    
+                </tbody>
+            </main>
+        </div>
 </main>
-
 <footer>
     <!-- MAIN FEATURE HERE -->
     <form id="add-entry" style="display:inline-block;">
@@ -66,6 +63,7 @@
 <script>
 
     var entries = [];
+    var table   = document.getElementById('logTable');
 
     // Load content from the /load_content/ url
     function load_content() {
@@ -98,43 +96,46 @@
     */
 
     // Recursive rendering 
-    function render_rows(arr) {
+    function recusrive_render(arr) {
         // Pick out the last item 
         var lastItem = arr.pop();
         //console.log('Last item:')
         //console.log(lastItem)
-        var table   = document.getElementById('logTable');
-
+        
         if (typeof lastItem === 'undefined') {
             console.log('That was the last one :3')
             return 0 
         } else {
             console.log(lastItem);
 
-            var newrow  = table.insertRow();
-
-            // Cells variables
-            var cellValue       = newrow.insertCell(0);
-            var cellCategory    = newrow.insertCell(1);
-            var cellDate        = newrow.insertCell(2);
-            var cellComment     = newrow.insertCell(3);
-            var cellDelButton   = newrow.insertCell(4);
-    
-            // Populate the cells
-            cellValue.innerHTML = lastItem.value;
-            cellCategory.innerHTML = lastItem.category;
-            cellDate.innerHTML = lastItem.date;
-            cellComment.innerHTML = lastItem.comment;
-            cellDelButton.innerHTML = '&times;';
-            // Making it of the right class 
-            newrow.classList.add(lastItem.category.toLowerCase());
+            add_row(lastItem);
     
             // Manual scroll down
             //ScrollDown();
 
             // Go deeper 'v'
-            render_rows(arr);
+            recusrive_render(arr);
         }
+    }
+
+    function add_row(lastItem) {
+        var newrow  = table.insertRow(0);
+
+        // Cells variables
+        var cellValue       = newrow.insertCell(0);
+        var cellCategory    = newrow.insertCell(1);
+        var cellDate        = newrow.insertCell(2);
+        var cellComment     = newrow.insertCell(3);
+        var cellDelButton   = newrow.insertCell(4);
+
+        // Populate the cells
+        cellValue.innerHTML = lastItem.value;
+        cellCategory.innerHTML = lastItem.category;
+        cellDate.innerHTML = lastItem.date;
+        cellComment.innerHTML = lastItem.comment;
+        cellDelButton.innerHTML = '&times;';
+        // Making it of the right class 
+        newrow.classList.add(lastItem.category.toLowerCase());
     }
 
     // Manually (first - showing and then) scrolling down the table
