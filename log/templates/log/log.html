@@ -26,12 +26,27 @@
 
 </header>
 
-<main>
     <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
         <table id="logTable">
             <!-- Container for storing portfolio | it is passed as JSON object -->
-            <div id="entries-container" data-entries='{{ entries|json_script:"entries-data"}}'></div>
+            {% comment %} Might be not relevant anymore {% endcomment %}
+            {% comment %} <div id="entries-container" data-entries='{{ entries|json_script:"entries-data"}}'></div> {% endcomment %}
             <tbody>
+                <tr>
+                    <td>
+                        <p>1 </p>
+                    </td>
+                    <td>
+                        <p>1 </p>
+                    </td>
+                    <td>
+                        <p>1 </p>
+                    </td>
+                    <td>
+                        <p>1 </p>
+                    </td>
+                </tr>
+                
                 {% comment %} {% for entry in entries %}
                 <tr class="{{entry.category|lower}}" id="{{entry.position}}">
                     <td>{{entry.value}}{{entry.currency}}</td>
@@ -59,7 +74,6 @@
             </tbody>
         </table>
     </div>
-</main>
 <footer>
     <!-- MAIN FEATURE HERE -->
     <form id="add-entry" style="display:inline-block;">
@@ -107,7 +121,7 @@
 
     function render_row() {
         // update the list on the page with the new data
-        var lastItem = data.entries[data.entries.length - 1];
+        var lastItem = entries[entries.length - 1];
 
         var table   = document.getElementById('logTable');
         var newrow  = table.insertRow();
