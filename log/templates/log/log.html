@@ -26,7 +26,7 @@
 </header>
 
 <main>
-    <div style="height: 200px; overflow-y: scroll; visibility:hidden;"  id="logTableContainer">
+    <div style="height: 420px; overflow-y: scroll; visibility:hidden;"  id="logTableContainer">
             <table id="logTable">
                 <tbody>
                     
@@ -60,7 +60,7 @@
 {% block script %}
 <script>
 
-    var table   = document.getElementById('logTable');
+    var table = document.getElementById('logTable');
 
     // Load content from the /load_content/ url
     function load_content() {
@@ -90,6 +90,7 @@
             return 0 
         } else {
             // Render this one
+            //console.dir(lastItem)
             add_row(lastItem);
             // Go deeper 'v'
             recusrive_render(arr);
@@ -110,11 +111,25 @@
         // Populate the cells
         cellValue.innerHTML = lastItem.value;
         cellCategory.innerHTML = lastItem.category;
-        cellDate.innerHTML = lastItem.date;
+        cellDate.innerHTML = lastItem.datetime;
         cellComment.innerHTML = lastItem.comment;
-        cellDelButton.innerHTML = '&times;';
+
+        // Create a new button element
+        var deleteButton = document.createElement('button');
+
+        // Set the button's attributes
+        deleteButton.type = 'button';
+        deleteButton.className = 'btn delete';
+        deleteButton.id = lastItem.position + '-remove';
+        deleteButton.onclick = function() { deleteEntry(lastItem.position); };
+        deleteButton.innerHTML = '&times;';
+
+        // Append the button element to the cellDelButton cell
+        cellDelButton.appendChild(deleteButton);
+
         // Making it of the right class 
         newrow.classList.add(lastItem.category.toLowerCase());
+        newrow.id = lastItem.position;
     }
 
     // Manually (first - showing and then) scrolling down the table
@@ -170,6 +185,9 @@
             type: 'POST',
             data: $(this).serialize(),
             success: function(data) {
+
+                recusrive_render(data.entries);
+                /*
                 // update the list on the page with the new data
                 var lastItem = data.entries[data.entries.length - 1];
 
@@ -193,7 +211,7 @@
                 newrow.classList.add(lastItem.category.toLowerCase());
 
                 // Manual scroll down
-                scroll_down();
+                scroll_down(); */
             },
             error: function() {
                 alert('Error adding entry.');
@@ -211,3 +229,52 @@
     
 </script>
 {% endblock script %}
+
+{% comment %} {% for entry in entries %}
+            <tr class="{{entry.category|lower}}" id="{{entry.position}}">
+                <td>{{entry.value}}{{entry.currency}}</td>
+                <td>{{entry.category}}</td>
+                <td>{{entry.datetime}}</td>
+
+                <!-- Show comment if there is one / ellipsis otherwise -->
+                {% if 'comment' in entry %}
+                <td>{{entry.comment}}</td>
+                {% else %}
+                <td>...</td>
+                {% endif %}
+
+                <td>
+                    <button type="button" class="btn delete" id="{{entry.position}}-remove" onclick="deleteEntry({{entry.position}})">
+                        <span>
+                            &times;
+                        </span>
+                    </button>
+                </td>
+
+            </tr>
+            {% endfor %} {% endcomment %}
+
+{% comment %} <button type="button" class="btn" onclick="recount()">recount</button> {% endcomment %}
+
+    {% comment %} // Reassign IDs to the buttons and rows on delete/adding an entry
+    function recount() {
+        // Yeah this is really dumb, gonna make it right while i can
+        var rows = document.querySelectorAll('tr');
+        console.dir(rows);
+
+        rows.forEach((element, index) =>{
+            console.log(`Element #${index}`);
+            console.dir(element);
+
+            // Reset the id of the row
+            element.id = index;
+
+            var button = document.getElementById(`${index}-remove`);
+            console.log(`Corresponding button with id ${button.id}: `)
+            console.dir(button)
+
+            button.id = index;
+            console.log(`ID updated ${button.id}:`)
+            console.dir(button)
+        });
+    }; {% endcomment %}
