@@ -21,7 +21,7 @@
     <h2 class="header">Latest events: 
         
         <button type="button" class="btn" onclick="load_content()">load</button>
-        <button type="button" class="btn" onclick="render_row()">render</button>
+        <button type="button" class="btn" onclick="render_rows(entries)">render</button>
     </h2>
 
 </header>
@@ -98,7 +98,7 @@
     */
 
     // Recursive rendering 
-    function render_row(arr) {
+    function render_rows(arr) {
         // Pick out the last item 
         var lastItem = arr.pop();
         //console.log('Last item:')
@@ -109,7 +109,7 @@
             console.log('That was the last one :3')
             return 0 
         } else {
-            console.log(item);
+            console.log(lastItem);
 
             var newrow  = table.insertRow();
 
@@ -130,10 +130,10 @@
             newrow.classList.add(lastItem.category.toLowerCase());
     
             // Manual scroll down
-            ScrollDown();
+            //ScrollDown();
 
             // Go deeper 'v'
-            recursive(arr);
+            render_rows(arr);
         }
     }
 
