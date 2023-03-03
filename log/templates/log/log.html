@@ -205,62 +205,9 @@
 
     window.onload = function() {
         load_content();
-        
     }
 
 
     
 </script>
 {% endblock script %}
-
-
-
-            
-            {% comment %} {% for entry in entries %}
-            <tr class="{{entry.category|lower}}" id="{{entry.position}}">
-                <td>{{entry.value}}{{entry.currency}}</td>
-                <td>{{entry.category}}</td>
-                <td>{{entry.datetime}}</td>
-
-                <!-- Show comment if there is one / ellipsis otherwise -->
-                {% if 'comment' in entry %}
-                <td>{{entry.comment}}</td>
-                {% else %}
-                <td>...</td>
-                {% endif %}
-
-                <td>
-                    <button type="button" class="btn delete" id="{{entry.position}}-remove" onclick="deleteEntry({{entry.position}})">
-                        <span>
-                            &times;
-                        </span>
-                    </button>
-                </td>
-
-            </tr>
-            {% endfor %} {% endcomment %}
-
-{% comment %} <button type="button" class="btn" onclick="recount()">recount</button> {% endcomment %}
-
-    {% comment %} // Reassign IDs to the buttons and rows on delete/adding an entry
-    function recount() {
-        // Yeah this is really dumb, gonna make it right while i can
-        var rows = document.querySelectorAll('tr');
-        console.dir(rows);
-
-        rows.forEach((element, index) =>{
-            console.log(`Element #${index}`);
-            console.dir(element);
-
-            // Reset the id of the row
-            element.id = index;
-
-            var button = document.getElementById(`${index}-remove`);
-            console.log(`Corresponding button with id ${button.id}: `)
-            console.dir(button)
-
-            button.id = index;
-            console.log(`ID updated ${button.id}:`)
-            console.dir(button)
-        });
-    }; {% endcomment %}
