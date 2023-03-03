@@ -25,19 +25,14 @@ def log(request):
     context = {
         'user': current_user.username,
         'categories': categories,
-        # 'entries'       : entries,
     }
 
-    # if it doesnt work just load a page with only user context
-    # and make a request from another view to load all else
-    # and also write this another view like
     return render(request, 'log/log.html', context)
 
 
 @login_required
 def load_content(request):
     '''Load entries for log page and pass it as JSON'''
-    print('i am doing my loading thing here :3')
     # Get the list of entries -> transform it to the dictionary for jsonifying
     entries_dict = {'entries': collect_entries(request.user)}
 
