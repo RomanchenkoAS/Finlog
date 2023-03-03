@@ -21,7 +21,6 @@
     <h2 class="header">Latest events: 
         
         <button type="button" class="btn" onclick="load_content()">load</button>
-        <button type="button" class="btn" onclick="recusrive_render(entries)">render</button>
     </h2>
 
 </header>
@@ -61,7 +60,6 @@
 {% block script %}
 <script>
 
-    var entries = [];
     var table   = document.getElementById('logTable');
 
     // Load content from the /load_content/ url
@@ -74,8 +72,7 @@
             return response.json();
         })
         .then(data => {
-            entries = data.entries;
-            recusrive_render(entries);
+            recusrive_render(data.entries);
             scroll_down();
         })
         .catch(error => {
@@ -126,7 +123,6 @@
         tableContainer.style.visibility = "visible";
         tableContainer.scrollTop = tableContainer.scrollHeight;
         tableContainer.style.scrollBehavior = "smooth";
-        //scroll-behavior: smooth;
     };
 
 
