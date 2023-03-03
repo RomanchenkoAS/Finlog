@@ -101,10 +101,7 @@
             return response.json();
         })
         .then(data => {
-            entries = data;
-
-            console.log('Loading done, resultin entries:');
-            console.dir(entries);
+            entries = data.entries;
         })
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
