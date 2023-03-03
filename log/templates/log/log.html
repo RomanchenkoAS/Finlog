@@ -19,23 +19,26 @@
     <h1 class="header">MainPage || Log of: {{user}}</h1>
     <hr>
     <h2 class="header">Latest events: 
-        <button type="button" class="btn" onclick="recount()">recount</button>
+        
         <button type="button" class="btn" onclick="load_content()">load</button>
         <button type="button" class="btn" onclick="render_row()">render</button>
     </h2>
 
 </header>
 
-<table>
+<main>
+    <table>
 
-    {% comment %} <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
-    </div> {% endcomment %}
-    <table id="logTable">
-        <tbody>
+        {% comment %} <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
+        </div> {% endcomment %}
+        <table id="logTable">
+            <tbody>
 
 
-        </tbody>
+            </tbody>
     </table>
+</main>
+
 <footer>
     <!-- MAIN FEATURE HERE -->
     <form id="add-entry" style="display:inline-block;">
@@ -116,28 +119,7 @@
         tableContainer.scrollTop = tableContainer.scrollHeight;
     };
 
-    // Reassign IDs to the buttons and rows on delete/adding an entry
-    function recount() {
-        // Yeah this is really dumb, gonna make it right while i can
-        var rows = document.querySelectorAll('tr');
-        console.dir(rows);
 
-        rows.forEach((element, index) =>{
-            console.log(`Element #${index}`);
-            console.dir(element);
-
-            // Reset the id of the row
-            element.id = index;
-
-            var button = document.getElementById(`${index}-remove`);
-            console.log(`Corresponding button with id ${button.id}: `)
-            console.dir(button)
-
-            button.id = index;
-            console.log(`ID updated ${button.id}:`)
-            console.dir(button)
-        });
-    };
 
     // Script to delete an entry with given entry.position
     function deleteEntry(pos) {
@@ -252,3 +234,28 @@
 
             </tr>
             {% endfor %} {% endcomment %}
+
+{% comment %} <button type="button" class="btn" onclick="recount()">recount</button> {% endcomment %}
+
+    {% comment %} // Reassign IDs to the buttons and rows on delete/adding an entry
+    function recount() {
+        // Yeah this is really dumb, gonna make it right while i can
+        var rows = document.querySelectorAll('tr');
+        console.dir(rows);
+
+        rows.forEach((element, index) =>{
+            console.log(`Element #${index}`);
+            console.dir(element);
+
+            // Reset the id of the row
+            element.id = index;
+
+            var button = document.getElementById(`${index}-remove`);
+            console.log(`Corresponding button with id ${button.id}: `)
+            console.dir(button)
+
+            button.id = index;
+            console.log(`ID updated ${button.id}:`)
+            console.dir(button)
+        });
+    }; {% endcomment %}
