@@ -83,25 +83,10 @@
         });
     }
 
-    /*
-    function recursive(arr) {
-        item = arr.pop();
-        if (typeof item === 'undefined') {
-            console.log('That was the last one :3')
-            return 0 
-        } else {
-            console.log(item);
-            recursive(arr);
-        }
-    }
-    */
-
     // Recursive rendering 
     function recusrive_render(arr) {
         // Pick out the last item 
         var lastItem = arr.pop();
-        //console.log('Last item:')
-        //console.log(lastItem)
         
         if (typeof lastItem === 'undefined') {
             console.log('That was the last one :3')
