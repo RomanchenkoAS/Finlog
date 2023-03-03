@@ -27,7 +27,7 @@
 </header>
 
 <main>
-    <div style="height: 200px; overflow-y: scroll; scroll-behavior: smooth; display:none"  id="logTableContainer">
+    <div style="height: 200px; overflow-y: scroll; visibility:hidden;"  id="logTableContainer">
             <table id="logTable">
                 <tbody>
                     
@@ -75,6 +75,8 @@
         })
         .then(data => {
             entries = data.entries;
+            recusrive_render(entries);
+            scroll_down();
         })
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
@@ -105,18 +107,14 @@
             console.log('That was the last one :3')
             return 0 
         } else {
-            console.log(lastItem);
-
+            // Render this one
             add_row(lastItem);
-    
-            // Manual scroll down
-            ScrollDown();
-
             // Go deeper 'v'
             recusrive_render(arr);
         }
     }
 
+    // Rendering just one row in the table (at the top of it)
     function add_row(lastItem) {
         var newrow  = table.insertRow(0);
 
@@ -138,10 +136,12 @@
     }
 
     // Manually (first - showing and then) scrolling down the table
-    function ScrollDown() {
+    function scroll_down() {
         var tableContainer = document.getElementById("logTableContainer");
-        tableContainer.style.display = "block";
+        tableContainer.style.visibility = "visible";
         tableContainer.scrollTop = tableContainer.scrollHeight;
+        tableContainer.style.scrollBehavior = "smooth";
+        //scroll-behavior: smooth;
     };
 
 
@@ -172,7 +172,6 @@
             console.error('Issue with fetch operation: ', error);
         });
 
-        recount();
     };
 
     // Adding a new entry
@@ -213,7 +212,7 @@
                 newrow.classList.add(lastItem.category.toLowerCase());
 
                 // Manual scroll down
-                ScrollDown();
+                scroll_down();
             },
             error: function() {
                 alert('Error adding entry.');
