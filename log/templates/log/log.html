@@ -27,13 +27,12 @@
 </header>
 
 <main>
-        <div style="height: 100px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
+    <div style="height: 200px; overflow-y: scroll; scroll-behavior: smooth; display:none"  id="logTableContainer">
             <table id="logTable">
                 <tbody>
                     
-                    
                 </tbody>
-            </main>
+            </table>
         </div>
 </main>
 <footer>
@@ -111,7 +110,7 @@
             add_row(lastItem);
     
             // Manual scroll down
-            //ScrollDown();
+            ScrollDown();
 
             // Go deeper 'v'
             recusrive_render(arr);
