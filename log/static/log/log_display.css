@@ -40,6 +40,10 @@ table td {
     margin-right: 10px;
 }
 
+#logTableContainer:webkit-scrollbar {
+    display: none;
+}
+
 #logTableContainer::-webkit-scrollbar {
     display: none;
 }
