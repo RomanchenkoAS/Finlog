@@ -40,8 +40,12 @@ table td {
     margin-right: 10px;
 }
 
-#logTableContainer:webkit-scrollbar {
-    display: none;
+#logTableContainer {
+    height: 420px;
+    overflow-y: scroll; 
+    visibility:hidden; 
+    margin: 0 auto; 
+    width:50%;
 }
 
 #logTableContainer::-webkit-scrollbar {
