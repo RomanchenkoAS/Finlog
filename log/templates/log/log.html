@@ -26,7 +26,7 @@
 </header>
 
 <main>
-    <div style="height: 420px; overflow-y: scroll; visibility:hidden;"  id="logTableContainer">
+    <div class="log" id="logTableContainer">
             <table id="logTable">
                 <tbody>
                     
@@ -115,10 +115,11 @@
         var cellDelButton   = newrow.insertCell(4);
 
         // Populate the cells
-        cellValue.innerHTML = `${lastItem.value} ${lastItem.currency}`;
-        cellCategory.innerHTML = lastItem.category;
-        cellDate.innerHTML = lastItem.datetime;
+        cellValue.innerHTML     = `${lastItem.value} ${lastItem.currency}`;
+        cellCategory.innerHTML  = lastItem.category;
+        cellDate.innerHTML      = lastItem.datetime;
 
+        // Comment is ... if empty
         if (lastItem.comment == '') {
             cellComment.innerHTML = '...';
         } else {
