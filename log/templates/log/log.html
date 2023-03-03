@@ -85,8 +85,9 @@
     }
 
     function render_row() {
+        
         // update the list on the page with the new data
-        var lastItem = entries[entries.length - 1];
+        var lastItem = entries.pop();
         console.log('Last item:')
         console.log(lastItem)
         var table   = document.getElementById('logTable');
