@@ -32,66 +32,67 @@
 {% endblock style %}
 
 {% block body %}
+<main>
+    <h1 class="header">MainPage || Log of: {{user}}</h1>
+    {% comment %} <hr style="height:5px; color:black;"> {% endcomment %}
+    <h2 class="header">Latest events: 
+        <button type="button" class="btn" onclick="recount()">recount</button>
+        <button type="button" class="btn" onclick="load_content()">load</button>
+    </h2>
+    <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
+        <table id="logTable">
+            <!-- Container for storing portfolio | it is passed as JSON object -->
+            <div id="entries-container" data-entries='{{ entries|json_script:"entries-data"}}'></div>
+            <tbody>
+                {% comment %} {% for entry in entries %}
+                <tr class="{{entry.category|lower}}" id="{{entry.position}}">
+                    <td>{{entry.value}}{{entry.currency}}</td>
+                    <td>{{entry.category}}</td>
+                    <td>{{entry.datetime}}</td>
 
-<h1 class="header">MainPage || Log of: {{user}}</h1>
-{% comment %} <hr style="height:5px; color:black;"> {% endcomment %}
-<h2 class="header">Latest events: 
-    <button type="button" class="btn" onclick="recount()">recount</button>
-    <button type="button" class="btn" onclick="load_content()">load</button>
-</h2>
-<div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
-    <table id="logTable">
-        <!-- Container for storing portfolio | it is passed as JSON object -->
-        <div id="entries-container" data-entries='{{ entries|json_script:"entries-data"}}'></div>
-        <tbody>
-            {% comment %} {% for entry in entries %}
-            <tr class="{{entry.category|lower}}" id="{{entry.position}}">
-                <td>{{entry.value}}{{entry.currency}}</td>
-                <td>{{entry.category}}</td>
-                <td>{{entry.datetime}}</td>
+                    <!-- Show comment if there is one / ellipsis otherwise -->
+                    {% if 'comment' in entry %}
+                    <td>{{entry.comment}}</td>
+                    {% else %}
+                    <td>...</td>
+                    {% endif %}
 
-                <!-- Show comment if there is one / ellipsis otherwise -->
-                {% if 'comment' in entry %}
-                <td>{{entry.comment}}</td>
-                {% else %}
-                <td>...</td>
-                {% endif %}
+                    <td>
+                        <button type="button" class="btn delete" id="{{entry.position}}-remove" onclick="deleteEntry({{entry.position}})">
+                            <span>
+                                &times;
+                            </span>
+                        </button>
+                    </td>
 
-                <td>
-                    <button type="button" class="btn delete" id="{{entry.position}}-remove" onclick="deleteEntry({{entry.position}})">
-                        <span>
-                            &times;
-                        </span>
-                    </button>
-                </td>
+                </tr>
+                {% endfor %} {% endcomment %}
 
-            </tr>
-            {% endfor %} {% endcomment %}
-
-        </tbody>
-    </table>
-</div>
-
-<!-- MAIN FEATURE HERE -->
-<form id="add-entry" style="display:inline-block;">
-        <!-- Value field -->
-        <input name="value" id="input-value" placeholder="Value:">
-        <!-- Category field -->
-        <select name="category" id="input-category" class="form-select">
-            {% for category in categories %}
-                {% if forloop.counter == 1 %}
-                <option selected value="{{ category }}">{{category}}</option>
-                {% else %}
-                <option value="{{ category }}">{{category}}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <!-- Comment field -->
-        <input name="comment" id="input-comment" placeholder="Comment:">
-        <!-- Add button -->
-        <button class="btn" type="submit">+</button>
-</form>
-
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer>
+    <!-- MAIN FEATURE HERE -->
+    <form id="add-entry" style="display:inline-block;">
+            <!-- Value field -->
+            <input name="value" id="input-value" placeholder="Value:">
+            <!-- Category field -->
+            <select name="category" id="input-category" class="form-select">
+                {% for category in categories %}
+                    {% if forloop.counter == 1 %}
+                    <option selected value="{{ category }}">{{category}}</option>
+                    {% else %}
+                    <option value="{{ category }}">{{category}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <!-- Comment field -->
+            <input name="comment" id="input-comment" placeholder="Comment:">
+            <!-- Add button -->
+            <button class="btn" type="submit">+</button>
+    </form>
+</footer>
 {% endblock body %}
 
 {% block script %}
