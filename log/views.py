@@ -37,6 +37,7 @@ def load_content(request):
     entries_dict = {'entries': collect_entries(request.user)}
 
     # Send back JSON
+    # Damn bitch you live like this??
     return JsonResponse(entries_dict)
 
 
