@@ -101,8 +101,10 @@
     function add_row(lastItem, position) {
         if (position == 'top') {
             var newrow  = table.insertRow(0);
-        } else {
+        } else if (position == 'bottom') {
             var newrow  = table.insertRow();
+        } else {
+            console.error(`Invalid function call argument: ${position}`);
         }
 
         // Cells variables
@@ -191,7 +193,7 @@
             success: function(data) {
                 // update the list on the page with the new data
                 var lastItem = data.entries[data.entries.length - 1];
-                add_row(lastItem);
+                add_row(lastItem, 'bottom');
                 /*
 
                 var table   = document.getElementById('logTable');
