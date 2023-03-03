@@ -77,6 +77,24 @@
 {% block script %}
 <script>
 
+    var entries = [];
+
+    // Load content from the /load_content/ url
+    function load_content() {
+        fetch(`/load_content/`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Not ok response');
+            }
+            return response.json();
+        })
+        .then(data => {
+            entries = data;
+        })
+        .catch(error => {
+            console.error('Issue with fetch operation: ', error);
+        });
+    }
 
     // Manually (first - showing and then) scrolling down the table
     function ScrollDown() {
@@ -185,25 +203,7 @@
         recount();
     });
 
-    function load_content() {
-        fetch(`/load_content/`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Not ok response');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Issue with fetch operation: ', error);
-        });
-    }
-
     window.onload = function() {
-        //var entriesData = JSON.parse(document.getElementById('entries-data'));
-        //console.log(entriesData);
 
         
     }
