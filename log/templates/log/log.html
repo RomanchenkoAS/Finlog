@@ -115,10 +115,15 @@
         var cellDelButton   = newrow.insertCell(4);
 
         // Populate the cells
-        cellValue.innerHTML = lastItem.value;
+        cellValue.innerHTML = `${lastItem.value} ${lastItem.currency}`;
         cellCategory.innerHTML = lastItem.category;
         cellDate.innerHTML = lastItem.datetime;
-        cellComment.innerHTML = lastItem.comment;
+
+        if (lastItem.comment == '') {
+            cellComment.innerHTML = '...';
+        } else {
+            cellComment.innerHTML = lastItem.comment;
+        }
 
         // Create a new button element
         var deleteButton = document.createElement('button');
