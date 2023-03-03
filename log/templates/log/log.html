@@ -8,7 +8,26 @@
 {% endblock link %}
 
 {% block style %}
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Set the height of the body to fill the viewport */
+      display: flex;
+      flex-direction: column;
+    }
 
+    main {
+      flex-grow: 1; /* Make the main content fill the available space */
+      background-color: lightblue;
+      padding: 20px;
+    }
+
+    footer {
+      background-color: lightgray;
+      padding: 20px;
+    }
+</style>
 {% endblock style %}
 
 {% block body %}
