@@ -26,26 +26,15 @@
 
 </header>
 
+<table>
+
     <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
         <table id="logTable">
             <!-- Container for storing portfolio | it is passed as JSON object -->
             {% comment %} Might be not relevant anymore {% endcomment %}
             {% comment %} <div id="entries-container" data-entries='{{ entries|json_script:"entries-data"}}'></div> {% endcomment %}
             <tbody>
-                <tr>
-                    <td>
-                        <p>1 </p>
-                    </td>
-                    <td>
-                        <p>1 </p>
-                    </td>
-                    <td>
-                        <p>1 </p>
-                    </td>
-                    <td>
-                        <p>1 </p>
-                    </td>
-                </tr>
+
                 
                 {% comment %} {% for entry in entries %}
                 <tr class="{{entry.category|lower}}" id="{{entry.position}}">
@@ -113,6 +102,9 @@
         })
         .then(data => {
             entries = data;
+
+            console.log('Loading done, resultin entries:');
+            console.dir(entries);
         })
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
@@ -254,7 +246,7 @@
     });
 
     window.onload = function() {
-
+        load_content();
         
     }
 
