@@ -31,35 +31,8 @@
     {% comment %} <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
     </div> {% endcomment %}
     <table id="logTable">
-        <!-- Container for storing portfolio | it is passed as JSON object -->
-        {% comment %} Might be not relevant anymore {% endcomment %}
-        {% comment %} <div id="entries-container" data-entries='{{ entries|json_script:"entries-data"}}'></div> {% endcomment %}
         <tbody>
 
-            
-            {% comment %} {% for entry in entries %}
-            <tr class="{{entry.category|lower}}" id="{{entry.position}}">
-                <td>{{entry.value}}{{entry.currency}}</td>
-                <td>{{entry.category}}</td>
-                <td>{{entry.datetime}}</td>
-
-                <!-- Show comment if there is one / ellipsis otherwise -->
-                {% if 'comment' in entry %}
-                <td>{{entry.comment}}</td>
-                {% else %}
-                <td>...</td>
-                {% endif %}
-
-                <td>
-                    <button type="button" class="btn delete" id="{{entry.position}}-remove" onclick="deleteEntry({{entry.position}})">
-                        <span>
-                            &times;
-                        </span>
-                    </button>
-                </td>
-
-            </tr>
-            {% endfor %} {% endcomment %}
 
         </tbody>
     </table>
@@ -252,3 +225,30 @@
     
 </script>
 {% endblock script %}
+
+
+
+            
+            {% comment %} {% for entry in entries %}
+            <tr class="{{entry.category|lower}}" id="{{entry.position}}">
+                <td>{{entry.value}}{{entry.currency}}</td>
+                <td>{{entry.category}}</td>
+                <td>{{entry.datetime}}</td>
+
+                <!-- Show comment if there is one / ellipsis otherwise -->
+                {% if 'comment' in entry %}
+                <td>{{entry.comment}}</td>
+                {% else %}
+                <td>...</td>
+                {% endif %}
+
+                <td>
+                    <button type="button" class="btn delete" id="{{entry.position}}-remove" onclick="deleteEntry({{entry.position}})">
+                        <span>
+                            &times;
+                        </span>
+                    </button>
+                </td>
+
+            </tr>
+            {% endfor %} {% endcomment %}
