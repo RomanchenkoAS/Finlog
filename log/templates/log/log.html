@@ -9,49 +9,7 @@
 
 {% block style %}
 <style>
-    {% comment %} nav {
-        height: 30px; /* Set the height of the navigation bar */
-        position: fixed; /* Make the navigation bar fixed */
-        top: 0; /* Position the navigation bar at the top of the page */
-        width: 100%; /* Make the navigation bar full width */
-        background-color: lightgray;
-        padding: 10px;
-      }
 
-      body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      
-
-    * {
-        box-sizing: border-box;
-      }
-
-    header {
-        margin-top: 30px;
-    }
-    
-    main {
-        min-height: calc(100vh - 60px);
-        flex-grow: 1; /* Make the main content fill the available space */
-        background-color: lightblue;
-        padding: 20px;
-    }
-    
-    footer {
-        background-color: lightgray;
-        padding: 0px;
-    } {% endcomment %}
-
-    main {
-        flex: 1;
-        background-color: lightblue;
-        padding: 20px;
-      }
 
 </style> 
 {% endblock style %}
@@ -59,13 +17,15 @@
 {% block body %}
 <header>
     <h1 class="header">MainPage || Log of: {{user}}</h1>
-    <hr style="height:5px; color:black;">
+    <hr>
     <h2 class="header">Latest events: 
         <button type="button" class="btn" onclick="recount()">recount</button>
         <button type="button" class="btn" onclick="load_content()">load</button>
+        <button type="button" class="btn" onclick="render_row()">render</button>
     </h2>
 
 </header>
+
 <main>
     <div style="height: 300px; overflow-y: scroll; scroll-behavior: smooth; display:none" id="logTableContainer">
         <table id="logTable">
