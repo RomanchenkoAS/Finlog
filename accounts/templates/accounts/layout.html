@@ -25,13 +25,14 @@
 
     <body>
         <!-- Navigation here -->
-        <ul>
-            <li style="display: inline-block;"><a class="a-empty" href="/">• Index </a></li>
-            <li style="display: inline-block;"><a class="a-empty" href="/register">• Register </a></li>
-            <li style="display: inline-block;"><a class="a-empty" href="/login">• Login </a></li>
-            <li style="display: inline-block;"><a class="a-empty" href="/logout">• Logout </a></li>
-        </ul>
-
+        <nav>
+            <ul>
+                <li style="display: inline-block;"><a class="a-empty" href="/">• Index </a></li>
+                <li style="display: inline-block;"><a class="a-empty" href="/register">• Register </a></li>
+                <li style="display: inline-block;"><a class="a-empty" href="/login">• Login </a></li>
+                <li style="display: inline-block;"><a class="a-empty" href="/logout">• Logout </a></li>
+            </ul>
+        </nav>
 
         {% if messages_list %}
             {% for message in messages_list %}
