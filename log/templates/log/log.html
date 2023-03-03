@@ -113,8 +113,13 @@
 
     function render_row() {
         // update the list on the page with the new data
+        console.log('Start render of:')
+        console.log(entries)
+        console.log('Length:')
+        console.log(entries.length)
         var lastItem = entries[entries.length - 1];
-
+        console.log('Last item:')
+        console.log(lastItem)
         var table   = document.getElementById('logTable');
         var newrow  = table.insertRow();
 
