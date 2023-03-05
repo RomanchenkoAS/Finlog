@@ -48,24 +48,22 @@
     <!-- MODALS-->
     
     <!-- Modal for categories-->
-    <div class="modal-container">
         <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Category editor</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                Customize categories from here :3
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Category editor</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    Customize categories from here :3
+                    </div>
+                    {% comment %} <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> {% endcomment %}
                 </div>
             </div>
-            </div>
-        </div>
         </div>
         
         {% if messages_list %}
@@ -93,22 +91,7 @@
             $(".close").click(function() {
               $(this).parent().hide();
             });
-          });
-
-        function showModal() {
-        // Get a reference to the modal element
-        const modalElement = document.getElementById('exampleModal');
-        
-        // Create a new Bootstrap modal object from the modal element
-        const modal = new bootstrap.Modal(modalElement);
-        
-        // Show the modal
-        modal.show();
-        }
-
-          
-          
-          
+          });               
     </script>
 
 </html>
