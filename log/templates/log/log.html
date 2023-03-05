@@ -16,6 +16,31 @@
     <hr>
     <h2 class="header center">Latest events: </h2>
 
+    <!-- Modal for categories-->
+    <div class="modal" id="categoriesModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="categoriesModalLabel">Category editor</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    {% if categories %}
+                    <!-- <p> Customize categories and add new ones from here: </p>
+                    <hr> -->
+                        {% for category in categories %}
+                            <p class={{category}}>{{category}}</p>
+                        {% endfor %}
+                    {% endif%}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </header>
 
 <main>
