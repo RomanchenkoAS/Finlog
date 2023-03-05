@@ -10,7 +10,7 @@ table td {
 
 }
 
-.form-select {
+/* .form-select {
     display: inline-block;
     padding: 0.275rem 2.25rem 0.275rem 0.75rem;
     font-size: 1rem;
@@ -18,15 +18,21 @@ table td {
     line-height: 1.5;
     color: #212529;
     background-color: #fff;
-    /* background-image: url(<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>); */
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 12px;
-    /* border: 1px solid #ced4da; */
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    
+} */
+/* border: 1px solid #ced4da; */
+/* background-image: url(<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>); */
 
-}
+.form-inline .form-select {
+    display: inline-block;
+    width: 30%;
+  }
+  
 
 #input-value {
     width: 7rem;
