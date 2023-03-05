@@ -16,9 +16,9 @@
 
 {% block body %}
 <header>
-    <h1 class="header">MainPage || Log of: {{user}}</h1>
+    <h1 class="header center">MainPage || Log of: {{user}}</h1>
     <hr>
-    <h2 class="header">Latest events: 
+    <h2 class="header center">Latest events: 
         
         {% comment %} <button type="button" class="btn" onclick="load_content()">load</button> {% endcomment %}
     </h2>
@@ -26,7 +26,7 @@
 </header>
 
 <main>
-    <div class="log" id="logTableContainer">
+    <div class="center" id="logTableContainer">
             <table id="logTable">
                 <tbody>
                     
@@ -36,7 +36,7 @@
 </main>
 <footer>
     <!-- MAIN FEATURE HERE -->
-    <div class="log">
+    <div class="center">
         <form id="add-entry" style="display:inline-block;">
                 <!-- Value field -->
                 <input name="value" id="input-value" placeholder="Value:">

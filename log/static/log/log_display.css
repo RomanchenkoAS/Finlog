@@ -53,10 +53,14 @@ table td {
     display: none;
 }
 
-.log {
+.center {
     margin: 0 auto; 
     width:50%;
 }
+
+/* .center */
+
+
 /* CATEGORIES */
 /* 'Other', 'Groceries', 'Pharmacy', 'Rent', 'Clothes' */
 
