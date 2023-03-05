@@ -18,11 +18,12 @@
 </header>
 
 <main>
-    <!-- Container for my log table -->
+    <!-- Container for my log table || fills with load_content() function-->
     <div class="center" id="logTableContainer">
             <table id="logTable"><tbody></tbody></table>
     </div>
 </main>
+
 <footer>
     <!-- MAIN FEATURE HERE -->
     <div class="center">
@@ -65,7 +66,7 @@
         return currencyFormatter.format(value);
     }
 
-    // Load content from the /load_content/ url
+    // Load content from the /load_content/ url -- used on window load -- includes recusrive_render & scroll_down
     function load_content() {
         fetch(`/load_content/`)
         .then(response => {
