@@ -121,6 +121,18 @@ table td {
 .gas {
     background-color: rgba(79, 79, 185, 0.842);
 } */
+/* 
+Housing: rent/mortgage payments, property taxes, home insurance, utilities, maintenance costs
+Transportation: car payments, gas, insurance, maintenance costs, public transportation
+Food: groceries, dining out, snacks, beverages
+Entertainment: movies, concerts, hobbies, vacations, subscriptions, books
+Personal Care: haircuts, salon services, grooming products, health and wellness expenses
+Utilities: cell phone bills, internet, cable or satellite TV, electricity, water
+Clothing: apparel, shoes, accessories, dry cleaning, laundry
+Education: tuition, textbooks, school supplies
+Medical: doctor visits, prescriptions, dental care, vision care
+Savings: emergency fund, retirement savings, investment accounts
+ */
 
 .housing {
     background-color: darkblue;
