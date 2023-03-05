@@ -45,7 +45,7 @@
 
     <!-- MODALS-->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" onclick="showModal()">
         Open Modal
       </button>
     
@@ -97,13 +97,20 @@
             });
           });
 
-        const myModal = new bootstrap.Modal('#exampleModal', {
-        keyboard: false
-        });
-
-        function modalshow() {
-            
+        function showModal() {
+        // Get a reference to the modal element
+        const modalElement = document.getElementById('exampleModal');
+        
+        // Create a new Bootstrap modal object from the modal element
+        const modal = new bootstrap.Modal(modalElement);
+        
+        // Show the modal
+        modal.show();
         }
+
+          
+          
+          
     </script>
 
 </html>
