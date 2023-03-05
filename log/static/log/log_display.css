@@ -46,8 +46,6 @@ table td {
     height: 420px;
     overflow-y: scroll; 
     visibility:hidden; 
-    margin: 0 auto; 
-    width:50%;
 }
 
 /* Hide scrollbar */
@@ -55,7 +53,10 @@ table td {
     display: none;
 }
 
-
+.log {
+    margin: 0 auto; 
+    width:50%;
+}
 /* CATEGORIES */
 /* 'Other', 'Groceries', 'Pharmacy', 'Rent', 'Clothes' */
 

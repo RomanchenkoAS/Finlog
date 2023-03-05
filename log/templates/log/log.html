@@ -36,24 +36,26 @@
 </main>
 <footer>
     <!-- MAIN FEATURE HERE -->
-    <form id="add-entry" style="display:inline-block;">
-            <!-- Value field -->
-            <input name="value" id="input-value" placeholder="Value:">
-            <!-- Category field -->
-            <select name="category" id="input-category" class="form-select">
-                {% for category in categories %}
-                    {% if forloop.counter == 1 %}
-                    <option selected value="{{ category }}">{{category}}</option>
-                    {% else %}
-                    <option value="{{ category }}">{{category}}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-            <!-- Comment field -->
-            <input name="comment" id="input-comment" placeholder="Comment:">
-            <!-- Add button -->
-            <button class="btn" type="submit">+</button>
-    </form>
+    <div class="log">
+        <form id="add-entry" style="display:inline-block;">
+                <!-- Value field -->
+                <input name="value" id="input-value" placeholder="Value:">
+                <!-- Category field -->
+                <select name="category" id="input-category" class="form-select">
+                    {% for category in categories %}
+                        {% if forloop.counter == 1 %}
+                        <option selected value="{{ category }}">{{category}}</option>
+                        {% else %}
+                        <option value="{{ category }}">{{category}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <!-- Comment field -->
+                <input name="comment" id="input-comment" placeholder="Comment:">
+                <!-- Add button -->
+                <button class="btn" type="submit">+</button>
+        </form>
+    </div>
 </footer>
 {% endblock body %}
 
