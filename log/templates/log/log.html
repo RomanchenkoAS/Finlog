@@ -27,9 +27,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    {% if categories %}
-                    <!-- <p> Customize categories and add new ones from here: </p>
-                    <hr> -->
+                    <button class="collapsible">Click to expand/collapse</button>
+                    <div class="content">
+                        {% if categories %}
+                        <!-- <p> Customize categories and add new ones from here: </p>
+                        <hr> -->
                         {% for category in categories %}
                         {% load static %}
                         <span>
@@ -39,7 +41,9 @@
                             </p>
                         </span>
                         {% endfor %}
-                    {% endif%}
+                        {% endif%}]
+                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
@@ -89,6 +93,19 @@
     <script src="{% static 'log/log_management.js' %}"></script>
     {% comment %} Scripts for modal windows management {% endcomment %}
     <script>
+        var coll = document.getElementsByClassName("collapsible");
+		var i;
 
+		for (i = 0; i < coll.length; i++) {
+			coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.maxHeight){
+					content.style.maxHeight = null;
+				} else {
+					content.style.maxHeight = content.scrollHeight + "px";
+				}
+			});
+		}
     </script>
 {% endblock script %}
