@@ -6,6 +6,7 @@
         {% load static %}
         <!-- Main stylesheet -->
         <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
 
         {% block link %} {% endblock link %}
         <!-- Bootstrap | style / script & Popper & JQuery -->
@@ -27,10 +28,13 @@
         <!-- Navigation here -->
         <nav>
             <ul>
-                <li style="display: inline-block;"><a class="a-empty" href="/">• Index </a></li>
-                <li style="display: inline-block;"><a class="a-empty" href="/register">• Register </a></li>
-                <li style="display: inline-block;"><a class="a-empty" href="/login">• Login </a></li>
-                <li style="display: inline-block;"><a class="a-empty" href="/logout">• Logout </a></li>
+                <li><a class="a-empty" href="/">• Index </a></li>
+                <li><a class="a-empty" href="/register">• Register </a></li>
+                <li><a class="a-empty" href="/login">• Login </a></li>
+                <li><a class="a-empty" href="/logout">• Logout </a></li>
+
+                <li class="right"><a class="a-empty" href="/logout">• Settings </a></li>
+                <li class="right"><a class="a-empty" href="/logout">• Github </a></li>
             </ul>
         </nav>
 
