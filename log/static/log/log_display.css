@@ -29,11 +29,13 @@ table td {
     width: 12rem;
 }
 
+/* Delete entry button */
 .delete:focus {
     outline: none;
     box-shadow: none!important;
 }
 
+/* + button to add an entry */
 #add-entry {
     display: inline-block;
     vertical-align: middle;
@@ -48,6 +50,7 @@ table td {
     width:50%;
 }
 
+/* Hide scrollbar */
 #logTableContainer::-webkit-scrollbar {
     display: none;
 }

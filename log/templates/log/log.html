@@ -20,7 +20,7 @@
     <hr>
     <h2 class="header">Latest events: 
         
-        <button type="button" class="btn" onclick="load_content()">load</button>
+        {% comment %} <button type="button" class="btn" onclick="load_content()">load</button> {% endcomment %}
     </h2>
 
 </header>
@@ -64,6 +64,12 @@
 
     function formatter(value, currency) {
         // implementation
+        let currencyFormatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: currency,
+        });
+
+        return currencyFormatter.format(value);
     }
 
     // Load content from the /load_content/ url
@@ -119,7 +125,8 @@
         var cellDelButton   = newrow.insertCell(4);
 
         // Populate the cells
-        cellValue.innerHTML     = `${lastItem.value} ${lastItem.currency}`;
+        cellValue.innerHTML     = formatter(lastItem.value, lastItem.currency);
+        //cellValue.innerHTML     = `${lastItem.value} ${lastItem.currency}`;
         cellCategory.innerHTML  = lastItem.category;
         cellDate.innerHTML      = lastItem.datetime;
 
