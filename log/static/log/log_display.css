@@ -9,6 +9,12 @@ table td {
 
 }
 
+table tr {
+    border-color: #fff;
+    border-width: 2px;
+    border-radius: 1rem;
+}
+
 /* Shadows form-select from BS with few adjustments */
 .form-selector {
     border: 1px solid black;
@@ -72,10 +78,9 @@ table td {
     overflow-y: scroll;
     visibility: hidden;
     border: 1px solid black;
-    /* border width, style, and color */
     padding: 10px;
-    /* add some padding for better visibility */
     text-align: center;
+    border-radius: 1rem;
 }
 
 /* Hide scrollbar */
@@ -110,20 +115,24 @@ Medical: doctor visits, prescriptions, dental care, vision care
 Savings: emergency fund, retirement savings, investment accounts
  */
 
+.other {
+    background-color: lightgrey;
+}
+
 .housing {
-    background-color: darkblue;
+    background-color: lightblue;
 }
 
 .transportation {
-    background-color: red;
+    background-color: rgb(255 128 128);
 }
 
 .food {
-    background-color: green;
+    background-color: lightgreen;
 }
 
 .entertainment {
-    background-color: purple;
+    background-color: rgb(206 123 206);
 }
 
 .personal-care {
@@ -143,7 +152,7 @@ Savings: emergency fund, retirement savings, investment accounts
 }
 
 .medical {
-    background-color: darkgreen;
+    background-color: lightseagreen;
 }
 
 .savings {
