@@ -213,36 +213,13 @@
                 // update the list on the page with the new data
                 var lastItem = data.entries[data.entries.length - 1];
                 add_row(lastItem, 'bottom');
-                /*
 
-                var table   = document.getElementById('logTable');
-                var newrow  = table.insertRow();
-
-                // Cells variables
-                var cellValue       = newrow.insertCell(0);
-                var cellCategory    = newrow.insertCell(1);
-                var cellDate        = newrow.insertCell(2);
-                var cellComment     = newrow.insertCell(3);
-                var cellDelButton   = newrow.insertCell(4);
-
-                // Populate the cells
-                cellValue.innerHTML = lastItem.value;
-                cellCategory.innerHTML = lastItem.category;
-                cellDate.innerHTML = lastItem.date;
-                cellComment.innerHTML = lastItem.comment;
-                cellDelButton.innerHTML = '&times;';
-                // Making it of the right class 
-                newrow.classList.add(lastItem.category.toLowerCase());
-
-                // Manual scroll down
-                scroll_down(); */
+                scroll_down();
             },
             error: function() {
                 alert('Error adding entry.');
             }
         });
-
-        recount();
     });
 
     window.onload = function() {
