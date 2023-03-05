@@ -35,7 +35,7 @@
                         <span>
                             <p class="{{category|lower}} small-margin ">{{category}} 
                             <img width="16" height="16" src="{% static 'log/edit.png'%}">
-                            <input type="color" id="colorpicker" value="#0000ff">
+                            <input style="display:none;" type="color" id="colorpicker" value="#0000ff">
                             </p>
                         </span>
                         {% endfor %}
@@ -87,4 +87,8 @@
 
 {% block script %}
     <script src="{% static 'log/log_management.js' %}"></script>
+    {% comment %} Scripts for modal windows management {% endcomment %}
+    <script>
+
+    </script>
 {% endblock script %}
