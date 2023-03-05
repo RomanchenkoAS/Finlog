@@ -23,7 +23,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="categoriesModalLabel">Category editor</h1>
+                    <h1 class="modal-title fs-5">Category editor</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -33,9 +33,9 @@
                         {% if categories %}
                         {% for category in categories %}
                         <span>
-                            <p class="{{category|lower}} small-margin ">{{category}} 
+                            <p class="{{category|lower}} small-margin">{{category}} 
                             <img class="edit_button" src="{% static 'log/edit.png'%}">
-                            <input class="color_picker" type="color" id="colorpicker" value="#0000ff">
+                            <input class="color_picker" type="color" id="{{category}}-colorpicker" value="#0000ff">
                             </p>
                         </span>
                         {% endfor %}
@@ -50,7 +50,7 @@
                         <span>
                             <p class="{{category|lower}} small-margin ">{{category}} 
                             <img class="edit_button" src="{% static 'log/edit.png'%}">
-                            <input class="color_picker" type="color" id="colorpicker" value="#0000ff">
+                            <input class="color_picker" type="color" id="{{category}}-colorpicker" value="#0000ff">
                             </p>
                         </span>
                         {% endfor %}
@@ -107,6 +107,22 @@
     {% comment %} Scripts for modal windows management {% endcomment %}
     <script>
 
+        // Interactive colorpickers
+        var colorPickers = document.getElementsByClassName("color_picker");
+
+        for (var i = 0; i < colorPickers.length; i++) {
+            colorPickers[i].addEventListener('input', function() {
+                // Take this color
+                let colorCode = this.value;
+                // Get corresponding category
+                let category = this.id.substring(0, this.id.indexOf('-'));
+
+                //console.log(category);
+                
+            });
+        };
+          
+
         // Script for collapsible headers 
         var coll = document.getElementsByClassName("collapsible");
 
@@ -118,8 +134,8 @@
 					content.style.maxHeight = null;
 				} else {
 					content.style.maxHeight = content.scrollHeight + "px";
-				}
+				};
 			});
-		}
+		};
     </script>
 {% endblock script %}
