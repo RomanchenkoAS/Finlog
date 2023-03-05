@@ -27,12 +27,26 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p> Customize categories and <a href="">add new</a> from here: </p>
+                    <p> Customize categories and <a class="a-empty-blue" href="">add new</a> from here: </p>
                     <button class="collapsible small-margin">Default ▼ </button>
                     <div class="content">
                         {% if categories %}
                         {% for category in categories %}
-                        {% load static %}
+                        <span>
+                            <p class="{{category|lower}} small-margin ">{{category}} 
+                            <img class="edit_button" src="{% static 'log/edit.png'%}">
+                            <input class="color_picker" type="color" id="colorpicker" value="#0000ff">
+                            </p>
+                        </span>
+                        {% endfor %}
+                        {% endif%}
+                    </div>
+                    <button class="collapsible small-margin">Custom ▼ </button>
+
+                    {% comment %} Needs some work so to say ;) {% endcomment %}
+                    <div class="content">
+                        {% if custom_categories %}
+                        {% for category in custom_categories %}
                         <span>
                             <p class="{{category|lower}} small-margin ">{{category}} 
                             <img class="edit_button" src="{% static 'log/edit.png'%}">

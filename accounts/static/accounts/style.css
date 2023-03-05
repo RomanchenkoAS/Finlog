@@ -48,6 +48,13 @@ button {
     text-decoration: underline;
     font-weight: bold;
 }
+.a-empty-blue {
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
 
 .auth-form,
 .register-form {
