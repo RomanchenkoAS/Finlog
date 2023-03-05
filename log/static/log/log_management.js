@@ -1,5 +1,6 @@
 var table = document.getElementById('logTable');
 
+// Proper format for money values
 function formatter(value, currency) {
     // implementation
     let currencyFormatter = new Intl.NumberFormat('en-US', {
@@ -13,29 +14,29 @@ function formatter(value, currency) {
 // Load content from the /load_content/ url -- used on window load -- includes recusrive_render & scroll_down
 function load_content() {
     fetch(`/load_content/`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Not ok response');
-        }
-        return response.json();
-    })
-    .then(data => {
-        recusrive_render(data.entries);
-        scroll_down();
-    })
-    .catch(error => {
-        console.error('Issue with fetch operation: ', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Not ok response');
+            }
+            return response.json();
+        })
+        .then(data => {
+            recusrive_render(data.entries);
+            scroll_down();
+        })
+        .catch(error => {
+            console.error('Issue with fetch operation: ', error);
+        });
 };
 
 // Recursive rendering 
 function recusrive_render(arr) {
     // Pick out the last item 
     var lastItem = arr.pop();
-    
+
     if (typeof lastItem === 'undefined') {
         console.log('That was the last one :3')
-        return 0 
+        return 0
     } else {
         // Render this one
         //console.dir(lastItem)
@@ -45,28 +46,28 @@ function recusrive_render(arr) {
     }
 }
 
-// Rendering just one row in the table (at the top of it)
+// Rendering just one row in the table (at the top of it for position=='top' and at the bottom for 'bottom')
 function add_row(lastItem, position) {
     if (position == 'top') {
-        var newrow  = table.insertRow(0);
+        var newrow = table.insertRow(0);
     } else if (position == 'bottom') {
-        var newrow  = table.insertRow();
+        var newrow = table.insertRow();
     } else {
         console.error(`Invalid function call argument: ${position}`);
     }
 
     // Cells variables
-    var cellValue       = newrow.insertCell(0);
-    var cellCategory    = newrow.insertCell(1);
-    var cellDate        = newrow.insertCell(2);
-    var cellComment     = newrow.insertCell(3);
-    var cellDelButton   = newrow.insertCell(4);
+    var cellValue = newrow.insertCell(0);
+    var cellCategory = newrow.insertCell(1);
+    var cellDate = newrow.insertCell(2);
+    var cellComment = newrow.insertCell(3);
+    var cellDelButton = newrow.insertCell(4);
 
     // Populate the cells
-    cellValue.innerHTML     = formatter(lastItem.value, lastItem.currency);
+    cellValue.innerHTML = formatter(lastItem.value, lastItem.currency);
     //cellValue.innerHTML     = `${lastItem.value} ${lastItem.currency}`;
-    cellCategory.innerHTML  = lastItem.category;
-    cellDate.innerHTML      = lastItem.datetime;
+    cellCategory.innerHTML = lastItem.category;
+    cellDate.innerHTML = lastItem.datetime;
 
     // Comment is ... if empty
     if (lastItem.comment == '') {
@@ -82,7 +83,7 @@ function add_row(lastItem, position) {
     deleteButton.type = 'button';
     deleteButton.className = 'btn delete';
     deleteButton.id = lastItem.position + '-remove';
-    deleteButton.onclick = function() { deleteEntry(lastItem.position); };
+    deleteButton.onclick = function () { deleteEntry(lastItem.position); };
     deleteButton.innerHTML = '&times;';
 
     // Append the button element to the cellDelButton cell
@@ -98,7 +99,7 @@ function scroll_down() {
     var tableContainer = document.getElementById("logTableContainer");
     tableContainer.style.visibility = "visible";
     tableContainer.scrollTop = tableContainer.scrollHeight;
-    tableContainer.style.scrollBehavior = "smooth"; 
+    tableContainer.style.scrollBehavior = "smooth";
 };
 
 // Script to delete an entry with given entry.position
@@ -106,31 +107,31 @@ function deleteEntry(pos) {
     console.log(`I am to delete an entry #${pos}`);
 
     fetch(`/remove/${pos}/`, {
-        method : 'DELETE',
-        headers : {
-            'Content-Type' : 'application/JSON'
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/JSON'
         },
         body: JSON.stringify({
-            position: pos 
+            position: pos
         })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Not ok response');
-        }
-        // Now actually remove from the page
-        var row = document.getElementById(`${pos}`)
-        
-        row.style['display'] = 'none'
-    })
-    .catch(error => {
-        console.error('Issue with fetch operation: ', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Not ok response');
+            }
+            // Now actually remove from the page
+            var row = document.getElementById(`${pos}`)
+
+            row.style['display'] = 'none'
+        })
+        .catch(error => {
+            console.error('Issue with fetch operation: ', error);
+        });
 
 };
 
 // Adding a new entry
-$('#add-entry').on("submit", function(event) {
+$('#add-entry').on("submit", function (event) {
     event.preventDefault();
 
     // Get form fields values into vars
@@ -143,20 +144,20 @@ $('#add-entry').on("submit", function(event) {
         url: 'add',
         type: 'POST',
         data: $(this).serialize(),
-        success: function(data) {
+        success: function (data) {
             // update the list on the page with the new data
             var lastItem = data.entries[data.entries.length - 1];
             add_row(lastItem, 'bottom');
             clear_form();
             scroll_down();
         },
-        error: function() {
+        error: function () {
             alert('Error adding entry.');
         }
     });
 });
 
-// Function to clear add form
+// Function to clear add-entry-form
 function clear_form() {
     const valueInput = document.getElementById("input-value");
     const categorySelect = document.getElementById("input-category");
@@ -170,7 +171,7 @@ function clear_form() {
     categorySelect.selectedIndex = 0;
 };
 
-window.onload = function() {
+window.onload = function () {
     load_content();
-    console.log('i do work')
+    // console.log('i do work')
 };
