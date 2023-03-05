@@ -40,23 +40,21 @@
                 <li><a class="a-empty" style="color:red;" href="/settings">• Settings </a></li>
                 <li><a class="a-empty" href="https://github.com/RomanchenkoAS">• Github </a></li>
                 <li><a class="a-empty" style="color:red;" href="/calendar">• Calendar </a></li>
-                <!-- IMPLEMENT THIS WITH BOOTSTRAP MODALS-->
+                <!-- Opens a bootstrap modal window -->
                 <li><a class="a-empty" style="color:red;" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">• Categories </a></li>
             </ul>
         </nav>
 
-    <!-- MODALS-->
-    
     <!-- Modal for categories-->
-        <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal" id="exampleModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Category editor</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                    Customize categories from here :3
+                        Customize categories from here :3
                     </div>
                     {% comment %} <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

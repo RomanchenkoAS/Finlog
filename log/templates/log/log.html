@@ -216,7 +216,7 @@
                 // update the list on the page with the new data
                 var lastItem = data.entries[data.entries.length - 1];
                 add_row(lastItem, 'bottom');
-
+                clear_form();
                 scroll_down();
             },
             error: function() {
@@ -224,6 +224,20 @@
             }
         });
     });
+
+    // Function to clear add form
+    function clear_form() {
+        const valueInput = document.getElementById("input-value");
+        const categorySelect = document.getElementById("input-category");
+        const commentInput = document.getElementById("input-comment");
+
+        // Clear the input fields
+        valueInput.value = "";
+        commentInput.value = "";
+
+        // Set the select element to its default value
+        categorySelect.selectedIndex = 0;
+    }
 
     window.onload = function() {
         load_content();
