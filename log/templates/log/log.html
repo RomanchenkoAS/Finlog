@@ -29,7 +29,8 @@
                     <!-- <p> Customize categories and add new ones from here: </p>
                     <hr> -->
                         {% for category in categories %}
-                            <p class={{category}}>{{category}}</p>
+                        {% load static %}
+                            <p class={{category|lower}}>{{category}} <img width="32" height="32" href="{% static 'log/edit.png'%}"></p>
                         {% endfor %}
                     {% endif%}
                 </div>
