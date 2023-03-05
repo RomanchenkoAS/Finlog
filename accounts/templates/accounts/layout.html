@@ -41,20 +41,13 @@
                 <li><a class="a-empty" href="https://github.com/RomanchenkoAS">• Github </a></li>
                 <li><a class="a-empty" style="color:red;" href="/calendar">• Calendar </a></li>
                 <!-- IMPLEMENT THIS WITH BOOTSTRAP MODALS-->
-                <li><a class="a-empty" style="color:red;" href="/calendar">• Categories </a></li>
+                <li><a class="a-empty" style="color:red;" data-bs-toggle="modal" data-bs-target="#exampleModal">• Categories </a></li>
             </ul>
         </nav>
 
     <!-- MODALS-->
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" onclick="showModal()">
-        Open Modal via function
-      </button>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Open Modal via BS
-    </button>
     
-    <!-- Modal -->
+    <!-- Modal for categories-->
     <div class="modal-container">
         <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
