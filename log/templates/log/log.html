@@ -44,7 +44,7 @@
         <form id="add-entry" style="display:inline-block;">
             <span>
                 <!-- Value field -->
-                <input name="value" id="input-value" placeholder="Value:">
+                <input name="value" id="input-value" placeholder="Value:" class="form-item">
                 <!-- Category field -->
                 <select name="category" id="input-category" class="form-selector">
                     {% for category in categories %}
@@ -56,7 +56,7 @@
                     {% endfor %}
                 </select>
                 <!-- Comment field -->
-                <input name="comment" id="input-comment" placeholder="Comment:">
+                <input name="comment" id="input-comment" placeholder="Comment:" class="form-item">
                 <!-- Add button -->
                 <button class="btn" type="submit">+</button>
             </span>
