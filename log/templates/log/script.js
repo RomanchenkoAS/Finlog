@@ -1,3 +1,5 @@
+// My take on recursive function || testing script
+
 function recursive(arr) {
     item = arr.pop();
     if (typeof item === 'undefined') {
