@@ -1,6 +1,5 @@
 table {
     margin: 0 auto;
-    /* display: block; */
     width: 100%;
 }
 
@@ -10,8 +9,9 @@ table td {
 
 }
 
+/* Shadows form-select from BS with few adjustments */
 .form-selector {
-    border: 1px solid black; 
+    border: 1px solid black;
     display: inline-block;
     padding: 0.255rem 2.25rem 0.275rem 0.75rem;
     font-size: 1rem;
@@ -24,13 +24,13 @@ table td {
     background-size: 16px 12px;
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    
+
 }
 
 .form-item {
     padding: 0.125rem 3rem 0.125rem 0.75rem;
     /* padding: 0.255rem 2.25rem 0.275rem 0.75rem; */
-    border: 1px solid black; 
+    border: 1px solid black;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -38,15 +38,13 @@ table td {
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
-/* border: 1px solid #ced4da; */
-/* background-image: url(<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>); */
 
 .form-inline .form-select {
     display: inline-block;
     width: 30%;
     color: red;
-  }
-  
+}
+
 
 #input-value {
     width: 7rem;
@@ -59,7 +57,7 @@ table td {
 /* Delete entry button */
 .delete:focus {
     outline: none;
-    box-shadow: none!important;
+    box-shadow: none !important;
 }
 
 /* + button to add an entry */
@@ -71,10 +69,12 @@ table td {
 
 #logTableContainer {
     height: 420px;
-    overflow-y: scroll; 
-    visibility:hidden; 
-    border: 1px solid black; /* border width, style, and color */
-    padding: 10px; /* add some padding for better visibility */
+    overflow-y: scroll;
+    visibility: hidden;
+    border: 1px solid black;
+    /* border width, style, and color */
+    padding: 10px;
+    /* add some padding for better visibility */
     text-align: center;
 }
 
@@ -84,43 +84,19 @@ table td {
 }
 
 .center {
-    margin: 0 auto; 
-    width:50%;
+    margin: 0 auto;
+    width: 50%;
 }
+
 /* For a smaller screen YEEEAH ADAPTIVE */
 @media (max-width: 800px) {
     .center {
         width: 100%;
     }
 }
-/* .center */
-
 
 /* CATEGORIES */
 
-/* .other {
-    background-color: white;
-}
-
-.groceries {
-    background-color: #7ae37a;
-}
-
-.pharmacy {
-    background-color: blue;
-}
-
-.rent {
-    background-color: orange;
-}
-
-.clothes {
-    background-color: #964B00;
-}
-
-.gas {
-    background-color: rgba(79, 79, 185, 0.842);
-} */
 /* 
 Housing: rent/mortgage payments, property taxes, home insurance, utilities, maintenance costs
 Transportation: car payments, gas, insurance, maintenance costs, public transportation
@@ -136,41 +112,40 @@ Savings: emergency fund, retirement savings, investment accounts
 
 .housing {
     background-color: darkblue;
-  }
-  
-  .transportation {
+}
+
+.transportation {
     background-color: red;
-  }
-  
-  .food {
+}
+
+.food {
     background-color: green;
-  }
-  
-  .entertainment {
+}
+
+.entertainment {
     background-color: purple;
-  }
-  
-  .personal-care {
+}
+
+.personal-care {
     background-color: lightblue;
-  }
-  
-  .utilities {
+}
+
+.utilities {
     background-color: yellow;
-  }
-  
-  .clothing {
+}
+
+.clothing {
     background-color: orange;
-  }
-  
-  .education {
+}
+
+.education {
     background-color: pink;
-  }
-  
-  .medical {
+}
+
+.medical {
     background-color: darkgreen;
-  }
-  
-  .savings {
+}
+
+.savings {
     background-color: gray;
-  }
-  
+}
