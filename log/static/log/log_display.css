@@ -1,6 +1,13 @@
+table {
+    margin: 0 auto;
+    /* display: block; */
+    width: 100%;
+}
+
 table th,
 table td {
     text-align: center;
+
 }
 
 .form-select {
@@ -46,6 +53,9 @@ table td {
     height: 420px;
     overflow-y: scroll; 
     visibility:hidden; 
+    border: 1px solid black; /* border width, style, and color */
+    padding: 10px; /* add some padding for better visibility */
+    text-align: center;
 }
 
 /* Hide scrollbar */
@@ -57,7 +67,12 @@ table td {
     margin: 0 auto; 
     width:50%;
 }
-
+/* For a smaller screen YEEEAH ADAPTIVE */
+@media (max-width: 800px) {
+    .center {
+        width: 100%;
+    }
+}
 /* .center */
 
 

@@ -12,10 +12,10 @@ li, ul {
     margin-right: 0;
 }
 
-body {
+/* body {
     background: white url("images/background.jpg") no-repeat;
     background-size: cover;
-}
+} */
 
 .header {
     font-weight: bold;
