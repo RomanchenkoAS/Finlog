@@ -97,14 +97,12 @@ table td {
 
 
 /* CATEGORIES */
-/* 'Other', 'Groceries', 'Pharmacy', 'Rent', 'Clothes' */
 
-.other {
+/* .other {
     background-color: white;
 }
 
 .groceries {
-    /* light green */
     background-color: #7ae37a;
 }
 
@@ -117,10 +115,50 @@ table td {
 }
 
 .clothes {
-    /* brown */
     background-color: #964B00;
 }
 
 .gas {
     background-color: rgba(79, 79, 185, 0.842);
-}
+} */
+
+.housing {
+    background-color: darkblue;
+  }
+  
+  .transportation {
+    background-color: red;
+  }
+  
+  .food {
+    background-color: green;
+  }
+  
+  .entertainment {
+    background-color: purple;
+  }
+  
+  .personal-care {
+    background-color: lightblue;
+  }
+  
+  .utilities {
+    background-color: yellow;
+  }
+  
+  .clothing {
+    background-color: orange;
+  }
+  
+  .education {
+    background-color: pink;
+  }
+  
+  .medical {
+    background-color: darkgreen;
+  }
+  
+  .savings {
+    background-color: gray;
+  }
+  
