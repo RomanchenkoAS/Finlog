@@ -7,12 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'log/log_display.css' %}">
 {% endblock link %}
 
-{% block style %}
-<style>
-
-
-</style> 
-{% endblock style %}
+{% block style %}<style></style>{% endblock style %}
 
 {% block body %}
 <header>
@@ -23,17 +18,10 @@
 </header>
 
 <main>
+    <!-- Container for my log table -->
     <div class="center" id="logTableContainer">
-            <table id="logTable">
-                <tbody>
-                    
-                </tbody>
-            </table>
+            <table id="logTable"><tbody></tbody></table>
     </div>
-
-
-
-
 </main>
 <footer>
     <!-- MAIN FEATURE HERE -->
