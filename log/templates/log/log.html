@@ -27,11 +27,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <button class="collapsible">Click to expand/collapse</button>
+                    <p> Customize categories and <a href="">add new</a> from here: </p>
+                    <button class="collapsible small-margin">Default ▼ </button>
                     <div class="content">
                         {% if categories %}
-                        <!-- <p> Customize categories and add new ones from here: </p>
-                        <hr> -->
                         {% for category in categories %}
                         {% load static %}
                         <span>
@@ -41,7 +40,7 @@
                             </p>
                         </span>
                         {% endfor %}
-                        {% endif%}]
+                        {% endif%}
                     </div>
                     
                 </div>
@@ -93,10 +92,11 @@
     <script src="{% static 'log/log_management.js' %}"></script>
     {% comment %} Scripts for modal windows management {% endcomment %}
     <script>
-        var coll = document.getElementsByClassName("collapsible");
-		var i;
 
-		for (i = 0; i < coll.length; i++) {
+        // Script for collapsible headers 
+        var coll = document.getElementsByClassName("collapsible");
+
+		for (var i = 0; i < coll.length; i++) {
 			coll[i].addEventListener("click", function() {
 				this.classList.toggle("active");
 				var content = this.nextElementSibling;
