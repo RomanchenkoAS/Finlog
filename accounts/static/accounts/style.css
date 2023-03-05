@@ -1,14 +1,15 @@
 ul {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
-li {
+li, ul {
     display: inline-block;
 }
 
 .right {
     margin-left: auto;
+    margin-right: 0;
 }
 
 body {
