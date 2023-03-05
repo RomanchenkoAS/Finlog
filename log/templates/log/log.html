@@ -30,7 +30,8 @@
                     <hr> -->
                         {% for category in categories %}
                         {% load static %}
-                            <p class={{category|lower}}>{{category}} <img width="32" height="32" href="{% static 'log/edit.png'%}"></p>
+                            <p class="{{category|lower}} small-margin ">{{category}} 
+                            <img width="16" height="16" src="{% static 'log/edit.png'%}"></p>
                         {% endfor %}
                     {% endif%}
                 </div>

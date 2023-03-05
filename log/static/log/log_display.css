@@ -38,6 +38,14 @@ hr {
 
 }
 
+/* For modal screen: */
+
+.small-margin {
+    margin-bottom: 5px;
+    padding: 5px 5px 5px 5px;
+}
+
+
 .form-item {
     padding: 0.125rem 3rem 0.125rem 0.75rem;
     /* padding: 0.255rem 2.25rem 0.275rem 0.75rem; */
