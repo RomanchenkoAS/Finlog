@@ -46,7 +46,7 @@
                 <!-- Value field -->
                 <input name="value" id="input-value" placeholder="Value:">
                 <!-- Category field -->
-                <select name="category" id="input-category" class="form-select">
+                <select name="category" id="input-category" class="form-selector">
                     {% for category in categories %}
                         {% if forloop.counter == 1 %}
                         <option selected value="{{ category }}">{{category}}</option>
