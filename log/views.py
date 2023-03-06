@@ -82,3 +82,7 @@ def remove(request, p):
 
     # Send back JSON
     return JsonResponse(entries_dict)
+
+@login_required
+def edit(request):
+    pass

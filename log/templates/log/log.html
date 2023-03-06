@@ -36,7 +36,7 @@
                         <span>
                             <p id="{{category.name}}-item" style="background-color:{{category.color}}" class="small-margin">{{category.title}} 
                                 <!-- Edit -->
-                                <a id="{{category.name}}-edit-button" onclick='edit("{{category.name}}")' class="a-none">
+                                <a id="{{category.name}}-edit-button" onclick='expand("{{category.name}}")' class="a-none">
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
 
@@ -44,7 +44,7 @@
                                     <!-- Colorpicker -->
                                     <input class="color_picker" type="color" id="{{category.name}}-colorpicker">
                                     <!-- Tick -->
-                                    <a onclick='' class="a-none">
+                                    <a onclick='edit("{{category.name}}")' class="a-none">
                                         <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                                     </a>
                                     <!-- Cross -->
@@ -188,7 +188,7 @@
         };
         
         // Show relevant edit palette on edit <a> click || hide edit button 
-        function edit(input_category) {
+        function expand(input_category) {
             document.getElementById(input_category + "-edit").style.display = 'inline-block';
             document.getElementById(input_category + "-edit-button").style.visibility = 'hidden';
         };
@@ -196,6 +196,10 @@
         function hide(input_category) {
             document.getElementById(input_category + "-edit").style.display = 'none';
             document.getElementById(input_category + "-edit-button").style.visibility = 'visible';
+        };
+
+        function edit(input_category) {
+
         };
 
     </script>
