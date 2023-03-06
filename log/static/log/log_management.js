@@ -66,7 +66,7 @@ function add_row(lastItem, position) {
     // Populate the cells
     cellValue.innerHTML = formatter(lastItem.value, lastItem.currency);
     //cellValue.innerHTML     = `${lastItem.value} ${lastItem.currency}`;
-    cellCategory.innerHTML = lastItem.category;
+    cellCategory.innerHTML = lastItem.category_title;
     cellDate.innerHTML = lastItem.datetime;
 
     // Comment is ... if empty
@@ -90,7 +90,7 @@ function add_row(lastItem, position) {
     cellDelButton.appendChild(deleteButton);
 
     // Making it of the right class 
-    newrow.classList.add(lastItem.category.toLowerCase());
+    newrow.classList.add(lastItem.category);
     newrow.id = lastItem.position;
 };
 
@@ -134,12 +134,7 @@ function deleteEntry(pos) {
 $('#add-entry').on("submit", function (event) {
     event.preventDefault();
 
-    // Get form fields values into vars
-    let value = document.querySelector('#input-value').value;
-    let category = document.querySelector('#input-category').value;
-    let comment = document.querySelector('#input-comment').value;
-
-    // get the form data and send an AJAX request to the server
+    // Get the form data and send an AJAX request to the server
     $.ajax({
         url: 'add',
         type: 'POST',

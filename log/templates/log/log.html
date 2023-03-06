@@ -91,7 +91,7 @@
                         {% if forloop.counter == 1 %}
                         <option selected value="{{ category.name }}">{{category.title}}</option>
                         {% else %}
-                        <option value="{{ category.name }}">{{category.title}}</option>
+                        <option value="{{ category.title }}">{{category.title}}</option>
                         {% endif %}
                     {% endfor %}
                 </select>

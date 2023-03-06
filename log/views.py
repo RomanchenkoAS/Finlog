@@ -22,7 +22,6 @@ def log(request):
 
     categories = collect_categories(current_user)
 
-    print(categories)
     context = {
         'user': current_user.username,
         'categories': categories,
@@ -50,7 +49,6 @@ def add(request):
     comment = request.POST.get('comment', '')
 
     category = Category.objects.get(name=category)
-    # user = User.objects.get
 
     entry = Entry(user=request.user, value=float(value),
                   category=category, comment=comment, date=now())
