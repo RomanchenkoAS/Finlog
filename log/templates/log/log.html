@@ -30,10 +30,11 @@
                     <p> Customize categories and <a class="a-empty-blue" href="">add new</a> from here: </p>
                     <button class="collapsible small-margin">Default ▼ </button>
                     <div class="content">
+                        {% load filters %}
                         {% if categories %}
                         {% for category in categories %}
                         <span>
-                            <p id="{{category|lower}}-item" class="{{category|lower}} small-margin">{{category}} 
+                            <p id="{{category|lower|cleared}}-item" class="{{category|lower}} small-margin">{{category}} 
                             <img class="edit_button" src="{% static 'log/edit.png'%}">
                             <input class="color_picker" type="color" id="{{category|lower}}-colorpicker" value="#0000ff">
                             </p>
