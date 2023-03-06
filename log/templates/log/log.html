@@ -49,7 +49,9 @@
                         {% for category in custom_categories %}
                         <span>
                             <p class="{{category|lower}} small-margin ">{{category}} 
-                            <img class="edit_button" src="{% static 'log/edit.png'%}">
+                            <a href="">
+                                <img class="edit_button" src="{% static 'log/edit.png'%}">
+                            </a>
                             <input class="color_picker" type="color" id="{{category}}-colorpicker" value="#0000ff">
                             </p>
                         </span>
