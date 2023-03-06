@@ -5,7 +5,7 @@ from django.conf import settings  # For using a build-in USER model
 
 import os # For customizing css file at creation of new category
 
-
+# Default categories
 class Category(models.Model):
     '''Describes kinds of spending/income'''
 

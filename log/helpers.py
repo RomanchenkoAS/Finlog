@@ -50,6 +50,9 @@ def collect_categories(user):
         categories_dict.append(new_category)
 
     # Add user's custom categories to this list:
+    # Lookup user categories
+    # Substitute existing categories by user select if they match
+    # Otherwise just add them to the list and throw them back
 
     return categories_dict
 
