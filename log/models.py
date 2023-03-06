@@ -26,6 +26,8 @@ class Category(models.Model):
         default=SPEND,
     )
 
+    color = models.CharField(max_length=7, default='#d3d3d3')
+
     # Name
     def __str__(self):
         return self.name
