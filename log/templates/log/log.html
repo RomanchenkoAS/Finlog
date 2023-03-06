@@ -35,8 +35,10 @@
                         {% for category in categories %}
                         <span>
                             <p id="{{category.name}}-item" class="{{category.name}} small-margin">{{category.title}} 
-                            <img class="edit_button" src="{% static 'log/edit.png'%}">
-                            <input class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
+                                <a onclick='edit("{{category.name}}")' class="a-none">
+                                    <img class="edit_button" src="{% static 'log/icons/edit.png'%}">
+                                </a>
+                                <input style="display:none" class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
                             </p>
                         </span>
                         {% endfor %}
@@ -53,7 +55,7 @@
                             <a href="">
                                 <img class="edit_button" src="{% static 'log/edit.png'%}">
                             </a>
-                            <input class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
+                            <input style="display:none" class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
                             </p>
                         </span>
                         {% endfor %}
@@ -91,6 +93,7 @@
                         {% if forloop.counter == 1 %}
                         <option selected value="{{ category.name }}">{{category.title}}</option>
                         {% else %}
+                        <!-- Value should be .title for correct adding an entry -->
                         <option value="{{ category.title }}">{{category.title}}</option>
                         {% endif %}
                     {% endfor %}
@@ -161,5 +164,9 @@
             return hex;
         };
           
+        function edit(input_category) {
+            console.log(input_category);
+            document.getElementById(input_category + "-colorpicker").style.display = 'inline-block';
+        };
     </script>
 {% endblock script %}
