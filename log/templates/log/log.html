@@ -199,7 +199,12 @@
         };
 
         function edit(input_category) {
+            let colorPicker = document.getElementById(input_category + "-colorpicker");
+            console.log(`editing ${input_category} | new color: ${colorPicker.value}`)
+             
+            // send actual request at /edit/
 
+            hide(input_category);
         };
 
     </script>
