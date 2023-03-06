@@ -125,45 +125,45 @@ Savings: emergency fund, retirement savings, investment accounts
  */
 
 .other {
-    background-color: lightgrey;
+    background-color: #d3d3d3;
 }
 
 .housing {
-    background-color: lightblue;
+    background-color: #add8e6;
 }
 
 .transportation {
-    background-color: rgb(255 128 128);
+    background-color: #ff8080;
 }
 
 .food {
-    background-color: lightgreen;
+    background-color: #90ee90;
 }
 
 .entertainment {
-    background-color: rgb(206 123 206);
+    background-color: #ce7bce;
 }
 
 .personal_care {
-    background-color: lightblue;
+    background-color: #add8e6;
 }
 
 .utilities {
-    background-color: yellow;
+    background-color: #ffff00;
 }
 
 .clothing {
-    background-color: orange;
+    background-color: #ffa500;
 }
 
 .education {
-    background-color: pink;
+    background-color: #ffc0cb;
 }
 
 .medical {
-    background-color: lightseagreen;
+    background-color: #20b2aa;
 }
 
 .savings {
-    background-color: gray;
+    background-color: #808080;
 }
