@@ -44,19 +44,27 @@ class UserCategory(models.Model):
     
     # Parent category (optional)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
-    link = Category
-    linkname = Category.name
-    # New color
-    color = models.CharField(max_length=7)
     
     # Description of the spending/income type
     name = models.CharField(max_length=200, null=True, blank=True)
+    
+    if category:
+        name = f"{category}_updated"
 
+    # New color
     color = models.CharField(max_length=7, default='#d3d3d3')
 
     # Name
     def __str__(self):
-        return self.name
+        if self.category:
+            return f'{self.category} updated'
+        else:
+            return self.name
+    
+    # For proper representation on admin page
+    class Meta:
+        verbose_name = "User category"
+        verbose_name_plural = "User categories"
 
 # List of tuples for currencies
 CURRENCY_CHOICES = [

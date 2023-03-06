@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Category, Entry
+from . models import Category, Entry, UserCategory
 # Register your models here.
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -8,3 +8,5 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 admin.site.register(Entry)
+
+admin.site.register(UserCategory)
