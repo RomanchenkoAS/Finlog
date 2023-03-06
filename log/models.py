@@ -44,7 +44,8 @@ class UserCategory(models.Model):
     
     # Parent category (optional)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
-    
+    link = Category
+    linkname = Category.name
     # New color
     color = models.CharField(max_length=7)
     
