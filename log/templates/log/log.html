@@ -35,7 +35,7 @@
                         {% for category in categories %}
                         <span>
                             <p id="{{category.name}}-item" class="{{category.name}} small-margin">{{category.title}} 
-                                <a onclick='edit("{{category.name}}")' class="a-none">
+                                <a id="{{category.name}}-edit-button" onclick='edit("{{category.name}}")' class="a-none">
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
                                 <span class="edit_palette" id="{{category.name}}-edit">
@@ -74,10 +74,12 @@
                     </div>
                     
                 </div>
+                <!--
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
                 </div>
+                -->
             </div>
         </div>
     </div>
@@ -174,10 +176,12 @@
             };
             return hex;
         };
-          
+        
+        // Show relevant edit palette on edit <a> click || hide edit button 
         function edit(input_category) {
             console.log(input_category);
             document.getElementById(input_category + "-edit").style.display = 'inline-block';
+            document.getElementById(input_category + "-edit-button").style.visibility = 'hidden';
         };
     </script>
 {% endblock script %}
