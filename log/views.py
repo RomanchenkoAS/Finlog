@@ -22,6 +22,7 @@ def log(request):
 
     categories = collect_categories(current_user)
 
+    print(categories)
     context = {
         'user': current_user.username,
         'categories': categories,
