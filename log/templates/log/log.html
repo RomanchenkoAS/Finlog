@@ -34,9 +34,9 @@
                         {% if categories %}
                         {% for category in categories %}
                         <span>
-                            <p id="{{category|lower|cleared}}-item" class="{{category|lower}} small-margin">{{category}} 
+                            <p id="{{category.name}}-item" class="{{category.name}} small-margin">{{category.title}} 
                             <img class="edit_button" src="{% static 'log/edit.png'%}">
-                            <input class="color_picker" type="color" id="{{category|lower}}-colorpicker" value="#0000ff">
+                            <input class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
                             </p>
                         </span>
                         {% endfor %}
@@ -49,11 +49,11 @@
                         {% if custom_categories %}
                         {% for category in custom_categories %}
                         <span>
-                            <p class="{{category|lower}} small-margin ">{{category}} 
+                            <p class="{{category.name}} small-margin ">{{category.title}} 
                             <a href="">
                                 <img class="edit_button" src="{% static 'log/edit.png'%}">
                             </a>
-                            <input class="color_picker" type="color" id="{{category}}-colorpicker" value="#0000ff">
+                            <input class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
                             </p>
                         </span>
                         {% endfor %}
@@ -89,9 +89,9 @@
                 <select name="category" id="input-category" class="form-selector">
                     {% for category in categories %}
                         {% if forloop.counter == 1 %}
-                        <option selected value="{{ category }}">{{category}}</option>
+                        <option selected value="{{ category.name }}">{{category.title}}</option>
                         {% else %}
-                        <option value="{{ category }}">{{category}}</option>
+                        <option value="{{ category.name }}">{{category.title}}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
