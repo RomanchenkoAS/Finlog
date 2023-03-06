@@ -45,6 +45,7 @@ def collect_categories(user):
             # For inner use
             'name'  : format_name(category.name),
             'id'    : category.id,
+            'color' : category.color,
         }
         categories_dict.append(new_category)
 

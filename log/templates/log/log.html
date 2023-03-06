@@ -34,7 +34,7 @@
                         {% if categories %}
                         {% for category in categories %}
                         <span>
-                            <p id="{{category.name}}-item" class="{{category.name}} small-margin">{{category.title}} 
+                            <p id="{{category.name}}-item" style="background-color:{{category.color}}" class="small-margin">{{category.title}} 
                                 <!-- Edit -->
                                 <a id="{{category.name}}-edit-button" onclick='edit("{{category.name}}")' class="a-none">
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
