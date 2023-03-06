@@ -4,7 +4,7 @@
     margin: 5px;
 }
 
-.edit_button {
+.icon_button {
     height: 16px;
     width: 16px;
     margin-bottom: 5px;
@@ -14,6 +14,7 @@
     margin-bottom: 5px;
     padding: 5px 5px 5px 5px;
 }
+
 
 /* For collapsible contents in a category modal */
 
