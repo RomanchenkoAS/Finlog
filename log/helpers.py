@@ -15,7 +15,10 @@ def collect_entries(user):
         new_entry = {
             'value': item.value,
             'currency': item.currency,
-            'category': item.category.name,
+            # To use
+            'category': format_name(item.category.name),
+            # To show
+            'category_title': item.category.name,
             'datetime': item.date.strftime("%Y-%m-%d %H:%M:%S %Z"),
             'comment' : item.comment,
             'position': i,
