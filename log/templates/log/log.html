@@ -13,7 +13,7 @@
 
 {% block body %}
 <header>
-    <hr>
+    <hr> 
     <h1 class="header center">MainPage || Log of: {{user}}</h1>
     <hr>
     <h2 class="header center">Latest events: </h2>
@@ -38,6 +38,9 @@
                                 <a onclick='edit("{{category.name}}")' class="a-none">
                                     <img class="edit_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                                </svg>
                                 <input style="display:none" class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
                             </p>
                         </span>
