@@ -51,9 +51,6 @@ class UserCategory(models.Model):
     # Description of the spending/income type
     name = models.CharField(max_length=200, null=True, blank=True)
 
-    if category:
-        name = f"{category}_updated"
-
     # New color
     color = models.CharField(max_length=7, default='#d3d3d3')
 
