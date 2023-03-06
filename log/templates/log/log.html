@@ -135,11 +135,28 @@
 				} else {
                     content.style.maxHeight = content.scrollHeight + "px";
 				};
-                console.log(content);
                 
                 // Set color for colorpickers
-                var colorPickers =  
+                var colorPickers = content.querySelectorAll('.color_picker');
+
+                colorPickers.forEach(element => {
+                    let parent = element.parentNode;
+                    let color = getComputedStyle(parent).getPropertyValue('background-color');
+                    element.value = rgbToHex(color);
+                }); 
 			});
 		};
+
+        // Transforms from rgb(x, y, z) into hexadecimal
+        function rgbToHex(rgb) {
+            var components = rgb.match(/\d+/g);
+            var hex = '#';
+            for (var i = 0; i < 3; i++) {
+              var component = parseInt(components[i]).toString(16);
+              hex += component.length == 1 ? '0' + component : component;
+            };
+            return hex;
+        };
+          
     </script>
 {% endblock script %}
