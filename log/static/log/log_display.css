@@ -16,8 +16,8 @@ table tr {
 }
 
 hr {
-    margin-top: 10px!important;
-    margin-bottom: 10px!important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
 }
 
 /* Shadows form-select from BS with few adjustments */
@@ -37,8 +37,6 @@ hr {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
 }
-
-
 
 
 .form-item {
