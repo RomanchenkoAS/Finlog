@@ -13,16 +13,17 @@ def collect_entries(user):
     # Enumerate creates a tuple of (i, item) from a single item
     for i, item in enumerate(entries_list):
         new_entry = {
-            'value': item.value,
-            'currency': item.currency,
+            'value'         : item.value,
+            'currency'      : item.currency,
             # To use
-            'category': format_name(item.category.name),
+            'category'      : format_name(item.category.name),
             # To show
             'category_title': item.category.name,
-            'datetime': item.date.strftime("%Y-%m-%d %H:%M:%S %Z"),
-            'comment' : item.comment,
-            'position': i,
-            'id'      : item.id,
+            'color'         : item.category.color,
+            'datetime'      : item.date.strftime("%Y-%m-%d %H:%M:%S %Z"),
+            'comment'       : item.comment,
+            'position'      : i,
+            'id'            : item.id,
         }
         # print(f'Adding an item #{i}: {item.value} / {item.category} / {item.date} || id:{item.id}')
         entries_dict.append(new_entry)

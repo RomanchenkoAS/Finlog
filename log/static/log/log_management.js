@@ -35,11 +35,11 @@ function recusrive_render(arr) {
     var lastItem = arr.pop();
 
     if (typeof lastItem === 'undefined') {
-        console.log('That was the last one :3')
+        // console.log('That was the last one :3')
         return 0
     } else {
         // Render this one
-        //console.dir(lastItem)
+        // console.dir(lastItem)
         add_row(lastItem, 'top');
         // Go deeper 'v'
         recusrive_render(arr);
@@ -91,6 +91,11 @@ function add_row(lastItem, position) {
 
     // Making it of the right class 
     newrow.classList.add(lastItem.category);
+
+    // console.log(lastItem.category)
+    // Setting a proper color instead of class:
+    newrow.style.backgroundColor = lastItem.color;
+
     newrow.id = lastItem.position;
 };
 
