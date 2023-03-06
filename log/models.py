@@ -58,8 +58,10 @@ class UserCategory(models.Model):
     def __str__(self):
         if self.category:
             return f'{self.category} updated'
-        else:
+        elif isinstance(self.name, str):
             return self.name
+        else:
+            return '-'
 
     # For proper representation on admin page
     class Meta:
