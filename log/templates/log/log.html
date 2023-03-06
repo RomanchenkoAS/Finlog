@@ -38,13 +38,18 @@
                                 <a onclick='edit("{{category.name}}")' class="a-none">
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
+                                <span class="edit_palette" id="{{category.name}}-edit">
                                 <input class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
-                                <svg class="icon_button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                    <path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
-                                </svg>
-                                <svg class="icon_button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                                    <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
-                                </svg>
+                                    <svg class="icon_button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                                    </svg>
+                                    <svg class="icon_button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                        <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                                    </svg>
+                                    <svg class="icon_button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path d="M109.7 160H160c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V64C0 46.3 14.3 32 32 32s32 14.3 32 32v51.2L81.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L109.7 160z"/>
+                                    </svg>
+                                </span>
                             </p>
                         </span>
                         {% endfor %}
@@ -152,7 +157,7 @@
                 var colorPickers = content.querySelectorAll('.color_picker');
 
                 colorPickers.forEach(element => {
-                    let parent = element.parentNode;
+                    let parent = element.parentNode.parentNode;
                     let color = getComputedStyle(parent).getPropertyValue('background-color');
                     element.value = rgbToHex(color);
                 }); 
@@ -172,7 +177,7 @@
           
         function edit(input_category) {
             console.log(input_category);
-            document.getElementById(input_category + "-colorpicker").style.display = 'inline-block';
+            document.getElementById(input_category + "-edit").style.display = 'inline-block';
         };
     </script>
 {% endblock script %}

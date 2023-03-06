@@ -15,7 +15,9 @@
     padding: 5px 5px 5px 5px;
 }
 
-
+.edit_palette {
+    display: none;
+}
 /* For collapsible contents in a category modal */
 
 .collapsible {
