@@ -37,6 +37,25 @@ class Category(models.Model):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
+# Custom categories
+class UserCategory(models.Model):
+    # Who customized this category
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
+    # Parent category (optional)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    
+    # New color
+    color = models.CharField(max_length=7)
+    
+    # Description of the spending/income type
+    name = models.CharField(max_length=200, null=True, blank=True)
+
+    color = models.CharField(max_length=7, default='#d3d3d3')
+
+    # Name
+    def __str__(self):
+        return self.name
 
 # List of tuples for currencies
 CURRENCY_CHOICES = [
