@@ -1,9 +1,10 @@
 from django.db import models  # For basic models management
 from django.utils import timezone  # For setting time in DateTimeField
-from django.core.validators import MinValueValidator # For setting minimum value in a field
+# For setting minimum value in a field
+from django.core.validators import MinValueValidator
 from django.conf import settings  # For using a build-in USER model
 
-import os # For customizing css file at creation of new category
+import os  # For customizing css file at creation of new category
 
 # Default categories
 class Category(models.Model):
@@ -40,14 +41,16 @@ class Category(models.Model):
 # Custom categories
 class UserCategory(models.Model):
     # Who customized this category
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+
     # Parent category (optional)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
-    
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, null=True, blank=True)
+
     # Description of the spending/income type
     name = models.CharField(max_length=200, null=True, blank=True)
-    
+
     if category:
         name = f"{category}_updated"
 
@@ -60,7 +63,7 @@ class UserCategory(models.Model):
             return f'{self.category} updated'
         else:
             return self.name
-    
+
     # For proper representation on admin page
     class Meta:
         verbose_name = "User category"
@@ -75,14 +78,16 @@ CURRENCY_CHOICES = [
     # Add more here..
 ]
 
-
 class Entry(models.Model):
     # Using built-in user model <3
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
 
     # By default the category is "other"
-    category = models.ForeignKey(Category, on_delete=models.SET_DEFAULT, default=1)
-    currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3, default='KZT')
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_DEFAULT, default=1)
+    currency = models.CharField(
+        choices=CURRENCY_CHOICES, max_length=3, default='KZT')
     value = models.FloatField(validators=[MinValueValidator(0)])
     date = models.DateTimeField(default=timezone.now)
     comment = models.CharField(max_length=200, blank=True)
