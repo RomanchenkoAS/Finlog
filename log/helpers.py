@@ -65,11 +65,17 @@ def format_name(str):
 
 def edit_category(user, category):
     
+    name = category['name']
+    color = category['color']
+    
     # Check if default category
     default_categories = Category.objects.all()
-    print(default_categories)
-    
+    default_categories_list = []
     for category in default_categories:
-        print(category.name)
+        default_categories_list.append(category.name)
+    if name in default_categories_list:
+        print('ima edit')
+    else:
+        print('ima make new one')
     
     return 0
