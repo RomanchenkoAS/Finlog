@@ -29,6 +29,9 @@ class Category(models.Model):
 
     color = models.CharField(max_length=7, default='#d3d3d3')
 
+    def title(self):
+        return self.name.lower().replace(' ', '_').replace('-','_')
+
     # Name
     def __str__(self):
         return self.name
