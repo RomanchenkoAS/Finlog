@@ -135,10 +135,12 @@
     <script src="{% static 'log/log_management.js' %}"></script>
     {% comment %} Scripts for modal windows management {% endcomment %}
     <script>
+        
+        
 
         // Interactive colorpickers
         var colorPickers = document.getElementsByClassName("color_picker");
-
+        
         for (var i = 0; i < colorPickers.length; i++) {
             colorPickers[i].addEventListener('input', function() {
                 // Take this color
@@ -156,8 +158,8 @@
         var coll = document.getElementsByClassName("collapsible");
 
 		for (var i = 0; i < coll.length; i++) {
-			coll[i].addEventListener("click", function() {
-				this.classList.toggle("active");
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
 				var content = this.nextElementSibling;
 				if (content.style.maxHeight){
                     content.style.maxHeight = null;
@@ -167,7 +169,7 @@
                 
                 // Set color for colorpickers
                 var colorPickers = content.querySelectorAll('.color_picker');
-
+                
                 colorPickers.forEach(element => {
                     let parent = element.parentNode.parentNode;
                     let color = getComputedStyle(parent).getPropertyValue('background-color');
@@ -175,14 +177,14 @@
                 }); 
 			});
 		};
-
+        
         // Transforms from rgb(x, y, z) into hexadecimal
         function rgbToHex(rgb) {
             var components = rgb.match(/\d+/g);
             var hex = '#';
             for (var i = 0; i < 3; i++) {
-              var component = parseInt(components[i]).toString(16);
-              hex += component.length == 1 ? '0' + component : component;
+                var component = parseInt(components[i]).toString(16);
+                hex += component.length == 1 ? '0' + component : component;
             };
             return hex;
         };
@@ -197,15 +199,46 @@
             document.getElementById(input_category + "-edit").style.display = 'none';
             document.getElementById(input_category + "-edit-button").style.visibility = 'visible';
         };
-
+        
         function edit(input_category) {
             let colorPicker = document.getElementById(input_category + "-colorpicker");
-            console.log(`editing ${input_category} | new color: ${colorPicker.value}`)
-             
+            console.log(`editing ${input_category} | new color: ${colorPicker.value} | sending xhr request`)
+            // add a text input for renaming
+
             // send actual request at /edit/
+            var xhr = new XMLHttpRequest();
+            var url = "/edit/";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            // In case we need response json 
+            /*
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+                    console.log(json);
+                }
+            }; */
+            // Simple ok response
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 204) {
+                    console.log("Request successful");
+                }
+            };
 
-            hide(input_category);
+            var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+            xhr.send(data);
+            
+
+            //Uncomment this later
+            //hide(input_category);
         };
-
+        
+        // Dissmiss all the changes on closing the modal
+        var categoriesModal = document.getElementById("categoriesModal");
+        
+        categoriesModal.addEventListener("hidden.bs.modal", function () {
+            // Create this
+        });
+        
     </script>
-{% endblock script %}
+    {% endblock script %}

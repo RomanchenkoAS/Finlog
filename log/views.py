@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse  # Render template string
+from django.http import HttpResponse # Render template string
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -83,6 +83,9 @@ def remove(request, p):
     # Send back JSON
     return JsonResponse(entries_dict)
 
+@csrf_exempt
 @login_required
 def edit(request):
-    pass
+    print(request)
+    
+    return HttpResponse(status=204)
