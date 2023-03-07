@@ -49,13 +49,28 @@ def collect_categories(user):
         }
         categories_dict.append(new_category)
 
-    # Add user's custom categories to this list:
-    # Lookup user categories
-    # Substitute existing categories by user select if they match
-    # Otherwise just add them to the list and throw them back
-
     return categories_dict
 
+# Shadows collect categories but for user categories
+def collect_user_categories(user):
+    ''' Returns a list of categories for this user '''
+    # Gather all entries (objects of this class) bound to given user
+    categories_list = UserCategory.objects.all()
+
+    categories_dict = []
+
+    for category in categories_list:
+        new_category = {
+            # For display
+            'title': category.name,
+            # For inner use
+            'name': format_name(category.name),
+            'id': category.id,
+            'color': category.color,
+        }
+        categories_dict.append(new_category)
+
+    return categories_dict
 
 def format_name(str):
     ''' Format category name to exclude capital letters / spaces and '-' symbol '''
@@ -116,7 +131,7 @@ def edit_category(user, category_to_edit):
                 print('title: ' + new_category.title())
                 print(color)
             
-    # If it is brand-new category
+    # TODO: If it is brand-new category
     if not exist:
 
         print('Ima make a new one')

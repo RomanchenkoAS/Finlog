@@ -12,7 +12,7 @@ import json
 from django.utils.timezone import now
 
 # Helper functions
-from .helpers import collect_entries, collect_categories, edit_category
+from .helpers import collect_entries, collect_categories, collect_user_categories, edit_category
 
 
 @login_required
@@ -21,10 +21,12 @@ def log(request):
     current_user = request.user
 
     categories = collect_categories(current_user)
+    user_categories = collect_user_categories(current_user)
 
     context = {
         'user': current_user.username,
         'categories': categories,
+        'user_categories' : user_categories,
     }
 
     return render(request, 'log/log.html', context)
