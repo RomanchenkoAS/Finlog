@@ -48,6 +48,7 @@ def add(request):
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
 
+    print(f'{value} | {category} | {comment}')
     category = Category.objects.get(name=category)
 
     entry = Entry(user=request.user, value=float(value),
