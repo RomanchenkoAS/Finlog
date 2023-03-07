@@ -51,6 +51,8 @@ def collect_categories(user):
 
     return categories_dict
 
+# Might be a bad solution!!!!!!!!!!!!!!!!
+# Better to pack them all: default and custom to a single list and substitute origin by edited 
 # Shadows collect categories but for user categories
 def collect_user_categories(user):
     ''' Returns a list of categories for this user '''
@@ -97,10 +99,11 @@ def edit_category(user, category_to_edit):
         if name == category.title():
             exist = True
 
+            
             # Updating existing custom category
             new_category = UserCategory.objects.get()
             new_category.user = user
-            new_category.category = category
+            new_category.category = category.category # Get the foreign key 'category' from category variable
             new_category.name = f'{format_name(category.name)}'
             new_category.color = color
             
@@ -108,10 +111,12 @@ def edit_category(user, category_to_edit):
             
             print('updating an existing custom category as follows:')
             print(user)
-            print('foreign key : ' + category)
+            print('foreign key : ' )
+            print(category.category)
             print('new cat. name' + name)
             print('title: ' + new_category.title())
             print(color)
+            
 
     # This means: if it is not already in the list of user-edited categories
     if not exist:
@@ -124,12 +129,15 @@ def edit_category(user, category_to_edit):
                     user=user, category=category, name=f'{format_name(category.name)}', color=color)
                 new_category.save()
                 
-                print('updating an existing custom category as follows:')
+                print('updating an existing default category as follows:')
                 print(user)
-                print('foreign key : ' + category)
+                print('which one : ' )
+                print(category)
                 print('new cat. name' + name)
                 print('title: ' + new_category.title())
                 print(color)
+                
+
             
     # TODO: If it is brand-new category
     if not exist:
