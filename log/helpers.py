@@ -72,7 +72,8 @@ def edit_category(user, category):
     default_categories = Category.objects.all()
     default_categories_list = []
     for category in default_categories:
-        default_categories_list.append(category.title())
+        print(category.title)
+        default_categories_list.append(category.title)
     if name in default_categories_list:
         print('ima edit')
     else:
