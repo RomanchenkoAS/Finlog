@@ -89,9 +89,9 @@ def remove(request, p):
 def edit(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
-    print('recieved: ' + parsed_data)
     edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
     
+    # Add error handling || if not 0 - return error message
     if edit_category(request.user, edit) == 0:
         return HttpResponse(status=204)
     
