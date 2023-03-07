@@ -47,16 +47,19 @@ button {
     color: black;
     text-decoration: underline;
     font-weight: bold;
+    cursor: pointer;
 }
 .a-empty-blue {
     color: blue;
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
 }
 .a-none {
     color: inherit;
     text-decoration: none;
     font-weight: inherit;
+    cursor: pointer;
 }
 
 

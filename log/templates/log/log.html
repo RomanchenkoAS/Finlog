@@ -27,7 +27,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p> Customize categories and <a class="a-empty-blue" href="">add new</a> from here: </p>
+                    <p> Customize categories and <a class="a-empty-blue" onclick="expand_custom()">add new</a> from here: </p>
                     <button class="collapsible small-margin">Default ▼ </button>
                     <div class="content">
                         {% load filters %}
@@ -65,7 +65,7 @@
                         {% endfor %}
                         {% endif%}
                     </div>
-                    <button class="collapsible small-margin">Custom ▼ </button>
+                    <button class="collapsible small-margin" id="collapsible_custom">Custom ▼ </button>
 
                     {% comment %} Needs some work so to say ;) {% endcomment %}
                     <div class="content">
@@ -204,6 +204,21 @@
 			});
 		};
         
+        // Show 'custom' collapsible header 
+        var custom = document.getElementById("collapsible_custom");
+
+        function expand_custom() {
+            console.log('showing custom')
+            custom.classList.toggle("active");
+            var content = custom.nextElementSibling;
+            if (content.style.maxHeight){
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            };
+        }
+        
+
         // Transforms from rgb(x, y, z) into hexadecimal
         function rgbToHex(rgb) {
             var components = rgb.match(/\d+/g);
