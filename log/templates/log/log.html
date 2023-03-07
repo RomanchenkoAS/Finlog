@@ -81,6 +81,32 @@
                         </span>
                         {% endfor %}
                         {% endif%}
+                        <!-- Create new category -->
+                        <span >
+                            <p class="small-margin " style="border: 1px solid black; border-radius: 0.5rem;">Create new category:
+                            <!-- Edit -->
+                            <a id="{{category.name}}-edit-button" onclick='expand("{{category.name}}")' class="a-none">
+                                <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
+                            </a>
+
+                            <span class="edit_palette" id="{{category.name}}-edit">
+                                <!-- Colorpicker -->
+                                <input class="color_picker" type="color" id="{{category.name}}-colorpicker">
+                                <!-- Tick -->
+                                <a onclick='edit("{{category.name}}")' class="a-none">
+                                    <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
+                                </a>
+                                <!-- Cross -->
+                                <a onclick='hide("{{category.name}}")' class="a-none">
+                                    <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
+                                </a>
+                                <!-- Reset -->
+                                <a onclick='' class="a-none">
+                                    <img class="icon_button" src="{% static 'log/icons/reset.svg'%}">
+                                </a>
+                            </span>
+                            </p>
+                        </span>
                     </div>
                     
                 </div>
@@ -200,11 +226,11 @@
             document.getElementById(input_category + "-edit-button").style.visibility = 'visible';
         };
         
-        function edit(input_category) {
+        function edit(input_category, action = 'edit') {
             let colorPicker = document.getElementById(input_category + "-colorpicker");
-            console.log(`editing ${input_category} | new color: ${colorPicker.value} | sending xhr request`);
-            // add a text input for renaming
+            console.log(`${action} -> ${input_category} | new color: ${colorPicker.value} | sending xhr request`);
 
+            // Action options: edit | new | delete
             name = input_category;
             color = colorPicker.value;
 
@@ -222,18 +248,19 @@
                     console.log(json);
                 }
             }; */
-            // Simple ok response
 
+            // Simple ok response
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 204) {
                     console.log("Request successful");
                 }
             };
 
-            var data = JSON.stringify({"name": name, "color": color});
+            // Sending data
+            var data = JSON.stringify({"name": name, "color": color, "action": action});
             xhr.send(data);
             
-
+            // Hide edit palette
             hide(input_category);
         };
         
