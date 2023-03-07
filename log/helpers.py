@@ -70,13 +70,15 @@ def edit_category(user, category):
     
     # Check if default category
     default_categories = Category.objects.all()
-    default_categories_list = []
+    
+    exist = False
+    
     for category in default_categories:
-        print(category.title)
-        default_categories_list.append(category.title)
-    if name in default_categories_list:
-        print('ima edit')
-    else:
-        print('ima make new one')
+        if name == category.title():
+            print(f'ima edit {category}')
+            exist = True
+            
+    if not exist:
+        print('Ima make a new one')
     
     return 0
