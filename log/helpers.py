@@ -71,6 +71,8 @@ def edit_category(user, category):
     # Check if default category
     default_categories = Category.objects.all()
     
+    # Add custom to the same var above
+    
     exist = False
     
     for category in default_categories:
@@ -79,6 +81,7 @@ def edit_category(user, category):
             exist = True
             
     if not exist:
+        
         print('Ima make a new one')
     
     return 0
