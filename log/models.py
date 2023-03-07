@@ -29,6 +29,7 @@ class Category(models.Model):
 
     color = models.CharField(max_length=7, default='#d3d3d3')
 
+    # Generate a title
     def title(self):
         return self.name.lower().replace(' ', '_').replace('-','_')
 
@@ -56,6 +57,10 @@ class UserCategory(models.Model):
 
     # New color
     color = models.CharField(max_length=7, default='#d3d3d3')
+
+    # Generate a title
+    def title(self):
+        return self.name.lower().replace(' ', '_').replace('-','_')
 
     # Name
     def __str__(self):
