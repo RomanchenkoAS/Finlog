@@ -48,7 +48,7 @@ def add(request):
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
 
-    print(f'{value} | {category} | {comment}')
+    # print(f'{value} | {category} | {comment}')
     category = Category.objects.get(name=category)
 
     entry = Entry(user=request.user, value=float(value),
@@ -89,6 +89,7 @@ def remove(request, p):
 def edit(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
+    print('recieved: ' + parsed_data)
     edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
     
     if edit_category(request.user, edit) == 0:
