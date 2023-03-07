@@ -67,10 +67,10 @@
                     </div>
                     <button class="collapsible small-margin" id="collapsible_custom">Custom ▼ </button>
 
-                    {% comment %} Needs some work so to say ;) {% endcomment %}
+                    
                     <div class="content">
-                        {% if custom_categories %}
-                        {% for category in custom_categories %}
+                        {% if user_categories %}
+                        {% for category in user_categories %}
                         <span>
                             <p class="{{category.name}} small-margin ">{{category.title}} 
                             <a href="">

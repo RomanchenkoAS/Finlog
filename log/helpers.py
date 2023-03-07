@@ -113,7 +113,7 @@ def edit_category(user, category_to_edit):
             print(user)
             print('foreign key : ' )
             print(category.category)
-            print('new cat. name' + name)
+            print('new cat. name: ' + name)
             print('title: ' + new_category.title())
             print(color)
             
@@ -133,7 +133,7 @@ def edit_category(user, category_to_edit):
                 print(user)
                 print('which one : ' )
                 print(category)
-                print('new cat. name' + name)
+                print('new cat. name: ' + name)
                 print('title: ' + new_category.title())
                 print(color)
                 
