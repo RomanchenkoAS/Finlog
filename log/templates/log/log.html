@@ -128,17 +128,17 @@
 <footer>
     <!-- MAIN FEATURE HERE -->
     <div class="center">
-        <form id="add-entry" style="display:inline-block;">
+        <form id="add-entry">
             <span>
                 <!-- Value field -->
                 <input required pattern="[0-9]+" name="value" id="input-value" placeholder="Value:" class="form-item">
                 <!-- Category field -->
                 <select name="category" id="input-category" class="form-selector">
                     {% for category in categories %}
-                        {% if forloop.counter == 1 %}
-                        <option selected value="{{ category.name }}">{{category.title}}</option>
+                    {% if forloop.counter == 1 %}
+                    <!-- Value should be .title for correctly adding an entry -->
+                        <option selected value="{{ category.title }}">{{category.title}}</option>
                         {% else %}
-                        <!-- Value should be .title for correct adding an entry -->
                         <option value="{{ category.title }}">{{category.title}}</option>
                         {% endif %}
                     {% endfor %}

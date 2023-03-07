@@ -138,7 +138,7 @@ function deleteEntry(pos) {
 // Adding a new entry
 $('#add-entry').on("submit", function (event) {
     event.preventDefault();
-
+    // console.log($(this).serialize());
     // Get the form data and send an AJAX request to the server
     $.ajax({
         url: 'add',
@@ -146,13 +146,14 @@ $('#add-entry').on("submit", function (event) {
         data: $(this).serialize(),
         success: function (data) {
             // update the list on the page with the new data
-            var lastItem = data.entries[data.entries.length - 1];
-            add_row(lastItem, 'bottom');
+            var newItem = data.entries[data.entries.length - 1];
+            // Add it to the bottom of the table
+            add_row(newItem, 'bottom');
             clear_form();
             scroll_down();
         },
         error: function () {
-            alert('Error adding entry.');
+            alert(`Error adding entry. Sent data: ${$(this).serialize}`);
         }
     });
 });
