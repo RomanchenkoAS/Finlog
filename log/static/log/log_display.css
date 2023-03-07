@@ -122,6 +122,7 @@ Medical: doctor visits, prescriptions, dental care, vision care
 Savings: emergency fund, retirement savings, investment accounts
  */
 
+ /* These descriptions are redundant, the model contains color now */
 .other {
     background-color: #d3d3d3;
 }

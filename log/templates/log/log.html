@@ -34,9 +34,9 @@
                         {% if categories %}
                         {% for category in categories %}
                         <span>
-                            <p id="{{category.name}}-item" style="background-color:{{category.color}}" class="small-margin">{{category.title}} 
+                            <p id="{{category.name}}-item" style="background-color:{{category.color}}" class="category small-margin">{{category.title}} 
                                 <!-- Edit -->
-                                <a id="{{category.name}}-edit-button" onclick='expand("{{category.name}}")' class="a-none">
+                                <a id="{{category.name}}-edit-button" class="a-none" onclick='expand("{{category.name}}")' >
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
 
@@ -85,24 +85,20 @@
                         <span >
                             <p class="small-margin " style="border: 1px solid black; border-radius: 0.5rem;">Create new category:
                             <!-- Edit -->
-                            <a id="{{category.name}}-edit-button" onclick='expand("{{category.name}}")' class="a-none">
+                            <a id="new-edit-button" onclick='expand("new")' class="a-none">
                                 <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                             </a>
 
-                            <span class="edit_palette" id="{{category.name}}-edit">
+                            <span class="edit_palette" id="new-edit">
                                 <!-- Colorpicker -->
-                                <input class="color_picker" type="color" id="{{category.name}}-colorpicker">
+                                <input class="color_picker" type="color" id="new-colorpicker" value="#ffffff">
                                 <!-- Tick -->
-                                <a onclick='edit("{{category.name}}")' class="a-none">
+                                <a onclick='edit("new")' class="a-none">
                                     <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                                 </a>
                                 <!-- Cross -->
-                                <a onclick='hide("{{category.name}}")' class="a-none">
+                                <a onclick='hide("new")' class="a-none">
                                     <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
-                                </a>
-                                <!-- Reset -->
-                                <a onclick='' class="a-none">
-                                    <img class="icon_button" src="{% static 'log/icons/reset.svg'%}">
                                 </a>
                             </span>
                             </p>
