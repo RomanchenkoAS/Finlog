@@ -86,6 +86,7 @@ def remove(request, p):
 @csrf_exempt
 @login_required
 def edit(request):
-    print(request)
+    # Recieved JSON
+    print(request.body)
     
     return HttpResponse(status=204)

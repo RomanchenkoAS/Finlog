@@ -202,14 +202,18 @@
         
         function edit(input_category) {
             let colorPicker = document.getElementById(input_category + "-colorpicker");
-            console.log(`editing ${input_category} | new color: ${colorPicker.value} | sending xhr request`)
+            console.log(`editing ${input_category} | new color: ${colorPicker.value} | sending xhr request`);
             // add a text input for renaming
+
+            name = input_category;
+            color = colorPicker.value;
 
             // send actual request at /edit/
             var xhr = new XMLHttpRequest();
             var url = "/edit/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
+
             // In case we need response json 
             /*
             xhr.onreadystatechange = function () {
@@ -219,18 +223,18 @@
                 }
             }; */
             // Simple ok response
+
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 204) {
                     console.log("Request successful");
                 }
             };
 
-            var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+            var data = JSON.stringify({"name": name, "color": color});
             xhr.send(data);
             
 
-            //Uncomment this later
-            //hide(input_category);
+            hide(input_category);
         };
         
         // Dissmiss all the changes on closing the modal
