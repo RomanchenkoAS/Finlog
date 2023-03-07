@@ -65,25 +65,25 @@ def format_name(str):
     return str
 
 
-def edit_category(user, category):
+def edit_category(user, category_to_edit):
 
-    name = category['name']
-    color = category['color']
-
+    name = category_to_edit['name']
+    color = category_to_edit['color']
+    print(category_to_edit)
     # Check if default category
-    default_categories = Category.objects.all()
+    existing_categories = Category.objects.all()
 
     # Add custom to the same var above
 
     exist = False
 
-    for category in default_categories:
+    for category in existing_categories:
         if name == category.title():
             # print(f'ima edit {category}')
             exist = True
 
             # Constructing an updated category
-            category = UserCategory(
+            new_category = UserCategory(
                 user=user, category=category, name=f'{format_name(category.name)}', color=color)
             
             print('saving a new category as follows:')
@@ -92,7 +92,7 @@ def edit_category(user, category):
             print(name)
             print(color)
             
-            # category.save()
+            new_category.save()
 
     if not exist:
 
