@@ -71,28 +71,27 @@ def edit_category(user, category_to_edit):
     color = category_to_edit['color']
     print(category_to_edit)
     # Check if default category
-    existing_categories = Category.objects.all()
-
-    # Add custom to the same var above
+    default_categories = Category.objects.all()
+    # Or already edited one
+    custom_categories = UserCategory.objects.all()
 
     exist = False
 
-    for category in existing_categories:
+    for category in default_categories:
         if name == category.title():
-            # print(f'ima edit {category}')
             exist = True
 
             # Constructing an updated category
             new_category = UserCategory(
                 user=user, category=category, name=f'{format_name(category.name)}', color=color)
-            
-            print('saving a new category as follows:')
-            print(user)
-            print(category)
-            print(name)
-            print(color)
-            
             new_category.save()
+            
+            # print('saving a new category as follows:')
+            # print(user)
+            # print(category)
+            # print(name)
+            # print(color)
+            
 
     if not exist:
 
