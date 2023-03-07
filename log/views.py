@@ -12,7 +12,7 @@ import json
 from django.utils.timezone import now
 
 # Helper functions
-from .helpers import collect_entries, collect_categories
+from .helpers import collect_entries, collect_categories, edit_category
 
 
 @login_required
@@ -87,6 +87,9 @@ def remove(request, p):
 @login_required
 def edit(request):
     # Recieved JSON
-    print(request.body)
+    parsed_data = json.loads(request.body)
+    edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
     
-    return HttpResponse(status=204)
+    if edit_category(request.user, edit) == 0:
+        return HttpResponse(status=204)
+    

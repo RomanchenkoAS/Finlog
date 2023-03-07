@@ -62,3 +62,14 @@ def format_name(str):
     str = str.replace(' ', '_')
     str = str.replace('-', '_')
     return str
+
+def edit_category(user, category):
+    
+    # Check if default category
+    default_categories = Category.objects.all()
+    print(default_categories)
+    
+    for category in default_categories:
+        print(category.name)
+    
+    return 0
