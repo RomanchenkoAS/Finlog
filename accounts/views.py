@@ -63,7 +63,7 @@ def register(request):
 
         # If a form is invalid - we render the page with already user pre-populated form
         else:
-            messages.info(request, "(form error) something's wrong, shut the light")
+            messages.info(request, "Form invalid, please try again")
 
     elif request.method == 'GET':
     # Else -- unbound form
