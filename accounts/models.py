@@ -10,17 +10,25 @@ class User(AbstractUser):
         list = Category.objects.all()
         
         for item in list:
-            UserCategory.objects.add()
+            UserCategory.objects.create(name=item.name, color=item.color, user=self)
 
     def get_user_categories(self):
         return UserCategory.objects.filter(user=self)
 
-    def add_user_category(self, name):
-        user_category = UserCategory.objects.create(name=name, user=self)
+    def add_user_category(self, name, color):
+        user_category = UserCategory.objects.create(name=name, color=color, user=self)
         return user_category
 
     def remove_user_category(self, user_category):
         user_category.delete()
+        
+    def save(self, *args, **kwargs):
+        # Check if this is a new user - he has no primary key
+        is_new = not self.pk  
+        super().save(*args, **kwargs)
+        if is_new:
+            # Actually generate default categories list
+            self.generate_categories()
     
 class UserCategory(models.Model):
     name = models.CharField(max_length=200)
