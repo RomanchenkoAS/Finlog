@@ -1,4 +1,4 @@
-from .models import Entry, Category, UserCategory
+from .models import Entry, Category #, UserCategory
 from django.contrib.auth.models import User
 
 
@@ -51,10 +51,7 @@ def collect_categories(user):
 
     return categories_dict
 
-# Might be a bad solution!!!!!!!!!!!!!!!!
-# Better to pack them all: default and custom to a single list and substitute origin by edited 
-# Shadows collect categories but for user categories
-def collect_user_categories(user):
+# def collect_user_categories(user):
     ''' Returns a list of categories for this user '''
     # Gather all entries (objects of this class) bound to given user
     categories_list = UserCategory.objects.all()
@@ -82,66 +79,66 @@ def format_name(str):
     return str
 
 
-def edit_category(user, category_to_edit):
+# def edit_category(user, category_to_edit):
 
-    name = category_to_edit['name']
-    color = category_to_edit['color']
+#     name = category_to_edit['name']
+#     color = category_to_edit['color']
     
-    # Check if default category
-    default_categories = Category.objects.all()
-    # Or already edited one
-    custom_categories = UserCategory.objects.all()
+#     # Check if default category
+#     default_categories = Category.objects.all()
+#     # Or already edited one
+#     custom_categories = UserCategory.objects.all()
 
-    # This category already exists (modified or not)
-    exist = False
+#     # This category already exists (modified or not)
+#     exist = False
 
-    for category in custom_categories:
-        if name == category.title():
-            exist = True
+#     for category in custom_categories:
+#         if name == category.title():
+#             exist = True
 
             
-            # Updating existing custom category
-            new_category = UserCategory.objects.get()
-            new_category.user = user
-            new_category.category = category.category # Get the foreign key 'category' from category variable
-            new_category.name = f'{format_name(category.name)}'
-            new_category.color = color
+#             # Updating existing custom category
+#             new_category = UserCategory.objects.get()
+#             new_category.user = user
+#             new_category.category = category.category # Get the foreign key 'category' from category variable
+#             new_category.name = f'{format_name(category.name)}'
+#             new_category.color = color
             
-            new_category.save()
+#             new_category.save()
             
-            print('updating an existing custom category as follows:')
-            print(user)
-            print('foreign key : ' )
-            print(category.category)
-            print('new cat. name: ' + name)
-            print('title: ' + new_category.title())
-            print(color)
+#             print('updating an existing custom category as follows:')
+#             print(user)
+#             print('foreign key : ' )
+#             print(category.category)
+#             print('new cat. name: ' + name)
+#             print('title: ' + new_category.title())
+#             print(color)
             
 
-    # This means: if it is not already in the list of user-edited categories
-    if not exist:
-        for category in default_categories:
-            if name == category.title():
-                exist = True
+#     # This means: if it is not already in the list of user-edited categories
+#     if not exist:
+#         for category in default_categories:
+#             if name == category.title():
+#                 exist = True
 
-                # Constructing an updated category
-                new_category = UserCategory(
-                    user=user, category=category, name=f'{format_name(category.name)}', color=color)
-                new_category.save()
+#                 # Constructing an updated category
+#                 new_category = UserCategory(
+#                     user=user, category=category, name=f'{format_name(category.name)}', color=color)
+#                 new_category.save()
                 
-                print('updating an existing default category as follows:')
-                print(user)
-                print('which one : ' )
-                print(category)
-                print('new cat. name: ' + name)
-                print('title: ' + new_category.title())
-                print(color)
+#                 print('updating an existing default category as follows:')
+#                 print(user)
+#                 print('which one : ' )
+#                 print(category)
+#                 print('new cat. name: ' + name)
+#                 print('title: ' + new_category.title())
+#                 print(color)
                 
 
             
-    # TODO: If it is brand-new category
-    if not exist:
+#     # TODO: If it is brand-new category
+#     if not exist:
 
-        print('Ima make a new one')
+#         print('Ima make a new one')
 
-    return 0
+#     return 0
