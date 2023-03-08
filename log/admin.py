@@ -9,4 +9,5 @@ admin.site.register(Category, CategoryAdmin)
 
 admin.site.register(Entry)
 
+# obsolete
 # admin.site.register(UserCategory)

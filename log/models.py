@@ -77,7 +77,7 @@ class Entry(models.Model):
         return name
     
     
-    
+    # Obsolete
     # Custom categories
 # class UserCategory(models.Model):
 #     # Who customized this category
