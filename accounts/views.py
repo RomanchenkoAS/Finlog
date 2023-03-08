@@ -51,6 +51,7 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            # TODO: make proper confirmation  
             confirmation = form.cleaned_data['confirmation']
 
             # Validate username and password
