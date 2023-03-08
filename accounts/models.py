@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from log.models import Category
 
+class
+
 # Custom user model containing a list of categories and according methods
 class User(AbstractUser):
     categories = models.ManyToManyField('Category', blank=True)
