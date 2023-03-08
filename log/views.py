@@ -53,6 +53,7 @@ def add(request):
     # print(f'{value} | {category} | {comment}')
     category = Category.objects.get(name=category)
 
+    # TODO: handle invalid value
     entry = Entry(user=request.user, value=float(value),
                   category=category, comment=comment, date=now())
     entry.save()
@@ -94,6 +95,6 @@ def edit(request):
     edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
     
     # Add error handling || if not 0 - return error message
-    if edit_category(request.user, edit) == 0:
-        return HttpResponse(status=204)
+    # if edit_category(request.user, edit) == 0:
+    return HttpResponse(status=204)
     
