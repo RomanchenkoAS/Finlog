@@ -1,13 +1,8 @@
 from django.contrib import admin
-from . models import Category, Entry #, UserCategory
-# Register your models here.
+from . models import Category, Entry
 
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name')
-
-admin.site.register(Category, CategoryAdmin)
+admin.site.register(Category)
 
 admin.site.register(Entry)
 
-# obsolete
-# admin.site.register(UserCategory)
+
