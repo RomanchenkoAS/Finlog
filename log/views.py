@@ -4,8 +4,9 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User # Obsolete
 from .models import Entry, Category
+from accounts.models import User, UserCategory
 
 import json
 

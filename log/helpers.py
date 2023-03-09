@@ -1,9 +1,9 @@
-from .models import Entry, Category #, UserCategory
-from django.contrib.auth.models import User
+from .models import Entry, Category
+from accounts.models import User, UserCategory
 
 
 def collect_entries(user):
-    ''' Returns a list of entries for this user '''
+    ''' Returns a list of entries for this user'''
 
     # Gather all entries (objects of this class) bound to given user
     entries_list = Entry.objects.filter(user=user.id)

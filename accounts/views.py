@@ -5,9 +5,10 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.messages import get_messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User # Obsolete
 from django.contrib.auth.hashers import make_password, check_password
 from .forms import RegistrationForm, LoginForm
+from .models import User, UserCategory
 
 def login_view(request):
 
