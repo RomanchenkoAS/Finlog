@@ -11,20 +11,6 @@ class Category(models.Model):
     # Description of the spending/income type
     name = models.CharField(max_length=200)
 
-    # Income or spend
-    INCOME = '+'
-    SPEND = '-'
-    KIND_CHOICES = [
-        (INCOME, 'income'),
-        (SPEND, 'spend')
-    ]
-
-    kind = models.CharField(
-        max_length=1,
-        choices=KIND_CHOICES,
-        default=SPEND,
-    )
-
     color = models.CharField(max_length=7, default='#d3d3d3')
 
     # Generate a title

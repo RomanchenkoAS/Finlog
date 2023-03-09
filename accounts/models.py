@@ -1,9 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from log.models import Category
+from log.models import Category, CURRENCY_CHOICES
 
 # Custom user model containing a list of categories and according methods
 class User(AbstractUser):
+    
+    currency = models.CharField(
+        choices=CURRENCY_CHOICES, max_length=3, default='KZT')
     
     def generate_categories(self):
         # Add all the default categories to the user
