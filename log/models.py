@@ -13,6 +13,7 @@ class Category(models.Model):
 
     color = models.CharField(max_length=7, default='#d3d3d3')
 
+    # Obsolete and so bad remove this please (but just do it so it works) TODO
     # Generate a title
     def title(self):
         return self.name.lower().replace(' ', '_').replace('-','_')
@@ -61,7 +62,7 @@ class Entry(models.Model):
         return name
     
     
-    # Obsolete
+    # Obsolete remove TODO
     # Custom categories
 # class UserCategory(models.Model):
 #     # Who customized this category

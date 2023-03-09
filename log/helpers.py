@@ -35,17 +35,20 @@ def collect_categories(user):
     ''' Returns a list of user categories for this user's pk '''
     # Collect default categories
     default_categories_list = Category.objects.all()
-    print(default_categories_list)
+    # print(default_categories_list)
     
     user_categories_list = UserCategory.objects.all()
-    print(user_categories_list)
+    # print(user_categories_list)
     
-    print('cycle')
+    # print('cycle')
     
-    for category1, category2 in default_categories_list, user_categories_list:
-        print(category1) 
-        print(category2) 
-    
+    for index, category in enumerate(default_categories_list):
+        print(f'{index}: {category.name} | {category.title()} | {category.color} -> users: ', end='')
+        # Getting according item
+        print(f'')
+        
+        
+        
     categories_dict = []
 
     for category in default_categories_list:
