@@ -1,0 +1,11 @@
+Other,#d3d3d3
+Housing,#add8e6
+Transportation,#ff8080
+Food,#90ee90
+Entertainment,#ce7bce
+Personal care,#add8e6
+Utilities,#ffff00
+Clothing,#ffa500
+Education,#ffc0cb
+Medical,#20b2aa
+Savings,#808080
