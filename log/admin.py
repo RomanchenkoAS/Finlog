@@ -3,7 +3,7 @@ from . models import Category, Entry #, UserCategory
 # Register your models here.
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'kind')
+    list_display = ('name')
 
 admin.site.register(Category, CategoryAdmin)
 
