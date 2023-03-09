@@ -32,7 +32,7 @@ def collect_entries(user):
 
 
 def collect_categories(user):
-    ''' Returns a list of categories for this user '''
+    ''' Returns a list of user categories for this user's pk '''
     # Gather all entries (objects of this class) bound to given user
     categories_list = Category.objects.all()
 
