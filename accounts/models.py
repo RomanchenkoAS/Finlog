@@ -37,3 +37,8 @@ class UserCategory(models.Model):
     name = models.CharField(max_length=200)
     color = models.CharField(max_length=7, default='#d3d3d3')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    # For proper representation on admin page
+    class Meta:
+        verbose_name = "User category"
+        verbose_name_plural = "User categories"
