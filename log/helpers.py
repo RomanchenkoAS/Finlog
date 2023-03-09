@@ -35,18 +35,26 @@ def collect_categories(user):
     ''' Returns a list of user categories for this user's pk '''
     # Collect default categories
     default_categories_list = Category.objects.all()
-    # print(default_categories_list)
+    print('First we had: ', end='')
+    print(default_categories_list)
     
-    user_categories_list = UserCategory.objects.all()
-    # print(user_categories_list)
+    # Collect UserCategory objects filtered by current user
+    user_categories_list = UserCategory.objects.filter(user=user)
     
-    # print('cycle')
-    
+    # Cycle through default categories and substitute them with according custom categories
     for index, category in enumerate(default_categories_list):
-        print(f'{index}: {category.name} | {category.title()} | {category.color} -> users: ', end='')
-        # Getting according item
-        print(f'')
+        print(f'{index}: {category.name} | {category.color} -> users: ', end='')
         
+        # Getting according item
+        # This is called list comprehension
+        custom = [x for x in user_categories_list if x.name == category.name]
+        print(f'{custom[0].name} | {custom[0].color}')
+        
+        # substitute
+        # remove from custom cat. list
+        
+    print('After sustitution: ', end='')
+    print(default_categories_list)  
         
         
     categories_dict = []
