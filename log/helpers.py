@@ -33,12 +33,22 @@ def collect_entries(user):
 
 def collect_categories(user):
     ''' Returns a list of user categories for this user's pk '''
-    # Gather all entries (objects of this class) bound to given user
-    categories_list = Category.objects.all()
-
+    # Collect default categories
+    default_categories_list = Category.objects.all()
+    print(default_categories_list)
+    
+    user_categories_list = UserCategory.objects.all()
+    print(user_categories_list)
+    
+    print('cycle')
+    
+    for category1, category2 in default_categories_list, user_categories_list:
+        print(category1) 
+        print(category2) 
+    
     categories_dict = []
 
-    for category in categories_list:
+    for category in default_categories_list:
         new_category = {
             # For display
             'title': category.name,
