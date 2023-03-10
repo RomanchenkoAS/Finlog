@@ -35,7 +35,7 @@ function recusrive_render(arr) {
     // Pick out the last item 
     var lastItem = arr.pop();
 
-    console.log(lastItem);
+    // console.log(lastItem);
     if (typeof lastItem === 'undefined') {
         // console.log('That was the last one :3')
         return 0
@@ -175,7 +175,19 @@ function clear_form() {
     categorySelect.selectedIndex = 0;
 };
 
+// function reload_table() {
+//     console.dir(table);
+//     var tbody = table.getElementsByTagName("tbody")[0]; // get the first tbody element in the table
+
+//     while (tbody.firstChild) { // while there are still child elements in the tbody
+//       tbody.removeChild(tbody.firstChild); // remove the first child element (which will be a tr)
+//     }
+//     // Load once again
+//     load_content();
+// }
+
+
 window.onload = function () {
-    load_content();
     // console.log('i do work')
+    load_content();
 };

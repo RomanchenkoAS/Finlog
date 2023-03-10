@@ -257,9 +257,9 @@
         
         function edit(input_category, action = 'edit') {
             let colorPicker = document.getElementById(input_category + "-colorpicker");
-            console.log(`${action} -> ${input_category} | new color: ${colorPicker.value} | sending xhr request`);
+            //console.log(`${action} -> ${input_category} | new color: ${colorPicker.value} | sending xhr request`);
 
-            // Action options: edit | new | delete
+            // Action options: edit | add | delete | reset
             name = input_category;
             color = colorPicker.value;
 
@@ -297,8 +297,9 @@
         var categoriesModal = document.getElementById("categoriesModal");
         
         categoriesModal.addEventListener("hidden.bs.modal", function () {
-            // TODO: Create this
+            //reload_table();
         });
         
+
     </script>
     {% endblock script %}
