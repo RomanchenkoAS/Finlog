@@ -189,7 +189,21 @@
                 let category = this.id.substring(0, this.id.indexOf('-'));
                 // Get corresponding item and set it's color to the picked one
                 let item = document.getElementById(`${category}-item`);
+                
+                // Also change all the relevant itmes to a new color
                 item.style.backgroundColor = colorCode;
+
+                // All cells
+                const cells = document.querySelectorAll("td");
+                // All cells with category written there
+                const cellsToChange = Array.from(cells).filter(cell => cell.textContent.includes(category));
+
+                // And then changing their parent's color 
+                cellsToChange.forEach(item => {
+                    item.parentElement.style.backgroundColor = colorCode;
+                })
+
+
             });
         };
           
