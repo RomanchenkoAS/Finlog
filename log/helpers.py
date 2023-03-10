@@ -34,32 +34,38 @@ def collect_entries(user):
 def collect_categories(user):
     ''' Returns a list of user categories for this user's pk '''
     # Collect default categories
-    default_categories_list = Category.objects.all()
+    default_categories_set = Category.objects.all()
     
     # For debug
     print('------------------\nFIRST WE HAD: ')
-    for c in default_categories_list:
+    for c in default_categories_set:
         print(f'{c.name} || {c.color}')
     
     # Collect UserCategory objects filtered by current user
-    user_categories_list = UserCategory.objects.filter(user=user)
+    user_categories_set = UserCategory.objects.filter(user=user)
+    user_categories_list = []
+    for category in user_categories_set:
+        user_categories_list.append(category)
     
     # Cycle through default categories and substitute them with according custom categories
-    for index, category in enumerate(default_categories_list):
+    for index, category in enumerate(default_categories_set):
         print(f'{index}: {category.name} | {category.color} -> users: ', end='')
         
-        # Getting according item
+        # Getting matching item
         # This is called list comprehension
-        custom = [x for x in user_categories_list if x.name == category.name]
-        print(f'{custom[0].name} | {custom[0].color}')
+        match = [x for x in user_categories_set if x.name == category.name]
+        matching_category = match[0]
+        print(f'{matching_category.name} | {matching_category.color}')
         
         # The existing one with the user edited
-        category.color = custom[0].color
-        # remove from custom cat. list
+        category.color = matching_category.color
+        # Remove matchfrom custom cat. list
+        user_categories_list.remove(matching_category)
+        
         
     # For debug
     print('------------------\nAFTER SUBSTITUTION: ')
-    for c in default_categories_list:
+    for c in default_categories_set:
         print(f'{c.name} || {c.color}')
         
     print('------------------\nCUSTOM CATEGORY LIST AFTERWARDS: ')
@@ -68,7 +74,7 @@ def collect_categories(user):
         
     categories_dict = []
 
-    for category in default_categories_list:
+    for category in default_categories_set:
         new_category = {
             # For display
             'title': category.name,
