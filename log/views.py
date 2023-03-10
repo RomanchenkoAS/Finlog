@@ -30,7 +30,7 @@ def log(request):
     context = {
         'user': current_user.username,
         'categories': categories,
-        # 'user_categories' : user_categories,
+        'user_categories' : user_categories,
     }
 
     return render(request, 'log/log.html', context)
