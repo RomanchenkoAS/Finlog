@@ -37,7 +37,7 @@ def collect_categories(user):
     default_categories_list = Category.objects.all()
     
     # For debug
-    print('------------------\FIRST WE HAD: ')
+    print('------------------\nFIRST WE HAD: ')
     for c in default_categories_list:
         print(f'{c.name} || {c.color}')
     
@@ -62,7 +62,7 @@ def collect_categories(user):
     for c in default_categories_list:
         print(f'{c.name} || {c.color}')
         
-    print('------------------\CUSTOM CATEGORY LIST AFTERWARDS: ')
+    print('------------------\nCUSTOM CATEGORY LIST AFTERWARDS: ')
     for c in user_categories_list:
         print(f'{c.name} || {c.color}')
         
