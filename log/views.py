@@ -106,11 +106,8 @@ def edit(request):
     print(parsed_data)
     
     if parsed_data['action'] == 'edit':
-        # edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
         # Find this one category that needs changing
         category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
-        # print(category)
-        
         # Change & save
         category.color = parsed_data['color']
         category.save()
@@ -118,6 +115,10 @@ def edit(request):
         # TODO: check if category with this name already exists
         new_category = UserCategory.objects.create(name=parsed_data['newname'], color=parsed_data['color'], user=request.user)
         new_category.save()
+        
+    elif parsed_data['action'] == 'delete':
+        category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
+        category.delete()
     
     # Add error handling || if not 0 - return error message
     # if edit_category(request.user, edit) == 0:
