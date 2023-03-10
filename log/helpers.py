@@ -13,12 +13,12 @@ def collect_entries(user):
     # Enumerate creates a tuple of (i, item) from a single item
     for i, item in enumerate(entries_list):
         # Fetch color from UserCategory model
-        color = UserCategory.objects.get(name=item.category.name, user=user).color
+        # color = UserCategory.objects.get(name=item.category.name, user=user).color
         new_entry = {
             'value': item.value,
             'currency': item.currency,
             'category': item.category.name,
-            'color': color,
+            'color': UserCategory.objects.get(name=item.category.name, user=user).color,
             'datetime': item.date.strftime("%Y-%m-%d %H:%M:%S %Z"),
             'comment': item.comment,
             'position': i,
