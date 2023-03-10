@@ -90,7 +90,8 @@ function add_row(lastItem, position) {
 
     let x_icon = document.createElement('img');
     x_icon.className = 'icon_button cross'
-    x_icon.src = "/log/icons/cross.svg"
+    x_icon.src = "/static/log/icons/cross.svg";
+
     deleteButton.appendChild(x_icon);
     // <img class="icon_button" src="{% static 'log/icons/cross.svg'%}"></img>
 
