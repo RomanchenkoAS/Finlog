@@ -51,12 +51,10 @@ def add(request):
     comment = request.POST.get('comment', '')
 
     try:
-        print('Is this default one?')
         category = Category.objects.get(name=category)
     except Category.DoesNotExist:
     # In case this is NOT a default category
         try:
-            print('Is this a user category?')
             category = UserCategory.objects.get(name=category)
         except UserCategory.DoesNotExist:
             # Return error TODO: Make it look ok maybe | apology??
