@@ -313,7 +313,14 @@
 
                     // If there was a new category added, spawn it right there
                     if (action == 'add') {
+                        let container = document.getElementById("user_categories_container");
+                        let newspan = document.createElement("span");
+                        
+                        newspan.textContent = newname;
 
+                        let index = container.children.length - 1;
+                        let previous = container.children[index];
+                        container.insertBefore(newspan, previous);
                     }
 
                 };
