@@ -235,15 +235,15 @@
         
         // Show 'custom' collapsible header 
         var custom = document.getElementById("collapsible_custom");
+        var customHeaderContent = custom.nextElementSibling;
 
         function expand_custom() {
             //console.log('showing custom')
             custom.classList.toggle("active");
-            var content = custom.nextElementSibling;
-            if (content.style.maxHeight){
-                content.style.maxHeight = null;
+            if (customHeaderContent.style.maxHeight){
+                customHeaderContent.style.maxHeight = null;
             } else {
-                content.style.maxHeight = content.scrollHeight + "px";
+                customHeaderContent.style.maxHeight = customHeaderContent.scrollHeight + "px";
             };
         }
         
@@ -325,8 +325,20 @@
                         newSpan.appendChild(newParagraph);
 
                         let index = container.children.length - 1;
-                        let previous = container.children[index];
-                        container.insertBefore newSpan, previous);
+                        let previousParagraph = container.children[index];
+                        container.insertBefore(newSpan, previousParagraph);
+
+                        // Expand the header to contain one more line
+                        customHeaderContent.style.maxHeight = customHeaderContent.scrollHeight + "px";
+
+                        var content = custom.nextElementSibling;
+                        if (content.style.maxHeight){
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                        };
+
+                        // TODO: maybe add edit_palette here as well?
                     };
 
                 };
