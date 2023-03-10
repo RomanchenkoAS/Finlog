@@ -100,6 +100,7 @@ def remove(request, p):
 def edit(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
+    print(parsed_data)
     edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
     
     # Add error handling || if not 0 - return error message
