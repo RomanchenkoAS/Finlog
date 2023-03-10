@@ -58,6 +58,7 @@ def collect_categories(user):
     default_categories = []
 
     # Form a list of dictionaries for default categories (possibly edited)
+    # Title and name are the same now TODO: remove (here and in HTML)
     for category in default_categories_set:
         new_category = {
             # For display

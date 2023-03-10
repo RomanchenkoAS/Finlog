@@ -105,10 +105,14 @@ def edit(request):
     print(parsed_data)
     
     if parsed_data['action'] == 'edit':
-        edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
-        
-        category = UserCategory.objects.get(name=parsed_data['name'])
+        # edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
+        # Find this one category that needs changing
+        category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
         print(category)
+        
+        # Change & save
+        category.color = parsed_data['color']
+        category.save()
     
     # Add error handling || if not 0 - return error message
     # if edit_category(request.user, edit) == 0:
