@@ -99,21 +99,23 @@
                         {% endif %}
                         <!-- Create new category -->
                         <span >
-                            <p id="new-item" style="background-color:#d3d3d3" class="category small-margin">Create new category
+                            <p id="add-item" style="background-color:#d3d3d3" class="category small-margin">Create new category
                                 <!-- Edit -->
-                                <a id="new-edit-button" onclick='expand("new")' class="a-none">
+                                <a id="add-edit-button" onclick='expand("add")' class="a-none">
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
 
-                                <span class="edit_palette" id="new-edit">
+                                <span class="edit_palette" id="add-edit">
+                                    <!-- Input name field -->
+                                    <input class="change_name" type="text" id="add-newname"> 
                                     <!-- Colorpicker -->
-                                    <input class="color_picker" type="color" id="new-colorpicker" value="#d3d3d3">
+                                    <input class="color_picker" type="color" id="add-colorpicker" value="#d3d3d3">
                                     <!-- Tick -->
-                                    <a onclick='edit("new")' class="a-none">
+                                    <a onclick='edit("add")' class="a-none">
                                         <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                                     </a>
                                     <!-- Cross -->
-                                    <a onclick='hide("new")' class="a-none">
+                                    <a onclick='hide("add")' class="a-none">
                                         <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
                                     </a>
                                 </span>
@@ -269,11 +271,21 @@
         
         function edit(input_category, action = 'edit') {
             let colorPicker = document.getElementById(input_category + "-colorpicker");
-            //console.log(`${action} -> ${input_category} | new color: ${colorPicker.value} | sending xhr request`);
+            console.log(`${action} -> ${input_category} | new color: ${colorPicker.value} | sending xhr request`);
 
             // Action options: edit | add | delete | reset
             name = input_category;
             color = colorPicker.value;
+
+            let name_input = document.getElementById(`${input_category}-newname`);
+            if (name_input != null) {
+                //console.log(name_input)
+                //console.log(name_input.value)
+                newname = name_input.value;
+            } else {
+                //console.log('newname = none')
+                newname = '';
+            }
 
             // send actual request at /edit/
             var xhr = new XMLHttpRequest();
@@ -298,7 +310,7 @@
             };
 
             // Sending data
-            var data = JSON.stringify({"name": name, "color": color, "action": action});
+            var data = JSON.stringify({"name": name, "color": color, "action": action, "newname": newname});
             xhr.send(data);
             
             // Hide edit palette
