@@ -21,7 +21,10 @@ def log(request):
     '''Show on the page the list of entries with category classes'''
     current_user = request.user
 
-    categories = collect_categories(current_user)
+    categories, user_categories = collect_categories(current_user)
+    print("---------------\nInside VIEW: ")
+    print(categories)
+    print(user_categories)
     # user_categories = collect_user_categories(current_user)
 
     context = {

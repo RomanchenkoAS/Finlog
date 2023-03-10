@@ -72,8 +72,9 @@ def collect_categories(user):
     for c in user_categories_list:
         print(f'{c.name} || {c.color}')
         
-    categories_dict = []
+    default_categories = []
 
+    # Form a list of dictionaries for default categories (possibly edited)
     for category in default_categories_set:
         new_category = {
             # For display
@@ -83,9 +84,23 @@ def collect_categories(user):
             'id': category.id,
             'color': category.color,
         }
-        categories_dict.append(new_category)
+        default_categories.append(new_category)
 
-    return categories_dict
+        user_categories = []
+
+    # Form a list of dictionaries for extra user categories 
+    for category in user_categories_list:
+        new_category = {
+            # For display
+            'title': category.name,
+            # For inner use
+            'name': format_name(category.name),
+            'id': category.id,
+            'color': category.color,
+        }
+        user_categories.append(new_category)
+
+    return default_categories, user_categories
 
 # def collect_user_categories(user):
     ''' Returns a list of categories for this user '''
