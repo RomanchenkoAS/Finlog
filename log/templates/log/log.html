@@ -67,40 +67,41 @@
                     </div>
                     <button class="collapsible small-margin" id="collapsible_custom">Custom ▼ </button>
 
-                    
+                    <!-- Custom block -->
                     <div class="content">
                         {% if user_categories %}
                         {% for category in user_categories %}
+                        <!-- Existing user categories -->
                         <span>
-                            <p class="{{category.name}} small-margin ">{{category.title}} 
-                            <a href="">
-                                <img class="edit_button" src="{% static 'log/edit.png'%}">
-                            </a>
-                            <input style="display:none" class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
+                            <p id="{{category.name}}-item" style="background-color:{{category.color}}" class="category small-margin">{{category.title}} 
+                                <a id="{{category.name}}-edit-button" class="a-none" onclick="expand('{{category.name}}')" >
+                                    <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
+                                </a>
+                                <input style="display:none" class="color_picker" type="color" id="{{category.name}}-colorpicker" value="#0000ff">
                             </p>
                         </span>
                         {% endfor %}
                         {% endif%}
                         <!-- Create new category -->
                         <span >
-                            <p class="small-margin category">Create new category:
-                            <!-- Edit -->
-                            <a id="new-edit-button" onclick='expand("new")' class="a-none">
-                                <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
-                            </a>
+                            <p id="new-item" style="background-color:#d3d3d3" class="category small-margin">Create new category:
+                                <!-- Edit -->
+                                <a id="new-edit-button" onclick='expand("new")' class="a-none">
+                                    <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
+                                </a>
 
-                            <span class="edit_palette" id="new-edit">
-                                <!-- Colorpicker -->
-                                <input class="color_picker" type="color" id="new-colorpicker" value="#ffffff">
-                                <!-- Tick -->
-                                <a onclick='edit("new")' class="a-none">
-                                    <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
-                                </a>
-                                <!-- Cross -->
-                                <a onclick='hide("new")' class="a-none">
-                                    <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
-                                </a>
-                            </span>
+                                <span class="edit_palette" id="new-edit">
+                                    <!-- Colorpicker -->
+                                    <input class="color_picker" type="color" id="new-colorpicker" value="#d3d3d3">
+                                    <!-- Tick -->
+                                    <a onclick='edit("new")' class="a-none">
+                                        <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
+                                    </a>
+                                    <!-- Cross -->
+                                    <a onclick='hide("new")' class="a-none">
+                                        <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
+                                    </a>
+                                </span>
                             </p>
                         </span>
                     </div>
