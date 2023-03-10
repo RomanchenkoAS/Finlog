@@ -22,11 +22,6 @@ def log(request):
     current_user = request.user
 
     categories, user_categories = collect_categories(current_user)
-    
-    # print("---------------\nInside VIEW: ")
-    # print(categories)
-    # print(user_categories)
-    # user_categories = collect_user_categories(current_user)
 
     context = {
         'user': current_user.username,
