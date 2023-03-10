@@ -158,7 +158,9 @@
                         <option value="{{ category.title }}">{{category.title}}</option>
                         {% endif %}
                     {% endfor %}
+                    <!-- User categories -->
                     {% for category in user_categories %}
+                        <option value="{{ category.title }}">{{category.title}}</option>
                     {% endfor %}
                 </select>
                 <!-- Comment field -->
