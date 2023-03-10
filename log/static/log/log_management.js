@@ -22,7 +22,6 @@ function load_content() {
             return response.json();
         })
         .then(data => {
-            console.dir(data)
             recusrive_render(data.entries);
             scroll_down();
         })
@@ -36,6 +35,7 @@ function recusrive_render(arr) {
     // Pick out the last item 
     var lastItem = arr.pop();
 
+    console.log(lastItem);
     if (typeof lastItem === 'undefined') {
         // console.log('That was the last one :3')
         return 0
@@ -68,7 +68,7 @@ function add_row(lastItem, position) {
     // Populate the cells
     cellValue.innerHTML = formatter(lastItem.value, lastItem.currency);
     //cellValue.innerHTML     = `${lastItem.value} ${lastItem.currency}`;
-    cellCategory.innerHTML = lastItem.category_title;
+    cellCategory.innerHTML = lastItem.category;
     cellDate.innerHTML = lastItem.datetime;
 
     // Comment is ... if empty
@@ -177,5 +177,5 @@ function clear_form() {
 
 window.onload = function () {
     load_content();
-    console.log('i do work')
+    // console.log('i do work')
 };

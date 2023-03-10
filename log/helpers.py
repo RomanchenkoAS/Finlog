@@ -12,20 +12,18 @@ def collect_entries(user):
     entries_dict = []
     # Enumerate creates a tuple of (i, item) from a single item
     for i, item in enumerate(entries_list):
+        # Fetch color from UserCategory model
+        color = UserCategory.objects.get(name=item.category.name, user=user).color
         new_entry = {
             'value': item.value,
             'currency': item.currency,
-            # To use TODO: remove/clear redundancy
             'category': item.category.name,
-            # To show
-            'category_title': item.category.name,
-            'color': item.category.color,
+            'color': color,
             'datetime': item.date.strftime("%Y-%m-%d %H:%M:%S %Z"),
             'comment': item.comment,
             'position': i,
             'id': item.id,
         }
-        # print(f'Adding an item #{i}: {item.value} / {item.category} / {item.date} || id:{item.id}')
         entries_dict.append(new_entry)
 
     return entries_dict
