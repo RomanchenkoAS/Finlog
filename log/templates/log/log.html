@@ -68,7 +68,7 @@
                     <button class="collapsible small-margin" id="collapsible_custom">Custom ▼ </button>
 
                     <!-- Custom block -->
-                    <div class="content">
+                    <div class="content" id="user_categories_container">
                         {% if user_categories %}
                         {% for category in user_categories %}
                         <!-- Existing user categories -->
@@ -310,6 +310,11 @@
                     console.log("Request successful");
 
                     called_action = action;
+
+                    // If there was a new category added, spawn it right there
+                    if (action == 'add') {
+
+                    }
 
                 };
             };
