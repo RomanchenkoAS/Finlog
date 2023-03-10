@@ -43,10 +43,6 @@ class Entry(models.Model):
     # Using built-in user model <3
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
-
-    # By default the category is "other"
-    # category = models.ForeignKey(
-    #     Category, on_delete=models.SET_DEFAULT, default=1)
     
     # Generic foreign key to the Category model
     content_type = models.ForeignKey(ContentType, on_delete=models.SET_DEFAULT, default=1)
