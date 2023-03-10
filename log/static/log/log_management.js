@@ -86,24 +86,16 @@ function add_row(lastItem, position) {
     deleteButton.className = 'btn delete';
     deleteButton.id = lastItem.position + '-remove';
     deleteButton.onclick = function () { deleteEntry(lastItem.position); };
-    // deleteButton.innerHTML = '&times;';
 
     let x_icon = document.createElement('img');
     x_icon.className = 'icon_button cross'
     x_icon.src = "/static/log/icons/cross.svg";
 
     deleteButton.appendChild(x_icon);
-    // <img class="icon_button" src="{% static 'log/icons/cross.svg'%}"></img>
 
     // Append the button element to the cellDelButton cell
     cellDelButton.appendChild(deleteButton);
 
-    // Obsolete TODO: remove
-    // Making it of the right class 
-    // newrow.classList.add(lastItem.category);
-
-    // console.log(lastItem.category)
-    // Setting a proper color instead of class:
     newrow.style.backgroundColor = lastItem.color;
 
     newrow.id = lastItem.position;
