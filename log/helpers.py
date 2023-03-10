@@ -37,7 +37,7 @@ def collect_categories(user):
     default_categories_list = Category.objects.all()
     
     # For debug
-    print('First we had: ')
+    print('------------------\FIRST WE HAD: ')
     for c in default_categories_list:
         print(f'{c.name} || {c.color}')
     
@@ -58,10 +58,13 @@ def collect_categories(user):
         # remove from custom cat. list
         
     # For debug
-    print('After sustitution: ')
+    print('------------------\nAFTER SUBSTITUTION: ')
     for c in default_categories_list:
         print(f'{c.name} || {c.color}')
         
+    print('------------------\CUSTOM CATEGORY LIST AFTERWARDS: ')
+    for c in user_categories_list:
+        print(f'{c.name} || {c.color}')
         
     categories_dict = []
 
