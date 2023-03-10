@@ -109,7 +109,7 @@ function scroll_down() {
 
 // Script to delete an entry with given entry.position
 function deleteEntry(pos) {
-    console.log(`I am to delete an entry #${pos}`);
+    // console.log(`I am to delete an entry #${pos}`);
 
     fetch(`/remove/${pos}/`, {
         method: 'DELETE',
