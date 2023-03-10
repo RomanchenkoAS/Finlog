@@ -108,7 +108,7 @@ def edit(request):
         # edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
         # Find this one category that needs changing
         category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
-        print(category)
+        # print(category)
         
         # Change & save
         category.color = parsed_data['color']

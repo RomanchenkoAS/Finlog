@@ -15,8 +15,8 @@ def collect_entries(user):
         new_entry = {
             'value': item.value,
             'currency': item.currency,
-            # To use
-            'category': format_name(item.category.name),
+            # To use TODO: remove/clear redundancy
+            'category': item.category.name,
             # To show
             'category_title': item.category.name,
             'color': item.category.color,

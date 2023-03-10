@@ -13,6 +13,7 @@ function formatter(value, currency) {
 
 // Load content from the /load_content/ url -- used on window load -- includes recusrive_render & scroll_down
 function load_content() {
+    // console.log('load function')
     fetch(`/load_content/`)
         .then(response => {
             if (!response.ok) {
@@ -21,6 +22,7 @@ function load_content() {
             return response.json();
         })
         .then(data => {
+            console.dir(data)
             recusrive_render(data.entries);
             scroll_down();
         })
@@ -175,5 +177,5 @@ function clear_form() {
 
 window.onload = function () {
     load_content();
-    // console.log('i do work')
+    console.log('i do work')
 };
