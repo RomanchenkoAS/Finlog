@@ -50,7 +50,7 @@ class Entry(models.Model):
     
     # Generic foreign key to the Category model
     content_type = models.ForeignKey(ContentType, on_delete=models.SET_DEFAULT, default=1)
-    object_id = models.PositiveIntegerField()
+    object_id = models.PositiveIntegerField(default=1)
     category = GenericForeignKey('content_type', 'object_id')
     
     currency = models.CharField(
