@@ -270,6 +270,9 @@
             document.getElementById(input_category + "-edit-button").style.visibility = 'visible';
         };
         
+        // Variable that controls behaviour of the page after closing the modal window
+        let called_action = 'none';
+
         function edit(input_category, action = 'edit') {
             let colorPicker = document.getElementById(input_category + "-colorpicker");
             
@@ -305,7 +308,10 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 204) {
                     console.log("Request successful");
-                }
+
+                    called_action = action;
+
+                };
             };
 
             // Sending data
@@ -320,7 +326,11 @@
         var categoriesModal = document.getElementById("categoriesModal");
         
         categoriesModal.addEventListener("hidden.bs.modal", function () {
-            //reload_table();
+            
+            // If a new category was added - refresh the page
+            if (called_action == 'add') {
+                location.reload();
+            };
         });
         
 
