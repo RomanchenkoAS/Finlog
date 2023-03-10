@@ -4,8 +4,8 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
-# from django.contrib.auth.models import User # Obsolete
 from .models import Entry, Category
+# Not used here
 from accounts.models import User, UserCategory
 
 import json
@@ -13,7 +13,7 @@ import json
 from django.utils.timezone import now
 
 # Helper functions
-from .helpers import collect_entries, collect_categories # collect_user_categories, edit_category
+from .helpers import collect_entries, collect_categories #, edit_category
 
 
 @login_required
@@ -50,7 +50,6 @@ def add(request):
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
 
-    # print(f'{value} | {category} | {comment}')
     category = Category.objects.get(name=category)
 
     # TODO: handle invalid value
