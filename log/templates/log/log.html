@@ -185,8 +185,8 @@
             colorPickers[i].addEventListener('input', function() {
                 // Take this color
                 let colorCode = this.value;
-                // Get corresponding category by cutting off the string before '-' symbol
-                let category = this.id.substring(0, this.id.indexOf('-'));
+                // Get corresponding category by cutting off '-colorpicker'
+                let category = this.id.substring(0, this.id.indexOf('-colorpicker'));
                 // Get corresponding item and set it's color to the picked one
                 let item = document.getElementById(`${category}-item`);
                 
@@ -202,8 +202,6 @@
                 cellsToChange.forEach(item => {
                     item.parentElement.style.backgroundColor = colorCode;
                 })
-
-
             });
         };
           
