@@ -113,6 +113,8 @@ def edit(request):
         # Change & save
         category.color = parsed_data['color']
         category.save()
+    elif parsed_data['action'] == 'add':
+        print('Gonna add smh')
     
     # Add error handling || if not 0 - return error message
     # if edit_category(request.user, edit) == 0:
