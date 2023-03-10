@@ -36,30 +36,22 @@ def collect_categories(user):
     # Collect default categories
     default_categories_set = Category.objects.all()
     
-    # For debug
-    # print('------------------\nFIRST WE HAD: ')
-    # for c in default_categories_set:
-    #     print(f'{c.name} || {c.color}')
-    
     # Collect UserCategory objects filtered by current user
     user_categories_set = UserCategory.objects.filter(user=user)
     user_categories_list = []
     for category in user_categories_set:
         user_categories_list.append(category)
     
-    # Cycle through default categories and substitute them with according custom categories
-    for index, category in enumerate(default_categories_set):
-        # print(f'{index}: {category.name} | {category.color} -> users: ', end='')
-        
-        # Getting matching item
-        # This is called list comprehension
+    # Cycle through default categories and substitute them with according user categories
+    for category in default_categories_set:
+        # Getting matching item (this is called a list comprehension)
         match = [x for x in user_categories_set if x.name == category.name]
         matching_category = match[0]
-        # print(f'{matching_category.name} | {matching_category.color}')
         
-        # The existing one with the user edited
+        # Substitute the existing one with the user edited
         category.color = matching_category.color
-        # Remove matchfrom custom cat. list
+        
+        # Remove match from user category list
         user_categories_list.remove(matching_category)
         
         
