@@ -3,6 +3,9 @@ from django.utils import timezone  # For setting time in DateTimeField
 # For setting minimum value in a field
 from django.core.validators import MinValueValidator
 from django.conf import settings  # For using a build-in USER model
+# For generic foreign key
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 # Default categories
 class Category(models.Model):
@@ -42,8 +45,14 @@ class Entry(models.Model):
                              on_delete=models.CASCADE)
 
     # By default the category is "other"
-    category = models.ForeignKey(
-        Category, on_delete=models.SET_DEFAULT, default=1)
+    # category = models.ForeignKey(
+    #     Category, on_delete=models.SET_DEFAULT, default=1)
+    
+    # Generic foreign key to the Category model
+    content_type = models.ForeignKey(ContentType, on_delete=models.SET_DEFAULT, default=1)
+    object_id = models.PositiveIntegerField(default=1)
+    category = GenericForeignKey('content_type', 'object_id')
+    
     currency = models.CharField(
         choices=CURRENCY_CHOICES, max_length=3, default='KZT')
     value = models.FloatField(validators=[MinValueValidator(0)])

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from .models import Entry, Category
-# Not used here
+
 from accounts.models import User, UserCategory
 
 import json
@@ -50,7 +50,16 @@ def add(request):
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
 
-    category = Category.objects.get(name=category)
+    try:
+        category = Category.objects.get(name=category)
+    except Category.DoesNotExist:
+    # In case this is NOT a default category
+        try:
+            category = UserCategory.objects.get(name=category)
+        except UserCategory.DoesNotExist:
+            # Return error TODO: Make it look ok maybe | apology??
+            return HttpResponse(status=400)
+    
 
     # TODO: handle invalid value
     entry = Entry(user=request.user, value=float(value),
