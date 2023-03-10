@@ -102,6 +102,7 @@ def remove(request, p):
 def edit(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
+    # TODO: remove later
     print(parsed_data)
     
     if parsed_data['action'] == 'edit':
