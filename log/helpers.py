@@ -37,9 +37,9 @@ def collect_categories(user):
     default_categories_set = Category.objects.all()
     
     # For debug
-    print('------------------\nFIRST WE HAD: ')
-    for c in default_categories_set:
-        print(f'{c.name} || {c.color}')
+    # print('------------------\nFIRST WE HAD: ')
+    # for c in default_categories_set:
+    #     print(f'{c.name} || {c.color}')
     
     # Collect UserCategory objects filtered by current user
     user_categories_set = UserCategory.objects.filter(user=user)
@@ -49,13 +49,13 @@ def collect_categories(user):
     
     # Cycle through default categories and substitute them with according custom categories
     for index, category in enumerate(default_categories_set):
-        print(f'{index}: {category.name} | {category.color} -> users: ', end='')
+        # print(f'{index}: {category.name} | {category.color} -> users: ', end='')
         
         # Getting matching item
         # This is called list comprehension
         match = [x for x in user_categories_set if x.name == category.name]
         matching_category = match[0]
-        print(f'{matching_category.name} | {matching_category.color}')
+        # print(f'{matching_category.name} | {matching_category.color}')
         
         # The existing one with the user edited
         category.color = matching_category.color
@@ -63,14 +63,14 @@ def collect_categories(user):
         user_categories_list.remove(matching_category)
         
         
-    # For debug
-    print('------------------\nAFTER SUBSTITUTION: ')
-    for c in default_categories_set:
-        print(f'{c.name} || {c.color}')
+    # # For debug
+    # print('------------------\nAFTER SUBSTITUTION: ')
+    # for c in default_categories_set:
+    #     print(f'{c.name} || {c.color}')
         
-    print('------------------\nCUSTOM CATEGORY LIST AFTERWARDS: ')
-    for c in user_categories_list:
-        print(f'{c.name} || {c.color}')
+    # print('------------------\nCUSTOM CATEGORY LIST AFTERWARDS: ')
+    # for c in user_categories_list:
+    #     print(f'{c.name} || {c.color}')
         
     default_categories = []
 
