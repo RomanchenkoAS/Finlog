@@ -354,7 +354,7 @@
             hide(input_category);
         };
         
-        // Dissmiss all the changes on closing the modal
+        // TODO: Dissmiss all the changes on closing the modal
         var categoriesModal = document.getElementById("categoriesModal");
         
         categoriesModal.addEventListener("hidden.bs.modal", function () {
@@ -365,6 +365,27 @@
             };
         });
         
+        // Event listeners for space/enter on category name input
+        const inputField = document.getElementsByClassName('change_name');
+        for (let i=0; i < inputField.length; i++) {
+            inputField[i].addEventListener('keydown', (event) => {
+                if (event.code === 'Space') {
+                    event.preventDefault();
+                };
+
+                if (event.code === 'Enter') {
+                    //console.log('submit');
+                    //console.log(inputField[i]);
+
+                    if (inputField[i].id == 'add-newname') {
+                        edit("add", "add");
+                    };
+                };
+            });
+
+        };
+
+
 
     </script>
     {% endblock script %}

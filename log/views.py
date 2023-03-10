@@ -115,6 +115,7 @@ def edit(request):
         category.color = parsed_data['color']
         category.save()
     elif parsed_data['action'] == 'add':
+        # TODO: check if category with this name already exists
         new_category = UserCategory.objects.create(name=parsed_data['newname'], color=parsed_data['color'], user=request.user)
         new_category.save()
     
