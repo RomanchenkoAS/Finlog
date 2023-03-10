@@ -114,7 +114,8 @@ def edit(request):
         category.color = parsed_data['color']
         category.save()
     elif parsed_data['action'] == 'add':
-        print('Gonna add smh')
+        new_category = UserCategory.create(name=parsed_data['newname'], color=parsed_data['color'], user=request.user)
+        new_category.save()
     
     # Add error handling || if not 0 - return error message
     # if edit_category(request.user, edit) == 0:
