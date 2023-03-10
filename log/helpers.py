@@ -63,7 +63,7 @@ def collect_categories(user):
             # For display
             'title': category.name,
             # For inner use
-            'name': format_name(category.name),
+            'name': category.name,
             'id': category.id,
             'color': category.color,
         }
@@ -78,7 +78,7 @@ def collect_categories(user):
             # For display
             'title': category.name,
             # For inner use
-            'name': format_name(category.name),
+            'name': category.name,
             'id': category.id,
             'color': category.color,
         }

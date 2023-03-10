@@ -89,8 +89,9 @@ function add_row(lastItem, position) {
     // Append the button element to the cellDelButton cell
     cellDelButton.appendChild(deleteButton);
 
+    // Obsolete TODO: remove
     // Making it of the right class 
-    newrow.classList.add(lastItem.category);
+    // newrow.classList.add(lastItem.category);
 
     // console.log(lastItem.category)
     // Setting a proper color instead of class:

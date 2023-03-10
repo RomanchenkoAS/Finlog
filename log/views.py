@@ -22,7 +22,8 @@ def log(request):
     current_user = request.user
 
     categories, user_categories = collect_categories(current_user)
-
+    # print(categories)
+    # print(user_categories)
     context = {
         'user': current_user.username,
         'categories': categories,
@@ -49,7 +50,8 @@ def add(request):
     value = request.POST.get('value', '')
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
-
+    # print(f'{value} | {category} | {comment}')
+    
     try:
         category = Category.objects.get(name=category)
     except Category.DoesNotExist:
@@ -100,7 +102,7 @@ def remove(request, p):
 def edit(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
-    # print(parsed_data)
+    print(parsed_data)
     
     if parsed_data['action'] == 'edit':
         edit = {'name' : parsed_data['name'], 'color' : parsed_data['color']}
