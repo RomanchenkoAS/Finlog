@@ -35,8 +35,11 @@ def collect_categories(user):
     ''' Returns a list of user categories for this user's pk '''
     # Collect default categories
     default_categories_list = Category.objects.all()
+    
+    # For debug
     print('First we had: ', end='')
-    print(default_categories_list)
+    for c in default_categories_list:
+        print(f'{c.name} || {c.color}')
     
     # Collect UserCategory objects filtered by current user
     user_categories_list = UserCategory.objects.filter(user=user)
@@ -50,11 +53,14 @@ def collect_categories(user):
         custom = [x for x in user_categories_list if x.name == category.name]
         print(f'{custom[0].name} | {custom[0].color}')
         
-        # substitute
+        # The existing one with the user edited
+        # category.color = custom[0].color
         # remove from custom cat. list
         
+    # For debug
     print('After sustitution: ', end='')
-    print(default_categories_list)  
+    for c in default_categories_list:
+        print(f'{c.name} || {c.color}')
         
         
     categories_dict = []
