@@ -37,7 +37,7 @@ def collect_categories(user):
     default_categories_list = Category.objects.all()
     
     # For debug
-    print('First we had: ', end='')
+    print('First we had: ')
     for c in default_categories_list:
         print(f'{c.name} || {c.color}')
     
@@ -54,11 +54,11 @@ def collect_categories(user):
         print(f'{custom[0].name} | {custom[0].color}')
         
         # The existing one with the user edited
-        # category.color = custom[0].color
+        category.color = custom[0].color
         # remove from custom cat. list
         
     # For debug
-    print('After sustitution: ', end='')
+    print('After sustitution: ')
     for c in default_categories_list:
         print(f'{c.name} || {c.color}')
         
