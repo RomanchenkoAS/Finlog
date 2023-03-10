@@ -18,8 +18,8 @@ class Category(models.Model):
 
     # Obsolete and so bad remove this please (but just do it so it works) TODO
     # Generate a title
-    def title(self):
-        return self.name.lower().replace(' ', '_').replace('-','_')
+    # def title(self):
+    #     return self.name.lower().replace(' ', '_').replace('-','_')
 
     # Name
     def __str__(self):
