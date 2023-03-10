@@ -32,7 +32,7 @@ def collect_entries(user):
 
 
 def collect_categories(user):
-    ''' Returns a list of user categories for this user's pk '''
+    ''' Returns two lists of default/user categories for this user's pk '''
     # Collect default categories
     default_categories_set = Category.objects.all()
     
@@ -54,16 +54,7 @@ def collect_categories(user):
         # Remove match from user category list
         user_categories_list.remove(matching_category)
         
-        
-    # # For debug
-    # print('------------------\nAFTER SUBSTITUTION: ')
-    # for c in default_categories_set:
-    #     print(f'{c.name} || {c.color}')
-        
-    # print('------------------\nCUSTOM CATEGORY LIST AFTERWARDS: ')
-    # for c in user_categories_list:
-    #     print(f'{c.name} || {c.color}')
-        
+    # Blank list
     default_categories = []
 
     # Form a list of dictionaries for default categories (possibly edited)
@@ -78,7 +69,8 @@ def collect_categories(user):
         }
         default_categories.append(new_category)
 
-        user_categories = []
+    # Same as before but for user categories
+    user_categories = []
 
     # Form a list of dictionaries for extra user categories 
     for category in user_categories_list:
@@ -94,25 +86,6 @@ def collect_categories(user):
 
     return default_categories, user_categories
 
-# def collect_user_categories(user):
-    ''' Returns a list of categories for this user '''
-    # Gather all entries (objects of this class) bound to given user
-    categories_list = UserCategory.objects.all()
-
-    categories_dict = []
-
-    for category in categories_list:
-        new_category = {
-            # For display
-            'title': category.name,
-            # For inner use
-            'name': format_name(category.name),
-            'id': category.id,
-            'color': category.color,
-        }
-        categories_dict.append(new_category)
-
-    return categories_dict
 
 def format_name(str):
     ''' Format category name to exclude capital letters / spaces and '-' symbol '''
