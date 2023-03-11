@@ -37,10 +37,14 @@ def log(request):
 def load_content(request):
     '''Load entries for log page and pass it as JSON'''
     # Get the list of entries -> transform it to the dictionary for jsonifying
-    entries_dict = {'entries': collect_entries(request.user)}
-
-    # Send back JSON
-    return JsonResponse(entries_dict)
+    try:
+        entries_dict = {'entries': collect_entries(request.user)}
+        
+        # Send back JSON
+        return JsonResponse(entries_dict)
+    
+    except AttributeError:
+        return HttpResponse(status=400)
 
 
 @csrf_exempt
@@ -68,11 +72,15 @@ def add(request):
                   category=category, comment=comment, date=now())
     entry.save()
 
-    # Get the list of entries -> transform it to the dictionary for jsonifying
-    entries_dict = {'entries': collect_entries(request.user)}
+    try:
+        # Get the list of entries -> transform it to the dictionary for jsonifying
+        entries_dict = {'entries': collect_entries(request.user)}
 
-    # Send back JSON
-    return JsonResponse(entries_dict)
+        # Send back JSON
+        return JsonResponse(entries_dict)
+    except AttributeError:
+        # Return error TODO: Make it look ok maybe | apology??
+        return HttpResponse(status=400)
 
 
 @csrf_exempt
