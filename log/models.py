@@ -6,6 +6,7 @@ from django.conf import settings  # For using a build-in USER model
 # For generic foreign key
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+# from accounts.models import User, UserCategory
 
 # Default categories
 class Category(models.Model):
@@ -41,9 +42,11 @@ CURRENCY_CHOICES = [
 
 # To set default on user category delete (this is 'other' category)
 # Content type
-default_category_ct = ContentType.objects.get_for_model(Category)
+def get_default_category_ct():
+    return ContentType.objects.get_for_model(Category)
 
-default_category = Category.objects.get(pk=1)
+def get_default_category():
+    return Category.objects.get(pk=1)
 
 class Entry(models.Model):
     # Using built-in user model <3
@@ -51,9 +54,10 @@ class Entry(models.Model):
                              on_delete=models.CASCADE)
     
     # Generic foreign key to the Category model
-    content_type = models.ForeignKey(ContentType, on_delete=models.SET_DEFAULT, default=default_category_ct)
-    object_id = models.PositiveIntegerField(default=default_category)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField(default=1)
     category = GenericForeignKey('content_type', 'object_id')
+    
     
     currency = models.CharField(
         choices=CURRENCY_CHOICES, max_length=3, default='KZT')

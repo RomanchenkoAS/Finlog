@@ -126,6 +126,13 @@ def edit(request):
         
     elif parsed_data['action'] == 'delete':
         category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
+        default_category = UserCategory.objects.get(pk=1, user=request.user)
+        print(default_category)
+        # Set default category for existing entries
+        entries = Entry.objects.get(category=category)
+        for entry in entries:
+            entry.category = default_category
+        
         category.delete()
     
     # Add error handling || if not 0 - return error message

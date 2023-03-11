@@ -27,6 +27,7 @@ function load_content() {
         })
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
+            alert('Server responded with 400')
         });
 };
 
