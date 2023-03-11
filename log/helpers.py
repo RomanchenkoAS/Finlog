@@ -8,6 +8,7 @@ def collect_entries(user):
     # Gather all entries (objects of this class) bound to given user
     entries_list = Entry.objects.filter(user=user.id)
 
+    
     # Reform this list as a list of dictionaries
     entries_dict = []
     # Enumerate creates a tuple of (i, item) from a single item

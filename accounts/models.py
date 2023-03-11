@@ -42,3 +42,9 @@ class UserCategory(models.Model):
     class Meta:
         verbose_name = "User category"
         verbose_name_plural = "User categories"
+        
+    # Name of the entry
+    def __str__(self):
+        username = self.user.get_username()
+        name = f'{username}:{self.name} edited'
+        return name
