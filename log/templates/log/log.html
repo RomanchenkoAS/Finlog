@@ -78,6 +78,8 @@
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
                                 <span class="edit_palette" id="{{category.name}}-edit">
+                                    <!-- Input name field -->
+                                    <input class="change_name" type="text" id="{{category.name}}-newname" value="{{category.name}}"> 
                                     <!-- Colorpicker -->
                                     <input class="color_picker" type="color" id="{{category.name}}-colorpicker">
                                     <!-- Tick -->
@@ -286,7 +288,11 @@
             if (name_input != null) {
                 newname = name_input.value;
             } else {
-                newname = '';
+                newname = name;
+            }
+
+            if (newname != name) {
+                action = 'rename';
             }
 
             console.log(`${action} ${input_category} | new color: ${colorPicker.value} | |new name: ${newname} | sending xhr request`);

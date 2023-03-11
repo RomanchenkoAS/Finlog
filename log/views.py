@@ -137,16 +137,10 @@ def edit(request):
         
     elif action == 'rename':
         category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
-        
-        
-        # Might not be needed
-        entries = Entry.objects.filter(user=request.user, category=category)
-        
-        for entry in entries:
-            entry.category = default_category
-            # entry.save()
-    
+                    
         category.name = parsed_data['newname']
+        # Change color as well
+        category.color = parsed_data['color']
         category.save()
     
     # Add error handling || if not 0 - return error message
