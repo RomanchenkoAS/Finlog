@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from .models import Entry, Category
+from django.contrib.contenttypes.models import ContentType
 
 from accounts.models import User, UserCategory
 
@@ -125,14 +126,23 @@ def edit(request):
         new_category.save()
         
     elif parsed_data['action'] == 'delete':
+        print('im here')
         category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
-        default_category = UserCategory.objects.get(pk=1, user=request.user)
-        print(default_category)
-        # Set default category for existing entries
-        entries = Entry.objects.get(category=category)
-        for entry in entries:
-            entry.category = default_category
         
+        # Some bad ideas
+        # default_category = UserCategory.objects.get(name='Other', user=request.user)
+        # print(default_category)
+        # # Set default category for existing entries
+        # content_type = ContentType.objects.get_for_model(default_category)
+        # entries = Entry.objects.get(content_type=content_type, object_id = default_category.pk)
+        # print('entries')
+        # if entries:
+        #     print(entries)
+        # for entry in entries:
+        #     print(f'setting {entry} category to {default_category}')
+        #     entry.category = default_category
+            
+        print('done')
         category.delete()
     
     # Add error handling || if not 0 - return error message
