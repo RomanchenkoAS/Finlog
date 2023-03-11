@@ -354,6 +354,15 @@
                         // Yeah looks weird, works though
                         deleted.parentElement.removeChild(deleted);
                     };
+
+                    if (action == 'rename') {
+                        changed = document.getElementById(`${name}-item`)
+                        changed.textContent = newname;
+                        
+                        // TODO change all the existing entries to the new name
+                        
+                        
+                    }
                 };
             };
 
