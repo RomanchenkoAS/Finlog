@@ -18,39 +18,24 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
-
-    
-    # Obsolete remove TODO
-    # Custom categories
-# class UserCategory(models.Model):
-#     # Who customized this category
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-#                              on_delete=models.CASCADE)
-
-#     # Parent category (optional)
-#     category = models.ForeignKey(
-#         Category, on_delete=models.CASCADE, null=True, blank=True)
-
-#     # Description of the spending/income type
-#     name = models.CharField(max_length=200, null=True, blank=True)
-
-#     # New color
-#     color = models.CharField(max_length=7, default='#d3d3d3')
-
-#     # Generate a title
-#     def title(self):
-#         return self.name.lower().replace(' ', '_').replace('-','_')
-
-#     # Name
-#     def __str__(self):
-#         if self.category:
-#             return f'{self.category} updated'
-#         elif isinstance(self.name, str):
-#             return self.name
-#         else:
-#             return '-'
-
-#     # For proper representation on admin page
-#     class Meta:
-#         verbose_name = "User category"
-#         verbose_name_plural = "User categories"
+        
+    def generate_default(self):
+        list = [
+            ('Housing', '#add8e6'),
+            ('Transportation', '#ff8080'),
+            ('Food', '#90ee90'),
+            ('Entertainment', '#ce7bce'),
+            ('Self-care', '#add8e6'),
+            ('Utilities', '#ffff00'),
+            ('Clothing', '#ffa500'),
+            ('Education', '#ffc0cb'),
+            ('Medical', '#20b2aa'),
+            ('Savings', '#808080'),
+        ]
+        
+        for item in list:
+            x, y = item
+            a = Category.objects.create(name=x, color=y)
+            a.save()
+            print(f'Created {x}:{y}')
+            
