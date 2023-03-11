@@ -13,6 +13,6 @@ class UserAdmin(UserAdmin):
 admin.site.register(User, UserAdmin)
 
 class UserCategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'color', 'user')
+    list_display = ('title', 'color', 'user')
     
 admin.site.register(UserCategory, UserCategoryAdmin)
