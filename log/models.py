@@ -27,12 +27,13 @@ CURRENCY_CHOICES = [
     ('KZT', 'Khazakh Tenge')
     # Add more here..
 ]
+
+# It doesnt work without this
+def get_default_category():
+    return 0
     
-# def get_default_category():
-#     return 0
-    
-# def get_default_category_ct():
-#     return 0
+def get_default_category_ct():
+    return 0
     
     # Obsolete remove TODO
     # Custom categories
