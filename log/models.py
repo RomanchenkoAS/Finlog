@@ -19,14 +19,6 @@ class Category(models.Model):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
-# List of tuples for currencies
-CURRENCY_CHOICES = [
-    ('USD', 'US Dollars'),
-    ('EUR', 'Euros'),
-    ('RUB', 'Russian Rubles'),
-    ('KZT', 'Khazakh Tenge')
-    # Add more here..
-]
     
     # Obsolete remove TODO
     # Custom categories
