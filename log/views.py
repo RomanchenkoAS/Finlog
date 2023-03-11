@@ -107,20 +107,22 @@ def edit(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
     # TODO: remove later
-    print(parsed_data)
+    # print(parsed_data)
     
-    if parsed_data['action'] == 'edit':
+    action = parsed_data['action']
+    
+    if action == 'edit':
         # Find this one category that needs changing
         category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
         # Change & save
         category.color = parsed_data['color']
         category.save()
-    elif parsed_data['action'] == 'add':
+    elif action == 'add':
         # TODO: check if category with this name already exists
         new_category = UserCategory.objects.create(name=parsed_data['newname'], color=parsed_data['color'], user=request.user)
         new_category.save()
         
-    elif parsed_data['action'] == 'delete':
+    elif action == 'delete':
         category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
         
         default_category = UserCategory.objects.get(name='Other', user=request.user)
@@ -131,21 +133,21 @@ def edit(request):
             entry.category = default_category
             entry.save()
         
-        # Some bad ideas
-        # default_category = UserCategory.objects.get(name='Other', user=request.user)
-        # print(default_category)
-        # # Set default category for existing entries
-        # content_type = ContentType.objects.get_for_model(default_category)
-        # entries = Entry.objects.get(content_type=content_type, object_id = default_category.pk)
-        # print('entries')
-        # if entries:
-        #     print(entries)
-        # for entry in entries:
-        #     print(f'setting {entry} category to {default_category}')
-        #     entry.category = default_category
-            
-        print('done')
         category.delete()
+        
+    elif action == 'rename':
+        category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
+        
+        
+        # Might not be needed
+        entries = Entry.objects.filter(user=request.user, category=category)
+        
+        for entry in entries:
+            entry.category = default_category
+            # entry.save()
+    
+        category.name = parsed_data['newname']
+        category.save()
     
     # Add error handling || if not 0 - return error message
     # if edit_category(request.user, edit) == 0:
