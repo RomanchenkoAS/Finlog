@@ -45,5 +45,6 @@ class UserCategory(models.Model):
         
     # Name of the entry
     def __str__(self):
-        title = f'{self.name} edited'
+        username = self.user.username
+        title = f'{self.name} edited by {username}'
         return title

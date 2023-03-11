@@ -39,14 +39,20 @@ CURRENCY_CHOICES = [
     # Add more here..
 ]
 
+# To set default on user category delete (this is 'other' category)
+# Content type
+default_category_ct = ContentType.objects.get_for_model(Category)
+
+default_category = Category.objects.get(pk=1)
+
 class Entry(models.Model):
     # Using built-in user model <3
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     
     # Generic foreign key to the Category model
-    content_type = models.ForeignKey(ContentType, on_delete=models.SET_DEFAULT, default=1)
-    object_id = models.PositiveIntegerField(default=1)
+    content_type = models.ForeignKey(ContentType, on_delete=models.SET_DEFAULT, default=default_category_ct)
+    object_id = models.PositiveIntegerField(default=default_category)
     category = GenericForeignKey('content_type', 'object_id')
     
     currency = models.CharField(
