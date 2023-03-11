@@ -1,12 +1,5 @@
 from django.db import models  # For basic models management
-from django.utils import timezone  # For setting time in DateTimeField
-# For setting minimum value in a field
-from django.core.validators import MinValueValidator
-from django.conf import settings  # For using a build-in USER model
-# For generic foreign key
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
-# from accounts.models import User, UserCategory
+
 
 # Default categories
 class Category(models.Model):
@@ -16,11 +9,6 @@ class Category(models.Model):
     name = models.CharField(max_length=200)
 
     color = models.CharField(max_length=7, default='#d3d3d3')
-
-    # Obsolete and so bad remove this please (but just do it so it works) TODO
-    # Generate a title
-    # def title(self):
-    #     return self.name.lower().replace(' ', '_').replace('-','_')
 
     # Name
     def __str__(self):
@@ -39,43 +27,12 @@ CURRENCY_CHOICES = [
     ('KZT', 'Khazakh Tenge')
     # Add more here..
 ]
-
-# To set default on user category delete (this is 'other' category)
-# Content type
-def get_default_category_ct():
-    return ContentType.objects.get_for_model(Category)
-
-def get_default_category():
-    return Category.objects.get(pk=1)
-
-class Entry(models.Model):
-    # Using built-in user model <3
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE)
     
-    # Generic foreign key to the Category model
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField(default=1)
-    category = GenericForeignKey('content_type', 'object_id')
+# def get_default_category():
+#     return 0
     
-    
-    currency = models.CharField(
-        choices=CURRENCY_CHOICES, max_length=3, default='KZT')
-    value = models.FloatField(validators=[MinValueValidator(0)])
-    date = models.DateTimeField(default=timezone.now)
-    comment = models.CharField(max_length=200, blank=True)
-
-    # For proper representation on admin page
-    class Meta:
-        verbose_name = "Entry"
-        verbose_name_plural = "Entries"
-
-    # Name of the entry
-    def __str__(self):
-        username = self.user.get_username()
-        name = f'{username}:{self.category}:{self.value:2.0f}{self.currency}'
-        return name
-    
+# def get_default_category_ct():
+#     return 0
     
     # Obsolete remove TODO
     # Custom categories

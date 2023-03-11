@@ -1,6 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from log.models import Category, CURRENCY_CHOICES
+from log.models import Category
+from django.conf import settings  # For using a build-in USER model
+from django.utils import timezone  # For setting time in DateTimeField
+
+# For setting minimum value in a field
+from django.core.validators import MinValueValidator
+
+# List of tuples for currencies
+CURRENCY_CHOICES = [
+    ('USD', 'US Dollars'),
+    ('EUR', 'Euros'),
+    ('RUB', 'Russian Rubles'),
+    ('KZT', 'Khazakh Tenge')
+    # Add more here..
+]
 
 # Custom user model containing a list of categories and according methods
 class User(AbstractUser):
@@ -48,3 +62,31 @@ class UserCategory(models.Model):
         username = self.user.username
         title = f'{self.name} edited by {username}'
         return title
+    
+
+    
+class Entry(models.Model):
+    # Using built-in user model <3
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    
+    # TODO on delete - default
+    category = models.ForeignKey(UserCategory, on_delete=models.CASCADE, null=True, blank=True)
+    
+    
+    currency = models.CharField(
+        choices=CURRENCY_CHOICES, max_length=3, default='KZT')
+    value = models.FloatField(validators=[MinValueValidator(0)])
+    date = models.DateTimeField(default=timezone.now)
+    comment = models.CharField(max_length=200, blank=True)
+
+    # For proper representation on admin page
+    class Meta:
+        verbose_name = "Entry"
+        verbose_name_plural = "Entries"
+
+    # Name of the entry
+    def __str__(self):
+        username = self.user.get_username()
+        name = f'{username}:{self.category}:{self.value:2.0f}{self.currency}'
+        return name

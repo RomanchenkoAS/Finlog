@@ -1,5 +1,5 @@
-from .models import Entry, Category
-from accounts.models import User, UserCategory
+from .models import Category
+from accounts.models import User, UserCategory, Entry
 
 
 def collect_entries(user):

@@ -4,17 +4,16 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
-from .models import Entry, Category
-from django.contrib.contenttypes.models import ContentType
+from .models import Category
 
-from accounts.models import User, UserCategory
+from accounts.models import User, UserCategory, Entry
 
 import json
 
 from django.utils.timezone import now
 
 # Helper functions
-from .helpers import collect_entries, collect_categories #, edit_category
+from .helpers import collect_entries, collect_categories
 
 
 @login_required

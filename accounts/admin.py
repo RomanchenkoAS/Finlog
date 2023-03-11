@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, UserCategory
+from .models import User, UserCategory, Entry
+
 
 class UserAdmin(UserAdmin):
     '''To monitor user's password info'''
@@ -16,3 +17,5 @@ class UserCategoryAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'color', 'user')
     
 admin.site.register(UserCategory, UserCategoryAdmin)
+
+admin.site.register(Entry)
