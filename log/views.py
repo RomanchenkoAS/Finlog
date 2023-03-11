@@ -57,14 +57,10 @@ def add(request):
     # print(f'{value} | {category} | {comment}')
     
     try:
-        category = Category.objects.get(name=category)
-    except Category.DoesNotExist:
-    # In case this is NOT a default category
-        try:
-            category = UserCategory.objects.get(name=category)
-        except UserCategory.DoesNotExist:
-            # Return error TODO: Make it look ok maybe | apology??
-            return HttpResponse(status=400)
+        category = UserCategory.objects.get(name=category)
+    except UserCategory.DoesNotExist:
+        # Return error TODO: Make it look ok maybe | apology??
+        return HttpResponse(status=400)
     
 
     # TODO: handle invalid value
@@ -125,8 +121,15 @@ def edit(request):
         new_category.save()
         
     elif parsed_data['action'] == 'delete':
-        print('im here')
         category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
+        
+        default_category = UserCategory.objects.get(name='Other', user=request.user)
+        
+        entries = Entry.objects.filter(user=request.user, category=category)
+        
+        for entry in entries:
+            entry.category = default_category
+            entry.save()
         
         # Some bad ideas
         # default_category = UserCategory.objects.get(name='Other', user=request.user)

@@ -63,8 +63,6 @@ class UserCategory(models.Model):
         title = f'{self.name} edited by {username}'
         return title
     
-
-    
 class Entry(models.Model):
     # Using built-in user model <3
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
