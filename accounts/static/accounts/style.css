@@ -1,9 +1,18 @@
-ul {
+nav {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
 
-li, ul {
+.left-list {
+    margin-right: auto;
+}
+
+.right-list {
+    margin-left: auto;
+}
+
+/* Items of nav all to one line */
+nav li {
     display: inline-block;
 }
 
