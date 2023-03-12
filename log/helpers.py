@@ -97,17 +97,17 @@ def format_name(str):
 
 def info(category):
     descriptions = {
-        'other' : 'whatever does not fit in any other category',
-        'housing': 'rent/mortgage payments, property taxes, home insurance, utilities, maintenance costs',
-        'transportation': 'car payments, gas, insurance, maintenance costs, public transportation',
-        'food': 'groceries, dining out, snacks, beverages',
-        'entertainment': 'movies, concerts, hobbies, vacations, subscriptions, books',
-        'self-care': 'haircuts, salon services, grooming products, health and wellness expenses',
-        'utilities': 'cell phone bills, internet, cable or satellite TV, electricity, water',
-        'clothing': 'apparel, shoes, accessories, dry cleaning, laundry',
-        'education': 'tuition, textbooks, school supplies',
-        'medical': 'doctor visits, prescriptions, dental care, vision care',
-        'savings': 'emergency fund, retirement savings, investment accounts',
+        'other' : 'Anything that does not fit in any other category',
+        'housing': 'Rent/mortgage payments, property taxes, home insurance, utilities, maintenance costs',
+        'transportation': 'Car payments, gas, insurance, maintenance costs, public transportation',
+        'food': 'Groceries, dining out, snacks, beverages',
+        'entertainment': 'Movies, concerts, hobbies, vacations, subscriptions, books',
+        'self-care': 'Haircuts, salon services, grooming products, health and wellness expenses',
+        'utilities': 'Cell phone bills, internet, cable or satellite TV, electricity, water',
+        'clothing': 'Apparel, shoes, accessories, dry cleaning, laundry',
+        'education': 'Tuition, textbooks, school supplies',
+        'medical': 'Doctor visits, prescriptions, dental care, vision care',
+        'savings': 'Emergency fund, retirement savings, investment accounts',
     }
     
     return descriptions[category]
