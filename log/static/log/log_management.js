@@ -156,7 +156,7 @@ $('#add-entry').on("submit", function (event) {
             scroll_down();
         },
         error: function () {
-            alert(`Error adding entry. Sent data: ${$(this).serialize}`);
+            alert(`Error adding entry. Sent data: ${this}`);
         }
     });
 });

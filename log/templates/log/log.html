@@ -289,11 +289,11 @@
                 newname = name_input.value;
             } else {
                 newname = name;
-            }
+            };
 
-            if (newname != name) {
+            if (newname != name && action == 'edit') {
                 action = 'rename';
-            }
+            };
 
             console.log(`${action} ${input_category} | new color: ${colorPicker.value} | |new name: ${newname} | sending xhr request`);
 
@@ -393,7 +393,7 @@
         categoriesModal.addEventListener("hidden.bs.modal", function () {
             
             // If a new category was added - refresh the page
-            if (called_action == 'add' || called_action == 'delete') {
+            if (called_action == 'add' || called_action == 'delete' || called_action == 'rename') {
                 location.reload();
             };
         });
@@ -402,17 +402,22 @@
         const inputField = document.getElementsByClassName('change_name');
         for (let i=0; i < inputField.length; i++) {
             inputField[i].addEventListener('keydown', (event) => {
+                //console.log(inputField[i]);
                 if (event.code === 'Space') {
                     event.preventDefault();
                 };
 
                 if (event.code === 'Enter') {
-                    //console.log('submit');
-                    //console.log(inputField[i]);
 
                     if (inputField[i].id == 'add-newname') {
                         edit("add", "add");
-                    };
+                    } else {
+                        // Cut off category part from the string
+                        category = inputField[i].id.slice(0, inputField[i].id.indexOf('-newname'));
+                        edit(category, "edit");
+                    }
+
+
                 };
             });
 
