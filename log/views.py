@@ -85,7 +85,13 @@ def remove(request, p):
     ''' Remove entry #p (p stands for position)'''
     # Calculate the id from given position in the list
     entries_list = collect_entries(request.user)
-
+    print(f'want to remove #{p}')
+    # print(entries_list)
+    for entry in entries_list:
+        value = entry['value']
+        position = entry['position']
+        category = entry['category']
+        print(f'#{position}: {value} - {category}')
     # Take entry with position p
     entry = entries_list[p]
     # Retrieve id from this dictionary object
