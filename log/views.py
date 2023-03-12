@@ -107,7 +107,7 @@ def edit(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
     # TODO: remove later
-    # print(parsed_data)
+    print(parsed_data)
     
     action = parsed_data['action']
     
