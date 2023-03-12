@@ -386,6 +386,7 @@
                         const selectToChange = Array.from(select).filter(select => select.value.includes(name));
                         selectToChange[0].value = newname;
                         selectToChange[0].textContent = newname;
+
                     };
                 };
             };
@@ -394,8 +395,13 @@
             var data = JSON.stringify({"name": name, "color": color, "action": action, "newname": newname});
             xhr.send(data);
             
+            // Set data value of <p> to new color
+            let p = document.getElementById(name + '-item')
+            p.dataset.color = color;
+
             // Hide edit palette
             hide(input_category);
+
         };
         
         // TODO: Dissmiss all the changes on closing the modal

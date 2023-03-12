@@ -144,7 +144,12 @@ def edit(request):
         category.save()
     
     elif action == 'reset':
-        pass
+        category = UserCategory.objects.get(name=parsed_data['name'], user=request.user)
+        # print(category)
+        # print(category.name)    
+        standard = Category.objects.get(name=category.name)
+        category.color = standard.color
+        category.save()
     
     # Add error handling || if not 0 - return error message
     # if edit_category(request.user, edit) == 0:
