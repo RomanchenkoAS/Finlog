@@ -65,6 +65,7 @@ def collect_categories(user):
             'name': category.name,
             'id': category.id,
             'color': category.color,
+            'info' : info(category.name.lower()),
         }
         default_categories.append(new_category)
 
@@ -94,66 +95,19 @@ def format_name(str):
     return str
 
 
-# def edit_category(user, category_to_edit):
-
-#     name = category_to_edit['name']
-#     color = category_to_edit['color']
+def info(category):
+    descriptions = {
+        'other' : 'whatever does not fit in any other category',
+        'housing': 'rent/mortgage payments, property taxes, home insurance, utilities, maintenance costs',
+        'transportation': 'car payments, gas, insurance, maintenance costs, public transportation',
+        'food': 'groceries, dining out, snacks, beverages',
+        'entertainment': 'movies, concerts, hobbies, vacations, subscriptions, books',
+        'self-care': 'haircuts, salon services, grooming products, health and wellness expenses',
+        'utilities': 'cell phone bills, internet, cable or satellite TV, electricity, water',
+        'clothing': 'apparel, shoes, accessories, dry cleaning, laundry',
+        'education': 'tuition, textbooks, school supplies',
+        'medical': 'doctor visits, prescriptions, dental care, vision care',
+        'savings': 'emergency fund, retirement savings, investment accounts',
+    }
     
-#     # Check if default category
-#     default_categories = Category.objects.all()
-#     # Or already edited one
-#     custom_categories = UserCategory.objects.all()
-
-#     # This category already exists (modified or not)
-#     exist = False
-
-#     for category in custom_categories:
-#         if name == category.title():
-#             exist = True
-
-            
-#             # Updating existing custom category
-#             new_category = UserCategory.objects.get()
-#             new_category.user = user
-#             new_category.category = category.category # Get the foreign key 'category' from category variable
-#             new_category.name = f'{format_name(category.name)}'
-#             new_category.color = color
-            
-#             new_category.save()
-            
-#             print('updating an existing custom category as follows:')
-#             print(user)
-#             print('foreign key : ' )
-#             print(category.category)
-#             print('new cat. name: ' + name)
-#             print('title: ' + new_category.title())
-#             print(color)
-            
-
-#     # This means: if it is not already in the list of user-edited categories
-#     if not exist:
-#         for category in default_categories:
-#             if name == category.title():
-#                 exist = True
-
-#                 # Constructing an updated category
-#                 new_category = UserCategory(
-#                     user=user, category=category, name=f'{format_name(category.name)}', color=color)
-#                 new_category.save()
-                
-#                 print('updating an existing default category as follows:')
-#                 print(user)
-#                 print('which one : ' )
-#                 print(category)
-#                 print('new cat. name: ' + name)
-#                 print('title: ' + new_category.title())
-#                 print(color)
-                
-
-            
-#     # TODO: If it is brand-new category
-#     if not exist:
-
-#         print('Ima make a new one')
-
-#     return 0
+    return descriptions[category]
