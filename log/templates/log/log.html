@@ -35,17 +35,17 @@
                         {% if categories %}
                         {% for category in categories %}
                         <span>
-                            <p id="{{category.name}}-item" data-color="{{category.color}}" style="background-color:{{category.color}}" class="category small-margin">{{category.title}} 
+                            <p id="{{category.name}}-item" data-color="{{category.color}}" style="background-color:{{category.color}}" class="category small-margin">{{category.name}} 
                                 <!-- Edit -->
                                 <a id="{{category.name}}-edit-button" class="a-none" onclick="expand('{{category.name}}')" >
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
 
-                                <span class="edit_palette" id="{{category.title}}-edit">
+                                <span class="edit_palette" id="{{category.name}}-edit">
                                     <!-- Colorpicker -->
-                                    <input class="color_picker" type="color" id="{{category.title}}-colorpicker">
+                                    <input class="color_picker" type="color" id="{{category.name}}-colorpicker">
                                     <!-- Tick -->
-                                    <a onclick="edit('{{category.title}}')" class="a-none" title="" aria-label="Submit and save shanges.">
+                                    <a onclick="edit('{{category.name}}')" class="a-none" title="" aria-label="Submit and save shanges.">
                                         <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                                     </a>
                                     <!-- Cross -->
@@ -53,7 +53,7 @@
                                         <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
                                     </a>
                                     <!-- Reset -->
-                                    <a onclick="edit('{{category.title}}', 'reset')" class="a-none"  title="" aria-label="Reset to the default color. Reload required.">
+                                    <a onclick="edit('{{category.name}}', 'reset')" class="a-none"  title="" aria-label="Reset to the default color. Reload required.">
                                         <img class="icon_button" src="{% static 'log/icons/reset.svg'%}">
                                     </a>
                                 </span>
@@ -74,7 +74,7 @@
                         {% for category in user_categories %}
                         <!-- Existing user categories -->
                         <span>
-                            <p id="{{category.name}}-item" data-color="{{category.color}}" style="background-color:{{category.color}}" class="category small-margin">{{category.title}} 
+                            <p id="{{category.name}}-item" data-color="{{category.color}}" style="background-color:{{category.color}}" class="category small-margin">{{category.name}} 
                                 <a id="{{category.name}}-edit-button" class="a-none" onclick="expand('{{category.name}}')" >
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
@@ -84,7 +84,7 @@
                                     <!-- Colorpicker -->
                                     <input class="color_picker" type="color" id="{{category.name}}-colorpicker">
                                     <!-- Tick -->
-                                    <a onclick="edit('{{category.title}}')" class="a-none" title="" aria-label="Submit and save shanges.">
+                                    <a onclick="edit('{{category.name}}')" class="a-none" title="" aria-label="Submit and save shanges.">
                                         <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                                     </a>
                                     <!-- Cross -->
@@ -151,15 +151,14 @@
                 <select name="category" id="input-category" class="form-selector">
                     {% for category in categories %}
                     {% if forloop.counter == 1 %}
-                    <!-- Value should be .title for correctly adding an entry -->
-                        <option selected value="{{ category.title }}">{{category.title}}</option>
+                        <option selected value="{{ category.name }}">{{category.name}}</option>
                         {% else %}
-                        <option value="{{ category.title }}">{{category.title}}</option>
+                        <option value="{{ category.name }}">{{category.name}}</option>
                         {% endif %}
                     {% endfor %}
                     <!-- User categories -->
                     {% for category in user_categories %}
-                        <option value="{{ category.title }}">{{category.title}}</option>
+                        <option value="{{ category.name }}">{{category.name}}</option>
                     {% endfor %}
                 </select>
                 <!-- Comment field -->
