@@ -73,7 +73,7 @@
                         {% for category in user_categories %}
                         <!-- Existing user categories -->
                         <span>
-                            <p id="{{category.name}}-item" style="background-color:{{category.color}}" class="category small-margin">{{category.title}} 
+                            <p id="{{category.name}}-item" data-color="{{category.color}}" style="background-color:{{category.color}}" class="category small-margin">{{category.title}} 
                                 <a id="{{category.name}}-edit-button" class="a-none" onclick="expand('{{category.name}}')" >
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
@@ -272,6 +272,26 @@
         function hide(input_category) {
             document.getElementById(input_category + "-edit").style.display = 'none';
             document.getElementById(input_category + "-edit-button").style.visibility = 'visible';
+
+            let paragraph = document.getElementById(input_category + "-item");
+            let previousColor = paragraph.dataset.color;
+            let color_picker = document.getElementById(input_category + "-colorpicker");
+
+            color_picker.value = previousColor;
+            paragraph.style.backgroundColor = previousColor;
+
+            // Also change all the relevant itmes to the previous color
+
+            // All cells
+            const cells = document.querySelectorAll("td");
+            // All cells with category written there
+            const cellsToChange = Array.from(cells).filter(cell => cell.textContent.includes(input_category));
+
+            // And then changing their parent's color 
+            cellsToChange.forEach(item => {
+                item.parentElement.style.backgroundColor = previousColor;
+            });
+
         };
         
         // Variable that controls behaviour of the page after closing the modal window
@@ -415,7 +435,7 @@
                         // Cut off category part from the string
                         category = inputField[i].id.slice(0, inputField[i].id.indexOf('-newname'));
                         edit(category, "edit");
-                    }
+                    };
 
 
                 };
