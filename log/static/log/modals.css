@@ -71,3 +71,31 @@
     max-height: 1000px;
     transition: max-height 0.5s ease-in;
 }
+
+/* For tooltips */
+a[title] {
+  /* Remove the default delay */
+  transition-delay: 0s;
+  /* Set the duration of the tooltip animation */
+  transition-duration: 0.2s;
+  /* Set the easing function for the tooltip animation */
+  transition-timing-function: ease-in-out;
+}
+
+a[title]:hover::before {
+  /* Set the position and appearance of the tooltip */
+  /* content: attr(title); */
+  position: absolute;
+  padding: 0.2em 0.5em;
+  background-color: #333;
+  color: #fff;
+  border-radius: 0.25em;
+  /* Move the tooltip up slightly so it doesn't cover the link */
+  bottom: 100%;
+  /* Center the tooltip horizontally */
+  left: 50%;
+  transform: translateX(-50%);
+  /* Fade in the tooltip */
+  opacity: 1;
+  transition-delay: 0s;
+}

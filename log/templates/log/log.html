@@ -12,6 +12,9 @@
 {% block style %}<style></style>{% endblock style %}
 
 {% block body %}
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+    Tooltip on top
+  </button>
 <header>
     <hr> 
     <h1 class="header center">MainPage || Log of: {{user}}</h1>
@@ -52,7 +55,7 @@
                                         <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
                                     </a>
                                     <!-- Reset -->
-                                    <a onclick="edit('{{category.title}}', 'reset')" class="a-none" title="Reset to the default color. Reload required.">
+                                    <a onclick="edit('{{category.title}}', 'reset')" class="a-none"  data-toggle="tooltip" data-placement="top" title="Reset to the default color. Reload required.">
                                         <img class="icon_button" src="{% static 'log/icons/reset.svg'%}">
                                     </a>
                                 </span>
