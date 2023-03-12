@@ -12,9 +12,7 @@
 {% block style %}<style></style>{% endblock style %}
 
 {% block body %}
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-    Tooltip on top
-  </button>
+
 <header>
     <hr> 
     <h1 class="header center">MainPage || Log of: {{user}}</h1>
@@ -47,21 +45,21 @@
                                     <!-- Colorpicker -->
                                     <input class="color_picker" type="color" id="{{category.title}}-colorpicker">
                                     <!-- Tick -->
-                                    <a onclick="edit('{{category.title}}')" class="a-none">
+                                    <a onclick="edit('{{category.title}}')" class="a-none" title="" aria-label="Submit and save shanges.">
                                         <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                                     </a>
                                     <!-- Cross -->
-                                    <a onclick='hide("{{category.name}}")' class="a-none">
+                                    <a onclick='hide("{{category.name}}")' class="a-none" title="" aria-label="Dismiss changes.">
                                         <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
                                     </a>
                                     <!-- Reset -->
-                                    <a onclick="edit('{{category.title}}', 'reset')" class="a-none"  data-toggle="tooltip" data-placement="top" title="Reset to the default color. Reload required.">
+                                    <a onclick="edit('{{category.title}}', 'reset')" class="a-none"  title="" aria-label="Reset to the default color. Reload required.">
                                         <img class="icon_button" src="{% static 'log/icons/reset.svg'%}">
                                     </a>
                                 </span>
                                 <!-- Info -->
                                 <a onclick='' class="a-none">
-                                    <img class="icon_button" src="{% static 'log/icons/info.svg'%}">
+                                    <img class="icon_button" src="{% static 'log/icons/info.svg'%}" title="" aria-label="ADD -> Info on this category.">
                                 </a>
                             </p>
                         </span>
@@ -86,15 +84,15 @@
                                     <!-- Colorpicker -->
                                     <input class="color_picker" type="color" id="{{category.name}}-colorpicker">
                                     <!-- Tick -->
-                                    <a onclick="edit('{{category.title}}')" class="a-none">
+                                    <a onclick="edit('{{category.title}}')" class="a-none" title="" aria-label="Submit and save shanges.">
                                         <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                                     </a>
                                     <!-- Cross -->
-                                    <a onclick='hide("{{category.name}}")' class="a-none">
+                                    <a onclick='hide("{{category.name}}")' class="a-none" title="" aria-label="Dismiss changes.">
                                         <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
                                     </a>
                                     <!-- Delete -->
-                                    <a onclick='edit("{{category.name}}", "delete")' class="a-none">
+                                    <a onclick='edit("{{category.name}}", "delete")' class="a-none" title="" aria-label="Delete this category.">
                                         <img class="icon_button" src="{% static 'log/icons/delete.svg'%}">
                                     </a>
                                 </span>

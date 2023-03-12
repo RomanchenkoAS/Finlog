@@ -84,7 +84,7 @@ a[title] {
 
 a[title]:hover::before {
   /* Set the position and appearance of the tooltip */
-  /* content: attr(title); */
+  content: attr(aria-label);
   position: absolute;
   padding: 0.2em 0.5em;
   background-color: #333;
