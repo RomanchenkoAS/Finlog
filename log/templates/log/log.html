@@ -52,7 +52,7 @@
                                         <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
                                     </a>
                                     <!-- Reset -->
-                                    <a onclick='' class="a-none">
+                                    <a onclick="edit('{{category.title}}', 'reset')" class="a-none">
                                         <img class="icon_button" src="{% static 'log/icons/reset.svg'%}">
                                     </a>
                                 </span>
@@ -322,15 +322,6 @@
             var url = "/edit/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
-
-            // In case we need response json 
-            /*
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var json = JSON.parse(xhr.responseText);
-                    console.log(json);
-                }
-            }; */
 
             // Simple ok response
             xhr.onreadystatechange = function () {

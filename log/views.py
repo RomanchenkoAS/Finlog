@@ -143,6 +143,9 @@ def edit(request):
         category.color = parsed_data['color']
         category.save()
     
+    elif action == 'reset':
+        pass
+    
     # Add error handling || if not 0 - return error message
     # if edit_category(request.user, edit) == 0:
     return HttpResponse(status=204)
