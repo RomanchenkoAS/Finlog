@@ -130,7 +130,20 @@ function deleteEntry(pos) {
             // Now actually remove from the page
             var row = document.getElementById(`${pos}`)
 
-            row.style['display'] = 'none'
+            row.remove();
+
+            // Replace id's for rows & delete buttons
+            let rows = table.childNodes[0].childNodes
+            rows.forEach((item, index) =>{
+                let delete_button = document.getElementById(`${item.id}-remove`);
+                // Change delete button id and behaviour
+                delete_button.id = `${index}-remove`;
+                delete_button.onclick = function () { deleteEntry(index); };
+                // Change actual id
+                item.id = index;
+                // console.log(index)
+                // console.log(item);
+            })
         })
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
@@ -175,16 +188,6 @@ function clear_form() {
     categorySelect.selectedIndex = 0;
 };
 
-// function reload_table() {
-//     console.dir(table);
-//     var tbody = table.getElementsByTagName("tbody")[0]; // get the first tbody element in the table
-
-//     while (tbody.firstChild) { // while there are still child elements in the tbody
-//       tbody.removeChild(tbody.firstChild); // remove the first child element (which will be a tr)
-//     }
-//     // Load once again
-//     load_content();
-// }
 
 
 window.onload = function () {
