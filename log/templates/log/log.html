@@ -52,7 +52,7 @@
                                         <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
                                     </a>
                                     <!-- Reset -->
-                                    <a onclick="edit('{{category.title}}', 'reset')" class="a-none">
+                                    <a onclick="edit('{{category.title}}', 'reset')" class="a-none" title="Reset to the default color. Reload required.">
                                         <img class="icon_button" src="{% static 'log/icons/reset.svg'%}">
                                     </a>
                                 </span>
@@ -388,6 +388,10 @@
                         selectToChange[0].textContent = newname;
 
                     };
+
+                    if (action == 'reset') {
+                        location.reload();
+                    }
                 };
             };
 
