@@ -416,34 +416,17 @@
             if (called_action == 'add' || called_action == 'delete' || called_action == 'rename') {
                 location.reload();
             } else {
-                // Unexpand all the pallettes
-                def_container = document.getElementById('default_categories_container');
-                cust_container = document.getElementById('custom_categories_container');
+                // If the page doesnt reload, run mass hide for all relevant <p> items
+                // Get all the p | all p with category there | all p except add-item | hide palette for them
+                let p = document.querySelectorAll('p')
+                let p_categories = Array.from(p).filter(node => node.id.includes('-item'));
 
-                console.log(def_container)
-                console.log(cust_container)
-                console.log(def_container.childNodes)
-                console.log(cust_container.childNodes)
-
-                def_nodes = def_container.childNodes;
-                cust_nodes = cust_container.childNodes;
-
-                def_spans = Array.from(def_nodes).filter(node => node.nodeName === 'SPAN')
-                cust_spans = Array.from(cust_nodes).filter(node => node.nodeName === 'SPAN')
-
-                console.log(def_spans)
-                console.log(cust_spans)
-
-                def_spans.forEach(element => {
-                    console.log(element);
-                    let category = inputField[i].id.slice(0, inputField[i].id.indexOf('-newname'));
-                    //hide("")
-                })
-                cust_spans.forEach(element => {
-                    console.log(element);
-                    //hide("")
-                })
-
+                p_categories.forEach(item => {
+                    if (item.id != 'add-item') {
+                        let category = item.id.slice(0, item.id.indexOf('-item'));
+                        hide(category);
+                    };
+                });
 
             };
         });
