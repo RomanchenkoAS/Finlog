@@ -208,7 +208,7 @@
                 // And then changing their parent's color 
                 cellsToChange.forEach(item => {
                     item.parentElement.style.backgroundColor = colorCode;
-                })
+                });
             });
         };
           
@@ -356,13 +356,26 @@
                     };
 
                     if (action == 'rename') {
-                        changed = document.getElementById(`${name}-item`)
-                        changed.textContent = newname;
+                        // Change existing category inside modal window
+                        document.getElementById(`${name}-item`).textContent = newname;
                         
-                        // TODO change all the existing entries to the new name
+                        // Change category name for entries
+                        // All cells
+                        const cells = document.querySelectorAll("td");
+                        // All cells with category written there
+                        const cellsToChange = Array.from(cells).filter(cell => cell.textContent.includes(name));
+
+                        // And then changing text wtitten there
+                        cellsToChange.forEach(item => {
+                            item.textContent = newname;
+                        });
                         
-                        
-                    }
+                        // Change category name in select
+                        const select = document.querySelectorAll("option");
+                        const selectToChange = Array.from(select).filter(select => select.value.includes(name));
+                        selectToChange[0].value = newname;
+                        selectToChange[0].textContent = newname;
+                    };
                 };
             };
 
