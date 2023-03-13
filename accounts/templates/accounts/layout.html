@@ -32,31 +32,30 @@
     <body>
         <!-- Navigation -->
         <nav>
+            {% comment %} {% block nav %} {% endcomment %}
             <ul class="left-list">
-              {% comment %} <li><a class="a-empty" href="/">• Index </a></li> {% endcomment %}
-              <!-- Opens a bootstrap modal window -->
-              <li><a class="a-empty" style="color:red;" href="" data-bs-toggle="modal" data-bs-target="#categoriesModal">• Categories </a></li>
-              <li><a class="a-empty" style="color:red;" href="/calendar">• Calendar </a></li>
+                {% comment %} <li><a class="a-empty" href="/">• Index </a></li> {% endcomment %}
+                <!-- Opens a bootstrap modal window -->
+                <li><a class="a-empty" style="color:red;" href="" data-bs-toggle="modal" data-bs-target="#categoriesModal">• Categories </a></li>
+                <li><a class="a-empty" style="color:red;" href="/calendar">• Calendar </a></li>
             </ul>
             
             <ul class="right-list">
                 <li><a class="a-empty" href="https://github.com/RomanchenkoAS">• Github </a></li>
-                {% if request.user.is_authenticated %}
-                    <li><a class="a-empty" style="color:red;" href="/settings">• Settings </a></li>
-
-                    <li>
+                {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
+                <li><a class="a-empty" style="color:red;" href="/settings">• Settings </a></li>
+                
+                <li>
                         <a class="a-empty" href="/logout">• Logout </a>
                         {% comment %} {% load static %} {% endcomment %}
-                        <img class="icon_button" src="log/static/log/icons/exit.svg">
+                        <img class="icon_button" src="{% static 'log/icons/edit.svg'%}">
                     </li>
-                {% else %}
                     <li><a class="a-empty" href="/register">• Register </a></li>
                     <li><a class="a-empty" href="/login">• Login </a></li>
-                {% endif %}
-            </ul>
-          </nav>
-          
-        
+                </ul>
+                {% comment %} {% endblock nav %} {% endcomment %}
+            </nav>
+            
         {% if messages_list %}
             {% for message in messages_list %}
                 <header>
