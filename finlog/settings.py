@@ -130,6 +130,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'log', 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'accounts', 'static')]
+# STATICFILES_DIRS = [
+#     '/home/artur/dev/Finlog/accounts/static/accounts',
+#     '/home/artur/dev/Finlog/log/static/log',
+# ]
+
 
 
 # Default primary key field type

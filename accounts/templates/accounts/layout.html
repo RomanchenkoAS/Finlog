@@ -42,11 +42,16 @@
             <ul class="right-list">
                 <li><a class="a-empty" href="https://github.com/RomanchenkoAS">• Github </a></li>
                 {% if request.user.is_authenticated %}
-                <li><a class="a-empty" style="color:red;" href="/settings">• Settings </a></li>
-                <li><a class="a-empty" href="/logout">• Logout </a></li>
+                    <li><a class="a-empty" style="color:red;" href="/settings">• Settings </a></li>
+
+                    <li>
+                        <a class="a-empty" href="/logout">• Logout </a>
+                        {% comment %} {% load static %} {% endcomment %}
+                        <img class="icon_button" src="log/static/log/icons/exit.svg">
+                    </li>
                 {% else %}
-                <li><a class="a-empty" href="/register">• Register </a></li>
-                <li><a class="a-empty" href="/login">• Login </a></li>
+                    <li><a class="a-empty" href="/register">• Register </a></li>
+                    <li><a class="a-empty" href="/login">• Login </a></li>
                 {% endif %}
             </ul>
           </nav>
