@@ -5,14 +5,20 @@ table {
 
 table th,
 table td {
-    text-align: center;
+    text-align: justify;
+    /* display: inline-block; */
 
 }
 
 table tr {
     border-color: #fff;
     border-width: 2px;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
+
+    /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
 }
 
 hr {
@@ -74,7 +80,7 @@ hr {
 
 /* + button to add an entry */
 #add-entry {
-    display: inline-block;
+    /* display: inline-block; */
     vertical-align: middle;
     margin-right: 10px;
 }
