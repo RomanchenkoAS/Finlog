@@ -85,9 +85,11 @@ hr {
     width: 12rem;
 } */
 
-/* + button to add an entry */
+/* Form to add an entry */
 #add-entry {
-    display: inline-block;
+    /* display: inline-         block; */
+    display: flex;
+    flex-wrap: wrap;
     vertical-align: middle;
     /* margin-right: 10px; */
     margin-left: auto;
