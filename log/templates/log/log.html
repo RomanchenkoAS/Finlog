@@ -341,7 +341,8 @@
 
                     // If there was a new category added, spawn it right there
                     if (action == 'add') {
-                        let container = document.getElementById("user_categories_container");
+                        console.log('here i am')
+                        let container = document.getElementById("custom_categories_container");
                         let newSpan = document.createElement("span");
                         let newParagraph = document.createElement("p");
 
@@ -417,7 +418,7 @@
 
         };
         
-        // TODO: Dissmiss all the changes on closing the modal
+        // Dissmiss all the changes on closing the modal
         var categoriesModal = document.getElementById("categoriesModal");
         
         categoriesModal.addEventListener("hidden.bs.modal", function () {
