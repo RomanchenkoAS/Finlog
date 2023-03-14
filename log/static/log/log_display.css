@@ -15,11 +15,9 @@ table tr {
     border-width: 2px;
     border-radius: 0.5rem;
     padding: 5px;
-    display: inline-block;
-    width: 100%;
-
-    /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
-}
+    display: flex;
+  }
+  
 
 hr {
     margin-top: 10px !important;

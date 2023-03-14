@@ -35,13 +35,14 @@
         {% block nav %} 
         {% endblock nav %}
 
-        
+            {% if request.path == '/login' or request.path == '/register' %}
             <ul class="right-list">
 
                 <li><a class="a-empty" href="/register">• Register </a></li>
                 <li><a class="a-empty" href="/login">• Login </a></li>
                 <li><a class="a-empty" href="https://github.com/RomanchenkoAS">• Github </a></li>
             </ul>
+            {% endif %}
         </nav>
             
         {% if messages_list %}
