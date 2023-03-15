@@ -15,7 +15,6 @@
 {% block body %}
 
 <header>
-    <h2 class="header center">Latest events: </h2>
 
     <!-- Modal for categories-->
     <div class="modal" id="categoriesModal" tabindex="-1">
@@ -132,42 +131,45 @@
 </header>
 
 <main>
+    <h2 class="header center">Latest events: </h2>
     <!-- Container for my log table || fills with load_content() function-->
     <div class="center" id="logTableContainer">
             <table id="logTable"><tbody></tbody></table>
     </div>
+
+        <!-- MAIN FEATURE HERE -->
+        <div class="center">
+            <form id="add-entry">
+                <span>
+                    <!-- Value field -->
+                    <input required pattern="[0-9]+" name="value" id="input-value" placeholder="Value:" class="form-item">
+                    <!-- Category field -->
+                    <select name="category" id="input-category" class="form-selector">
+                        {% for category in categories %}
+                        {% if forloop.counter == 1 %}
+                            <option selected value="{{ category.name }}">{{category.name}}</option>
+                            {% else %}
+                            <option value="{{ category.name }}">{{category.name}}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <!-- User categories -->
+                        {% for category in user_categories %}
+                            <option value="{{ category.name }}">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <!-- Comment field -->
+                    <input name="comment" id="input-comment" placeholder="Comment:" class="form-item">
+                    <!-- Add button -->
+                    <button class="btn" type="submit">
+                        <img class="icon_button" src="{% static 'log/icons/plus.svg'%}">
+                    </button>
+                </span>
+            </form>
+        </div>
 </main>
 
 <footer>
-    <!-- MAIN FEATURE HERE -->
-    <div class="center">
-        <form id="add-entry">
-            <span>
-                <!-- Value field -->
-                <input required pattern="[0-9]+" name="value" id="input-value" placeholder="Value:" class="form-item">
-                <!-- Category field -->
-                <select name="category" id="input-category" class="form-selector">
-                    {% for category in categories %}
-                    {% if forloop.counter == 1 %}
-                        <option selected value="{{ category.name }}">{{category.name}}</option>
-                        {% else %}
-                        <option value="{{ category.name }}">{{category.name}}</option>
-                        {% endif %}
-                    {% endfor %}
-                    <!-- User categories -->
-                    {% for category in user_categories %}
-                        <option value="{{ category.name }}">{{category.name}}</option>
-                    {% endfor %}
-                </select>
-                <!-- Comment field -->
-                <input name="comment" id="input-comment" placeholder="Comment:" class="form-item">
-                <!-- Add button -->
-                <button class="btn" type="submit">
-                    <img class="icon_button" src="{% static 'log/icons/plus.svg'%}">
-                </button>
-            </span>
-        </form>
-    </div>
+
 </footer>
 {% endblock body %}
 
