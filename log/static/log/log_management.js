@@ -79,10 +79,20 @@ function add_row(lastItem, position) {
     
     // get the local datetime string using toLocaleString()
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const localDatetimeString = utcDatetime.toLocaleString([], { timeZone: timeZone });
+    const localDatetimeString = utcDatetime.toLocaleString([], { timeZone: timeZone, hourCycle: "h23" });
+
+    const dateObj = new Date(localDatetimeString);
+    const formattedDate = dateObj.toLocaleString('en-US', {
+        hour12: false,
+        hour: 'numeric',
+        minute: 'numeric',
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit'
+      });
     
     // console.log(localDatetimeString); 
-    cellDate.innerHTML = localDatetimeString;
+    cellDate.innerHTML = formattedDate;
 
 
 
