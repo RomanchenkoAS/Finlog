@@ -73,20 +73,24 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbar">
                     {% if request.path == '/' %}
-                        <ul class="navbar-nav me-auto">
+                        <ul class="navbar-nav">
                             <!-- Title -->
                             <li class="nav-item" >
                                 <h1 class="header" style="margin-right: 1rem;">Finlog of: {{user}}</h1>
                             </li>
                             <!-- Categories -->
                             <li class="nav-item">
-                                <a class="a-empty nav-link" href="" data-bs-toggle="modal" data-bs-target="#categoriesModal">Categories</a>
+                                <img src= >
+                                <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#categoriesModal">Categories</a>
                             </li>
+                        </ul>
+                        <ul class="navbar-nav">
                         </ul>
                         <!-- Right part-->
                         <ul class="navbar-nav ms-auto">
                             <!-- Exit-->
                             <li class="nav-item">
+                                <img class="large_icon_button" src="{% static 'log/icons/exit.png'%}">
                                 <a class="nav-link" href="/logout">Log Out</a>
                             </li>
                         </ul>
