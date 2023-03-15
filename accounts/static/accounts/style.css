@@ -1,6 +1,10 @@
+header {
+    height: 15vh;
+}
 body {
     height: 90vh;
 }
+
 
 nav {
     /* display: flex;

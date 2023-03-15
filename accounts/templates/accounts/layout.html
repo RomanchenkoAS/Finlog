@@ -32,7 +32,6 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
                     <img src="{% static 'accounts/images/logo.png'%}" width="110" height="55"/>
-                    {% comment %} <img src="/static/img/logo_name.png" width="220" height="55"/> {% endcomment %}
                 </a>
                 <button aria-controls="navbar"
                         aria-expanded="false"
@@ -59,14 +58,14 @@
                             <!-- Categories -->
                             <li class="nav-item">
                                 <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#categoriesModal">
-                                    <img class="large_icon_button" src="{% static 'log/icons/gear.svg'%}">
+                                    <img class="icon_button_nav" src="{% static 'log/icons/gear.svg'%}">
                                     Categories
                                 </a>
                             </li>
                             <!-- Exit-->
                             <li class="nav-item">
                                 <a class="nav-link" href="/logout">
-                                    <img class="large_icon_button" src="{% static 'log/icons/exit.png'%}">
+                                    <img class="icon_button_nav" src="{% static 'log/icons/exit.png'%}">
                                     Log Out
                                 </a>
                             </li>

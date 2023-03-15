@@ -6,6 +6,8 @@ function formatter(value, currency) {
     let currencyFormatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: currency,
+        // Digits after ','
+        minimumFractionDigits: 0,
     });
 
     return currencyFormatter.format(value);
