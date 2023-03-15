@@ -29,10 +29,22 @@
 
     <body>
         <!-- Navigation -->
-        <nav>
+        {% comment %} <nav>
             <img src="{% static 'accounts/images/logo.png'%}" class="logo" >
-        {% block nav %} 
-        {% endblock nav %}
+        <ul class="left-list">
+    
+            <li><a class="a-empty" href="" data-bs-toggle="modal" data-bs-target="#categoriesModal">• Categories </a></li>
+            <li><a class="a-empty" style="color:red;" href="/calendar">• Calendar </a></li>
+            <li><a class="a-empty" style="color:red;" href="/settings">• Settings </a></li>
+            
+            <li>
+                <a class="a-empty" href="/logout">
+                    <img class="large_icon_button" src="{% static 'log/icons/exit.png'%}">
+                    Log out 
+                </a>
+            </li>
+            <li><a class="a-empty" href="https://github.com/RomanchenkoAS">• Github </a></li>
+        </ul>
 
             {% if request.path == '/login' or request.path == '/register' %}
             <ul class="right-list">
@@ -42,8 +54,60 @@
                 <li><a class="a-empty" href="https://github.com/RomanchenkoAS">• Github </a></li>
             </ul>
             {% endif %}
+        </nav> {% endcomment %}
+        
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'accounts/images/logo.png'%}" width="110" height="55"/>
+                    <img src="/static/img/logo_name.png" width="220" height="55"/>
+                </a>
+                <button aria-controls="navbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        class="navbar-toggler"
+                        data-bs-target="#navbar"
+                        data-bs-toggle="collapse"
+                        type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    {% if request.path == '/log' %}
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item {% if request.path == '/quote' %}active{% endif %}">
+                                <a class="nav-link" href="/quote">Quote</a>
+                            </li>
+                            <li class="nav-item {% if request.path == '/history' %}active{% endif %}">
+                                <a class="nav-link" href="/history">History</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Log Out</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                    {% if request.path == '/login' or request.path == '/register' %}
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Log In</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
         </nav>
-            
+
+
+
+
+
         {% if messages_list %}
             {% for message in messages_list %}
                 <header>
