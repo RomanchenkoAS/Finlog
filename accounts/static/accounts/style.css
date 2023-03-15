@@ -1,7 +1,7 @@
 nav {
     /* display: flex;
     justify-content: space-between; */
-    
+    margin-bottom: 0.5rem;
 }
 
 .left-list {
@@ -27,6 +27,15 @@ nav li {
     width:75px;
     vertical-align: middle;
 }
+/* For navigation icons */
+.large_icon_button {
+    height: 25px;
+    width: 25px;
+    /* margin-bottom: 5px; */
+    cursor: pointer;
+}
+
+
 
 /* A background images */
 /* body {

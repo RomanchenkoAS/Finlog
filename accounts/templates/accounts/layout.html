@@ -80,7 +80,7 @@
                             </li>
                             <!-- Categories -->
                             <li class="nav-item">
-                                <img src= >
+                                <img class="large_icon_button" src="{% static 'log/icons/gear.svg'%}">
                                 <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#categoriesModal">Categories</a>
                             </li>
                         </ul>
@@ -90,7 +90,7 @@
                         <ul class="navbar-nav ms-auto">
                             <!-- Exit-->
                             <li class="nav-item">
-                                <img class="large_icon_button" src="{% static 'log/icons/exit.png'%}">
+                                <img class="large_icon_button" src="{% static 'log/icons/exit.png'%}" width='40px' height='32px'>
                                 <a class="nav-link" href="/logout">Log Out</a>
                             </li>
                         </ul>
@@ -112,9 +112,11 @@
 
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
+                                <img class="large_icon_button" src="{% static 'log/icons/register.svg'%}">
                                 <a class="nav-link" href="/register">Register</a>
                             </li>
                             <li class="nav-item">
+                                <img class="large_icon_button" src="{% static 'log/icons/login.svg'%}">
                                 <a class="nav-link" href="/login">Log In</a>
                             </li>
                         </ul>
