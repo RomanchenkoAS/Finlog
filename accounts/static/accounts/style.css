@@ -21,6 +21,11 @@ nav li {
     margin-right: 0;
 }
 
+.logo {
+    width:75px;
+    vertical-align: middle;
+}
+
 /* A background images */
 /* body {
     background: white url("images/background.jpg") no-repeat;
