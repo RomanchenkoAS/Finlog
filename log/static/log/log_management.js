@@ -2,17 +2,22 @@ var table = document.getElementById('logTable');
 
 // Proper format for money values
 function formatter(value, currency) {
-    // implementation
+    // Set currency 
+    let currencyIcon = document.createElement('img');
+    let path = `/static/log/icons/currency/${currency}.svg`
+    currencyIcon.src = path;
+    currencyIcon.width = '16';
+    currencyIcon.height = '16';
+    currencyIcon.style.verticalAlign = 'text-bottom';
+    
+    // currency = 'KE'
     let currencyFormatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: currency,
         // Digits after ','
         minimumFractionDigits: 0,
     });
 
-    return currencyFormatter.format(value);
+    return currencyIcon.outerHTML + ' ' + currencyFormatter.format(value);
 }
-
 // Load content from the /load_content/ url -- used on window load -- includes recusrive_render & scroll_down
 function load_content() {
     // console.log('load function')

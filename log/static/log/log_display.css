@@ -92,7 +92,6 @@ hr {
 
 /* Form to add an entry */
 #add-entry {
-    /* display: inline-         block; */
     display: flex;
     flex-wrap: wrap;
     vertical-align: middle;
