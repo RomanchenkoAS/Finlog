@@ -56,11 +56,11 @@
             {% endif %}
         </nav> {% endcomment %}
         
-        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+        <nav class="bg-light navbar navbar-expand-md border">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
                     <img src="{% static 'accounts/images/logo.png'%}" width="110" height="55"/>
-                    <img src="/static/img/logo_name.png" width="220" height="55"/>
+                    {% comment %} <img src="/static/img/logo_name.png" width="220" height="55"/> {% endcomment %}
                 </a>
                 <button aria-controls="navbar"
                         aria-expanded="false"
@@ -72,25 +72,40 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbar">
-                    {% if request.path == '/log' %}
+                    {% if request.path == '/' %}
                         <ul class="navbar-nav me-auto">
-                            <li class="nav-item {% if request.path == '/' %}active{% endif %}">
-                                <a class="nav-link" href="/">Home</a>
+                            <!-- Title -->
+                            <li class="nav-item" >
+                                <h1 class="header" style="margin-right: 1rem;">Finlog of: {{user}}</h1>
                             </li>
-                            <li class="nav-item {% if request.path == '/quote' %}active{% endif %}">
-                                <a class="nav-link" href="/quote">Quote</a>
-                            </li>
-                            <li class="nav-item {% if request.path == '/history' %}active{% endif %}">
-                                <a class="nav-link" href="/history">History</a>
+                            <!-- Categories -->
+                            <li class="nav-item">
+                                <a class="a-empty nav-link" href="" data-bs-toggle="modal" data-bs-target="#categoriesModal">Categories</a>
                             </li>
                         </ul>
+                        <!-- Right part-->
                         <ul class="navbar-nav ms-auto">
+                            <!-- Exit-->
                             <li class="nav-item">
                                 <a class="nav-link" href="/logout">Log Out</a>
                             </li>
                         </ul>
                     {% endif %}
+                    <!-- For unauthorized user -->
                     {% if request.path == '/login' or request.path == '/register' %}
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item" >
+                            <h1 class="header" style="margin-right: 1rem;">Finlog 
+                                {% if request.path == '/login' %}
+                                login:
+                                {% endif %}
+                                {% if request.path == '/register' %}
+                                register: 
+                                {% endif%}
+                            </h1>
+                        </li>
+                    </ul>
+
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="/register">Register</a>
