@@ -80,7 +80,7 @@ nav li {
 
 }
 
-label {
+.form-container label {
     width: 10rem;
     color: inherit;
     text-align: right;
