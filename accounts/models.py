@@ -22,6 +22,8 @@ class User(AbstractUser):
     currency = models.CharField(
         choices=CURRENCY_CHOICES, max_length=3, default='KZT')
     
+    budget = models.FloatField(default = 0)
+    
     def generate_categories(self):
         # Add all the default categories to the user
         list = Category.objects.all()

@@ -5,7 +5,7 @@ from .models import User, UserCategory, Entry
 
 class UserAdmin(UserAdmin):
     '''To monitor user's password info'''
-    list_display = ('username', 'email', 'password_info')
+    list_display = ('username', 'email', 'currency', 'budget', 'password_info')
 
     def password_info(self, obj):
         return f"Salt: {obj.password.split('$')[2]}, Hash: {obj.password.split('$')[-1]}"

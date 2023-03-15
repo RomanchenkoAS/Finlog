@@ -106,7 +106,40 @@ a[title]:hover::before , t[title]:hover::before {
     /* Fade in the tooltip */
     opacity: 1;
     transition-delay: 1s;
-    width: 40%;
+    /* width: 40%; */
     text-align: center;
   }
   
+  a[title]:hover::before {
+    width: 20%;
+  }
+
+  t[title]:hover::before {
+    width: 40%;
+  }
+
+
+  /* Settings window */
+
+  /* div {
+    display: flex;
+    align-items: center;
+  }
+  
+  span {
+    margin-right: 10px;
+  } */
+  
+  .radio-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 30%;
+    text-align: center;
+  }
+  
+  /* label {
+    margin-right: 10px;
+  } */

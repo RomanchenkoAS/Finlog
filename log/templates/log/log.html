@@ -19,7 +19,10 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Category editor</h1>
+                    <h1 class="modal-title fs-5">
+                        <img class="icon_button_nav" src="{% static 'log/icons/palette.svg'%}">
+                        Category editor
+                    </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -129,13 +132,37 @@
     <div class="modal" id="settingsModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+                <!-- Header -->
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Settings</h1>
+                    <h1 class="modal-title fs-5">
+                        <img class="icon_button_nav" src="{% static 'log/icons/gear.svg'%}">
+                        Settings
+                    </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
+                <!-- Content -->
                 <div class="modal-body">
-                    {% comment %} <p> Settings </p> {% endcomment %}
-                    
+                    <!-- Budget-->
+                    <div style="display: inline-flex; align-items: center;" >
+                        <t style=''>Set monthly budget:</t>
+                        <input style="margin-left: auto;" type="number" class="form-item " placeholder="" aria-describedby="button-addon2">
+                        <a onclick='console.log("set budget")' class="a-none">
+                            <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
+                        </a>
+                    </div>
+                    <hr>
+                    <!--Currency -->
+                    <div style="border: 1px solid black; display: flex; align-items: center; justify-content: space-between;">
+                        <t>Currency:</t>
+                        <div class="radio-container">
+                          <label style="width: auto;"><input type="radio" name="currency" value="USD">USD</label>
+                          <label style="width: auto;"><input type="radio" name="currency" value="EUR">EUR</label>
+                          <label style="width: auto;"><input type="radio" name="currency" value="RUB">RUB</label>
+                          <!-- Add more radio buttons as needed -->
+                        </div>
+                      </div>
+                    </div>
+
                 </div>
             </div>
         </div>
