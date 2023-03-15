@@ -72,7 +72,19 @@ function add_row(lastItem, position) {
     cellValue.innerHTML = formatter(lastItem.value, lastItem.currency);
     //cellValue.innerHTML     = `${lastItem.value} ${lastItem.currency}`;
     cellCategory.innerHTML = lastItem.category;
-    cellDate.innerHTML = lastItem.datetime;
+
+    // Set local time
+    // create a new Date object from the UTC string
+    const utcDatetime = new Date(lastItem.datetime);
+    
+    // get the local datetime string using toLocaleString()
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const localDatetimeString = utcDatetime.toLocaleString([], { timeZone: timeZone });
+    
+    // console.log(localDatetimeString); 
+    cellDate.innerHTML = localDatetimeString;
+
+
 
     // Comment is ... if empty
     if (lastItem.comment == '') {
@@ -158,9 +170,14 @@ $('#add-entry').on("submit", function (event) {
     event.preventDefault();
     // console.log($(this).serialize());
     // Get the form data and send an AJAX request to the server
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    console.log(timezone);
     $.ajax({
         url: 'add',
         type: 'POST',
+        headers: {
+            'X-Timezone': timezone
+        },
         data: $(this).serialize(),
         success: function (data) {
             // update the list on the page with the new data

@@ -4,6 +4,10 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
+
+# Getting local users time
+import pytz
+from django.utils import timezone
 from .models import Category
 
 from accounts.models import User, UserCategory, Entry
@@ -54,7 +58,7 @@ def add(request):
     value = request.POST.get('value', '')
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
-    # print(f'{value} | {category} | {comment}')
+
     
     try:
         category = UserCategory.objects.get(name=category)
@@ -85,13 +89,7 @@ def remove(request, p):
     ''' Remove entry #p (p stands for position)'''
     # Calculate the id from given position in the list
     entries_list = collect_entries(request.user)
-    print(f'want to remove #{p}')
-    # print(entries_list)
-    for entry in entries_list:
-        value = entry['value']
-        position = entry['position']
-        category = entry['category']
-        print(f'#{position}: {value} - {category}')
+    
     # Take entry with position p
     entry = entries_list[p]
     # Retrieve id from this dictionary object
@@ -113,7 +111,7 @@ def edit(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
     # TODO: remove later
-    print(parsed_data)
+    # print(parsed_data)
     
     action = parsed_data['action']
     
