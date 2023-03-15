@@ -1,15 +1,21 @@
-header {
-    height: 15vh;
-}
+
 body {
-    height: 90vh;
+    height: 100%;
+    /* To be deleted */
+}
+header {
+    /* height: 15vh; */
+}
+main {
+    height: 85%;
+    /* height: 100%; */
 }
 
 
 nav {
     /* display: flex;
     justify-content: space-between; */
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 
 .left-list {
@@ -66,9 +72,10 @@ nav li {
     background-size: cover;
 } */
 
-.header {
+.title {
     font-weight: bold;
     margin-bottom: 0px;
+    margin-top: 10px;
 
 
 }

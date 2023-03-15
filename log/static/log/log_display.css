@@ -47,7 +47,7 @@ hr {
 .form-selector {
     border: 1px solid black;
     display: inline-block;
-    padding: 0.255rem 2.25rem 0.275rem 0.75rem;
+    padding: 0.255rem 0.25rem 0.275rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -58,7 +58,7 @@ hr {
     background-size: 16px 12px;
     border-radius: 20px;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-
+    width: 30%;
 }
 
 
@@ -75,30 +75,7 @@ hr {
     width: 30%;
 }
 
-.form-inline .form-select {
-    display: inline-block;
-    width: 30%;
-    /* color: red; */
-}
 
-
-/* #input-value {
-    width: 7rem;
-}
-
-#input-comment {
-    width: 12rem;
-} */
-
-/* Form to add an entry */
-#add-entry {
-    display: flex;
-    flex-wrap: wrap;
-    vertical-align: middle;
-    /* margin-right: 10px; */
-    margin-left: auto;
-    margin-right: auto;
-}
 
 /* Delete entry button */
 .delete:focus {
@@ -108,7 +85,7 @@ hr {
 
 
 #logTableContainer {
-    height: 420px;
+    height: 28rem;
     overflow-y: scroll;
     visibility: hidden;
     border: 1px solid black;
@@ -124,8 +101,19 @@ hr {
 }
 
 .center {
-    margin: 0 auto;
-    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50vw;
+}
+
+/* Form to add an entry */
+.add-entry-form {
+    width: 100%;
+    display: flex!important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    vertical-align: middle;
+    text-align: center;
 }
 
 /* For a smaller screen YEEEAH ADAPTIVE */
@@ -133,7 +121,7 @@ hr {
     .center {
         width: 95%;
     }
-    .form-inline .form-select {
+    .form-item .form-selector{
         width: 25%;
     }
 }

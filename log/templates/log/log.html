@@ -146,14 +146,15 @@
 
 {% block body%}
 <main>
-    <h2 class="header center">Latest events: </h2>
+    <div class="all_content center">
+    <h2 class="title">Latest events: </h2>
     <!-- Container for my log table || fills with load_content() function-->
-    <div class="center" id="logTableContainer">
+    <div class="" id="logTableContainer">
             <table id="logTable"><tbody></tbody></table>
     </div>
 
         <!-- MAIN FEATURE HERE -->
-        <div class="center">
+        <div class=" add-entry-form">
             <form id="add-entry">
                 <span>
                     <!-- Value field -->
@@ -181,6 +182,7 @@
                 </span>
             </form>
         </div>
+    </div>
 </main>
 
 {% endblock body %}
