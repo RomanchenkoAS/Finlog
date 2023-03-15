@@ -4,10 +4,9 @@
 
 {% block body %}
 
-<h1>Log in</h1>
-<hr>
+{% comment %} <h1>Log in</h1>
+<hr> {% endcomment %}
 
-{% comment %} <img src="{% static 'accounts/images/logo_full.png'%}" width="175px" height="100px"> {% endcomment %}
 <form action="/login" method="post" name="login" class="auth-form">
     {% csrf_token %}
         {% for field in form %}
