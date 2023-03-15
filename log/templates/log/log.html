@@ -53,10 +53,6 @@
                                         <img class="icon_button" src="{% static 'log/icons/delete.svg'%}">
                                     </a>
                                 </span>
-                                <!-- Info -->
-                                {% comment %} <a onclick='' class="a-none" >
-                                    <img class="icon_button" src="{% static 'log/icons/info.svg'%}">
-                                </a> {% endcomment %}
                             </p>
                         </span>
                         {% endfor %}
@@ -127,6 +123,24 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal for settings -->
+    <div class="modal" id="settingsModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Settings</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    {% comment %} <p> Settings </p> {% endcomment %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock header %}
 
