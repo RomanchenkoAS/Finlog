@@ -86,9 +86,9 @@ function add_row(lastItem, position) {
         hour12: false,
         hour: 'numeric',
         minute: 'numeric',
-        day: '2-digit',
-        month: '2-digit',
-        year: '2-digit'
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric'
       });
     
     // console.log(localDatetimeString); 
