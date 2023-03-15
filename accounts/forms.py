@@ -1,14 +1,17 @@
 from django import forms
+from .models import CURRENCY_CHOICES
 
 
 class RegistrationForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
-    password = forms.CharField(label='Password', max_length=100)
-    confirmation = forms.CharField(label='Confirm password', max_length=100)
+    password = forms.CharField(label='Password', max_length=100, widget=forms.PasswordInput)
+    confirmation = forms.CharField(label='Confirm password', max_length=100, widget=forms.PasswordInput)
+    currency = forms.ChoiceField(choices=CURRENCY_CHOICES)
+    budget = forms.FloatField(min_value=0)
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
-    password = forms.CharField(label='Password', max_length=100)
+    password = forms.CharField(label='Password', max_length=100, widget=forms.PasswordInput)
 
 # Just in case you would like to unpack form manually:
 
