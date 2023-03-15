@@ -75,6 +75,7 @@
                                     Log Out
                                 </a>
                             </li>
+
                         </ul>
                     {% endif %}
                     <!-- For unauthorized user -->
@@ -92,21 +93,28 @@
                         </li>
                     </ul>
 
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/register">
-                                    <img class="icon_button_nav" src="{% static 'log/icons/register.svg'%}">
-                                    Register
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login">
-                                    <img class="icon_button_nav" src="{% static 'log/icons/login.svg'%}">
-                                    Log In
-                                </a>
-                            </li>
-                        </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">
+                                <img class="icon_button_nav" src="{% static 'log/icons/register.svg'%}">
+                                Register
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">
+                                <img class="icon_button_nav" src="{% static 'log/icons/login.svg'%}">
+                                Log In
+                            </a>
+                        </li>
+                    </ul>
                     {% endif %}
+                    <!-- Github -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/RomanchenkoAS">
+                            <img class="icon_button_nav" src="{% static 'log/icons/github.svg'%}">
+                            
+                        </a>
+                    </li>
                 </div>
             </div>
         </nav>
