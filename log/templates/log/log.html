@@ -31,10 +31,11 @@
                         {% load filters %}
                         {% if categories %}
                         {% for category in categories %}
-                        <span>
-                            <p id="{{category.name}}-item" data-color="{{category.color}}" style="background-color:{{category.color}}" class="category small-margin">{{category.name}} 
+                        <span style="text-align: right;">
+                            <p id="{{category.name}}-item" data-color="{{category.color}}" style="background-color:{{category.color}}" class="category small-margin">
+                                <t title="" aria-label="{{category.info}}">{{category.name}}</t> 
                                 <!-- Edit -->
-                                <a id="{{category.name}}-edit-button" class="a-none" onclick="expand('{{category.name}}')" >
+                                <a id="{{category.name}}-edit-button" class="a-none" onclick="expand('{{category.name}}')" title="" aria-label="Edit" >
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
 
@@ -42,22 +43,22 @@
                                     <!-- Colorpicker -->
                                     <input class="color_picker" type="color" id="{{category.name}}-colorpicker">
                                     <!-- Tick -->
-                                    <a onclick="edit('{{category.name}}')" class="a-none" title="" aria-label="Submit and save shanges.">
+                                    <a onclick="edit('{{category.name}}')" class="a-none" title="" aria-label="Confirm">
                                         <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                                     </a>
                                     <!-- Cross -->
-                                    <a onclick='hide("{{category.name}}")' class="a-none" title="" aria-label="Dismiss changes.">
+                                    <a onclick='hide("{{category.name}}")' class="a-none" title="" aria-label="Cancel">
                                         <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
                                     </a>
                                     <!-- Reset -->
-                                    <a onclick="edit('{{category.name}}', 'reset')" class="a-none"  title="" aria-label="Reset to the default color. Reload required.">
-                                        <img class="icon_button" src="{% static 'log/icons/reset.svg'%}">
+                                    <a onclick="edit('{{category.name}}', 'reset')" class="a-none"  title="" aria-label="Reset">
+                                        <img class="icon_button" src="{% static 'log/icons/delete.svg'%}">
                                     </a>
                                 </span>
                                 <!-- Info -->
-                                <a onclick='' class="a-none" title="" aria-label="{{category.info}}">
+                                {% comment %} <a onclick='' class="a-none" >
                                     <img class="icon_button" src="{% static 'log/icons/info.svg'%}">
-                                </a>
+                                </a> {% endcomment %}
                             </p>
                         </span>
                         {% endfor %}
@@ -72,7 +73,8 @@
                         <!-- Existing user categories -->
                         <span>
                             <p id="{{category.name}}-item" data-color="{{category.color}}" style="background-color:{{category.color}}" class="category small-margin">{{category.name}} 
-                                <a id="{{category.name}}-edit-button" class="a-none" onclick="expand('{{category.name}}')" >
+                                <!-- Edit -->
+                                <a id="{{category.name}}-edit-button" class="a-none" onclick="expand('{{category.name}}')" title="" aria-label="Edit" >
                                     <img class="icon_button" src="{% static 'log/icons/edit.png'%}">
                                 </a>
                                 <span class="edit_palette" id="{{category.name}}-edit">
@@ -81,15 +83,15 @@
                                     <!-- Colorpicker -->
                                     <input class="color_picker" type="color" id="{{category.name}}-colorpicker">
                                     <!-- Tick -->
-                                    <a onclick="edit('{{category.name}}')" class="a-none" title="" aria-label="Submit and save shanges.">
+                                    <a onclick="edit('{{category.name}}')" class="a-none" title="" aria-label="Confirm">
                                         <img class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                                     </a>
                                     <!-- Cross -->
-                                    <a onclick='hide("{{category.name}}")' class="a-none" title="" aria-label="Dismiss changes.">
+                                    <a onclick='hide("{{category.name}}")' class="a-none" title="" aria-label="Cancel">
                                         <img class="icon_button" src="{% static 'log/icons/cross.svg'%}">
                                     </a>
                                     <!-- Delete -->
-                                    <a onclick='edit("{{category.name}}", "delete")' class="a-none" title="" aria-label="Delete this category.">
+                                    <a onclick='edit("{{category.name}}", "delete")' class="a-none" title="" aria-label="Delete">
                                         <img class="icon_button" src="{% static 'log/icons/delete.svg'%}">
                                     </a>
                                 </span>

@@ -78,13 +78,13 @@ function rgbToHex(rgb) {
 
 // Show relevant edit palette on edit <a> click || hide edit button 
 function expand(input_category) {
+    document.getElementById(input_category + "-edit-button").style.display = 'none';
     document.getElementById(input_category + "-edit").style.display = 'inline-block';
-    document.getElementById(input_category + "-edit-button").style.visibility = 'hidden';
 };
 // Hide edit palette
 function hide(input_category) {
     document.getElementById(input_category + "-edit").style.display = 'none';
-    document.getElementById(input_category + "-edit-button").style.visibility = 'visible';
+    document.getElementById(input_category + "-edit-button").style.display = 'flex';
 
     let paragraph = document.getElementById(input_category + "-item");
     let previousColor = paragraph.dataset.color;
