@@ -142,11 +142,19 @@
                 </div>
                 <!-- Content -->
                 <div class="modal-body">
+
+                    <!-- Testing purposes-->
+                    <div class='settings_container'>
+                        <t> Budget : {{request.user.budget}} || currency : {{request.user.currency}} </t>
+                    </div>
+                    <hr>
+                    
+                    
                     <!-- Budget-->
-                    <div class='settings_container' >
+                    <div class='settings_container'>
                         <t>Set monthly budget:</t>
-                        <input  type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input KZT" placeholder="">
-                        <a onclick='console.log("set budget")' class="a-none">
+                        <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input KZT" placeholder="">
+                        <a onclick='set("budget")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
                     </div>
@@ -154,14 +162,13 @@
                     <div class='settings_container' >
                         <t style=''>Choose currency:</t>
                         <!-- Display current chosen currency as an icon -->
-                        {% comment %} <img  style="margin-left: auto; margin-right: 5px; cursor:auto;"  class="icon_button" src="{% static 'log/icons/currency/KZT.svg'%}"> {% endcomment %}
-                        <select name="category" id="input-category" class="form-selector right">
+                        <select name="currency" id="select_currency" class="form-selector right">
                             <option selected value='KZT'>KZT </option>
                             <option value='RUB'>RUB</option>
                             <option value='USD'>USD</option>
                             <option value='EUR'>EUR</option>
                         </select>
-                        <a onclick='console.log("set currency")' class="a-none">
+                        <a onclick='set("currency")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
                     </div>
@@ -178,7 +185,7 @@
 <main>
     <div class="all_content center">
     <h2 class="title">Latest events: </h2>
-    <!-- Container for my log table || fills with load_content() function-->
+    <!-- Container for the log table || fills with load_content() function-->
     <div class="" id="logTableContainer">
             <table id="logTable"><tbody></tbody></table>
     </div>
@@ -218,8 +225,45 @@
 {% endblock body %}
 
 {% block script %}
+    {% comment %} Scripts for showing log table / adding & deleting entries {% endcomment %}
     <script src="{% static 'log/log_management.js' %}"></script>
     {% comment %} Scripts for modal windows management {% endcomment %}
     <script src="{% static 'log/modal_category.js' %}"></script>
+    {% comment %} Scripts for settings window {% endcomment %}
+
+    <script>
+
+        function set(setting) {
+            let currency = document.getElementById()
+
+            let currency = document.getElementById('select_currency').value;
+            console.log(currency);
+
+            let budget = document.getElementById('budget_input').value;
+            console.log(budget);
+            console.log(`sending xhr request`);
+        
+            // send actual request at /edit/
+            var xhr = new XMLHttpRequest();
+            var url = "/edit/";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+        
+            // Simple ok response
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 204) {
+                    console.log("Request successful");
+
+                };
+            };
+
+            // Sending data
+            var data = JSON.stringify({"setting": setting; "value" : value;});
+            xhr.send(data);
+            
+
+        
+        };
+    </script>
 
     {% endblock script %}

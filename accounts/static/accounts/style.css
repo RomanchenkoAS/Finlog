@@ -143,6 +143,7 @@ nav li {
     position: relative;
   }
 
+  /* Dismiss button */
 .close {
     position: absolute;
     right: 10px;

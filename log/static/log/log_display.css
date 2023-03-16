@@ -129,7 +129,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 /* For a smaller screen YEEEAH ADAPTIVE */
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .center {
         width: 95%;
     }
