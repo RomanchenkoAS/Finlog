@@ -155,7 +155,7 @@
                     <!-- Budget-->
                     <div class='settings_container'>
                         <t>Set monthly budget:</t>
-                        <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input KZT" placeholder="">
+                        <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input KZT" value={{request.user.budget}}>
                         <a onclick='set("budget")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
@@ -165,11 +165,12 @@
                         <t style=''>Choose currency:</t>
                         <!-- Display current chosen currency as an icon -->
                         <select name="currency" id="select_currency" class="form-selector right">
-                            <option selected value='KZT'>KZT </option>
-                            <option value='RUB'>RUB</option>
-                            <option value='USD'>USD</option>
-                            <option value='EUR'>EUR</option>
+                            <option value='KZT' {% if request.user.currency == 'KZT' %}selected{% endif %}>KZT</option>
+                            <option value='RUB' {% if request.user.currency == 'RUB' %}selected{% endif %}>RUB</option>
+                            <option value='USD' {% if request.user.currency == 'USD' %}selected{% endif %}>USD</option>
+                            <option value='EUR' {% if request.user.currency == 'EUR' %}selected{% endif %}>EUR</option>
                         </select>
+                                                
                         <a onclick='set("currency")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
