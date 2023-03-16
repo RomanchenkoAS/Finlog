@@ -109,6 +109,7 @@ def get_budget(user):
     budget_info = {
         'budget'    : budget,
         'spent'     : sum,
+        'currency'  : user.currency
     }
     
     return budget_info
@@ -119,6 +120,21 @@ def format_name(str):
     str = str.replace(' ', '_')
     str = str.replace('-', '_')
     return str
+
+def exchange(val, currency, target = 'USD'):
+    rate = {
+        'KZT' : 0.0022,
+        'EUR' : 1.06,
+        'RUB' : 0.013,
+        'USD' : 1
+    }
+    
+    usd = val * rate[currency]
+    if target == "USD":
+        return round(usd, 1)
+    
+    else:
+        return round(usd / rate[target], 1)
 
 
 def info(category):
