@@ -145,7 +145,9 @@
 
                     <div class='settings_container'>
                         <span style="margin:auto">
-                            Budget : <t id='budget_label'>{{request.user.budget}}</t>  • 
+                            <img class="icon_button_nav" src="{% static 'log/icons/budget.svg'%}">
+                            Budget : <t id='budget_label'>{{request.user.budget}}</t>
+                            <img style="margin-left: 50px;" class="icon_button_nav" src="{% static 'log/icons/currency.svg'%}">
                             Currency : <t id='currency_label'>{{request.user.currency}}</t>
                         </span>
                     </div>
