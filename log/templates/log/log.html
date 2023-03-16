@@ -238,6 +238,7 @@
         // Tracks any changes in settings
         let updated = false;
 
+        // Change settings of user via xhr request
         function set(setting) {
             let budget_input = document.getElementById('budget_input').value;
             let currency_input = document.getElementById('select_currency').value;
@@ -254,7 +255,7 @@
             let currency_label = document.getElementById('currency_label');
 
             
-            // Send request at /edit/
+            // Send request at /settings/
             var xhr = new XMLHttpRequest();
             var url = "/settings/";
             xhr.open("POST", url, true);
@@ -288,9 +289,6 @@
             // Sending data
             var data = JSON.stringify({"setting": setting, "value" : value});
             xhr.send(data);
-            
-            
-        
         };
 
         // Dissmiss all the changes on closing the modal
@@ -299,7 +297,6 @@
         // If the settings were changed - reload page 
         settingsModal.addEventListener("hidden.bs.modal", function () {
             if (updated) {
-
                 //location.reload();
             };
         });
