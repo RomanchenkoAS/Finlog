@@ -21,23 +21,14 @@ class Category(models.Model):
         
     def generate_default(self):
         list = [
-            ('Housing', '#ffbe0b'),
-            ('Transportation', '#fb5607'),
-            ('Food', '#2a9d8f'),
-            ('Entertainment', '#ff006e'),
-            ('Health', '#8338ec'),
-            ('Savings', '#3a86ff'),
+            ('Housing',         '#ffbe0b'),
+            ('Transportation',  '#fb5607'),
+            ('Food',            '#2a9d8f'),
+            ('Entertainment',   '#ff006e'),
+            ('Health',          '#8338ec'),
+            ('Savings',         '#3a86ff'),
         ]
-        
-        # Updated default categories
-
-# Housing: Includes rent/mortgage payments, property taxes, home insurance, and utilities.
-# Transportation: Includes car payments, gas, insurance, and maintenance costs.
-# Food and groceries: Includes all expenses related to food and groceries, including dining out, snacks, and beverages.
-# Entertainment and leisure: Includes expenses for movies, hobbies, vacations, and other leisure activities.
-# Health and wellness: Includes expenses for gym memberships, health and wellness products, and personal care services.
-# Savings and investments: Includes contributions to emergency funds, retirement savings, and investment accounts.
-        
+                
         for item in list:
             x, y = item
             a = Category.objects.create(name=x, color=y)
