@@ -21,7 +21,7 @@ function formatter(value, currency) {
 // Load content from the /load_content/ url -- used on window load -- includes recusrive_render & scroll_down
 function load_content() {
     // console.log('load function')
-    fetch(`/load_content/`)
+    fetch(`/load_content/?t=all`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Not ok response');
