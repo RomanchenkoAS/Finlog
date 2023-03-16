@@ -61,12 +61,12 @@
                                 <img class="icon_button_nav" onclick="progress()" src="{% static 'log/icons/budget.svg'%}">
                                 <a class="nav-link" onclick="progress()">
                                     <div id="budget_container" style="display:flex; flex-direction: column; text-align: center; font-size: small;" >
-                                        <t>
-                                            {{ spent }} / {{ budget }} {{currency}}
-                                        </t>
-                                        <div class="progress" role="progressbar" style="width: 10rem;" aria-label="Basic example" aria-valuenow="{{spent}}" aria-valuemin="0" aria-valuemax="{{budget}}">
-                                            <div class="progress-bar progress-bar-striped bg-info" style="width: {{percent}}%"></div>
-                                          </div>
+                                        <div>
+                                            <t id="spent">{{ spent }}</t> / <t id="budget">{{ budget }}</t> <t id="currency">{{currency}}</t>
+                                        </div>
+                                        <div id="budget_progress_div" class="progress" role="progressbar" style="width: 10rem;" aria-label="Basic example" aria-valuenow="{{spent}}" aria-valuemin="0" aria-valuemax="{{budget}}">
+                                            <div id="budget_progress" class="progress-bar progress-bar-striped bg-info" style="width: {{percent}}%"></div>
+                                        </div>
                                     </div>
                                 </a>
                             </li>
@@ -157,23 +157,7 @@
             });
           });         
           
-        // Swap visibility of budget progress-bar
-        function progress() {
-            let budget = document.getElementById("budget_container")
 
-            console.log(budget.style.display)
-            if (budget.style.display == 'flex') {
-                //console.log('yeah it is')
-                budget.style.display = 'none';
-            } else {
-                budget.style.display = 'flex';
-            }
-            console.log(budget.style.display)
-        }
-
-        function update_budget() {
-            
-        }
     </script>
 
 </html>

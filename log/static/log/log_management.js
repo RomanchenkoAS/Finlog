@@ -180,13 +180,42 @@ function deleteEntry(pos) {
 
 };
 
+function update_budget(value) {
+    let progressBar = document.getElementById("budget_progress");
+    let progressDiv = document.getElementById("budget_progress_div");
+
+    let budget = progressDiv.getAttribute('aria-valuemax');
+    let spent = progressDiv.getAttribute('aria-valuenow');
+    
+    // Math
+    spent = Number(spent) + value;
+    let percent = (spent / budget);
+    
+    // Setting properties
+    progressBar.style.width = `${percent * 100}%`;
+    progressDiv.setAttribute('aria-valuenow', spent);
+}
+
+function set_budget(value) {
+    let progressBar = document.getElementById("budget_progress");
+    let progressDiv = document.getElementById("budget_progress_div");
+    let spent = progressDiv.getAttribute('aria-valuenow');
+
+    budget = value;
+    let percent = (spent / budget);
+
+    progressBar.style.width = `${percent * 100}%`;
+    progressDiv.setAttribute('aria-valuemax', budget);
+}
+
+
 // Adding a new entry
 $('#add-entry').on("submit", function (event) {
     event.preventDefault();
     // console.log($(this).serialize());
     // Get the form data and send an AJAX request to the server
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    console.log(timezone);
+    value = document.getElementById('input-value').value;
     $.ajax({
         url: 'add',
         type: 'POST',
@@ -201,6 +230,10 @@ $('#add-entry').on("submit", function (event) {
             add_row(newItem, 'bottom');
             clear_form();
             scroll_down();
+            // console.log(value);
+            update_budget(value);
+            
+            
         },
         error: function () {
             alert(`Error adding entry. Sent data: ${this}`);
@@ -255,6 +288,22 @@ function cycle() {
 
     label.dataset.index = index;
 }
+
+// Swap visibility of budget progress-bar
+function progress() {
+    let budget = document.getElementById("budget_container")
+
+    console.log(budget.style.display)
+    if (budget.style.display == 'flex') {
+        //console.log('yeah it is')
+        budget.style.display = 'none';
+    } else {
+        budget.style.display = 'flex';
+    }
+    console.log(budget.style.display)
+}
+
+
 
 window.onload = function () {
     // console.log('i do work')
