@@ -98,25 +98,12 @@ def format_name(str):
 def info(category):
     descriptions = {
         'other' : 'Anything that does not fit in any other category',
-        'housing': 'Rent/mortgage payments, property taxes, home insurance, utilities, maintenance costs',
-        'transportation': 'Car payments, gas, insurance, maintenance costs, public transportation',
+        'housing': 'Rent/mortgage payments, property taxes, home insurance, and utilities',
+        'transportation': 'Car payments, gas, insurance, and maintenance costs',
         'food': 'Groceries, dining out, snacks, beverages',
         'entertainment': 'Movies, concerts, hobbies, vacations, subscriptions, books',
-        'self-care': 'Haircuts, salon services, grooming products, health and wellness expenses',
-        'utilities': 'Cell phone bills, internet, cable or satellite TV, electricity, water',
-        'clothing': 'Apparel, shoes, accessories, dry cleaning, laundry',
-        'education': 'Tuition, textbooks, school supplies',
-        'medical': 'Doctor visits, prescriptions, dental care, vision care',
+        'health': 'Doctor visits, prescriptions, dental care, vision care',
         'savings': 'Emergency fund, retirement savings, investment accounts',
     }
     
     return descriptions[category]
-
-# Updated default categories
-
-# Housing: Includes rent/mortgage payments, property taxes, home insurance, and utilities.
-# Transportation: Includes car payments, gas, insurance, and maintenance costs.
-# Food and groceries: Includes all expenses related to food and groceries, including dining out, snacks, and beverages.
-# Entertainment and leisure: Includes expenses for movies, hobbies, vacations, and other leisure activities.
-# Health and wellness: Includes expenses for gym memberships, health and wellness products, and personal care services.
-# Savings and investments: Includes contributions to emergency funds, retirement savings, and investment accounts.
