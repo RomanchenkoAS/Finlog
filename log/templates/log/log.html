@@ -153,13 +153,15 @@
                     <hr>
                     <div style="display: flex; align-items: end;" >
                         <t style=''>Choose currency:</t>
-                        <select style="margin-left: auto;" name="category" id="input-category" class="form-selector ">
-                            <option selected value='KZT'>KZT</option>
+                        <!-- Display current chosen currency as an icon -->
+                        <img  style="margin-left: auto; margin-right: 5px; cursor:auto;"  class="icon_button" src="{% static 'log/icons/currency/KZT.svg'%}">
+                        <select name="category" id="input-category" class="form-selector ">
+                            <option selected value='KZT'>KZT </option>
                             <option value='RUB'>RUB</option>
                             <option value='USD'>USD</option>
                             <option value='EUR'>EUR</option>
                         </select>
-                        <a onclick='console.log("set budget")' class="a-none">
+                        <a onclick='console.log("set currency")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
                     </div>
