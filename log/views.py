@@ -17,7 +17,7 @@ import json
 from django.utils.timezone import now
 
 # Helper functions
-from .helpers import collect_entries, collect_categories
+from .helpers import collect_entries, collect_categories, get_budget
 
 
 @login_required
@@ -33,6 +33,8 @@ def log(request):
         'categories': categories,
         'user_categories' : user_categories,
     }
+    
+    get_budget(request.user)
 
     return render(request, 'log/log.html', context)
 

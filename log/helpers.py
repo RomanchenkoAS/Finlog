@@ -94,6 +94,25 @@ def collect_categories(user):
     return default_categories, user_categories
 
 
+def get_budget(user):
+    
+    budget = user.budget
+    
+    monthly_entries = collect_entries(user, 'month')
+    # TODO include currency translator
+    sum = 0
+    for entry in monthly_entries:
+        sum += entry['value']
+    
+    print(f'Spent {sum}/{budget}')
+    
+    budget_info = {
+        'budget'    : budget,
+        'spent'     : sum,
+    }
+    
+    return budget_info
+
 def format_name(str):
     ''' Format category name to exclude capital letters / spaces and '-' symbol '''
     str = str.lower()
