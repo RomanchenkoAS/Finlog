@@ -143,9 +143,11 @@
                 <!-- Content -->
                 <div class="modal-body">
 
-                    <!-- Testing purposes-->
                     <div class='settings_container'>
-                        <t> Budget : {{request.user.budget}} || currency : {{request.user.currency}} </t>
+                        <span style="margin:auto">
+                            Budget : <t id='budget_label'>{{request.user.budget}}</t>  • 
+                            Currency : <t id='currency_label'>{{request.user.currency}}</t>
+                        </span>
                     </div>
                     <hr>
                     
@@ -232,18 +234,24 @@
     {% comment %} Scripts for settings window {% endcomment %}
 
     <script>
+        // Tracks any changes in settings
+        let updated = false;
 
         function set(setting) {
-            let currency = document.getElementById('select_currency').value;
-            let budget = document.getElementById('budget_input').value;
+            let budget_input = document.getElementById('budget_input').value;
+            let currency_input = document.getElementById('select_currency').value;
 
             if (setting == 'budget') {
-                value = budget;
-                console.log(`sending xhr request | ${budget}`);
+                value = budget_input;
+                console.log(`sending xhr request | ${budget_input}`);
             } else if (setting == 'currency') {
-                value = currency;
-                console.log(`sending xhr request | ${currency}`);
+                value = currency_input;
+                console.log(`sending xhr request | ${currency_input}`);
             }
+
+            let budget_label = document.getElementById('budget_label');
+            let currency_label = document.getElementById('currency_label');
+
             
             // Send request at /edit/
             var xhr = new XMLHttpRequest();
@@ -256,10 +264,13 @@
                 if (xhr.readyState === 4) {
                   if (xhr.status === 200) {
                         console.log("Request successful");
-
+                        updated = true;
+                        var response = JSON.parse(xhr.responseText);
+                        budget_label.textContent = response['budget'];
+                        currency_label.textContent = response['currency'];
                     } else {
                         console.log("Request failed");
-                        
+                        alert('Invalid input, request failed');
                   };
                 };
             };
@@ -268,9 +279,20 @@
             var data = JSON.stringify({"setting": setting, "value" : value});
             xhr.send(data);
             
-
+            
         
         };
+
+        // Dissmiss all the changes on closing the modal
+        var settingsModal = document.getElementById("settingsModal");
+
+        // If the settings were changed - reload page 
+        settingsModal.addEventListener("hidden.bs.modal", function () {
+            if (updated) {
+                location.reload();
+            };
+        });
+
     </script>
 
     {% endblock script %}
