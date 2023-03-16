@@ -93,22 +93,39 @@ def collect_categories(user):
 
     return default_categories, user_categories
 
+def exchange(val, currency, target = 'USD'):
+    rate = {
+        'KZT' : 0.0022,
+        'EUR' : 1.06,
+        'RUB' : 0.013,
+        'USD' : 1,
+    }
+    
+    usd = val * rate[currency]
+    if target == "USD":
+        return round(usd, 1)
+    
+    else:
+        return round(usd / rate[target], 1)
 
 def get_budget(user):
-    
+    """Counts users expences for last month and give back result in user currency"""
     budget = user.budget
     
     monthly_entries = collect_entries(user, 'month')
-    # TODO include currency translator
+    # Sum in $
     sum = 0
     for entry in monthly_entries:
-        sum += entry['value']
+        # All to $
+        sum += exchange(entry['value'], user.currency)
     
-    print(f'Spent {sum}/{budget}')
+    sum = round(sum, 1)
+    
+    # print(f'Spent {sum}$/{exchange(budget, user.currency)}$')
     
     budget_info = {
         'budget'    : budget,
-        'spent'     : sum,
+        'spent'     : exchange(sum, 'USD', user.currency),
         'currency'  : user.currency
     }
     
@@ -121,20 +138,7 @@ def format_name(str):
     str = str.replace('-', '_')
     return str
 
-def exchange(val, currency, target = 'USD'):
-    rate = {
-        'KZT' : 0.0022,
-        'EUR' : 1.06,
-        'RUB' : 0.013,
-        'USD' : 1
-    }
-    
-    usd = val * rate[currency]
-    if target == "USD":
-        return round(usd, 1)
-    
-    else:
-        return round(usd / rate[target], 1)
+
 
 
 def info(category):
