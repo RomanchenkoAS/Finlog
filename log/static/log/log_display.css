@@ -95,7 +95,7 @@ input[type=number]::-webkit-outer-spin-button {
 .center {
     margin-right: auto;
     margin-left: auto;
-    width: 50vw;
+    width: 40vw;
 }
 
 /* Form to add an entry */
