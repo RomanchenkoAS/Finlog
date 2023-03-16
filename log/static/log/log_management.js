@@ -243,7 +243,7 @@ function cycle() {
     clear_table();
 
     if (index == 0) {
-        label.textContent = 'Latest'
+        label.textContent = 'All latest'
         load_content('all');
     } else if (index == 1) {
         label.textContent = 'Today'
