@@ -58,7 +58,7 @@ def add(request):
     value = request.POST.get('value', '')
     category = request.POST.get('category', '')
     comment = request.POST.get('comment', '')
-
+    currency = request.user.currency
     
     try:
         category = UserCategory.objects.get(name=category)
@@ -69,7 +69,7 @@ def add(request):
 
     # TODO: handle invalid value
     entry = Entry(user=request.user, value=float(value),
-                  category=category, comment=comment, date=now())
+                  category=category, comment=comment, date=now(), currency=currency)
     entry.save()
 
     try:

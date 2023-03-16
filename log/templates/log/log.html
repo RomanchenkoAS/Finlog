@@ -155,22 +155,22 @@
                     <!-- Budget-->
                     <div class='settings_container'>
                         <t>Set monthly budget:</t>
-                        <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input KZT" value={{request.user.budget}}>
+                        <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input {{request.user.currency}}" value={{request.user.budget}}>
                         <a onclick='set("budget")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
                     </div>
                     <hr>
+                    <!-- Currency -->
                     <div class='settings_container' >
                         <t style=''>Choose currency:</t>
-                        <!-- Display current chosen currency as an icon -->
                         <select name="currency" id="select_currency" class="form-selector right">
                             <option value='KZT' {% if request.user.currency == 'KZT' %}selected{% endif %}>KZT</option>
                             <option value='RUB' {% if request.user.currency == 'RUB' %}selected{% endif %}>RUB</option>
                             <option value='USD' {% if request.user.currency == 'USD' %}selected{% endif %}>USD</option>
                             <option value='EUR' {% if request.user.currency == 'EUR' %}selected{% endif %}>EUR</option>
                         </select>
-                                                
+
                         <a onclick='set("currency")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
@@ -198,7 +198,7 @@
             <form id="add-entry">
                 <span>
                     <!-- Value field -->
-                    <input required pattern="[0-9]+" name="value" id="input-value" placeholder="Value:" class="form-item currency-input KZT">
+                    <input required pattern="[0-9]+" name="value" id="input-value" placeholder="Value:" class="form-item currency-input {{request.user.currency}}">
                     <!-- Category field -->
                     <select name="category" id="input-category" class="form-selector">
                         {% for category in categories %}
@@ -244,10 +244,10 @@
 
             if (setting == 'budget') {
                 value = budget_input;
-                console.log(`sending xhr request | ${budget_input}`);
+                //console.log(`sending xhr request | ${budget_input}`);
             } else if (setting == 'currency') {
                 value = currency_input;
-                console.log(`sending xhr request | ${currency_input}`);
+                //console.log(`sending xhr request | ${currency_input}`);
             }
 
             let budget_label = document.getElementById('budget_label');
@@ -259,16 +259,25 @@
             var url = "/settings/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
-            //console.dir(xhr);
             // On response
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                   if (xhr.status === 200) {
                         console.log("Request successful");
                         updated = true;
+                        // Parse response 
                         var response = JSON.parse(xhr.responseText);
                         budget_label.textContent = response['budget'];
                         currency_label.textContent = response['currency'];
+                        // Change currency icon for all input fields with an icon
+                        currencyInputs = document.getElementsByClassName('currency-input');
+                        for (let i = 0; i < currencyInputs.length; i++) {
+                            // Remove last class
+                            currencyInputs[i].classList.remove(currencyInputs[i].classList[currencyInputs[i].classList.length - 1]);
+                            // Add the right one
+                            currencyInputs[i].classList.add(response['currency']);
+                          }
+                          
                     } else {
                         console.log("Request failed");
                         alert('Invalid input, request failed');
@@ -290,10 +299,12 @@
         // If the settings were changed - reload page 
         settingsModal.addEventListener("hidden.bs.modal", function () {
             if (updated) {
-                location.reload();
+
+                //location.reload();
             };
         });
 
+        
     </script>
 
     {% endblock script %}
