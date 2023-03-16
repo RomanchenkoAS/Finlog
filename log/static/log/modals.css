@@ -121,3 +121,7 @@ a[title]:hover::before , t[title]:hover::before {
     width: 40%;
   }
 
+.settings_container {
+    display: flex; 
+    align-items: center;
+}

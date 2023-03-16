@@ -143,19 +143,19 @@
                 <!-- Content -->
                 <div class="modal-body">
                     <!-- Budget-->
-                    <div style="display: flex; align-items: center;" >
-                        <t style=''>Set monthly budget:</t>
-                        <input style="margin-left: auto;" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item " placeholder="">
+                    <div class='settings_container' >
+                        <t>Set monthly budget:</t>
+                        <input  type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input KZT" placeholder="">
                         <a onclick='console.log("set budget")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
                     </div>
                     <hr>
-                    <div style="display: flex; align-items: end;" >
+                    <div class='settings_container' >
                         <t style=''>Choose currency:</t>
                         <!-- Display current chosen currency as an icon -->
-                        <img  style="margin-left: auto; margin-right: 5px; cursor:auto;"  class="icon_button" src="{% static 'log/icons/currency/KZT.svg'%}">
-                        <select name="category" id="input-category" class="form-selector ">
+                        {% comment %} <img  style="margin-left: auto; margin-right: 5px; cursor:auto;"  class="icon_button" src="{% static 'log/icons/currency/KZT.svg'%}"> {% endcomment %}
+                        <select name="category" id="input-category" class="form-selector right">
                             <option selected value='KZT'>KZT </option>
                             <option value='RUB'>RUB</option>
                             <option value='USD'>USD</option>

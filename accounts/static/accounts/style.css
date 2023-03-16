@@ -87,9 +87,9 @@ nav li {
     margin-right: 1rem;
 }
 
-/* 
-button {
-} */
+.right {
+    margin-left: auto;
+}
 
 /* Errors during registration */
 .errorlist {

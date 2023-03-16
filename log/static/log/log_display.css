@@ -108,6 +108,26 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
 }
 
+/* Input field with currency icon in it */
+.KZT {
+    background:url('../icons/currency/KZT.svg') no-repeat right center; 
+}
+.USD {
+    background:url('../icons/currency/USD.svg') no-repeat right center; 
+}
+.RUB {
+    background:url('../icons/currency/RUB.svg') no-repeat right center; 
+}
+.EUR {
+    background:url('../icons/currency/EUR.svg') no-repeat right center; 
+}
+.currency-input {
+    background-size: 15px 15px; 
+    background-position: right 0.65rem center; 
+    padding-right:2rem;
+}
+
+
 /* For a smaller screen YEEEAH ADAPTIVE */
 @media (max-width: 800px) {
     .center {
