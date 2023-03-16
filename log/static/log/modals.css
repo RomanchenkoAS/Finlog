@@ -121,6 +121,7 @@ a[title]:hover::before , t[title]:hover::before {
     width: 40%;
   }
 
+/* For a single settings row */
 .settings_container {
     display: flex; 
     align-items: center;
