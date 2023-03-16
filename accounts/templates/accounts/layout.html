@@ -58,11 +58,13 @@
                         <ul class="navbar-nav ms-auto" style="flex-wrap: wrap;">
                             <!-- Budget -->
                             <li class="nav-item">
+                                <img class="icon_button_nav" src="{% static 'log/icons/budget.svg'%}">
                                 <a class="nav-link" href="">
-                                    <img class="icon_button_nav" src="{% static 'log/icons/budget.svg'%}">
-                                    
-                                    {{ spent }} / {{ budget }} 
-                                    <progress id="budget_progress" max="100" value="{{percent}}"></progress>
+                                    <div style="display:flex; flex-direction: column;">
+
+                                        {{ spent }} / {{ budget }} 
+                                        <progress id="budget_progress" max="{{budget}}" value="{{spent}}"></progress>
+                                    </div>
                                 </a>
                             </li>
                             <!-- Categories -->
