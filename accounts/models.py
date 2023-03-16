@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from log.models import Category
 from django.conf import settings  # For using a build-in USER model
 from django.utils import timezone  # For setting time in DateTimeField
+from django.db.models.functions import TruncMonth, TruncDay
 
 # For setting minimum value in a field
 from django.core.validators import MinValueValidator
@@ -12,8 +13,8 @@ CURRENCY_CHOICES = [
     ('USD', 'US Dollars'),
     ('EUR', 'Euros'),
     ('RUB', 'Russian Rubles'),
-    ('KZT', 'Khazakh Tenge')
-    # Add more here..
+    ('KZT', 'Khazakh Tenge'),
+    # Add more here if needed
 ]
 
 # Custom user model containing a list of categories and according methods
@@ -79,6 +80,33 @@ class Entry(models.Model):
     value = models.FloatField(validators=[MinValueValidator(0)])
     date = models.DateTimeField(default=timezone.now)
     comment = models.CharField(max_length=200, blank=True)
+
+    def filter_today(user):
+        today = timezone.now().date()
+
+        # Get entries for today
+        entries_list = Entry.objects.filter(
+            user=user,
+            date__date=today  # Today's date
+        )
+
+        return entries_list
+
+
+    def filter_month(user):
+        today = timezone.now().date()
+        month = today.month
+        year = today.year
+
+        # Get entries for this month
+        entries_list = Entry.objects.filter(
+            user=user,
+            date__month=month,  # This month's number
+            date__year=year  # This year's number
+        )
+
+        return entries_list
+
 
     # For proper representation on admin page
     class Meta:

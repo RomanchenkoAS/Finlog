@@ -19,9 +19,9 @@ function formatter(value, currency) {
     return currencyIcon.outerHTML + ' ' + currencyFormatter.format(value);
 }
 // Load content from the /load_content/ url -- used on window load -- includes recusrive_render & scroll_down
-function load_content() {
+function load_content(t) {
     // console.log('load function')
-    fetch(`/load_content/?t=all`)
+    fetch(`/load_content/?t=${t}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Not ok response');
@@ -226,5 +226,5 @@ function clear_form() {
 
 window.onload = function () {
     // console.log('i do work')
-    load_content();
+    load_content('all');
 };

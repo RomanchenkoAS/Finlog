@@ -47,10 +47,10 @@ def load_content(request):
         # All for 'show all entries'
         if t == 'all':
             context = {'entries': collect_entries(request.user)}
-        elif t=='m':
-            pass
-        elif t=='d':
-            pass
+        elif t=='month':
+            context = {'entries': collect_entries(request.user, filter=t)}
+        elif t=='day':
+            context = {'entries': collect_entries(request.user, filter=t)}
         else:
             return HttpResponse(status=400)
         

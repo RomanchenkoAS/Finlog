@@ -1,13 +1,20 @@
 from .models import Category
 from accounts.models import User, UserCategory, Entry
+from django.utils import timezone
 
-
-def collect_entries(user):
+def collect_entries(user, filter = 'all'):
     ''' Returns a list of entries for this user'''
 
     # Gather all entries (objects of this class) bound to given user
-    entries_list = Entry.objects.filter(user=user.id)
+    if filter == 'all':
+        entries_list = Entry.objects.filter(user=user.id)
+    
+    elif filter == 'day':
+        entries_list = Entry.filter_today(user)
 
+    elif filter == 'month':
+        entries_list = Entry.filter_month(user)
+        
     
     # Reform this list as a list of dictionaries
     entries_dict = []
