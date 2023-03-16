@@ -3,19 +3,10 @@ body {
     height: 100%;
     /* To be deleted */
 }
-header {
-    /* height: 15vh; */
-}
+
 main {
     height: 85%;
     /* height: 100%; */
-}
-
-
-nav {
-    /* display: flex;
-    justify-content: space-between; */
-    /* margin-bottom: 0.5rem; */
 }
 
 .left-list {
@@ -41,14 +32,8 @@ nav li {
     width:75px;
     vertical-align: middle;
 }
-/* For navigation icons */
-.large_icon_button {
-    height: 25px;
-    width: 25px;
-    margin-bottom: 5px;
-    cursor: pointer;
-}
 
+/* Simple icon-buttons */
 .icon_button {
     height: 16px;
     width: 16px;
@@ -56,6 +41,7 @@ nav li {
     cursor: pointer;
 }
 
+/* Icons-buttons in navigation */
 .icon_button_nav {
     height: 20px;
     width: 20px;
@@ -80,15 +66,12 @@ nav li {
 
 }
 
+/* Labels for fields at login/registration pages */
 .form-container label {
     width: 10rem;
     color: inherit;
     text-align: right;
     margin-right: 1rem;
-}
-
-.right {
-    margin-left: auto;
 }
 
 /* Errors during registration */
