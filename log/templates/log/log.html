@@ -234,18 +234,20 @@
     <script>
 
         function set(setting) {
-            let currency = document.getElementById()
-
             let currency = document.getElementById('select_currency').value;
-            console.log(currency);
-
             let budget = document.getElementById('budget_input').value;
-            console.log(budget);
-            console.log(`sending xhr request`);
-        
+
+            if (setting == 'budget') {
+                value = budget;
+                console.log(`sending xhr request | ${budget}`);
+            } else if (setting == 'currency') {
+                value = currency;
+                console.log(`sending xhr request | ${currency}`);
+            }
+            
             // send actual request at /edit/
             var xhr = new XMLHttpRequest();
-            var url = "/edit/";
+            var url = "/settings/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
         
@@ -256,9 +258,9 @@
 
                 };
             };
-
+            
             // Sending data
-            var data = JSON.stringify({"setting": setting; "value" : value;});
+            var data = JSON.stringify({"setting": setting, "value" : value});
             xhr.send(data);
             
 

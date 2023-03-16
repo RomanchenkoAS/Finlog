@@ -166,17 +166,24 @@ def settings(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
     # TODO: remove later
-    print(parsed_data)
+    # print(parsed_data)
     
-    action = parsed_data['action']
+    setting = parsed_data['setting']
+    user = User.objects.get(username=request.user.username)
     
-    if action == 'budget':
-        new_budget = parsed_data['budget']
-        print(new_budget)
-        pass
-    elif action == 'currency':
-        currency = parsed_data['currency']
-        print(currency)
-        pass
+    if setting == 'budget':
+        new_budget = parsed_data['value']
+        user.budget = new_budget
+        user.save()
     
-    return HttpResponse(status=204)
+    elif setting == 'currency':
+        new_currency = parsed_data['value']
+        user.currency = new_currency
+        user.save()
+        
+    user_settings = {
+        'currency'  : user.currency,
+        'budget'    : user.budget,
+    }
+    
+    return JsonResponse(user_settings)
