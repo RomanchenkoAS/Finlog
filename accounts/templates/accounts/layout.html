@@ -33,6 +33,15 @@
                 <a class="navbar-brand" href="/">
                     <img src="{% static 'accounts/images/logo.png'%}" width="110" height="55"/>
                 </a>
+                <h1 class="header" style="margin-right:auto; margin-top:auto; margin-bottom:auto">Finlog
+                    {% if request.path == '/' %}
+                    of: {{user}}
+                    {% elif request.path == '/login' %}
+                    login:
+                    {% elif request.path == '/register' %}
+                    register:
+                    {% endif %}
+                </h1>
                 <button aria-controls="navbar"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
@@ -44,13 +53,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbar">
                     {% if request.path == '/' %}
-                        <ul class="navbar-nav">
-                            <!-- Title -->
-                            <li class="nav-item" >
-                                <h1 class="header" style="margin-right: 1rem;">Finlog of: {{user}}</h1>
-                            </li>
-
-                        </ul>
 
                         <!-- Right part-->
                         <ul class="navbar-nav ms-auto" style="flex-wrap: wrap;">
@@ -79,18 +81,6 @@
                     {% endif %}
                     <!-- For unauthorized user -->
                     {% if request.path == '/login' or request.path == '/register' %}
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item" >
-                            <h1 class="header" style="margin-right: 1rem;">Finlog 
-                                {% if request.path == '/login' %}
-                                login:
-                                {% endif %}
-                                {% if request.path == '/register' %}
-                                register: 
-                                {% endif%}
-                            </h1>
-                        </li>
-                    </ul>
 
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
