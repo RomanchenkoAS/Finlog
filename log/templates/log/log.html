@@ -245,20 +245,25 @@
                 console.log(`sending xhr request | ${currency}`);
             }
             
-            // send actual request at /edit/
+            // Send request at /edit/
             var xhr = new XMLHttpRequest();
             var url = "/settings/";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
-        
-            // Simple ok response
+            //console.dir(xhr);
+            // On response
             xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 204) {
-                    console.log("Request successful");
+                if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                        console.log("Request successful");
 
+                    } else {
+                        console.log("Request failed");
+                        
+                  };
                 };
             };
-            
+
             // Sending data
             var data = JSON.stringify({"setting": setting, "value" : value});
             xhr.send(data);
