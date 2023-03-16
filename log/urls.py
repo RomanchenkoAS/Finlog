@@ -12,4 +12,6 @@ urlpatterns = [
     path('load_content/', views.load_content, name='load_content'),
     # Customize category
     path('edit/', views.edit, name='edit'),
+    # Handle settings window
+    path('settings/', views.settings, name='settings'),
 ]

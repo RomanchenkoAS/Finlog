@@ -111,3 +111,12 @@ def info(category):
     }
     
     return descriptions[category]
+
+# Updated default categories
+
+# Housing: Includes rent/mortgage payments, property taxes, home insurance, and utilities.
+# Transportation: Includes car payments, gas, insurance, and maintenance costs.
+# Food and groceries: Includes all expenses related to food and groceries, including dining out, snacks, and beverages.
+# Entertainment and leisure: Includes expenses for movies, hobbies, vacations, and other leisure activities.
+# Health and wellness: Includes expenses for gym memberships, health and wellness products, and personal care services.
+# Savings and investments: Includes contributions to emergency funds, retirement savings, and investment accounts.

@@ -105,6 +105,7 @@ def remove(request, p):
     # Send back JSON
     return JsonResponse(entries_dict)
 
+# TODO : remove csrf exemptions
 @csrf_exempt
 @login_required
 def edit(request):
@@ -159,3 +160,23 @@ def edit(request):
     # if edit_category(request.user, edit) == 0:
     return HttpResponse(status=204)
     
+@csrf_exempt
+@login_required
+def settings(request):
+    # Recieved JSON
+    parsed_data = json.loads(request.body)
+    # TODO: remove later
+    print(parsed_data)
+    
+    action = parsed_data['action']
+    
+    if action == 'budget':
+        new_budget = parsed_data['budget']
+        print(new_budget)
+        pass
+    elif action == 'currency':
+        currency = parsed_data['currency']
+        print(currency)
+        pass
+    
+    return HttpResponse(status=204)
