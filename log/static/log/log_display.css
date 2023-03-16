@@ -1,47 +1,31 @@
 table {
     margin: 0 auto;
     width: 100%;
-    border-collapse: collapse;
 }
 
-table th,
+/* table th,
 table td {
-    /* text-align: justify; */
-    /* display: inline-block; */
-    /* padding: 10px; */
     box-sizing: border-box;
-    /* text-align: ; */
-    
-    /* flex-grow: 1; */
-}
 
+}
 td {
-    /* width: 5rem; */
     padding: 0;
     margin: 0;
-}
+} */
 
 table tr {
     border-color: #fff;
     border-width: 2px;
     border-radius: 20px;
     padding: 5px;
+    /* Vertical */
     align-items: center;
     overflow: hidden;
-
-
-    /* display: flex;
-    flex-wrap: wrap; */
     display: grid;
     grid-template-columns: 2fr 1.5fr 2fr 2fr 0.3fr;
     text-align: center;
   }
   
-
-hr {
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
-}
 
 /* Shadows form-select from BS with few adjustments */
 .form-selector {
@@ -62,9 +46,9 @@ hr {
 }
 
 
+/* Input fields for numbers / text */
 .form-item {
     padding: 0.125rem 0.75rem 0.125rem 0.75rem;
-    /* padding: 0.255rem 2.25rem 0.275rem 0.75rem; */
     border: 1px solid black;
     font-size: 1rem;
     font-weight: 400;
@@ -75,15 +59,22 @@ hr {
     width: 30%;
 }
 
+/* Remove stupid arrows at all number inputs */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 
-/* Delete entry button */
+
+/* "Delete entry" button */
 .delete:focus {
     outline: none;
     box-shadow: none !important;
 }
 
-
+/* Div inside which a table resides */
 #logTableContainer {
     height: 28rem;
     overflow-y: scroll;
@@ -95,11 +86,12 @@ hr {
     margin-bottom: 0.5rem;
 }
 
-/* Hide scrollbar */
+/* Hide scrollbar for this div*/
 #logTableContainer::-webkit-scrollbar {
     display: none;
 }
 
+/* Centering the divs */
 .center {
     margin-right: auto;
     margin-left: auto;
