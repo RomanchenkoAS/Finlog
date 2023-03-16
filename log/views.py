@@ -34,7 +34,8 @@ def log(request):
         'user_categories' : user_categories,
         'budget' : budget['budget'],
         'spent' : budget['spent'],
-        'percent' : budget['percent']
+        'percent' : budget['percent'],
+        'currency' : current_user.currency,
     }
     
 
