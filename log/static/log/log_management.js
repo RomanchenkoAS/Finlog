@@ -222,7 +222,39 @@ function clear_form() {
     categorySelect.selectedIndex = 0;
 };
 
+function clear_table() {
+    while (table.firstChild) {
+        table.removeChild(table.firstChild);
+    }
+}
 
+
+
+function cycle() {
+    let label = document.getElementById('period_label');
+    index = label.dataset.index;
+    index++; 
+
+    // For actual cycling
+    if (index == 3) {
+        index = 0;
+    }
+
+    clear_table();
+
+    if (index == 0) {
+        label.textContent = 'Latest'
+        load_content('all');
+    } else if (index == 1) {
+        label.textContent = 'Today'
+        load_content('day');
+    } else if (index == 2) {
+        label.textContent = 'This month'
+        load_content('month');
+    }
+
+    label.dataset.index = index;
+}
 
 window.onload = function () {
     // console.log('i do work')

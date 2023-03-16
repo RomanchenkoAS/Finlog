@@ -42,17 +42,13 @@ def load_content(request):
     '''Load entries for log page and pass it as JSON'''
     # Get the list of entries -> transform it to the dictionary for jsonifying
     try:
-        # TODO: filter entries by the time period in question 
-        t = request.GET.get('t', None)  # Get the value of the 't' parameter
+        # Get the value of the 't' parameter
+        t = request.GET.get('t', None)  
         # All for 'show all entries'
         if t == 'all':
             context = {'entries': collect_entries(request.user)}
-        elif t=='month':
-            context = {'entries': collect_entries(request.user, filter=t)}
-        elif t=='day':
-            context = {'entries': collect_entries(request.user, filter=t)}
         else:
-            return HttpResponse(status=400)
+            context = {'entries': collect_entries(request.user, filter=t)}
         
         # Send back JSON
         return JsonResponse(context)
