@@ -145,21 +145,55 @@
                     <!-- Budget-->
                     <div style="display: inline-flex; align-items: center;" >
                         <t style=''>Set monthly budget:</t>
-                        <input style="margin-left: auto;" type="number" class="form-item " placeholder="" aria-describedby="button-addon2">
+                        <input style="margin-left: auto;" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item " placeholder="">
+                        <a onclick='console.log("set budget")' class="a-none">
+                            <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
+                        </a>
+                    </div>
+                    <hr>
+                    <div style="display: inline-flex; align-items: center;" >
+                        <t style=''>Set monthly budget:</t>
+                        <select style="margin-left: auto;" name="category" id="input-category" class="form-selector">
+                            <option selected value='KZT'>KZT</option>
+                            <option value='RUB'>RUB</option>
+                            <option value='USD'>USD</option>
+                            <option value='EUR'>EUR</option>
+                        </select>
                         <a onclick='console.log("set budget")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
                     </div>
                     <hr>
                     <!--Currency -->
-                    <div style="border: 1px solid black; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center;">
                         <t>Currency:</t>
-                        <div class="radio-container">
-                          <label style="width: auto;"><input type="radio" name="currency" value="USD">USD</label>
-                          <label style="width: auto;"><input type="radio" name="currency" value="EUR">EUR</label>
-                          <label style="width: auto;"><input type="radio" name="currency" value="RUB">RUB</label>
+                        <select style="margin-left: auto;" name="category" id="input-category" class="form-selector">
+                            <option selected value='KZT'>KZT</option>
+                            <option value='RUB'>RUB</option>
+                            <option value='USD'>USD</option>
+                            <option value='EUR'>EUR</option>
+                            {% comment %} {% for category in categories %}
+                            {% if forloop.counter == 1 %}
+                                <option selected value="{{ category.name }}">{{category.name}}</option>
+                                {% else %}
+                                <option value="{{ category.name }}">{{category.name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                            <!-- User categories -->
+                            {% for category in user_categories %}
+                                <option value="{{ category.name }}">{{category.name}}</option>
+                            {% endfor %} {% endcomment %}
+                        </select>
+                        <a onclick='console.log("set budget")' class="a-none">
+                            <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
+                        </a>
+                        {% comment %} <div class="radio-container">
+                            <label style="width: auto;"><input type="radio" name="currency" value="RUB">KZT</label>
+                            <label style="width: auto;"><input type="radio" name="currency" value="RUB">RUB</label>
+                            <label style="width: auto;"><input type="radio" name="currency" value="USD">USD</label>
+                            <label style="width: auto;"><input type="radio" name="currency" value="EUR">EUR</label>
                           <!-- Add more radio buttons as needed -->
-                        </div>
+                        </div> {% endcomment %}
                       </div>
                     </div>
 

@@ -134,10 +134,12 @@ a[title]:hover::before , t[title]:hover::before {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid #ccc;
+    /* border: 1px solid black; */
+    border-radius: 15px;
     padding: 5px;
-    width: 30%;
+    width: 20%;
     text-align: center;
+    margin-right: 10%;
   }
   
   /* label {
