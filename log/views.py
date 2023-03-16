@@ -26,15 +26,17 @@ def log(request):
     current_user = request.user
 
     categories, user_categories = collect_categories(current_user)
-    # print(categories)
-    # print(user_categories)
+    
+    budget = get_budget(request.user)
     context = {
         'user': current_user.username,
         'categories': categories,
         'user_categories' : user_categories,
+        'budget' : budget['budget'],
+        'spent' : budget['spent'],
+        'percent' : budget['percent']
     }
     
-    get_budget(request.user)
 
     return render(request, 'log/log.html', context)
 

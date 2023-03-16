@@ -126,8 +126,11 @@ def get_budget(user):
     budget_info = {
         'budget'    : budget,
         'spent'     : exchange(sum, 'USD', user.currency),
-        'currency'  : user.currency
+        'currency'  : user.currency,
+        'percent'   : round((exchange(sum, 'USD', user.currency) / budget) * 100, 1),
     }
+    
+    # print(budget_info)
     
     return budget_info
 

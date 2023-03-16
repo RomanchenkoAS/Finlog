@@ -6,7 +6,7 @@
         {% load static %}
         <meta name="viewport" content="initial-scale=1, width=device-width">
         <!-- Main stylesheet -->
-        <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+        <link rel="stylesheet" href={% static 'accounts/style.css' %}>
         <!-- Icon -->
         <link rel="icon" type="image/x-icon" href="{% static 'accounts/images/logo_icon.png'%}">
 
@@ -56,6 +56,15 @@
 
                         <!-- Right part-->
                         <ul class="navbar-nav ms-auto" style="flex-wrap: wrap;">
+                            <!-- Budget -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="">
+                                    <img class="icon_button_nav" src="{% static 'log/icons/budget.svg'%}">
+                                    
+                                    {{ spent }} / {{ budget }} 
+                                    <progress id="budget_progress" max="100" value="{{percent}}"></progress>
+                                </a>
+                            </li>
                             <!-- Categories -->
                             <li class="nav-item">
                                 <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#categoriesModal">
@@ -63,6 +72,7 @@
                                     Categories
                                 </a>
                             </li>
+                            <!-- Settings -->
                             <li class="nav-item">
                                 <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#settingsModal">
                                     <img class="icon_button_nav" src="{% static 'log/icons/gear.svg'%}">
