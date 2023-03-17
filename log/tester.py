@@ -8,10 +8,12 @@ def exchange(val, currency, target = 'USD'):
     
     usd = val * rate[currency]
     if target == "USD":
-        return round(usd, 1)
+        return usd
     
     else:
-        return round(usd / rate[target], 1)
+        return usd / rate[target]
     
-    
-print(exchange(100, 'USD', 'EUR'))
+a = exchange(733, 'KZT', 'USD')
+print(a)
+b = exchange(a, 'USD', 'KZT')
+print(b)
