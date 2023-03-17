@@ -181,6 +181,9 @@ function deleteEntry(pos) {
 };
 
 function update_budget(value) {
+    // Cast to number
+    value = Number(value);
+
     let progressBar = document.getElementById("budget_progress");
     let progressDiv = document.getElementById("budget_progress_div");
 
@@ -194,9 +197,16 @@ function update_budget(value) {
     // Setting properties
     progressBar.style.width = `${percent * 100}%`;
     progressDiv.setAttribute('aria-valuenow', spent);
+
+    
+    let spentLabel = document.getElementById("spent");
+    spentLabel.textContent = spent;
 }
 
 function set_budget(value) {
+    // Cast to number
+    value = Number(value);
+
     let progressBar = document.getElementById("budget_progress");
     let progressDiv = document.getElementById("budget_progress_div");
     let spent = progressDiv.getAttribute('aria-valuenow');
@@ -206,6 +216,9 @@ function set_budget(value) {
 
     progressBar.style.width = `${percent * 100}%`;
     progressDiv.setAttribute('aria-valuemax', budget);
+
+    let budgetLabel = document.getElementById("budget");
+    spentLabel.textContent = budget;
 }
 
 
@@ -230,7 +243,6 @@ $('#add-entry').on("submit", function (event) {
             add_row(newItem, 'bottom');
             clear_form();
             scroll_down();
-            // console.log(value);
             update_budget(value);
             
             
