@@ -159,8 +159,8 @@ function deleteEntry(pos) {
             // Now actually remove from the page
             var row = document.getElementById(`${pos}`)
             deletedValue = parseFloat(row.childNodes[0].textContent.replace(",", ""))
-            console.log(deletedValue)
-            update_budget(-deletedValue);
+            console.log(`add ${(-1)*deletedValue}`)
+            update_budget((-1)*deletedValue);
             row.remove();
 
             // Replace id's for rows & delete buttons
@@ -203,7 +203,7 @@ function update_budget(value) {
 
     
     let spentLabel = document.getElementById("spent");
-    spentLabel.textContent = spent;
+    spentLabel.textContent = Math.round(spent);
 }
 
 // Set budget value
@@ -222,7 +222,7 @@ function set_budget(value) {
     progressDiv.setAttribute('aria-valuemax', budget);
 
     let budgetLabel = document.getElementById("budget");
-    spentLabel.textContent = budget;
+    budgetLabel.textContent = Math.round(budget);
 }
 
 
@@ -247,6 +247,7 @@ $('#add-entry').on("submit", function (event) {
             add_row(newItem, 'bottom');
             clear_form();
             scroll_down();
+            console.log(`add ${value}`)
             update_budget(value);
             
             

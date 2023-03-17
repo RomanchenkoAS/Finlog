@@ -62,7 +62,7 @@
                                 <a class="nav-link" onclick="progress()">
                                     <div id="budget_container" style="display:flex; flex-direction: column; text-align: center; font-size: small;" >
                                         <div>
-                                            <t id="spent">{{ spent }}</t> / <t id="budget">{{ budget }}</t> <t id="currency">{{currency}}</t>
+                                            <t id="spent">{{ spent|floatformat:'0'}}</t> / <t id="budget">{{ budget|floatformat:'0' }}</t> <t id="currency">{{currency}}</t>
                                         </div>
                                         <div id="budget_progress_div" class="progress" role="progressbar" style="width: 10rem;" aria-label="Basic example" aria-valuenow="{{spent}}" aria-valuemin="0" aria-valuemax="{{budget}}">
                                             <div id="budget_progress" class="progress-bar progress-bar-striped bg-info" style="width: {{percent}}%"></div>
