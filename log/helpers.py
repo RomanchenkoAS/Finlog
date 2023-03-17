@@ -103,10 +103,10 @@ def exchange(val, currency, target = 'USD'):
     
     usd = val * rate[currency]
     if target == "USD":
-        return round(usd, 1)
+        return usd
     
     else:
-        return round(usd / rate[target], 1)
+        return usd / rate[target]
 
 def get_budget(user):
     """Counts users expences for last month and give back result in user currency"""
@@ -119,7 +119,8 @@ def get_budget(user):
         # All to $
         sum += exchange(entry['value'], user.currency)
     
-    sum = round(sum, 1)
+    # This is stupid mistake, fixed
+    # sum = round(sum, 1)
     
     # print(f'Spent {sum}$/{exchange(budget, user.currency)}$')
     
@@ -127,7 +128,7 @@ def get_budget(user):
         'budget'    : budget,
         'spent'     : exchange(sum, 'USD', user.currency),
         'currency'  : user.currency,
-        'percent'   : round((exchange(sum, 'USD', user.currency) / budget) * 100, 1),
+        'percent'   : (exchange(sum, 'USD', user.currency) / budget) * 100,
     }
     
     # print(budget_info)
