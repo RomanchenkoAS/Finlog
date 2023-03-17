@@ -141,10 +141,8 @@ function scroll_down() {
 
 // Script to delete an entry with given entry.position
 function deleteEntry(pos) {
-    console.log(`I am to delete an entry #${pos}`);
     let t = document.getElementById('period_label').dataset.period;;
-    console.log(t);
-    console.log(`/remove/${pos}?t=${t}`);
+    console.log(`fetching /remove/${pos}?t=${t}`);
     fetch(`/remove/${pos}?t=${t}`, {
         method: 'DELETE',
         headers: {
@@ -305,7 +303,7 @@ function progress() {
     } else {
         budget.style.display = 'flex';
     }
-    console.log(budget.style.display)
+    // console.log(budget.style.display)
 }
 
 
