@@ -98,8 +98,14 @@ def add(request):
 @login_required
 def remove(request, p):
     ''' Remove entry #p (p stands for position)'''
-    # Calculate the id from given position in the list
-    entries_list = collect_entries(request.user)
+    # Get the value of the 't' parameter
+    t = request.GET.get('t', None)  
+    # All for 'show all entries'
+    if t == 'all':
+        entries_list = collect_entries(request.user)
+    else:
+        entries_list = collect_entries(request.user, filter=t)
+    
     
     # Take entry with position p
     entry = entries_list[p]

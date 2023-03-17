@@ -141,9 +141,11 @@ function scroll_down() {
 
 // Script to delete an entry with given entry.position
 function deleteEntry(pos) {
-    // console.log(`I am to delete an entry #${pos}`);
-
-    fetch(`/remove/${pos}/`, {
+    console.log(`I am to delete an entry #${pos}`);
+    let t = document.getElementById('period_label').dataset.period;;
+    console.log(t);
+    console.log(`/remove/${pos}?t=${t}`);
+    fetch(`/remove/${pos}?t=${t}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/JSON'
@@ -267,7 +269,7 @@ function cycle() {
     let label = document.getElementById('period_label');
     index = label.dataset.index;
     index++; 
-
+    
     // For actual cycling
     if (index == 3) {
         index = 0;
@@ -276,13 +278,16 @@ function cycle() {
     clear_table();
 
     if (index == 0) {
-        label.textContent = 'All latest'
+        label.textContent = 'All latest';
+        label.dataset.period = 'all';
         load_content('all');
     } else if (index == 1) {
-        label.textContent = 'Today'
+        label.textContent = 'Today';
+        label.dataset.period = 'day';
         load_content('day');
     } else if (index == 2) {
-        label.textContent = 'This month'
+        label.textContent = 'This month';
+        label.dataset.period = 'month';
         load_content('month');
     }
 
