@@ -141,7 +141,7 @@ function scroll_down() {
 
 // Script to delete an entry with given entry.position
 function deleteEntry(pos) {
-    let t = document.getElementById('period_label').dataset.period;;
+    let t = document.getElementById('period_label').dataset.period;
     console.log(`fetching /remove/${pos}?t=${t}`);
     fetch(`/remove/${pos}?t=${t}`, {
         method: 'DELETE',
@@ -158,7 +158,9 @@ function deleteEntry(pos) {
             }
             // Now actually remove from the page
             var row = document.getElementById(`${pos}`)
-
+            deletedValue = parseFloat(row.childNodes[0].textContent.replace(",", ""))
+            console.log(deletedValue)
+            update_budget(-deletedValue);
             row.remove();
 
             // Replace id's for rows & delete buttons
@@ -180,6 +182,7 @@ function deleteEntry(pos) {
 
 };
 
+// Add a value to the spent value
 function update_budget(value) {
     // Cast to number
     value = Number(value);
@@ -203,6 +206,7 @@ function update_budget(value) {
     spentLabel.textContent = spent;
 }
 
+// Set budget value
 function set_budget(value) {
     // Cast to number
     value = Number(value);
