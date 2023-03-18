@@ -207,27 +207,9 @@ function update_budget(value) {
 }
 
 // Set budget value (when budget is changed - on modification of settings)
-// function set_budget(value, currency) {
-//     // Cast value to number
-//     value = Number(value);
-
-//     let progressBar = document.getElementById("budget_progress");
-//     let progressDiv = document.getElementById("budget_progress_div");
-//     let spent = progressDiv.getAttribute('aria-valuenow');
-
-//     budget = value;
-//     let percent = (spent / budget);
-
-//     progressBar.style.width = `${percent * 100}%`;
-//     progressDiv.setAttribute('aria-valuemax', budget);
-
-//     let budgetLabel = document.getElementById("budget");
-//     budgetLabel.textContent = Math.round(budget);
-// }
-
 function set_budget(newbudget, spent, percent, currency) {
-    console.log('Set_budget was called with following attributes:')
-    console.log(`${newbudget} | ${spent} | ${percent} | ${currency}`)
+    //console.log('Set_budget was called with following attributes:')
+    //console.log(`${newbudget} | ${spent} | ${percent} | ${currency}`)
     // Cast values to number
     newbudget = Number(newbudget);
     spent = Number(spent);
