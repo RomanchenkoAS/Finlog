@@ -281,6 +281,12 @@
                             // Add the right one
                             currencyInputs[i].classList.add(response['currency']);
                           }
+                        
+                        // Set budget if it was changed
+                        if (setting == 'budget') {
+                            set_budget(value);
+                        };
+                        
                           
                     } else {
                         console.log("Request failed");
@@ -302,6 +308,7 @@
             if (updated) {
                 //location.reload();
             };
+
         });
 
         // Event listener for space/enter on budget input
