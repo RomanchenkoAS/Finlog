@@ -195,15 +195,23 @@ function update_budget(value) {
     
     // Math
     spent = Number(spent) + value;
-    let percent = (spent / budget);
+    let percent = (spent / budget) * 100;
     
     // Setting properties
-    progressBar.style.width = `${percent * 100}%`;
+    progressBar.style.width = `${percent}%`;
     progressDiv.setAttribute('aria-valuenow', spent);
 
     
     let spentLabel = document.getElementById("spent");
     spentLabel.textContent = Math.round(spent);
+
+    console.log(percent)
+    budget_icon = document.getElementById('budget_icon');
+    if (percent >= 100) {
+        budget_icon.src = "/static/log/icons/budget_overflow.svg";
+    } else if (percent < 100) {
+        budget_icon.src = "/static/log/icons/budget.svg";
+    }
 }
 
 // Set budget value (when budget is changed - on modification of settings)
