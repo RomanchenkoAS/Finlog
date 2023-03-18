@@ -67,8 +67,13 @@ def register(request):
                 
             print(valid)
             
-            valid = (budget > 0)
+            if budget >= 0:
+                valid = True
+            else:
+                messages.info(request, "Budget can not be negative")
+                
             print(valid)
+            
             try:
                 # Look up this username, if it doesnt exist it is valid
                 User.objects.get(username=username)
@@ -86,11 +91,11 @@ def register(request):
                 messages.success(request, f'You have successfully registered, {user.username}!')
                 return redirect('accounts:login')
             else:
-                messages.info(request, "Form invalid, please try again")
+                messages.info(request, "Form invalid")
 
         # If a form is invalid - we render the page with already user pre-populated form
         else:
-            messages.info(request, "Form invalid, please try again")
+            messages.info(request, "Form invalid")
 
     elif request.method == 'GET':
     # Else -- unbound form

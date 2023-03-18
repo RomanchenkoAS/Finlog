@@ -144,16 +144,18 @@
 
 
         {% if messages_list %}
-            {% for message in messages_list %}
-                <header>
-                    <div class="alert alert-primary text-center message {{message.tags}}" role="alert">
-                        {{message}}
-                    <button type="button" class="btn close" data-dismiss="alert">
-                        <span>&times;</span>
-                    </button>
-                    </div>
-                </header>
-            {% endfor %}
+        <header>
+            <div class="alert alert-primary text-center message {{message.tags}}" role="alert">
+                <span> •
+                {% for message in messages_list %}
+                        {{message}}  •  
+                {% endfor %}
+                </span> 
+                <button type="button" class="btn close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+            </div>
+        </header>
         {% endif %}
 
         {% block header %}{% endblock header %}
