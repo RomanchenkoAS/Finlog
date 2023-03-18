@@ -294,7 +294,7 @@
                           }
                         
                         // Set budget
-                        set_budget(budget, currency);
+                        set_budget(budget, spent, percent, currency);
                         
                           
                     } else {
@@ -327,6 +327,7 @@
             };
 
             if (event.code === 'Enter') {
+                // Function for sending settings
                 set('budget');
             };
         });
