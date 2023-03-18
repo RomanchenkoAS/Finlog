@@ -6,7 +6,9 @@
         {% load static %}
         <meta name="viewport" content="initial-scale=1, width=device-width">
         <!-- Main stylesheet -->
-        <link rel="stylesheet" href={% static 'accounts/style.css' %}>
+        <link rel="stylesheet" type="text/css" href={% static 'accounts/style.css' %}>
+        <!-- Stylesheet exclusively for login / register -->
+        <link rel="stylesheet" type="text/css" href={% static 'accounts/accounts.css' %}>
         <!-- Icon -->
         <link rel="icon" type="image/x-icon" href="{% static 'accounts/images/logo_icon.png'%}">
 
