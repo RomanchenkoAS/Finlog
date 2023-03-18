@@ -60,7 +60,7 @@
                             <li class="nav-item" style="cursor: pointer;">
                                 <img class="icon_button_nav" onclick="progress()" src="{% static 'log/icons/budget.svg'%}">
                                 <a class="nav-link" onclick="progress()">
-                                    <div id="budget_container" style="display:flex; flex-direction: column; text-align: center; font-size: small;" >
+                                    <div id="budget_container" style="display:none; flex-direction: column; text-align: center; font-size: small;" >
                                         <div>
                                             <t id="spent">{{ spent|floatformat:'0'}}</t> / <t id="budget">{{ budget|floatformat:'0' }}</t> <t id="currency">{{currency}}</t>
                                         </div>
