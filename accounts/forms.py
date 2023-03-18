@@ -8,6 +8,10 @@ class RegistrationForm(forms.Form):
     confirmation = forms.CharField(label='Confirm password', max_length=100, widget=forms.PasswordInput)
     currency = forms.ChoiceField(choices=CURRENCY_CHOICES)
     budget = forms.FloatField(min_value=0)
+    
+    def __init__(self, *args, **kwargs):
+        super(RegistrationForm, self).__init__(*args, **kwargs)
+        self.fields['budget'].initial = 0
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
