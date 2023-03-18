@@ -52,18 +52,41 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            # TODO: make proper confirmation  
             confirmation = form.cleaned_data['confirmation']
             budget = form.cleaned_data['budget']
             currency = form.cleaned_data['currency']
+            
+            # Data confirmation  
+            valid = False
 
+            # valid = (password == confirmation)
+            if password == confirmation:
+                valid = True
+            else:
+                messages.info(request, "Passwords don't match")
+                
+            print(valid)
+            
+            valid = (budget > 0)
+            print(valid)
+            try:
+                # Look up this username, if it doesnt exist it is valid
+                User.objects.get(username=username)
+                valid = False
+                messages.info(request, "Username already in use")
+            except User.DoesNotExist:
+                valid = True
+            print(valid)
             # Validate username and password
 
-            # Creating a user
-            user = User.objects.create_user(username, email=None, password=password, budget=budget, currency=currency)
-            # At this point user object is already created and saved to the db, user var is not needed
-            messages.success(request, f'You have successfully registered, {user.username}!')
-            return redirect('accounts:login')
+            if valid:
+                # Creating a user
+                user = User.objects.create_user(username, email=None, password=password, budget=budget, currency=currency)
+                # At this point user object is already created and saved to the db, user var is not needed
+                messages.success(request, f'You have successfully registered, {user.username}!')
+                return redirect('accounts:login')
+            else:
+                messages.info(request, "Form invalid, please try again")
 
         # If a form is invalid - we render the page with already user pre-populated form
         else:
