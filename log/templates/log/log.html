@@ -272,19 +272,29 @@
 
                         // Parse response 
                         var response = JSON.parse(xhr.responseText);
-                        budget_label.textContent = response['budget'];
-                        currency_label.textContent = response['currency'];
+                        console.log(response);
+
+                        // Received variables
+                        budget      = response['budget'];
+                        spent       = response['spent'];
+                        percent     = response['percent'];
+                        currency    = response['currency'];
+
+                        // Set info inside settings window
+                        budget_label.textContent = budget;
+                        currency_label.textContent = currency;
+
                         // Change currency icon for all input fields with an icon
                         currencyInputs = document.getElementsByClassName('currency-input');
                         for (let i = 0; i < currencyInputs.length; i++) {
                             // Remove last class
                             currencyInputs[i].classList.remove(currencyInputs[i].classList[currencyInputs[i].classList.length - 1]);
                             // Add the right one
-                            currencyInputs[i].classList.add(response['currency']);
+                            currencyInputs[i].classList.add(currency);
                           }
                         
                         // Set budget
-                        set_budget(response['budget'], response['currency']);
+                        set_budget(budget, currency);
                         
                           
                     } else {

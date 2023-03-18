@@ -203,7 +203,7 @@ def settings(request):
         
     budget_info = get_budget(request.user)
 
-    # Budget gets the following:
+    # Response has the following structure:
     # budget_info = {
     #     'budget'    : budget,
     #     'spent'     : sum,
