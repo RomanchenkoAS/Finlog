@@ -63,7 +63,7 @@ class UserCategory(models.Model):
     # Name of the entry
     def __str__(self):
         username = self.user.username
-        title = f'{self.name} edited by {username}'
+        title = f"{username}'s {self.name}"
         return title
     
 class Entry(models.Model):
