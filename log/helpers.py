@@ -111,8 +111,10 @@ def exchange(val, currency, target = 'USD'):
 def get_budget(user):
     """Counts users expences for last month and give back result in user currency"""
     budget = user.budget
+    print(f'Budget: {budget}')
     
     monthly_entries = collect_entries(user, 'month')
+    print(f'Monthly: {monthly_entries}')
     # Sum in $
     sum = 0
     for entry in monthly_entries:
