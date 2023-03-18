@@ -285,14 +285,19 @@
                         budget_label.textContent = budget.toFixed(0);
                         currency_label.textContent = currency;
 
-                        // Change currency icon for all input fields with an icon
-                        currencyInputs = document.getElementsByClassName('currency-input');
-                        for (let i = 0; i < currencyInputs.length; i++) {
-                            // Remove last class
-                            currencyInputs[i].classList.remove(currencyInputs[i].classList[currencyInputs[i].classList.length - 1]);
-                            // Add the right one
-                            currencyInputs[i].classList.add(currency);
-                          }
+                        if (setting == 'currency') {
+                            // Change currency icon for all input fields with an icon
+                            currencyInputs = document.getElementsByClassName('currency-input');
+                            for (let i = 0; i < currencyInputs.length; i++) {
+                                // Remove last class
+                                currencyInputs[i].classList.remove(currencyInputs[i].classList[currencyInputs[i].classList.length - 1]);
+                                // Add the right one
+                                currencyInputs[i].classList.add(currency);
+                            };
+
+                            document.getElementById('budget_input').value = budget;
+                        };
+                        
                         
                         // Set budget
                         set_budget(budget, spent, percent, currency);
