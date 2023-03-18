@@ -158,9 +158,10 @@ function deleteEntry(pos) {
             }
             // Now actually remove from the page
             var row = document.getElementById(`${pos}`)
+            // 'g' - for global (that means remove all ',')
             deletedValue = parseFloat(row.childNodes[0].textContent.replace(/,/g, ""))
             
-            console.log(`add ${(-1)*deletedValue}`)
+            // console.log(`add ${(-1)*deletedValue}`)
             update_budget((-1)*deletedValue);
             row.remove();
 
