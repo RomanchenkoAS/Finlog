@@ -9,6 +9,7 @@
 
 {% comment %} <h1>Registration</h1>
 <hr> {% endcomment %}
+<div class='parent-container'>
 <div class="form-container">
 <form action="/register" method="post" name="register" novalidate class="register-form">
     {% csrf_token %}
@@ -21,6 +22,7 @@
         {% endfor %}
     <button class="btn btn-primary mt-2 submit" type="submit" id="submit">Register</button>
 </form>
+</div>
 </div>
 
 
