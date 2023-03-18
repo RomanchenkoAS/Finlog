@@ -85,10 +85,13 @@ def add(request):
 
     try:
         # Get the list of entries -> transform it to the dictionary for jsonifying
-        entries_dict = {'entries': collect_entries(request.user)}
+        context = {
+            'entries': collect_entries(request.user),
+            'budget' : get_budget(request.user),
+        }
 
         # Send back JSON
-        return JsonResponse(entries_dict)
+        return JsonResponse(context)
     except AttributeError:
         # Return error TODO: Make it look ok maybe | apology??
         return HttpResponse(status=400)
@@ -117,10 +120,13 @@ def remove(request, p):
     entry_to_delete.delete()
 
     # Reload updated list of entries -> transform it to the dictionary for jsonifying
-    entries_dict = {'entries': collect_entries(request.user)}
+    context = {
+        'entries': collect_entries(request.user),
+        'budget' : get_budget(request.user),
+    }
 
     # Send back JSON
-    return JsonResponse(entries_dict)
+    return JsonResponse(context)
 
 # TODO : remove csrf exemptions
 @csrf_exempt

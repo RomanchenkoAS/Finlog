@@ -139,6 +139,7 @@ function scroll_down() {
     tableContainer.style.scrollBehavior = "smooth";
 };
 
+// Featuring fetch
 // Script to delete an entry with given entry.position
 function deleteEntry(pos) {
     let t = document.getElementById('period_label').dataset.period;
@@ -156,13 +157,25 @@ function deleteEntry(pos) {
             if (!response.ok) {
                 throw new Error('Not ok response');
             }
+            return response.json();
+        })
+        .then(data => {
+            
+            // Received variables
+            budget      = data.budget.budget;
+            spent       = data.budget.spent;
+            percent     = data.budget.percent;
+            currency    = data.budget.currency;
+
+            // Set info inside settings window
+            budget_label.textContent = budget.toFixed(0);
+            currency_label.textContent = currency;
+
+            // Set budget
+            set_budget(budget, spent, percent, currency);
+
             // Now actually remove from the page
             var row = document.getElementById(`${pos}`)
-            // 'g' - for global (that means remove all ',')
-            deletedValue = parseFloat(row.childNodes[0].textContent.replace(/,/g, ""))
-            
-            // console.log(`add ${(-1)*deletedValue}`)
-            update_budget((-1)*deletedValue);
             row.remove();
 
             // Replace id's for rows & delete buttons
@@ -181,54 +194,8 @@ function deleteEntry(pos) {
         .catch(error => {
             console.error('Issue with fetch operation: ', error);
         });
-
 };
 
-// Add a value to the spent value (used whenever spent value is changed - add & remove entry)
-function update_budget(value) {
-    // Cast to number
-    value = Number(value);
-
-    let progressBar = document.getElementById("budget_progress");
-    let progressDiv = document.getElementById("budget_progress_div");
-
-    let budget = progressDiv.getAttribute('aria-valuemax');
-    let spent = progressDiv.getAttribute('aria-valuenow');
-    
-    // Math
-    spent = Number(spent) + value;
-    let percent = (spent / budget) * 100;
-    
-    // Setting properties
-    progressBar.style.width = `${percent}%`;
-    progressDiv.setAttribute('aria-valuenow', spent);
-    
-
-    
-    let spentLabel = document.getElementById("spent");
-    spentLabel.textContent = Math.round(spent);
-
-    // This is a COPY needs refactor
-    // Show overflow icon
-    budget_icon = document.getElementById('budget_icon');
-    if (percent >= 100) {
-        budget_icon.src = "/static/log/icons/budget_overflow.svg";
-    } else if (percent < 100) {
-        budget_icon.src = "/static/log/icons/budget.svg";
-    }
-
-    // This is a COPY needs refactor
-    // Remove last class from progressBar
-    progressBar.classList.remove(progressBar.classList[progressBar.classList.length - 1]);
-
-    if (percent < 50) {
-        progressBar.classList.add('bg-info');
-    } else if (percent < 75) {
-        progressBar.classList.add('bg-warning');
-    } else {
-        progressBar.classList.add('bg-danger');
-    }
-}
 
 // Set budget value (when budget is changed - on modification of settings)
 function set_budget(newbudget, spent, percent, currency) {
@@ -298,9 +265,17 @@ $('#add-entry').on("submit", function (event) {
             add_row(newItem, 'bottom');
             clear_form();
             scroll_down();
-            console.log(`add ${value}`)
-            update_budget(value);
-            
+            // console.log(`add ${value}`)
+
+            // Received variables
+            budget      = data.budget.budget;
+            spent       = data.budget.spent;
+            percent     = data.budget.percent;
+            currency    = data.budget.currency;
+
+            // Set budget
+            set_budget(budget, spent, percent, currency);
+
             
         },
         error: function () {
