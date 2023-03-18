@@ -226,7 +226,7 @@ function update_budget(value) {
 // }
 
 function set_budget(newbudget, spent, percent, currency) {
-    console.log('Set_budget is called with following attributes:')
+    console.log('Set_budget was called with following attributes:')
     console.log(`${newbudget} | ${spent} | ${percent} | ${currency}`)
     // Cast values to number
     newbudget = Number(newbudget);
@@ -238,13 +238,19 @@ function set_budget(newbudget, spent, percent, currency) {
     // let spent = progressDiv.getAttribute('aria-valuenow');
 
     // Update progressBar
-    progressBar.style.width = `${percent * 100}%`;
+    progressBar.style.width = `${percent}%`;
     // Save newbudget on the page
     progressDiv.setAttribute('aria-valuemax', newbudget);
     progressDiv.setAttribute('aria-valuenow', spent);
 
     let budgetLabel = document.getElementById("budget");
     budgetLabel.textContent = Math.round(newbudget);
+
+    let currencyLabel = document.getElementById("currency");
+    currencyLabel.textContent = currency;
+
+    let spentLabel = document.getElementById("spent");
+    spentLabel.textContent = Math.round(spent);
 }
 
 

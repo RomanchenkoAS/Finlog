@@ -282,7 +282,7 @@
                         currency    = response['currency'];
 
                         // Set info inside settings window
-                        budget_label.textContent = budget;
+                        budget_label.textContent = budget.toFixed(0);
                         currency_label.textContent = currency;
 
                         // Change currency icon for all input fields with an icon
