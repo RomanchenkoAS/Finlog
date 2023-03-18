@@ -54,11 +54,13 @@ def register(request):
             password = form.cleaned_data['password']
             # TODO: make proper confirmation  
             confirmation = form.cleaned_data['confirmation']
+            budget = form.cleaned_data['budget']
+            currency = form.cleaned_data['currency']
 
             # Validate username and password
 
             # Creating a user
-            user = User.objects.create_user(username, email=None, password=password)
+            user = User.objects.create_user(username, email=None, password=password, budget=budget, currency=currency)
             # At this point user object is already created and saved to the db, user var is not needed
             messages.success(request, f'You have successfully registered, {user.username}!')
             return redirect('accounts:login')
@@ -80,29 +82,3 @@ def logout_view(request):
     logout(request)
     messages.info(request, 'You have logged out')
     return HttpResponseRedirect('/login')
-
-# FORM INSIDE DROPDOWN SOMEHOW
-# <div class="dropdown-menu">
-#   <form class="px-4 py-3">
-#     <div class="mb-3">
-#       <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
-#       <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-#     </div>
-#     <div class="mb-3">
-#       <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-#       <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-#     </div>
-#     <div class="mb-3">
-#       <div class="form-check">
-#         <input type="checkbox" class="form-check-input" id="dropdownCheck">
-#         <label class="form-check-label" for="dropdownCheck">
-#           Remember me
-#         </label>
-#       </div>
-#     </div>
-#     <button type="submit" class="btn btn-primary">Sign in</button>
-#   </form>
-#   <div class="dropdown-divider"></div>
-#   <a class="dropdown-item" href="#">New around here? Sign up</a>
-#   <a class="dropdown-item" href="#">Forgot password?</a>
-# </div>

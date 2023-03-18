@@ -72,7 +72,7 @@ def add(request):
     currency = request.user.currency
     
     try:
-        category = UserCategory.objects.get(name=category)
+        category = UserCategory.objects.get(user=request.user, name=category)
     except UserCategory.DoesNotExist:
         # Return error TODO: Make it look ok maybe | apology??
         return HttpResponse(status=400)
