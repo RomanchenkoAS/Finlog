@@ -158,7 +158,8 @@ function deleteEntry(pos) {
             }
             // Now actually remove from the page
             var row = document.getElementById(`${pos}`)
-            deletedValue = parseFloat(row.childNodes[0].textContent.replace(",", ""))
+            deletedValue = parseFloat(row.childNodes[0].textContent.replace(/,/g, ""))
+            
             console.log(`add ${(-1)*deletedValue}`)
             update_budget((-1)*deletedValue);
             row.remove();
@@ -321,6 +322,7 @@ function clear_form() {
     categorySelect.selectedIndex = 0;
 };
 
+// Delete all rows from table
 function clear_table() {
     while (table.firstChild) {
         table.removeChild(table.firstChild);
@@ -328,7 +330,7 @@ function clear_table() {
 }
 
 
-
+// Function to swap between log for All/Day/Month
 function cycle() {
     let label = document.getElementById('period_label');
     index = label.dataset.index;
@@ -362,7 +364,7 @@ function cycle() {
 function progress() {
     let budget = document.getElementById("budget_container")
 
-    console.log(budget.style.display)
+    // console.log(budget.style.display)
     if (budget.style.display == 'flex') {
         //console.log('yeah it is')
         budget.style.display = 'none';
