@@ -18,6 +18,7 @@ function formatter(value, currency) {
 
     return currencyIcon.outerHTML + ' ' + currencyFormatter.format(value);
 }
+
 // Load content from the /load_content/ url -- used on window load -- includes recusrive_render & scroll_down
 function load_content(t) {
     // console.log('load function')

@@ -67,7 +67,7 @@ def collect_categories(user):
     for category in default_categories_set:
         new_category = {
             # For display
-            'title': category.name,
+            # 'title': category.name,
             # For inner use
             'name': category.name,
             'id': category.id,
@@ -83,7 +83,7 @@ def collect_categories(user):
     for category in user_categories_list:
         new_category = {
             # For display
-            'title': category.name,
+            # 'title': category.name,
             # For inner use
             'name': category.name,
             'id': category.id,
@@ -112,7 +112,7 @@ def exchange(val, currency, target = 'USD'):
 def get_budget(user):
     """Counts users expences for last month and give back result in user currency"""
     budget = float(user.budget)
-    print(f'Budget: {budget}')
+    # print(f'Budget: {budget}')
     
     monthly_entries = collect_entries(user, 'month')
     # print(f'Monthly: {monthly_entries}')
