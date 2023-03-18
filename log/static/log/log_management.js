@@ -233,6 +233,13 @@ function set_budget(newbudget, spent, percent, currency) {
 
     let spentLabel = document.getElementById("spent");
     spentLabel.textContent = Math.round(spent);
+
+    budget_icon = document.getElementById('budget_icon');
+    if (percent >= 100) {
+        budget_icon.src = "/static/log/icons/budget_overflow.svg";
+    } else if (percent < 100) {
+        budget_icon.src = "/static/log/icons/budget.svg";
+    }
 }
 
 

@@ -155,7 +155,7 @@
                     <hr>
                     
                     
-                    <!-- Budget-->
+                    <!-- Budget settings -->
                     <div class='settings_container'>
                         <t>Set monthly budget:</t>
                         <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input {{request.user.currency}}" value={{request.user.budget|floatformat:'0'}}>
@@ -164,7 +164,7 @@
                         </a>
                     </div>
                     <hr>
-                    <!-- Currency -->
+                    <!-- Currency settings -->
                     <div class='settings_container' >
                         <t style=''>Choose currency:</t>
                         <select name="currency" id="select_currency" class="form-selector right">
