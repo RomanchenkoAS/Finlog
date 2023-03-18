@@ -201,9 +201,14 @@ def settings(request):
         user.currency = new_currency
         user.save()
         
-    user_settings = {
-        'currency'  : user.currency,
-        'budget'    : user.budget,
-    }
+    budget_info = get_budget(request.user)
+
+    # Budget gets the following:
+    # budget_info = {
+    #     'budget'    : budget,
+    #     'spent'     : sum,
+    #     'currency'  : user.currency,
+    #     'percent'   : (sum / budget) * 100,
+    # }
     
-    return JsonResponse(user_settings)
+    return JsonResponse(budget_info)

@@ -214,7 +214,7 @@ function set_budget(value, currency) {
     let progressBar = document.getElementById("budget_progress");
     let progressDiv = document.getElementById("budget_progress_div");
     let spent = progressDiv.getAttribute('aria-valuenow');
-
+    
     budget = value;
     let percent = (spent / budget);
 
