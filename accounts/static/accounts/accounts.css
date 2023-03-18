@@ -1,4 +1,4 @@
-input {
+.form-group input {
     padding: 0.125rem 0.75rem 0.125rem 0.75rem;
     border: 1px solid black;
     font-size: 1rem;
@@ -54,11 +54,13 @@ select {
 @media (max-width: 850px) {
     .form-container {
         width: 70vw;
+
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
     }
 }
-
-
-/* .btn {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-} */
