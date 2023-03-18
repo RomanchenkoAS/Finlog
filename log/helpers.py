@@ -112,25 +112,25 @@ def exchange(val, currency, target = 'USD'):
 def get_budget(user):
     """Counts users expences for last month and give back result in user currency"""
     budget = user.budget
-    print(f'Budget: {budget}')
+    # print(f'Budget: {budget}')
     
     monthly_entries = collect_entries(user, 'month')
-    print(f'Monthly: {monthly_entries}')
+    # print(f'Monthly: {monthly_entries}')
     # Sum in $
     sum = 0
     for entry in monthly_entries:
         # All to $
-        v = {entry['value']}
-        c = {entry['currency']}
-        print(f'entry {v}{c} ')
+        # v = {entry['value']}
+        # c = {entry['currency']}
+        # print(f'entry {v}{c} ')
         # print(entry)
         sum += exchange(entry['value'], entry['currency'], user.currency)
-        print(f'New sum: {sum}')
+        # print(f'New sum: {sum}')
     
     # This is stupid mistake, fixed
     # sum = round(sum, 1)
     
-    print(f'Spent {sum}$/{exchange(budget, user.currency)}$')
+    # print(f'Spent {sum}$/{exchange(budget, user.currency)}$')
     
     budget_info = {
         'budget'    : budget,
@@ -139,7 +139,7 @@ def get_budget(user):
         'percent'   : (sum / budget) * 100,
     }
     
-    print(budget_info)
+    # print(budget_info)
     
     return budget_info
 

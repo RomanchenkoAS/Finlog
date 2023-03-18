@@ -244,14 +244,15 @@
         // Change settings of user via xhr request
         function set(setting) {
             let budget_input = document.getElementById('budget_input').value;
+            
             let currency_input = document.getElementById('select_currency').value;
 
             if (setting == 'budget') {
                 value = budget_input;
-                //console.log(`sending xhr request | ${budget_input}`);
+                console.log(`sending xhr request | ${budget_input}`);
             } else if (setting == 'currency') {
                 value = currency_input;
-                //console.log(`sending xhr request | ${currency_input}`);
+                console.log(`sending xhr request | ${currency_input}`);
             }
 
             let budget_label = document.getElementById('budget_label');
@@ -272,7 +273,7 @@
 
                         // Parse response 
                         var response = JSON.parse(xhr.responseText);
-                        console.log(response);
+                        //console.log(response);
 
                         // Received variables
                         budget      = response['budget'];
@@ -328,6 +329,7 @@
 
             if (event.code === 'Enter') {
                 // Function for sending settings
+                console.log('Enter')
                 set('budget');
             };
         });

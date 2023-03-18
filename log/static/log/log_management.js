@@ -226,21 +226,25 @@ function update_budget(value) {
 // }
 
 function set_budget(newbudget, spent, percent, currency) {
-    // Cast value to number
-    value = Number(value);
+    console.log('Set_budget is called with following attributes:')
+    console.log(`${newbudget} | ${spent} | ${percent} | ${currency}`)
+    // Cast values to number
+    newbudget = Number(newbudget);
+    spent = Number(spent);
+    percent = Number(percent);
 
     let progressBar = document.getElementById("budget_progress");
     let progressDiv = document.getElementById("budget_progress_div");
-    let spent = progressDiv.getAttribute('aria-valuenow');
+    // let spent = progressDiv.getAttribute('aria-valuenow');
 
-    budget = value;
-    let percent = (spent / budget);
-
+    // Update progressBar
     progressBar.style.width = `${percent * 100}%`;
-    progressDiv.setAttribute('aria-valuemax', budget);
+    // Save newbudget on the page
+    progressDiv.setAttribute('aria-valuemax', newbudget);
+    progressDiv.setAttribute('aria-valuenow', spent);
 
     let budgetLabel = document.getElementById("budget");
-    budgetLabel.textContent = Math.round(budget);
+    budgetLabel.textContent = Math.round(newbudget);
 }
 
 
