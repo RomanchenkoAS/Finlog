@@ -58,18 +58,28 @@
                         <ul class="navbar-nav ms-auto" style="flex-wrap: wrap;">
                             <!-- Budget -->
                             <li class="nav-item" style="cursor: pointer;">
+                                <!-- Logic for showing overflow budget icon -->
                                 {% if percent < 100 %}
                                 <img id="budget_icon" class="icon_button_nav" onclick="progress()" src="{% static 'log/icons/budget.svg'%}">
                                 {% else %}
                                 <img id="budget_icon" class="icon_button_nav" onclick="progress()" src="{% static 'log/icons/budget_overflow.svg'%}" >
                                 {% endif %}
+
+                                <!-- Collapsible budget container -->
                                 <a class="nav-link" onclick="progress()">
                                     <div id="budget_container" style="display:none; flex-direction: column; text-align: center; font-size: small;" >
                                         <div>
                                             <t id="spent">{{ spent|floatformat:'0'}}</t> / <t id="budget">{{ budget|floatformat:'0' }}</t> <t id="currency">{{currency}}</t>
                                         </div>
                                         <div id="budget_progress_div" class="progress" role="progressbar" style="width: 10rem;" aria-label="Basic example" aria-valuenow="{{spent}}" aria-valuemin="0" aria-valuemax="{{budget}}">
+                                            <!-- Show different color depending on % -->
+                                            {% if percent < 50 %}
                                             <div id="budget_progress" class="progress-bar progress-bar-striped bg-info" style="width: {{percent}}%"></div>
+                                            {% elif percent < 75 %}
+                                            <div id="budget_progress" class="progress-bar progress-bar-striped bg-warning" style="width: {{percent}}%"></div>
+                                            {% else %}
+                                            <div id="budget_progress" class="progress-bar progress-bar-striped bg-danger" style="width: {{percent}}%"></div>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </a>

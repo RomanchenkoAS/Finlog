@@ -129,6 +129,15 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 /* For a smaller screen YEEEAH ADAPTIVE */
+@media (max-width: 1300px){
+    .center {
+        width: 75%;
+    }
+    .form-item .form-selector{
+        width: 15%;
+    }
+}
+
 @media (max-width: 850px) {
     .center {
         width: 95%;
@@ -137,5 +146,6 @@ input[type=number]::-webkit-outer-spin-button {
         width: 15%;
     }
 }
+
 
 /* For budget  */

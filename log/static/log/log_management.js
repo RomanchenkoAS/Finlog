@@ -200,17 +200,31 @@ function update_budget(value) {
     // Setting properties
     progressBar.style.width = `${percent}%`;
     progressDiv.setAttribute('aria-valuenow', spent);
+    
 
     
     let spentLabel = document.getElementById("spent");
     spentLabel.textContent = Math.round(spent);
 
-    console.log(percent)
+    // This is a COPY needs refactor
+    // Show overflow icon
     budget_icon = document.getElementById('budget_icon');
     if (percent >= 100) {
         budget_icon.src = "/static/log/icons/budget_overflow.svg";
     } else if (percent < 100) {
         budget_icon.src = "/static/log/icons/budget.svg";
+    }
+
+    // This is a COPY needs refactor
+    // Remove last class from progressBar
+    progressBar.classList.remove(progressBar.classList[progressBar.classList.length - 1]);
+
+    if (percent < 50) {
+        progressBar.classList.add('bg-info');
+    } else if (percent < 75) {
+        progressBar.classList.add('bg-warning');
+    } else {
+        progressBar.classList.add('bg-danger');
     }
 }
 
@@ -247,6 +261,16 @@ function set_budget(newbudget, spent, percent, currency) {
         budget_icon.src = "/static/log/icons/budget_overflow.svg";
     } else if (percent < 100) {
         budget_icon.src = "/static/log/icons/budget.svg";
+    }
+
+    progressBar.classList.remove(progressBar.classList[progressBar.classList.length - 1]);
+
+    if (percent < 50) {
+        progressBar.classList.add('bg-info');
+    } else if (percent < 75) {
+        progressBar.classList.add('bg-warning');
+    } else {
+        progressBar.classList.add('bg-danger');
     }
 }
 
