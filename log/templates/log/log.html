@@ -147,7 +147,7 @@
                     <div class='settings_container'>
                         <span style="margin:auto">
                             <img class="icon_button_nav" src="{% static 'log/icons/budget.svg'%}">
-                            Budget : <t id='budget_label'>{{request.user.budget}}</t>
+                            Budget : <t id='budget_label'>{{request.user.budget|floatformat:'0'}}</t>
                             <img style="margin-left: 50px;" class="icon_button_nav" src="{% static 'log/icons/currency.svg'%}">
                             Currency : <t id='currency_label'>{{request.user.currency}}</t>
                         </span>
@@ -158,7 +158,7 @@
                     <!-- Budget-->
                     <div class='settings_container'>
                         <t>Set monthly budget:</t>
-                        <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input {{request.user.currency}}" value={{request.user.budget}}>
+                        <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input {{request.user.currency}}" value={{request.user.budget|floatformat:'0'}}>
                         <a onclick='set("budget")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
@@ -301,6 +301,17 @@
         settingsModal.addEventListener("hidden.bs.modal", function () {
             if (updated) {
                 //location.reload();
+            };
+        });
+
+        // Event listener for space/enter on budget input
+        document.getElementById('budget_input').addEventListener('keydown', (event) => {
+            if (event.code === 'Space') {
+                event.preventDefault();
+            };
+
+            if (event.code === 'Enter') {
+                set('budget');
             };
         });
 
