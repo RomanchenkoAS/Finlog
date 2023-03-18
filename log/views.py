@@ -192,6 +192,7 @@ def settings(request):
         new_budget = parsed_data['value']
         user.budget = new_budget
         user.save()
+        # print(f'User info: {user.budget}{user.currency}')
     
     elif setting == 'currency':
         new_currency = parsed_data['value']
@@ -201,8 +202,7 @@ def settings(request):
         user.currency = new_currency
         user.save()
         
-    budget_info = get_budget(request.user)
-
+    budget_info = get_budget(user)
     # Response has the following structure:
     # budget_info = {
     #     'budget'    : budget,
