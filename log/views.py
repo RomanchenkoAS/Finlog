@@ -17,7 +17,7 @@ import json
 from django.utils.timezone import now
 
 # Helper functions
-from .helpers import collect_entries, collect_categories, get_budget
+from .helpers import collect_entries, collect_categories, get_budget, exchange
 
 
 @login_required
@@ -195,6 +195,9 @@ def settings(request):
     
     elif setting == 'currency':
         new_currency = parsed_data['value']
+        # Update budget currency first
+        user.budget = exchange(user.budget, user.currency, new_currency)
+        # Then change currency for user
         user.currency = new_currency
         user.save()
         

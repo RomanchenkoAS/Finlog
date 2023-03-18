@@ -182,7 +182,7 @@ function deleteEntry(pos) {
 
 };
 
-// Add a value to the spent value
+// Add a value to the spent value (used whenever spent value is changed - add & remove entry)
 function update_budget(value) {
     // Cast to number
     value = Number(value);
@@ -206,9 +206,9 @@ function update_budget(value) {
     spentLabel.textContent = Math.round(spent);
 }
 
-// Set budget value
-function set_budget(value) {
-    // Cast to number
+// Set budget value (when budget is changed - on modification of settings)
+function set_budget(value, currency) {
+    // Cast value to number
     value = Number(value);
 
     let progressBar = document.getElementById("budget_progress");

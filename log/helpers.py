@@ -94,6 +94,7 @@ def collect_categories(user):
     return default_categories, user_categories
 
 def exchange(val, currency, target = 'USD'):
+    '''exchange(val, currency) changes to USD || exchange(val,currency,target) changes to Target currency'''
     rate = {
         'KZT' : 0.0022,
         'EUR' : 1.06,
@@ -119,21 +120,26 @@ def get_budget(user):
     sum = 0
     for entry in monthly_entries:
         # All to $
-        sum += exchange(entry['value'], user.currency)
+        v = {entry['value']}
+        c = {entry['currency']}
+        print(f'entry {v}{c} ')
+        # print(entry)
+        sum += exchange(entry['value'], entry['currency'], user.currency)
+        print(f'New sum: {sum}')
     
     # This is stupid mistake, fixed
     # sum = round(sum, 1)
     
-    # print(f'Spent {sum}$/{exchange(budget, user.currency)}$')
+    print(f'Spent {sum}$/{exchange(budget, user.currency)}$')
     
     budget_info = {
         'budget'    : budget,
-        'spent'     : exchange(sum, 'USD', user.currency),
+        'spent'     : sum,
         'currency'  : user.currency,
-        'percent'   : (exchange(sum, 'USD', user.currency) / budget) * 100,
+        'percent'   : (sum / budget) * 100,
     }
     
-    # print(budget_info)
+    print(budget_info)
     
     return budget_info
 

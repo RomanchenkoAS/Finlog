@@ -269,6 +269,7 @@
                   if (xhr.status === 200) {
                         console.log("Request successful");
                         updated = true;
+
                         // Parse response 
                         var response = JSON.parse(xhr.responseText);
                         budget_label.textContent = response['budget'];
@@ -282,10 +283,8 @@
                             currencyInputs[i].classList.add(response['currency']);
                           }
                         
-                        // Set budget if it was changed
-                        if (setting == 'budget') {
-                            set_budget(value);
-                        };
+                        // Set budget
+                        set_budget(response['budget'], response['currency']);
                         
                           
                     } else {
