@@ -173,23 +173,29 @@ function edit(input_category, action = 'edit') {
                 } else {
                     content.style.maxHeight = content.scrollHeight + "px";
                 };
+
+                // Set 'add-item' paragraph to the default properties
+                document.getElementById('add-item').style.backgroundColor = '#d3d3d3';
+                document.getElementById('add-item').dataset.color = '#d3d3d3';
+                document.getElementById('add-colorpicker').value = '#d3d3d3';
+                document.getElementById('add-newname').value = '';
             };
 
             if (action == 'delete') {
-                deleted = document.getElementById(`${name}-item`)
+                deleted = document.getElementById(`${input_category}-item`)
                 // Yeah looks weird, works though
                 deleted.parentElement.removeChild(deleted);
             };
 
             if (action == 'rename') {
                 // Change existing category inside modal window
-                document.getElementById(`${name}-item`).textContent = newname;
+                document.getElementById(`${input_category}-item`).textContent = newname;
 
                 // Change category name for entries
                 // All cells
                 const cells = document.querySelectorAll("td");
                 // All cells with category written there
-                const cellsToChange = Array.from(cells).filter(cell => cell.textContent.includes(name));
+                const cellsToChange = Array.from(cells).filter(cell => cell.textContent.includes(input_category));
 
                 // And then changing text wtitten there
                 cellsToChange.forEach(item => {
@@ -198,7 +204,7 @@ function edit(input_category, action = 'edit') {
 
                 // Change category name in select
                 const select = document.querySelectorAll("option");
-                const selectToChange = Array.from(select).filter(select => select.value.includes(name));
+                const selectToChange = Array.from(select).filter(select => select.value.includes(input_category));
                 selectToChange[0].value = newname;
                 selectToChange[0].textContent = newname;
 

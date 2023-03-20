@@ -73,7 +73,7 @@
                                         <div>
                                             <t id="spent">{{ spent|floatformat:'0'}}</t> / <t id="budget">{{ budget|floatformat:'0' }}</t> <t id="currency">{{currency}}</t>
                                         </div>
-                                        <div id="budget_progress_div" class="progress" role="progressbar" style="width: 10rem;" aria-label="Basic example" aria-valuenow="{{spent}}" aria-valuemin="0" aria-valuemax="{{budget}}">
+                                        <div id="budget_progress_div" class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="{{spent}}" aria-valuemin="0" aria-valuemax="{{budget}}">
                                             <!-- Show different color depending on % -->
                                             {% if percent < 50 %}
                                             <div id="budget_progress" class="progress-bar progress-bar-striped bg-info" style="width: {{percent}}%"></div>

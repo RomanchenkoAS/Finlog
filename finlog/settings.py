@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o^cyzszc+kdj5_$--h&v_1_m(z%k6)(jx)h(%_tm^$!21c&x*v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['http://finlog.pythonanywhere.com/', 'http://127.0.0.1:8000/']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -131,10 +131,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'log', 'static')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'accounts', 'static')]
-STATICFILES_DIRS = [
-    '/home/artur/dev/Finlog/accounts/static/accounts',
-    '/home/artur/dev/Finlog/log/static/log',
-]
 
 
 
