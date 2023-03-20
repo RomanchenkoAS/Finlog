@@ -93,7 +93,7 @@ def register(request):
                 # Creating a user
                 user = User.objects.create_user(username, email=None, password=password, budget=budget, currency=currency)
                 # At this point user object is already created and saved to the db, user var is not needed
-                messages.success(request, f'You have successfully registered, {user.username}!')
+                messages.success(request, f'You have successfully registered, {user.username}! Use your login & password to enter.')
                 return redirect('accounts:login')
             else:
                 messages.info(request, "Form invalid")

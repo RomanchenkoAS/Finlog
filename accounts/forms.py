@@ -1,11 +1,12 @@
 from django import forms
 from .models import CURRENCY_CHOICES
+from django.core.validators import MinLengthValidator
 
 
 class RegistrationForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
-    password = forms.CharField(label='Password', max_length=100, widget=forms.PasswordInput)
-    confirmation = forms.CharField(label='Confirm password', max_length=100, widget=forms.PasswordInput)
+    password = forms.CharField(label='Password', max_length=100, widget=forms.PasswordInput, validators=[MinLengthValidator(6)])
+    confirmation = forms.CharField(label='Confirm password', max_length=100, widget=forms.PasswordInput, validators=[MinLengthValidator(6)])
     currency = forms.ChoiceField(choices=CURRENCY_CHOICES)
     budget = forms.FloatField(min_value=0)
     
@@ -13,6 +14,12 @@ class RegistrationForm(forms.Form):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         self.fields['budget'].initial = 0
 
+    # Rewritten clean to add validation to the form itself 
+    def clean(self):
+        
+        
+        
+        
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
     password = forms.CharField(label='Password', max_length=100, widget=forms.PasswordInput)
