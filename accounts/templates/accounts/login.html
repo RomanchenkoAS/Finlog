@@ -4,27 +4,20 @@
 
 {% block body %}
 
-{% comment %} <h1>Log in</h1>
-<hr> {% endcomment %}
-
 <div class='parent-container'>
-<div class="form-container">
-<form action="/login" method="post" name="login" class="auth-form">
-    {% csrf_token %}
-        {% for field in form %}
-            <div class="form-group my-2">
-                {{ field.label_tag }}
-                {{ field }}
-                {{ field.errors }}
-            </div>
-        {% endfor %}
-    <button class="btn btn-primary mt-2 submit" type="submit" id="submit">Log In</button>
-</form>
+    <div class="form-container">
+    <form action="/login" method="post" name="login" class="auth-form">
+        {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group my-2">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+        <button class="btn btn-primary mt-2 submit" type="submit" id="submit">Log In</button>
+    </form>
+    </div>
 </div>
-</div>
-
-
-{% load static %}
-
 
 {% endblock body %}
