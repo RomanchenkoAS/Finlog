@@ -109,27 +109,32 @@ function hide(input_category) {
 // Variable that controls behaviour of the page after closing the modal window
 let called_action = 'none';
 
+// Action options: edit | add | delete | reset
 function edit(input_category, action = 'edit') {
+    // Find corresponding colorpicker
     let colorPicker = document.getElementById(input_category + "-colorpicker");
 
-    // Action options: edit | add | delete | reset
-    category_name = input_category;
+    // Color that is set on the corresponding colorpicker
     color = colorPicker.value;
 
+    // Find name input field
     let name_input = document.getElementById(`${input_category}-newname`);
+
+    // Error handling
     if (name_input != null) {
         newname = name_input.value;
     } else {
-        newname = category_name;
+        newname = input_category;
     };
 
-    if (newname != category_name && action == 'edit') {
+    // If name is different, operation marked as 'rename'
+    if (newname != input_category && action == 'edit') {
         action = 'rename';
     };
 
     console.log(`${action} ${input_category} | new color: ${colorPicker.value} | |new name: ${newname} | sending xhr request`);
 
-    // send actual request at /edit/
+    // Send actual request at /edit/
     var xhr = new XMLHttpRequest();
     var url = "/edit/";
     xhr.open("POST", url, true);
@@ -140,6 +145,7 @@ function edit(input_category, action = 'edit') {
         if (xhr.readyState === 4 && xhr.status === 204) {
             console.log("Request successful");
 
+            // Called action is a global variable, it needs to get data for further use
             called_action = action;
 
             // If there was a new category added, spawn it right there
@@ -201,15 +207,17 @@ function edit(input_category, action = 'edit') {
             if (action == 'reset') {
                 location.reload();
             }
+        } else if (xhr.status === 400) {
+            alert(`Error at editing the category ${input_category} | ${action}`);
         };
     };
 
     // Sending data
-    var data = JSON.stringify({ "name": name, "color": color, "action": action, "newname": newname });
+    var data = JSON.stringify({ "name": input_category, "color": color, "action": action, "newname": newname });
     xhr.send(data);
 
     // Set data value of <p> to new color
-    let p = document.getElementById(name + '-item')
+    let p = document.getElementById(input_category + '-item')
     p.dataset.color = color;
 
     // Hide edit palette

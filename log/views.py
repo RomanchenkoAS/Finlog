@@ -131,6 +131,7 @@ def edit(request):
     # Recieved JSON
     parsed_data = json.loads(request.body)
 
+    print(parsed_data)
     action = parsed_data['action']
 
     if action == 'edit':

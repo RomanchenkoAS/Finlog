@@ -66,9 +66,9 @@
 
                     <!-- Custom block -->
                     <div class="content" id="custom_categories_container">
+                        <!-- Existing user categories -->
                         {% if user_categories %}
                         {% for category in user_categories %}
-                        <!-- Existing user categories -->
                         <span>
                             <p id="{{category.name}}-item" data-color="{{category.color}}" style="background-color:{{category.color}}" class="category small-margin">{{category.name}} 
                                 <!-- Edit -->
