@@ -1,6 +1,5 @@
 from .models import Category
-from accounts.models import User, UserCategory, Entry
-from django.utils import timezone
+from accounts.models import UserCategory, Entry
 
 def collect_entries(user, filter = 'all'):
     ''' Returns a list of entries for this user'''
@@ -14,7 +13,6 @@ def collect_entries(user, filter = 'all'):
 
     elif filter == 'month':
         entries_list = Entry.filter_month(user)
-        
     
     # Reform this list as a list of dictionaries
     entries_dict = []
@@ -63,12 +61,8 @@ def collect_categories(user):
     default_categories = []
 
     # Form a list of dictionaries for default categories (possibly edited)
-    # Title and name are the same now TODO: remove (here and in HTML)
     for category in default_categories_set:
         new_category = {
-            # For display
-            # 'title': category.name,
-            # For inner use
             'name': category.name,
             'id': category.id,
             'color': category.color,
@@ -82,9 +76,6 @@ def collect_categories(user):
     # Form a list of dictionaries for extra user categories 
     for category in user_categories_list:
         new_category = {
-            # For display
-            # 'title': category.name,
-            # For inner use
             'name': category.name,
             'id': category.id,
             'color': category.color,
@@ -112,25 +103,12 @@ def exchange(val, currency, target = 'USD'):
 def get_budget(user):
     """Counts users expences for last month and give back result in user currency"""
     budget = float(user.budget)
-    # print(f'Budget: {budget}')
     
     monthly_entries = collect_entries(user, 'month')
-    # print(f'Monthly: {monthly_entries}')
-    # Sum in $
+    
     sum = 0
     for entry in monthly_entries:
-        # All to $
-        # v = {entry['value']}
-        # c = {entry['currency']}
-        # print(f'entry {v}{c} ')
-        # print(entry)
         sum += exchange(entry['value'], entry['currency'], user.currency)
-        # print(f'New sum: {sum}')
-    
-    # This is stupid mistake, fixed
-    # sum = round(sum, 1)
-    
-    # print(f'Spent {exchange(sum, user.currency)}$/{exchange(budget, user.currency)}$')
     
     budget_info = {
         'budget'    : budget,
@@ -139,19 +117,14 @@ def get_budget(user):
         'percent'   : (sum / budget) * 100,
     }
     
-    # print(budget_info)
-    
     return budget_info
 
-def format_name(str):
-    ''' Format category name to exclude capital letters / spaces and '-' symbol '''
-    str = str.lower()
-    str = str.replace(' ', '_')
-    str = str.replace('-', '_')
-    return str
-
-
-
+# def format_name(str):
+#     ''' Format category name to exclude capital letters / spaces and '-' symbol '''
+#     str = str.lower()
+#     str = str.replace(' ', '_')
+#     str = str.replace('-', '_')
+#     return str
 
 def info(category):
     descriptions = {
