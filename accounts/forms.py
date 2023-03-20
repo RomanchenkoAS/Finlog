@@ -1,5 +1,5 @@
 from django import forms
-from .models import CURRENCY_CHOICES
+from .models import CURRENCY_CHOICES, User
 from django.core.validators import MinLengthValidator
 
 
@@ -16,6 +16,34 @@ class RegistrationForm(forms.Form):
 
     # Rewritten clean to add validation to the form itself 
     def clean(self):
+        cleaned_data = super().clean()
+        
+        password = cleaned_data.get('password')
+        confirmation = cleaned_data.get('confirmation')
+        budget = cleaned_data.get('budget')
+        username = cleaned_data.get('username')
+        
+        if password != confirmation:
+            self.add_error('confirmation', "Passwords don't match")
+            self.is_valid = False
+            
+        if len(password) < 6:
+            self.add_error('password', "Password is too short")
+            self.is_valid = False
+        
+        if budget < 0:
+            self.add_error('budget', "Budget cannot be less than 0")
+            self.is_valid = False
+            
+        # Username in use validation
+        try:
+            User.objects.get(username=username)
+            self.add_error('username', "Username already in use")
+            self.is_valid = False
+        except User.DoesNotExist:
+            pass
+            
+        return cleaned_data
         
         
         
