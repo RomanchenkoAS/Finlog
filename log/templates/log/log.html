@@ -158,7 +158,7 @@
                     <!-- Budget settings -->
                     <div class='settings_container'>
                         <t>Set monthly budget:</t>
-                        <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]*" class="form-item right currency-input {{request.user.currency}}" value={{request.user.budget|floatformat:'0'}}>
+                        <input id="budget_input" type="number" inputmode="numeric" pattern="[0-9]+([.][0-9]{1,2})?" class="form-item right currency-input {{request.user.currency}}" value={{request.user.budget|floatformat:'0'}}>
                         <a onclick='set("budget")' class="a-none">
                             <img style="margin-left: 10px;" class="icon_button" src="{% static 'log/icons/tick.svg'%}">
                         </a>
