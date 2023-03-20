@@ -1,15 +1,15 @@
 // Interactive colorpickers
 var colorPickers = document.getElementsByClassName("color_picker");
-        
+
 for (var i = 0; i < colorPickers.length; i++) {
-    colorPickers[i].addEventListener('input', function() {
+    colorPickers[i].addEventListener('input', function () {
         // Take this color
         let colorCode = this.value;
         // Get corresponding category by cutting off '-colorpicker'
         let category = this.id.substring(0, this.id.indexOf('-colorpicker'));
         // Get corresponding item and set it's color to the picked one
         let item = document.getElementById(`${category}-item`);
-        
+
         // Also change all the relevant itmes to a new color
         item.style.backgroundColor = colorCode;
 
@@ -24,29 +24,29 @@ for (var i = 0; i < colorPickers.length; i++) {
         });
     });
 };
-  
+
 
 // Script for collapsible headers 
 var coll = document.getElementsByClassName("collapsible");
 
 for (var i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
+    coll[i].addEventListener("click", function () {
         this.classList.toggle("active");
         var content = this.nextElementSibling;
-        if (content.style.maxHeight){
+        if (content.style.maxHeight) {
             content.style.maxHeight = null;
         } else {
             content.style.maxHeight = content.scrollHeight + "px";
         };
-        
+
         // Set color for colorpickers
         var colorPickers = content.querySelectorAll('.color_picker');
-        
+
         colorPickers.forEach(element => {
             let parent = element.parentNode.parentNode;
             let color = getComputedStyle(parent).getPropertyValue('background-color');
             element.value = rgbToHex(color);
-        }); 
+        });
     });
 };
 
@@ -55,14 +55,13 @@ var custom = document.getElementById("collapsible_custom");
 var customHeaderContent = custom.nextElementSibling;
 
 function expand_custom() {
-    //console.log('showing custom')
     custom.classList.toggle("active");
-    if (customHeaderContent.style.maxHeight){
+    if (customHeaderContent.style.maxHeight) {
         customHeaderContent.style.maxHeight = null;
     } else {
         customHeaderContent.style.maxHeight = customHeaderContent.scrollHeight + "px";
     };
-}
+};
 
 
 // Transforms from rgb(x, y, z) into hexadecimal
@@ -112,19 +111,19 @@ let called_action = 'none';
 
 function edit(input_category, action = 'edit') {
     let colorPicker = document.getElementById(input_category + "-colorpicker");
-    
+
     // Action options: edit | add | delete | reset
-    name = input_category;
+    category_name = input_category;
     color = colorPicker.value;
-    
+
     let name_input = document.getElementById(`${input_category}-newname`);
     if (name_input != null) {
         newname = name_input.value;
     } else {
-        newname = name;
+        newname = category_name;
     };
 
-    if (newname != name && action == 'edit') {
+    if (newname != category_name && action == 'edit') {
         action = 'rename';
     };
 
@@ -145,7 +144,6 @@ function edit(input_category, action = 'edit') {
 
             // If there was a new category added, spawn it right there
             if (action == 'add') {
-                console.log('here i am')
                 let container = document.getElementById("custom_categories_container");
                 let newSpan = document.createElement("span");
                 let newParagraph = document.createElement("p");
@@ -164,14 +162,11 @@ function edit(input_category, action = 'edit') {
                 customHeaderContent.style.maxHeight = customHeaderContent.scrollHeight + "px";
 
                 var content = custom.nextElementSibling;
-                if (content.style.maxHeight){
+                if (content.style.maxHeight) {
                     content.style.maxHeight = null;
                 } else {
                     content.style.maxHeight = content.scrollHeight + "px";
                 };
-
-                // TODO: maybe add edit_palette here as well?
-                // Not necessary though
             };
 
             if (action == 'delete') {
@@ -183,7 +178,7 @@ function edit(input_category, action = 'edit') {
             if (action == 'rename') {
                 // Change existing category inside modal window
                 document.getElementById(`${name}-item`).textContent = newname;
-                
+
                 // Change category name for entries
                 // All cells
                 const cells = document.querySelectorAll("td");
@@ -194,7 +189,7 @@ function edit(input_category, action = 'edit') {
                 cellsToChange.forEach(item => {
                     item.textContent = newname;
                 });
-                
+
                 // Change category name in select
                 const select = document.querySelectorAll("option");
                 const selectToChange = Array.from(select).filter(select => select.value.includes(name));
@@ -210,9 +205,9 @@ function edit(input_category, action = 'edit') {
     };
 
     // Sending data
-    var data = JSON.stringify({"name": name, "color": color, "action": action, "newname": newname});
+    var data = JSON.stringify({ "name": name, "color": color, "action": action, "newname": newname });
     xhr.send(data);
-    
+
     // Set data value of <p> to new color
     let p = document.getElementById(name + '-item')
     p.dataset.color = color;
@@ -226,7 +221,7 @@ function edit(input_category, action = 'edit') {
 var categoriesModal = document.getElementById("categoriesModal");
 
 categoriesModal.addEventListener("hidden.bs.modal", function () {
-    
+
     // If a new category was added - refresh the page
     if (called_action == 'add' || called_action == 'delete' || called_action == 'rename') {
         location.reload();
@@ -248,9 +243,8 @@ categoriesModal.addEventListener("hidden.bs.modal", function () {
 
 // Event listeners for space/enter on category name input
 const inputField = document.getElementsByClassName('change_name');
-for (let i=0; i < inputField.length; i++) {
+for (let i = 0; i < inputField.length; i++) {
     inputField[i].addEventListener('keydown', (event) => {
-        //console.log(inputField[i]);
         if (event.code === 'Space') {
             event.preventDefault();
         };
@@ -264,9 +258,6 @@ for (let i=0; i < inputField.length; i++) {
                 let category = inputField[i].id.slice(0, inputField[i].id.indexOf('-newname'));
                 edit(category, "edit");
             };
-
-
         };
     });
-
 };

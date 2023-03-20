@@ -2,15 +2,14 @@ var table = document.getElementById('logTable');
 
 // Proper format for money values
 function formatter(value, currency) {
-    // Set currency 
+    // Set currency icon before number
     let currencyIcon = document.createElement('img');
     let path = `/static/log/icons/currency/${currency}.svg`
     currencyIcon.src = path;
     currencyIcon.width = '16';
     currencyIcon.height = '16';
     currencyIcon.style.verticalAlign = 'text-bottom';
-    
-    // currency = 'KE'
+
     let currencyFormatter = new Intl.NumberFormat('en-US', {
         // Digits after ','
         minimumFractionDigits: 0,
@@ -21,7 +20,7 @@ function formatter(value, currency) {
 
 // Load content from the /load_content/ url -- used on window load -- includes recusrive_render & scroll_down
 function load_content(t) {
-    // console.log('load function')
+
     fetch(`/load_content/?t=${t}`)
         .then(response => {
             if (!response.ok) {
@@ -44,13 +43,11 @@ function recusrive_render(arr) {
     // Pick out the last item 
     var lastItem = arr.pop();
 
-    // console.log(lastItem);
+    // Base case
     if (typeof lastItem === 'undefined') {
-        // console.log('That was the last one :3')
         return 0
     } else {
         // Render this one
-        // console.dir(lastItem)
         add_row(lastItem, 'top');
         // Go deeper 'v'
         recusrive_render(arr);
@@ -76,13 +73,12 @@ function add_row(lastItem, position) {
 
     // Populate the cells
     cellValue.innerHTML = formatter(lastItem.value, lastItem.currency);
-    //cellValue.innerHTML     = `${lastItem.value} ${lastItem.currency}`;
     cellCategory.innerHTML = lastItem.category;
 
     // Set local time
     // create a new Date object from the UTC string
     const utcDatetime = new Date(lastItem.datetime);
-    
+
     // get the local datetime string using toLocaleString()
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const localDatetimeString = utcDatetime.toLocaleString([], { timeZone: timeZone, hourCycle: "h23" });
@@ -95,8 +91,8 @@ function add_row(lastItem, position) {
         day: 'numeric',
         month: 'numeric',
         year: 'numeric'
-      });
-    
+    });
+
     // console.log(localDatetimeString); 
     cellDate.innerHTML = formattedDate;
 
@@ -161,12 +157,12 @@ function deleteEntry(pos) {
             return response.json();
         })
         .then(data => {
-            
+
             // Received variables
-            budget      = data.budget.budget;
-            spent       = data.budget.spent;
-            percent     = data.budget.percent;
-            currency    = data.budget.currency;
+            budget = data.budget.budget;
+            spent = data.budget.spent;
+            percent = data.budget.percent;
+            currency = data.budget.currency;
 
             // Set info inside settings window
             budget_label.textContent = budget.toFixed(0);
@@ -181,15 +177,13 @@ function deleteEntry(pos) {
 
             // Replace id's for rows & delete buttons
             let rows = table.childNodes[0].childNodes
-            rows.forEach((item, index) =>{
+            rows.forEach((item, index) => {
                 let delete_button = document.getElementById(`${item.id}-remove`);
                 // Change delete button id and behaviour
                 delete_button.id = `${index}-remove`;
                 delete_button.onclick = function () { deleteEntry(index); };
                 // Change actual id
                 item.id = index;
-                // console.log(index)
-                // console.log(item);
             })
         })
         .catch(error => {
@@ -200,8 +194,6 @@ function deleteEntry(pos) {
 
 // Set budget value (when budget is changed - on modification of settings)
 function set_budget(newbudget, spent, percent, currency) {
-    //console.log('Set_budget was called with following attributes:')
-    //console.log(`${newbudget} | ${spent} | ${percent} | ${currency}`)
     // Cast values to number
     newbudget = Number(newbudget);
     spent = Number(spent);
@@ -209,7 +201,6 @@ function set_budget(newbudget, spent, percent, currency) {
 
     let progressBar = document.getElementById("budget_progress");
     let progressDiv = document.getElementById("budget_progress_div");
-    // let spent = progressDiv.getAttribute('aria-valuenow');
 
     // Update progressBar
     progressBar.style.width = `${percent}%`;
@@ -248,7 +239,7 @@ function set_budget(newbudget, spent, percent, currency) {
 // Adding a new entry
 $('#add-entry').on("submit", function (event) {
     event.preventDefault();
-    // console.log($(this).serialize());
+
     // Get the form data and send an AJAX request to the server
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     value = document.getElementById('input-value').value;
@@ -266,18 +257,15 @@ $('#add-entry').on("submit", function (event) {
             add_row(newItem, 'bottom');
             clear_form();
             scroll_down();
-            // console.log(`add ${value}`)
 
             // Received variables
-            budget      = data.budget.budget;
-            spent       = data.budget.spent;
-            percent     = data.budget.percent;
-            currency    = data.budget.currency;
+            budget = data.budget.budget;
+            spent = data.budget.spent;
+            percent = data.budget.percent;
+            currency = data.budget.currency;
 
             // Set budget
             set_budget(budget, spent, percent, currency);
-
-            
         },
         error: function () {
             alert(`Error adding entry. Sent data: ${this}`);
@@ -311,8 +299,8 @@ function clear_table() {
 function cycle() {
     let label = document.getElementById('period_label');
     index = label.dataset.index;
-    index++; 
-    
+    index++;
+
     // For actual cycling
     if (index == 3) {
         index = 0;
@@ -341,19 +329,17 @@ function cycle() {
 function progress() {
     let budget = document.getElementById("budget_container")
 
-    // console.log(budget.style.display)
     if (budget.style.display == 'flex') {
-        //console.log('yeah it is')
         budget.style.display = 'none';
     } else {
         budget.style.display = 'flex';
-    }
-    // console.log(budget.style.display)
-}
+    };
+};
 
 
 
 window.onload = function () {
-    // console.log('i do work')
+    // On loading window call function to load entries from server & render them on the page
+    // All refers to 'load all entries'
     load_content('all');
 };
