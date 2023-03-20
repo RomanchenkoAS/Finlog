@@ -144,13 +144,15 @@
                 <!-- Content -->
                 <div class="modal-body">
 
-                    <div class='settings_container'>
-                        <span style="margin:auto">
-                            <img class="icon_button_nav" src="{% static 'log/icons/budget.svg'%}">
+                    <div class='settings_container' style='justify-content: space-around;'>
+                        <div>
+                            <img style="cursor:auto" class="icon_button_nav" src="{% static 'log/icons/budget.svg'%}">
                             Budget : <t id='budget_label'>{{request.user.budget|floatformat:'0'}}</t>
-                            <img style="margin-left: 50px;" class="icon_button_nav" src="{% static 'log/icons/currency.svg'%}">
+                        </div>
+                        <div>
+                            <img style="cursor:auto" class="icon_button_nav " src="{% static 'log/icons/currency.svg'%}">
                             Currency : <t id='currency_label'>{{request.user.currency}}</t>
-                        </span>
+                        </div>
                     </div>
                     <hr>
                     
@@ -237,6 +239,7 @@
     <script src="{% static 'log/modal_category.js' %}"></script>
     {% comment %} Scripts for settings window {% endcomment %}
 
+    {% comment %} Settings & budget scripts {% endcomment %}
     <script>
         // Tracks any changes in settings
         let updated = false;

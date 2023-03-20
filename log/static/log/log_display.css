@@ -137,3 +137,57 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 
+@media (max-width: 550px) {
+    #logTableContainer, .modal-content {
+        padding: 0px;
+        height: 55vh;
+        font-size: small;
+    }
+    .center {
+        width: auto;
+    }
+    .navbar-brand img {
+        width: 60px;
+        height: 30px;
+    }
+    .navbar-brand {
+        margin-right: 0;
+    }
+
+    .header {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .navbar-toggler-icon {
+        width: 1em;
+        height: 1em;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    /* Currency icon */
+    td img, .icon_button {
+        width: 12px!important;
+        height: 12px!important;
+    }
+
+    .settings_container span {
+        display: flex;
+    }
+
+    .settings_container input {
+        text-align: center;
+        font-size: small;
+        width: 35%;
+    }
+
+    .icon_button_nav {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+}
+
