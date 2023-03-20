@@ -20,6 +20,7 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
         
     def generate_default(self):
+        '''If the DB requires deleting of all categories, calling this will generate them'''
         list = [
             ('Housing',         '#ffbe0b'),
             ('Transportation',  '#fb5607'),
@@ -33,5 +34,4 @@ class Category(models.Model):
             x, y = item
             a = Category.objects.create(name=x, color=y)
             a.save()
-            print(f'Created {x}:{y}')
             
