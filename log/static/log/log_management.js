@@ -86,19 +86,16 @@ function add_row(lastItem, position) {
     const dateObj = new Date(localDatetimeString);
     const formattedDate = dateObj.toLocaleString('en-US', {
         hour12: false,
-        hour: 'numeric',
-        minute: 'numeric',
-        day: 'numeric',
-        month: 'numeric',
-        year: 'numeric'
-    });
+        hour: '2-digit',
+        minute: '2-digit',
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit'
+    }).replace(',', '');
 
-    // console.log(localDatetimeString); 
     cellDate.innerHTML = formattedDate;
 
-
-
-    // Comment is ... if empty
+    // Comment is ellipis (...) if empty
     if (lastItem.comment == '') {
         cellComment.innerHTML = '...';
     } else {

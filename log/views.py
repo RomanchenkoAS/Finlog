@@ -5,9 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 
-# Getting local users time
-import pytz
-from django.utils import timezone
 from .models import Category
 
 from accounts.models import User, UserCategory, Entry
@@ -65,8 +62,9 @@ def load_content(request):
 @login_required
 def add(request):
     '''Create a new entry from the form in POST'''
+    # If value is not recieved in request, it becomes '' instead of KeyError
     value = request.POST.get('value', '')
-    category = request.POST.get('category', '')
+    category = request.POST.get('category', 'Other')
     comment = request.POST.get('comment', '')
     currency = request.user.currency
 
@@ -76,10 +74,13 @@ def add(request):
         # No such category
         return HttpResponse(status=400)
 
-    # TODO: handle invalid value
-    entry = Entry(user=request.user, value=float(value),
+    try:
+        entry = Entry(user=request.user, value=float(value),
                   category=category, comment=comment, date=now(), currency=currency)
-    entry.save()
+        entry.save()
+    except ValueError:
+        # Value not float
+        return HttpResponse(status=400)
 
     try:
         # Get the list of entries -> transform it to the dictionary for jsonifying
