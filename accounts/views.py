@@ -59,30 +59,35 @@ def register(request):
             # Data confirmation  
             valid = False
 
-            # valid = (password == confirmation)
+            # Password validation 
             if password == confirmation:
-                valid = True
+                valid_password = True
             else:
+                valid_password = False
                 messages.info(request, "Passwords don't match")
+            print(valid_password)
                 
-            print(valid)
-            
+            # Budget validation
             if budget >= 0:
-                valid = True
+                valid_budget = True
             else:
+                valid_budget = False
                 messages.info(request, "Budget can not be negative")
-                
-            print(valid)
+            print(valid_budget)
             
+            # Username validation
             try:
                 # Look up this username, if it doesnt exist it is valid
                 User.objects.get(username=username)
-                valid = False
+                valid_username = False
                 messages.info(request, "Username already in use")
             except User.DoesNotExist:
-                valid = True
+                valid_username = True
+            print(valid_username)
+            
+            valid = valid_username and valid_budget and valid_password    
             print(valid)
-            # Validate username and password
+            
 
             if valid:
                 # Creating a user
@@ -97,8 +102,8 @@ def register(request):
         else:
             messages.info(request, "Form invalid")
 
+    # An unbound form if user visits for the first time
     elif request.method == 'GET':
-    # Else -- unbound form
         form = RegistrationForm()
 
     messages_list = messages.get_messages(request)
