@@ -24,6 +24,10 @@ nav li {
     align-items: center;
 }
 
+.nav-item {
+    cursor: pointer;
+}
+
 .right {
     margin-left: auto;
     margin-right: 0;
@@ -53,18 +57,18 @@ nav li {
 }
 
 
-/* A background images */
-/* body {
-    background: white url("images/background.jpg") no-repeat;
-    background-size: cover;
-} */
-
 .title {
     font-weight: bold;
     margin-bottom: 0px;
     margin-top: 10px;
+}
 
-
+/* Div for budget */
+.budget_container {
+    display:none; 
+    flex-direction: column; 
+    text-align: center; 
+    font-size: small;
 }
 
 /* Labels for fields at login/registration pages */

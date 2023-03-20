@@ -100,16 +100,11 @@ a[title]:hover::before , t[title]:hover::before {
     color: #fff;
     border-radius: 15px;
     /* Positioning */
-    /* bottom: -2em; */
-    /* margin-left: 5rem; */
-    /* Center the tooltip horizontally */
-    /* left: 50%; */
     transform: translateX(-65%);
     transform: translateY(-100%);
     /* Fade in the tooltip */
     opacity: 1;
     transition-delay: 1s;
-    /* width: 40%; */
     text-align: center;
   }
   

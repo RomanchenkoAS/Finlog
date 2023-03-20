@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractUser
 from log.models import Category
 from django.conf import settings  # For using a build-in USER model
 from django.utils import timezone  # For setting time in DateTimeField
-from django.db.models.functions import TruncMonth, TruncDay
 
 # For setting minimum value in a field
 from django.core.validators import MinValueValidator

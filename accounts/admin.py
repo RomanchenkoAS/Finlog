@@ -4,7 +4,7 @@ from .models import User, UserCategory, Entry
 
 
 class UserAdmin(UserAdmin):
-    '''To monitor user's password info'''
+    '''To monitor user's password info (developement purposes)'''
     list_display = ('username', 'email', 'currency', 'budget', 'password_info')
 
     def password_info(self, obj):

@@ -59,7 +59,7 @@
                         <!-- Right part-->
                         <ul class="navbar-nav ms-auto" style="flex-wrap: wrap;">
                             <!-- Budget -->
-                            <li class="nav-item" style="cursor: pointer;">
+                            <li class="nav-item">
                                 <!-- Logic for showing overflow budget icon -->
                                 {% if percent < 100 %}
                                 <img id="budget_icon" class="icon_button_nav" onclick="progress()" src="{% static 'log/icons/budget.svg'%}">
@@ -69,7 +69,7 @@
 
                                 <!-- Collapsible budget container -->
                                 <a class="nav-link" onclick="progress()">
-                                    <div id="budget_container" style="display:none; flex-direction: column; text-align: center; font-size: small;" >
+                                    <div id="budget_container" class="budget_container">
                                         <div>
                                             <t id="spent">{{ spent|floatformat:'0'}}</t> / <t id="budget">{{ budget|floatformat:'0' }}</t> <t id="currency">{{currency}}</t>
                                         </div>
