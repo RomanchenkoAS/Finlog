@@ -13,13 +13,13 @@ For style and visuals:
 - Font awesome icons (https://fontawesome.com/start)
 
 # Features
-- REGISTER & LOG IN with created username/password
+- REGISTER & LOG IN with created username/password.
 
 - LOG allows user to create notes about his expenses with CATEGORY and optional comment. Log entries can be sorted to display all of them, or just expenses made this month or today. 
 
 ![image](https://user-images.githubusercontent.com/119735427/226408180-6b502f2e-ebd4-4f13-9167-43e5a81e8d54.png)
 
-- CATEGORIES: app features few default categories and allows user to change them, recolor and also create new categories 
+- CATEGORIES: app features few default categories and allows user to change them, recolor and also create new categories .
 
 ![image](https://user-images.githubusercontent.com/119735427/226410744-d64cc406-ae41-4ac3-a0e8-108434204fbe.png)
 
