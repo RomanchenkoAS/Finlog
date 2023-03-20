@@ -1,20 +1,16 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import HttpResponse # Render string template
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.contrib.messages import get_messages
 from django.contrib.auth import authenticate, login, logout
-# from django.contrib.auth.models import User # Obsolete
-from django.contrib.auth.hashers import make_password, check_password
 from .forms import RegistrationForm, LoginForm
-from .models import User, UserCategory
+from .models import User
 
 def login_view(request):
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        # LOGIN PROCESS
+        # Login process
         if form.is_valid():
             # Retrieve data from a form
             username, password = form.cleaned_data['username'], form.cleaned_data['password']
@@ -52,56 +48,15 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            confirmation = form.cleaned_data['confirmation']
             budget = form.cleaned_data['budget']
             currency = form.cleaned_data['currency']
             
-            # Data confirmation  
-            valid = False
-
-            # Password validation 
-            if password == confirmation:
-                valid_password = True
-            else:
-                valid_password = False
-                messages.info(request, "Passwords don't match")
-            print(valid_password)
-                
-            # Budget validation
-            if budget >= 0:
-                valid_budget = True
-            else:
-                valid_budget = False
-                messages.info(request, "Budget can not be negative")
-            print(valid_budget)
+            # Creating a user
+            user = User.objects.create_user(username, email=None, password=password, budget=budget, currency=currency)
             
-            # Username validation
-            try:
-                # Look up this username, if it doesnt exist it is valid
-                User.objects.get(username=username)
-                valid_username = False
-                messages.info(request, "Username already in use")
-            except User.DoesNotExist:
-                valid_username = True
-            print(valid_username)
+            messages.success(request, f'You have successfully registered, {user.username}! Use your login & password to enter.')
+            return redirect('accounts:login')
             
-            valid = valid_username and valid_budget and valid_password    
-            print(valid)
-            
-
-            if valid:
-                # Creating a user
-                user = User.objects.create_user(username, email=None, password=password, budget=budget, currency=currency)
-                # At this point user object is already created and saved to the db, user var is not needed
-                messages.success(request, f'You have successfully registered, {user.username}! Use your login & password to enter.')
-                return redirect('accounts:login')
-            else:
-                messages.info(request, "Form invalid")
-
-        # If a form is invalid - we render the page with already user pre-populated form
-        else:
-            messages.info(request, "Form invalid")
-
     # An unbound form if user visits for the first time
     elif request.method == 'GET':
         form = RegistrationForm()

@@ -6,7 +6,7 @@ from django.core.validators import MinLengthValidator
 class RegistrationForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
     password = forms.CharField(label='Password', max_length=100, widget=forms.PasswordInput, validators=[MinLengthValidator(6)])
-    confirmation = forms.CharField(label='Confirm password', max_length=100, widget=forms.PasswordInput, validators=[MinLengthValidator(6)])
+    confirmation = forms.CharField(label='Confirm password', max_length=100, widget=forms.PasswordInput)
     currency = forms.ChoiceField(choices=CURRENCY_CHOICES)
     budget = forms.FloatField(min_value=0)
     
@@ -14,7 +14,7 @@ class RegistrationForm(forms.Form):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         self.fields['budget'].initial = 0
 
-    # Rewritten clean to add validation to the form itself 
+    # Rewritten clean() to add validation to the form itself 
     def clean(self):
         cleaned_data = super().clean()
         
@@ -27,10 +27,6 @@ class RegistrationForm(forms.Form):
             self.add_error('confirmation', "Passwords don't match")
             self.is_valid = False
             
-        if len(password) < 6:
-            self.add_error('password', "Password is too short")
-            self.is_valid = False
-        
         if budget < 0:
             self.add_error('budget', "Budget cannot be less than 0")
             self.is_valid = False
@@ -44,9 +40,7 @@ class RegistrationForm(forms.Form):
             pass
             
         return cleaned_data
-        
-        
-        
+            
         
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
