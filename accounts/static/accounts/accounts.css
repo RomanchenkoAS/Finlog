@@ -60,3 +60,58 @@ select {
         width: 70vw;
     }
 }
+@media (max-width: 550px) {
+    .center {
+        width: auto;
+    }
+    .navbar-brand img {
+        width: 60px;
+        height: 30px;
+    }
+    .navbar-brand {
+        margin-right: 0!important;
+    }
+
+    .navbar-nav {
+        display: flex!important;
+        flex-direction: row!important;
+        justify-content: space-between;
+    }
+
+    .header {
+        font-size: 1.3rem;
+        margin: 0;
+    }
+
+    .navbar-toggler-icon {
+        width: 1em;
+        height: 1em;
+    }
+
+    .form-item, .form-selector {
+        font-size: small;
+    } 
+
+    .form-group label {
+        display: inline;
+    }
+
+    .form-group input {
+        width: 80%;
+        padding: auto;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .form-container {
+        width: 95%;
+        font-size: medium;  
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+}

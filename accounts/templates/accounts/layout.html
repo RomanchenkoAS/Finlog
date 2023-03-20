@@ -108,7 +108,6 @@
                                 </a>
                             </li>
 
-                        </ul>
                     {% endif %}
                     <!-- For unauthorized user -->
                     {% if request.path == '/login' or request.path == '/register' %}
@@ -126,15 +125,15 @@
                                 Log In
                             </a>
                         </li>
+                        {% endif %}
+                        
+                        <!-- Github link -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/RomanchenkoAS">
+                                <img class="icon_button_nav" src="{% static 'log/icons/github.svg'%}">
+                            </a>
+                        </li>
                     </ul>
-                    {% endif %}
-
-                    <!-- Github link -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/RomanchenkoAS">
-                            <img class="icon_button_nav" src="{% static 'log/icons/github.svg'%}">
-                        </a>
-                    </li>
                 </div>
             </div>
         </nav>
