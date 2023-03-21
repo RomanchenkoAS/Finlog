@@ -143,9 +143,25 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55vh;
         font-size: small;
     }
+    tr img {
+        margin-bottom: 1px;
+    }
+
     .modal-content {
-        padding: 0px;
+        padding: 0px!important;
+        font-size: small!important;
+    }
+    .collapsible {
+        
+        font-size: small!important;
+    }
+    .category {
         font-size: small;
+    }
+    .change_name {
+        font-size: small;
+        width: 30%!important;
+        height: auto;
     }
 
     .center {

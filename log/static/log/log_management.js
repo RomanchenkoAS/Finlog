@@ -78,12 +78,13 @@ function add_row(lastItem, position) {
     // Set local time
     // create a new Date object from the UTC string
     const utcDatetime = new Date(lastItem.datetime);
+    const isoDatetimeString = utcDatetime.toISOString();
 
     // get the local datetime string using toLocaleString()
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const localDatetimeString = utcDatetime.toLocaleString([], { timeZone: timeZone, hourCycle: "h23" });
+    const localDatetimeString = utcDatetime.toLocaleString([], { timeZone: timeZone, hourCycle: "h12" });
 
-    const dateObj = new Date(localDatetimeString);
+    const dateObj = new Date(isoDatetimeString);
     const formattedDate = dateObj.toLocaleString('en-US', {
         hour12: false,
         hour: '2-digit',
