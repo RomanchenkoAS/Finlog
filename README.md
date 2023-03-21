@@ -5,6 +5,7 @@ This is a financial tracker web-app developed as final project for CS50 course.
 
 It is developed with: 
 - Python & Django
+- SQL (SQLite3)
 - JavaScript & JQuery
 - HTML 
 - CSS
