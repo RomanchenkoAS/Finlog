@@ -1,6 +1,7 @@
 # Finlog
 This is a financial tracker web-app developed as final project for CS50 course.
 #### Video demo: https://www.youtube.com/watch?v=jHu4dAoeUZ4
+#### Hosted: http://finlog.pythonanywhere.com/
 
 It is developed with: 
 - Python & Django
