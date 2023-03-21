@@ -38,7 +38,7 @@ Since CS50 requires some explanation on choises I made during the developement, 
 
 #### Platform
 I enjoyed developing stock trading app for CS50 homework (and put in it quite a lot of effort as well) and decided that web-app is just what I need. Idea of an app was suggested by chat-GPT (also it helped a lot with debugging during the developement) and I chose Django to make sure I learn something new during this project ;)
-Studying it purely from Django documentation was not easy should I say, especially because english is not my native language, and there is no documentation on russian.
+Studying it purely from Django documentation was actually very difficult, especially because english is not my native language, and there is no documentation on russian, but the result was worth the struggle.
 
 #### Apps
 I decided to split my application to two separate apps (as Django documentation advise to do) at least because I needed to study how it works.
