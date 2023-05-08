@@ -60,7 +60,7 @@
                             </p>
                         </span>
                         {% endfor %}
-                        {% endif%}
+                        {% endif %}
                     </div>
                     <button class="collapsible small-margin" id="collapsible_custom">Custom ▼ </button>
 
@@ -189,7 +189,7 @@
 
 {% endblock header %}
 
-{% block body%}
+{% block body %}
 <main>
     <div class="all_content center">
     <h2 class="title"><a id="period_label" data-index="0" data-period="all" class="a-empty-blue" onclick='cycle()'>Latest</a> events: </h2>
@@ -233,6 +233,9 @@
 {% endblock body %}
 
 {% block script %}
+    {% comment %} My study stuff {% endcomment %}
+    <script src="{% static 'log/study.js' %}"></script>
+
     {% comment %} Scripts for showing log table / adding & deleting entries {% endcomment %}
     <script src="{% static 'log/log_management.js' %}"></script>
     {% comment %} Scripts for modal windows management {% endcomment %}
