@@ -34,9 +34,9 @@ When user exceeds monthly budget, they will be notified with a red budget icon. 
 
 ![image](https://user-images.githubusercontent.com/119735427/226409730-942f7c01-b988-4d97-a730-257dfe85b813.png)
 
-# Choises
+# Choices
 
-Since CS50 requires some explanation on choises I made during the developement, here it is :)
+Since CS50 requires some explanation on choices I made during the developement, here it is :)
 
 #### Platform
 I enjoyed developing stock trading app for CS50 homework (and put in it quite a lot of effort as well) and decided that web-app is just what I need. Idea of an app was suggested by chat-GPT (also it helped a lot with debugging during the developement) and I chose Django to make sure I learn something new during this project ;)
